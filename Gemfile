@@ -3,6 +3,9 @@ ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.3'
+gem 'bootstrap-sass', '3.0.3.0'
+gem 'bootstrap_form', github: 'potenza/bootstrap_form'
+gem 'devise'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

@@ -1,0 +1,44 @@
+<div class = 'navbar navbar-inverse navbar-static-top'>
+  <div class = 'container'>
+    <button class = 'navbar-toggle' data-toggle = 'collapse'
+    data-target = '.navHeaderCollapse'>
+      <span class = 'icon-bar'></span>
+      <span class = 'icon-bar'></span>
+      <span class = 'icon-bar'></span>
+    </button>
+    <a id='logoimage' class='float:left'>
+      <img src='#' alt='red' height='40px' width='40px'/>
+    </a>
+    <div class = 'collapse navbar-collapse navHeaderCollapse'>
+      <ul class = 'nav navbar-nav navbar-right' >
+          <li><%= link_to 'WeOwes', '#' %></li>
+          <li><%= link_to 'Staff', '#' %></li>
+          <li class = 'dropdown'>
+            <a href = '#' class = 'dropdown-toggle' data-toggle = 'dropdown'>
+              Account<b class = 'caret'></b></a>
+            <ul class = 'dropdown-menu'>
+              <li><%= link_to 'Dealership Information', '#' %></li>
+              <li><%= link_to 'Billing','#' %></li>
+              <li class='divider'></li>
+              <li><%= link_to 'Sign out', '#',
+                method: :delete %></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <%= link_to 'Sign In',
+                          '#',
+                          class: 'btn btn-primary btn-default fixbtn' %>
+            </div>
+          </li>
+          <li>
+            <div>
+              <%= link_to 'Sign Up',
+                          '#',
+                          class: 'btn btn-success btn-default fixbtn' %>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
