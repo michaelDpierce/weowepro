@@ -1,4 +1,6 @@
 Weowe::Application.routes.draw do
+  resources :weowe_forms
+
   devise_for :users
   root :to => "static_pages#home"
 

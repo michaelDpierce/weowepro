@@ -1,0 +1,25 @@
+<h1>Listing weowe_forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @weowe_forms.each do |weowe_form| %>
+      <tr>
+        <td><%= link_to 'Show', weowe_form %></td>
+        <td><%= link_to 'Edit', edit_weowe_form_path(weowe_form) %></td>
+        <td><%= link_to 'Destroy', weowe_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Weowe form', new_weowe_form_path %>

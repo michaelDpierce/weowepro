@@ -1,17 +1,25 @@
-<h2>Sign in</h2>
+<% provide(:title, 'Sign in') %>
+<br><br><br>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<div class='row well'>
+  <div class='userform'>
+    <center>
+      <h1> We Owe Pro </h1>
+    </center>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <%= bootstrap_form_for(resource, :as => resource_name,
+                           :url => session_path(resource_name)) do |f| %>
+      <%= f.email_field :email, :autofocus => true %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+      <%= f.password_field :password %>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+      <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me %>
+      <% end %>
 
-<%= render "devise/shared/links" %>
+      <%= f.primary 'Login' %>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302212441) do
+ActiveRecord::Schema.define(version: 20140302222353) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,5 +30,24 @@ ActiveRecord::Schema.define(version: 20140302212441) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weowe_forms", force: true do |t|
+    t.integer  "weowe_id"
+    t.integer  "duration"
+    t.integer  "invoice_id"
+    t.string   "customer_first_name"
+    t.string   "customer_last_name"
+    t.string   "customer_address_1"
+    t.string   "customer_address_2"
+    t.string   "customer_city"
+    t.string   "customer_state"
+    t.string   "customer_zip"
+    t.string   "customer_phone_mobile"
+    t.string   "customer_address"
+    t.string   "customer_email"
+    t.datetime "custom_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

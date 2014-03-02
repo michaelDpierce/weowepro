@@ -1,0 +1,19 @@
+<div class='userform well'>
+  <%= bootstrap_form_for(@weowe_form,
+    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
+
+    <%= render 'shared/error_messages' %>
+
+    <legend><%= legend %></legend>
+
+    <%= f.text_field :customer_first_name, label: 'First Name' %>
+    <%= f.text_field :customer_last_name, label: 'Last Name' %>
+    <%= f.text_field :customer_phone_mobile, label: 'Mobile #' %>
+    <%= f.text_field :customer_email, label: 'Email' %>
+
+    <%= f.primary ( f.object.new_record? ?  'Submit Form' :
+    'Save Changes' ) %>
+
+  <% end %>
+</div>
+</div>
