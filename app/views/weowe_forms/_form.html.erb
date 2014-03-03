@@ -6,10 +6,39 @@
 
     <legend><%= legend %></legend>
 
+    <center><h4>Customer Information</h4></center>
+
     <%= f.text_field :customer_first_name, label: 'First Name' %>
     <%= f.text_field :customer_last_name, label: 'Last Name' %>
     <%= f.text_field :customer_phone_mobile, label: 'Mobile #' %>
     <%= f.text_field :customer_email, label: 'Email' %>
+
+    <br>
+
+    <center><h4>Vehicle Information</h4></center>
+    <%= f.text_field :stock_number, label: 'Stock Number' %>
+    <%= f.text_field :make, label: 'Make' %>
+    <%= f.text_field :model, label: 'Model' %>
+    <%= f.select :year,
+                 options_for_select((1980..2014).to_a.reverse!),
+                 label: 'Year' %>
+
+    <br>
+
+    <center><h4>We Owe</h4></center>
+    <%= f.text_area :weowe_info, hide_label: :true, size: '2x' %>
+
+    <br>
+
+    <center><h4>Customer Owes</h4></center>
+    <%= f.text_area :theyowe_info, hide_label: :true, size: '2x' %>
+
+    <br>
+
+    <center><h4>Customer Signature</h4></center>
+    <%= f.text_field :customer_signature, hide_label: :true %>
+
+    <br>
 
     <%= f.primary ( f.object.new_record? ?  'Submit Form' :
     'Save Changes' ) %>
