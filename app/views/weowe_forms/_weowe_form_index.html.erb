@@ -16,7 +16,7 @@
   <tbody>
     <% @weowe_forms.each do |weowe| %>
       <tr>
-        <td><%= link_to weowe.custom_date, weowe %></td>
+        <td><%= link_to weowe.custom_date.strftime('%-m/%-d/%Y'), weowe %></td>
         <td><%= weowe.stock_number %> </td>
         <td><%= weowe.year %> </td>
         <td><%= weowe.make %> </td>

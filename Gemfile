@@ -7,6 +7,7 @@ gem 'bootstrap-sass', '3.0.3.0'
 gem 'bootstrap_form', github: 'potenza/bootstrap_form'
 gem 'devise'
 gem 'faker', '1.1.2'
+gem 'jquery-turbolinks'
 
 
 group :development, :test do

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title))%></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <link href = '/assets/bootstrap.css' rel = 'stylesheet'>
+
+    <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css',
+    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+    <script src = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+
+    <div class='container'>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html>
