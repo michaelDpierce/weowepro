@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303000023) do
+ActiveRecord::Schema.define(version: 20140303005430) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140303000023) do
     t.string   "stock_number"
     t.integer  "year"
     t.string   "make"
-    t.string   "model"
     t.datetime "sold_date"
     t.string   "salesman_first_name"
     t.string   "salesman_last_name"
@@ -64,6 +63,8 @@ ActiveRecord::Schema.define(version: 20140303000023) do
     t.decimal  "dealer_total_value",    precision: 8, scale: 2
     t.decimal  "customer_total_value",  precision: 8, scale: 2
     t.boolean  "status"
+    t.string   "vehicle_model"
+    t.string   "color"
   end
 
 end

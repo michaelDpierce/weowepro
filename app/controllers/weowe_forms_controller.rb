@@ -25,7 +25,8 @@ class WeoweFormsController < ApplicationController
   # POST /weowe_forms.json
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
-
+    @weowe_form.custom_date = Time.now
+    @weowe_form.dealer_total_value = (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value).round(3)
     respond_to do |format|
       if @weowe_form.save
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully created.' }
@@ -40,6 +41,7 @@ class WeoweFormsController < ApplicationController
   # PATCH/PUT /weowe_forms/1
   # PATCH/PUT /weowe_forms/1.json
   def update
+    @weowe_form.dealer_total_value == (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value).round(3)
     respond_to do |format|
       if @weowe_form.update(weowe_form_params)
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully updated.' }
@@ -71,8 +73,9 @@ class WeoweFormsController < ApplicationController
     def weowe_form_params
       params.require(:weowe_form)
       .permit(:customer_first_name, :customer_last_name, :customer_phone_mobile,
-              :customer_email, :stock_number, :make, :model, :year, :sold_date,
-              :weowe_info, :theyowe_info, :customer_signature, :custom_date
-        )
+              :customer_email, :stock_number, :make, :vehicle_model, :year,
+              :sold_date,:weowe_info, :theyowe_info, :customer_signature,
+              :custom_date, :color, :dealer_labor_value, :dealer_parts_value,
+              :dealer_total_value)
     end
 end
