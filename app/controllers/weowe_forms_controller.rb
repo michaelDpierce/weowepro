@@ -69,6 +69,10 @@ class WeoweFormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weowe_form_params
-      params[:weowe_form]
+      params.require(:weowe_form)
+      .permit(:customer_first_name, :customer_last_name, :customer_phone_mobile,
+              :customer_email, :stock_number, :make, :model, :year, :sold_date,
+              :weowe_info, :theyowe_info, :customer_signature, :custom_date
+        )
     end
 end

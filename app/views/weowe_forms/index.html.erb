@@ -1,25 +1,21 @@
-<h1>Listing weowe_forms</h1>
+<% provide(:title, 'We Owe Index') %>
+<h1>We Owe Index</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class='row'>
 
-  <tbody>
-    <% @weowe_forms.each do |weowe_form| %>
-      <tr>
-        <td><%= link_to 'Show', weowe_form %></td>
-        <td><%= link_to 'Edit', edit_weowe_form_path(weowe_form) %></td>
-        <td><%= link_to 'Destroy', weowe_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class='col-md-9'></div>
+
+  <div class='col-md-3'>
+    <br><br>
+    <div class='btn-group'>
+      <%= link_to 'Add We Owe', new_weowe_form_path,
+        class: 'btn btn-primary btn-sm', role: 'button' %>
+      <%= link_to 'Archieved Forms', '#',
+        class: 'btn btn-danger btn-sm', role: 'button' %>
+    </div>
+  </div>
+</div>
 
 <br>
 
-<%= link_to 'New Weowe form', new_weowe_form_path %>
+<%= render 'weowe_forms' %>
