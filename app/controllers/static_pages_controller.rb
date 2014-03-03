@@ -10,4 +10,7 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
+  def dashboard
+  end
 end

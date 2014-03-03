@@ -2,11 +2,12 @@ Weowe::Application.routes.draw do
   resources :weowe_forms
 
   devise_for :users
-  root :to => "static_pages#home"
+  root :to => "static_pages#dashboard"
 
   get "static_pages/help"
   get "static_pages/contact"
   get "static_pages/about"
+  match '/dashboard', to: 'static_pages#dashboard', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
