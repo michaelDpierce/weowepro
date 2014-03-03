@@ -1,6 +1,6 @@
 <div class='userform well'>
   <%= bootstrap_form_for(@weowe_form,
-    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
+    layout: :horizontal, label_col: 'col-sm-4', control_col: 'col-sm-8') do |f| %>
 
     <%= render 'shared/error_messages' %>
 
@@ -13,8 +13,6 @@
     <%= f.text_field :customer_phone_mobile, label: 'Mobile #' %>
     <%= f.text_field :customer_email, label: 'Email' %>
 
-    <br>
-
     <center><h4>Vehicle Information</h4></center>
     <%= f.text_field :stock_number, label: 'Stock Number' %>
     <%= f.select :year,
@@ -25,30 +23,24 @@
     <%= f.text_field :color, label: 'Color' %>
     <%= f.date_select :sold_date,
       label: 'Date Sold' %>
-    <br>
 
     <center><h4>We Owe</h4></center>
     <%= f.text_area :weowe_info, hide_label: :true, size: '2x' %>
-    <%= f.text_field :dealer_parts_value, label: 'Parts Value ($)' %>
-    <%= f.text_field :dealer_labor_value, label: 'Labor Value ($)' %>
+    <%= f.text_field :dealer_parts_value, prepend: '$', label: 'Parts Value' %>
+    <%= f.text_field :dealer_labor_value, prepend: '$', label: 'Labor Value' %>
     <br>
 
     <center><h4>Customer Owes</h4></center>
     <%= f.text_area :theyowe_info, hide_label: :true, size: '2x' %>
-    <%= f.text_field :customer_total_value, label: 'Total Value ($)' %>
-
-    <br>
+    <%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value' %>
 
     <center><h4>Customer Signature</h4></center>
     <%= f.text_field :customer_signature, hide_label: :true %>
-
-    <br>
 
     <% unless f.object.new_record? %>
         <center><h4>Admin Fields</h4></center>
           <%= f.date_select :custom_date,
             label: 'Date Submitted' %>
-        <br>
     <% end %>
 
     <%= f.primary ( f.object.new_record? ?  'Submit Form' :

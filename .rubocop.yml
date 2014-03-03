@@ -1,0 +1,17 @@
+AllCops:
+  Includes:
+    - Rakefile
+    - config.ru
+    - Gemfile
+  Excludes:
+    - db/**
+    - bin/**
+
+Documentation:
+  Enabled: false
+
+MethodLength:
+  Max: 5
+
+ClassLength:
+  Max: 100
