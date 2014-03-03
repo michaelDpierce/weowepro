@@ -26,7 +26,7 @@ class WeoweFormsController < ApplicationController
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
     @weowe_form.custom_date = Time.now
-    @weowe_form.dealer_total_value = (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value).round(3)
+    @weowe_form.dealer_total_value = (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.save
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully created.' }
@@ -41,7 +41,7 @@ class WeoweFormsController < ApplicationController
   # PATCH/PUT /weowe_forms/1
   # PATCH/PUT /weowe_forms/1.json
   def update
-    @weowe_form.dealer_total_value == (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value).round(3)
+    @weowe_form.dealer_total_value = (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.update(weowe_form_params)
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully updated.' }

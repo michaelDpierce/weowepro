@@ -25,7 +25,7 @@
         <td>
           <%= "#{weowe.customer_first_name} #{weowe.customer_last_name}" %>
         </td>
-        <td><%= weowe.dealer_total_value %> </td>
+        <td><%= number_to_currency(weowe.dealer_total_value) %> </td>
       </tr>
     <% end %>
   </tbody>

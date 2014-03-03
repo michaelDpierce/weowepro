@@ -69,13 +69,13 @@
       </tr>
             <tr>
       <th>Parts Value</th>
-        <td><%= @weowe_form.dealer_parts_value %></td>
+        <td><%= number_to_currency(@weowe_form.dealer_parts_value) %></td>
       </tr>
       <th>Labor Value</th>
-        <td><%= @weowe_form.dealer_labor_value %></td>
+        <td><%= number_to_currency(@weowe_form.dealer_labor_value) %></td>
       </tr>
       <th>Total Value</th>
-        <td><%= @weowe_form.dealer_total_value %></td>
+        <td><%= number_to_currency(@weowe_form.dealer_total_value) %></td>
       </tr>
     </table>
 
@@ -87,7 +87,7 @@
         <td><%= @weowe_form.theyowe_info %></td>
       </tr>
       <th>Total Value</th>
-        <td><%= @weowe_form.customer_total_value %></td>
+        <td><%= number_to_currency(@weowe_form.customer_total_value) %></td>
       </tr>
     </table>
   </div>
