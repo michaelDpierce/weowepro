@@ -1,7 +1,6 @@
 namespace :db do
   desc 'Fill database with sample data'
   task populate: :environment do
-    Rake.application['db:reset'].invoke
 
     100.times do |n|
 
