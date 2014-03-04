@@ -3,7 +3,7 @@
 ## Start the webserver
 `foreman start`
 
-## Populate Database
+## Populate development database
 
 `rake db:reset`
 
