@@ -8,7 +8,7 @@ gem 'bootstrap_form', github: 'potenza/bootstrap_form'
 gem 'devise'
 gem 'faker', '1.1.2'
 gem 'jquery-turbolinks'
-
+gem 'unicorn'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
