@@ -1,9 +1,9 @@
 # WeOwePro
 
-## Start the webserver
+## Start The Webserver
 `foreman start`
 
-## Populate development database
+## Populate Development Database
 
 `rake db:reset`
 
@@ -16,7 +16,7 @@ To populate: `heroku run rake db:populate` (Only do this if the database is not 
 
 Check # of Dyno's: `heroku ps`
 
-Open app: `heroku open`
+Open app nn browser: `heroku open`
 
 Server logs: `heroku logs` or for more information `heroku logs --tail`
 
