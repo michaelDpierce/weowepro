@@ -27,5 +27,15 @@ module Weowe
 
     config.assets.initialize_on_precompile = false
     config.i18n.enforce_available_locales = true
+
+    config.to_prepare do
+        Devise::SessionsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+        Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+        Devise::ConfirmationsController.layout "application"
+        Devise::UnlocksController.layout "application"
+        Devise::PasswordsController.layout "application"
+    end
+
+
   end
 end
