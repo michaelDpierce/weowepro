@@ -200,7 +200,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.2.1)
   faker (= 1.1.2)
   jbuilder (= 1.0.2)
-  jquery-rails (= 3.0.4)
+  jquery-rails
   jquery-turbolinks
   pg (= 0.15.1)
   rails (= 4.0.3)
@@ -211,6 +211,6 @@ DEPENDENCIES
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
   sqlite3 (= 1.3.8)
-  turbolinks (= 1.1.1)
+  turbolinks
   uglifier (= 2.1.1)
   unicorn
