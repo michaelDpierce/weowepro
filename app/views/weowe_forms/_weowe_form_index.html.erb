@@ -2,14 +2,15 @@
   <table class='table table-hover table-condensed'>
     <thead>
       <tr>
-        <th>Date Submitted</th>
-        <th>Stock Number</th>
-        <th>Year</th>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Color</th>
-        <th>Customer</th>
-        <th>Total Value</th>
+        <th><%= sortable "custom_date", "Date Submitted" %></th>
+        <th><%= sortable "stock_number", "Stock Number" %></th>
+        <th><%= sortable "year", "Year" %></th>
+        <th><%= sortable "make", "Make" %></th>
+        <th><%= sortable "vehicle_model", "Model" %></th>
+        <th><%= sortable "color", "Color" %></th>
+        <th><%= sortable "customer_first_name", "First Name" %></th>
+        <th><%= sortable "customer_last_name", "Last Name" %></th>
+        <th><%= sortable "dealer_total_value", "Total Value" %></th>
       </tr>
   </thead>
 
@@ -22,11 +23,11 @@
         <td><%= weowe.make %> </td>
         <td><%= weowe.vehicle_model %> </td>
         <td><%= weowe.color %> </td>
-        <td>
-          <%= "#{weowe.customer_first_name} #{weowe.customer_last_name}" %>
-        </td>
+        <td><%= weowe.customer_first_name %> </td>
+        <td><%= weowe.customer_last_name %> </td>
         <td><%= number_to_currency(weowe.dealer_total_value) %> </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+

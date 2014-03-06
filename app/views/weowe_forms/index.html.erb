@@ -1,9 +1,22 @@
 <% provide(:title, 'We Owe Index') %>
+
 <h1>We Owe Index</h1>
 
 <div class='row'>
 
-  <div class='col-md-9'></div>
+  <div class='col-md-3'>
+
+    <%= form_tag weowe_forms_path, :method => 'get', :id => "weowe_form_search" do %>
+
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+
+      <%= hidden_field_tag :direction, params[:direction] %>
+      <%= hidden_field_tag :sort, params[:sort] %>
+    <% end %>
+  </div>
+
+  <div class='col-md-6'></div>
 
   <div class='col-md-3'>
     <br><br>

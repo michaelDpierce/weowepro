@@ -1,10 +1,12 @@
 class WeoweFormsController < ApplicationController
   before_action :set_weowe_form, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /weowe_forms
   # GET /weowe_forms.json
   def index
-    @weowe_forms = WeoweForm.all
+    @weowe_forms = WeoweForm.search(params[:search])
+                            .order(sort_column + " " + sort_direction)
   end
 
   # GET /weowe_forms/1
@@ -64,6 +66,15 @@ class WeoweFormsController < ApplicationController
   end
 
   private
+
+    def sort_column
+      params[:sort] || "customer_last_name"
+    end
+
+    def sort_direction
+      params[:direction] || "asc"
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_weowe_form
       @weowe_form = WeoweForm.find(params[:id])
