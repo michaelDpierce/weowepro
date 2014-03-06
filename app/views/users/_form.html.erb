@@ -1,0 +1,25 @@
+<div class='userform well'>
+  <%= bootstrap_form_for(@user,
+    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
+
+    <legend><%= legend %></legend>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <%= f.text_field :first_name, label: 'First Name' %>
+    <%= f.text_field :last_name, label: 'Last Name' %>
+    <%= f.text_field :email, label: 'Email' %>
+    <%= f.text_field :phone_number, label: 'Phone Number' %>
+    <%= f.text_field :password, label: 'Password' %>
+    <%= f.text_field :password_confirmation, label: 'Password Conformation' %>
+    <%= f.text_field :current_password, label: 'Current Password' %>
+
+
+    <%= f.primary ( f.object.new_record? ?  'Create User' :
+    'Save Changes' ) %>
+
+  <% end %>
+</div>
+</div>
