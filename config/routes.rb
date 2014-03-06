@@ -1,4 +1,6 @@
 Weowe::Application.routes.draw do
+  resources :dealers
+
   resources :weowe_forms
 
   devise_for :users
