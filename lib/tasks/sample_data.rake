@@ -21,7 +21,27 @@ namespace :db do
                         theyowe_info: Faker::Lorem.characters(char_count = 255),
                         customer_total_value: (500..3000).to_a.sample,
                         custom_date: Time.now - rand(90).day
-      )
+                      )
     end
+
+    User.create!(first_name: Faker::Name.first_name,
+                 last_name: Faker::Name.last_name,
+                 phone_number: Faker::PhoneNumber.phone_number,
+                 email: 'example@weowepro.com',
+                 password: 'foobar22',
+                 password_confirmation: 'foobar22'
+                )
+
+    100.times do |n|
+
+      User.create!(first_name: Faker::Name.first_name,
+                   last_name: Faker::Name.last_name,
+                   phone_number: Faker::PhoneNumber.phone_number,
+                   email: Faker::Internet.email,
+                   password: 'foobar22',
+                   password_confirmation: 'foobar22'
+                  )
+    end
+
   end
 end
