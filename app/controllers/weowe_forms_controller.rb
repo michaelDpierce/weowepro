@@ -7,6 +7,13 @@ class WeoweFormsController < ApplicationController
   def index
     @weowe_forms = WeoweForm.search(params[:search])
                             .order(sort_column + " " + sort_direction)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json:
+          @weowe_forms
+      end
+    end
   end
 
   # GET /weowe_forms/1

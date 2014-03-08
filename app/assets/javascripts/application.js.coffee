@@ -16,5 +16,9 @@
 #= require bootstrap
 #= require turbolinks
 
+#= require angular
+#= require angular-resource
+
+#= require modules
 #= require_tree .
 

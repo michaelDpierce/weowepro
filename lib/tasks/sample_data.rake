@@ -15,11 +15,11 @@ namespace :db do
                         color: %w(Red Black Green Yellow Silver White).sample,
                         sold_date: Time.now - rand(90).day,
                         weowe_info: Faker::Lorem.characters(char_count = 255),
-                        dealer_parts_value: (500..3000).to_a.sample,
-                        dealer_labor_value: (500..3000).to_a.sample,
-                        dealer_total_value: (500..3000).to_a.sample,
+                        dealer_parts_value: (500..3000).to_a.sample.round(2),
+                        dealer_labor_value: (500..3000).to_a.sample.round(2),
+                        dealer_total_value: (500..3000).to_a.sample.round(2),
                         theyowe_info: Faker::Lorem.characters(char_count = 255),
-                        customer_total_value: (500..3000).to_a.sample,
+                        customer_total_value: (500..3000).to_a.sample.round(2),
                         custom_date: Time.now - rand(90).day
                       )
     end
