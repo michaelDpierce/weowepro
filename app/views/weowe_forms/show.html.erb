@@ -12,11 +12,13 @@
     <% if @weowe_form.pending? %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: false %>
+        <%= f.hidden_field :completed, value: false %>
         <%= f.submit 'Approve Form' %>
       <% end %>
     <% else %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: true %>
+        <%= f.hidden_field :completed, value: false %>
         <%= f.submit 'Mark Pending'  %>
       <% end %>
     <% end %>
@@ -25,11 +27,13 @@
     <% if @weowe_form.completed? %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: false %>
+        <%= f.hidden_field :pending, value: false %>
         <%= f.submit 'Mark Open' %>
       <% end %>
     <% else %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: true %>
+        <%= f.hidden_field :pending, value: false %>
         <%= f.submit 'Mark Complete' %>
       <% end %>
     <% end %>

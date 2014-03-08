@@ -5,6 +5,10 @@
     <thead>
       <tr>
         <th>
+         <a href="" ng-click="predicate.value = 'id'; reverse=!reverse">
+           ID</a>
+        </th>
+        <th>
          <a href="" ng-click="predicate.value = 'custom_date'; reverse=!reverse">
            Date Submitted</a>
         </th>
@@ -48,9 +52,10 @@
                      filter:search'>
         <td>
           <a ng-href='/weowe_forms/{{form.id}}'>
-            {{form.custom_date | formatTime}}
+            {{form.id}}
           </a>
         </td>
+        <td>{{form.custom_date | formatTime}}</td>
         <td>{{form.stock_number}}</td>
         <td>{{form.year}}</td>
         <td>{{form.make}}</td>
