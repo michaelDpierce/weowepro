@@ -29,12 +29,12 @@
             Color</a>
         </th>
         <th>
-          <a href="" ng-click="predicate.value = 'customer_first_name'; reverse=!reverse">
-            First Name</a>
-        </th>
-        <th>
           <a href="" ng-click="predicate.value = 'customer_last_name'; reverse=!reverse">
             Last Name</a>
+        </th>
+        <th>
+          <a href="" ng-click="predicate.value = 'customer_first_name'; reverse=!reverse">
+            First Name</a>
         </th>
         <th>
           <a href="" ng-click="predicate.value = 'dealer_total_value'; reverse=!reverse">
@@ -56,8 +56,8 @@
         <td>{{form.make}}</td>
         <td>{{form.vehicle_model}}</td>
         <td>{{form.color}}</td>
-        <td>{{form.customer_first_name}}</td>
         <td>{{form.customer_last_name}}</td>
+        <td>{{form.customer_first_name}}</td>
         <td>{{form.dealer_total_value | currency}}</td>
       </tr>
     </tbody>
