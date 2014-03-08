@@ -43,7 +43,8 @@ namespace :db do
                  email: 'example@weowepro.com',
                  password: 'foobar22',
                  password_confirmation: 'foobar22',
-                 dealer_id: 1
+                 dealer_id: 1,
+                 admin: true
                )
 
     200.times do |n|
@@ -54,7 +55,8 @@ namespace :db do
                    email: Faker::Internet.email,
                    password: 'foobar22',
                    password_confirmation: 'foobar22',
-                   dealer_id: 1
+                   dealer_id: 1,
+                   admin: false
                   )
     end
   end
