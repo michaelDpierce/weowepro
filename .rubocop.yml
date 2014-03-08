@@ -6,6 +6,7 @@ AllCops:
   Excludes:
     - db/**
     - bin/**
+    - config/initializers/devise.rb
 
 Documentation:
   Enabled: false
