@@ -1,8 +1,31 @@
-<p id='notice'><%= notice %></p>
+<% provide(:title, "#{@user.first_name} #{@user.last_name.each_char.first}.") %>
 
-<p>
-  <strong>Name:</strong>
-</p>
+<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div id='userformbutton'>
+<%=link_to 'Edit Information', edit_user_path(@user),
+    class: 'btn btn-primary btn-sm'%>
+</div>
+
+<br> <br>
+
+<div class='table-responsive'>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+    <th style='width:25%'>First Name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+    <tr>
+    <th>Last Name</th>
+      <td><%= @user.last_name %></td>
+    </tr>
+    <tr>
+    <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+    <th>Phone</th>
+      <td><%= @user.phone_number %></td>
+    </tr>
+  </table>
+</div>
