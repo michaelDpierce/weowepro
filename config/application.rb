@@ -1,10 +1,10 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "sprockets/railtie"
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'sprockets/railtie'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -29,11 +29,11 @@ module Weowe
     config.i18n.enforce_available_locales = true
 
     config.to_prepare do
-        Devise::SessionsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
-        Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
-        Devise::ConfirmationsController.layout "application"
-        Devise::UnlocksController.layout "application"
-        Devise::PasswordsController.layout "application"
+        Devise::SessionsController.layout proc{ |controller| user_signed_in? ? 'application' : 'devise' }
+        Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? 'application' : 'devise' }
+        Devise::ConfirmationsController.layout 'application'
+        Devise::UnlocksController.layout 'application'
+        Devise::PasswordsController.layout 'application'
     end
 
 
