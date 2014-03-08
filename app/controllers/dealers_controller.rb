@@ -14,7 +14,11 @@ class DealersController < ApplicationController
 
   # GET /dealers/new
   def new
-    @dealer = Dealer.new
+    if current_user
+      @dealer = Dealer.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /dealers/1/edit

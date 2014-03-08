@@ -28,7 +28,11 @@ class WeoweFormsController < ApplicationController
 
   # GET /weowe_forms/new
   def new
-    @weowe_form = WeoweForm.new
+    if current_user
+      @weowe_form = WeoweForm.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /weowe_forms/1/edit
