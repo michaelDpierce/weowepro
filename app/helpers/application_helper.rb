@@ -35,4 +35,8 @@ BASE_TITLE = 'WeOwePro'
     BOOTSTRAP_ALERT_CLASSES[flash_type] || flash_type.to_s
   end
 
+  def boolean_to_words(value)
+    value ? 'Yes' : 'No'
+  end
+
 end

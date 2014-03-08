@@ -1,4 +1,5 @@
 class WeoweFormsController < ApplicationController
+  include ApplicationHelper
   include WeoweFormsHelper
 
   before_action :set_weowe_form, only: [:show, :edit, :update, :destroy]
@@ -90,6 +91,7 @@ class WeoweFormsController < ApplicationController
   # PATCH/PUT /weowe_forms/1
   # PATCH/PUT /weowe_forms/1.json
   def update
+    @weowe_form.update_attributes(weowe_form_params)
     @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value,@weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.update(weowe_form_params)
@@ -134,6 +136,6 @@ class WeoweFormsController < ApplicationController
               :customer_email, :stock_number, :make, :vehicle_model, :year,
               :sold_date,:weowe_info, :theyowe_info, :customer_signature,
               :custom_date, :color, :dealer_labor_value, :dealer_parts_value,
-              :dealer_total_value)
+              :dealer_total_value, :pending, :completed, :user_id, :dealer_id)
     end
 end
