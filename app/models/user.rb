@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
          :rememberable,
          :trackable
 
+  belongs_to :dealer
 end

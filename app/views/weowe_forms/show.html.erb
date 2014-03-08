@@ -11,7 +11,6 @@
 
 <div class='table-responsive'>
   <h4> Customer Information </h4>
-
     <table class='table table-bordered table-condensed' >
       <tr>
       <th style='width:25%'>First Name</th>
@@ -32,7 +31,6 @@
     </table>
 
 <h4> Vehicle Information </h4>
-
     <table class='table table-bordered table-condensed' >
       <tr>
       <th style='width:25%'>Stock Number</th>
@@ -61,7 +59,6 @@
     </table>
 
 <h4> We Owe </h4>
-
     <table class='table table-bordered table-condensed' >
       <tr>
       <th style='width:25%'>Description</th>
@@ -80,7 +77,6 @@
     </table>
 
 <h4> Customer Owes </h4>
-
     <table class='table table-bordered table-condensed' >
       <tr>
       <th style='width:25%'>Description</th>
@@ -90,4 +86,16 @@
         <td><%= number_to_currency(@weowe_form.customer_total_value) %></td>
       </tr>
     </table>
-  </div>
+
+<h4> Sales Person </h4>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+    <th style='width:25%'>First Name </th>
+      <td><%= User.find(@weowe_form.user_id).first_name %></td>
+    </tr>
+    <th>Last Name </th>
+      <td><%= User.find(@weowe_form.user_id).last_name %></td>
+    </tr>
+  </table>
+
+</div>

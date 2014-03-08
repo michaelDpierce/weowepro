@@ -2,7 +2,18 @@ namespace :db do
   desc 'Fill database with sample data'
   task populate: :environment do
 
-    100.times do |n|
+    2.times do |n|
+      Dealer.create!(name: %w(AutoNation Stevinson).sample,
+                     address_1: Faker::Address.street_address,
+                     address_2: Faker::Address.secondary_address,
+                     city: Faker::Address.city,
+                     state: Faker::Address.state_abbr,
+                     zip: Faker::Address.zip_code,
+                     phone_number: Faker::PhoneNumber.phone_number
+                    )
+    end
+
+    200.times do |n|
 
       WeoweForm.create!(customer_first_name: Faker::Name.first_name,
                         customer_last_name: Faker::Name.last_name,
@@ -20,7 +31,9 @@ namespace :db do
                         dealer_total_value: (500..3000).to_a.sample.round(2),
                         theyowe_info: 'They owe...',
                         customer_total_value: (500..3000).to_a.sample.round(2),
-                        custom_date: Time.now - rand(90).day
+                        custom_date: Time.now - rand(90).day,
+                        user_id: (1..200).to_a.sample,
+                        dealer_id: 1
                       )
     end
 
@@ -29,19 +42,20 @@ namespace :db do
                  phone_number: '720-387-9691',
                  email: 'example@weowepro.com',
                  password: 'foobar22',
-                 password_confirmation: 'foobar22'
-                )
+                 password_confirmation: 'foobar22',
+                 dealer_id: 1
+               )
 
-    100.times do |n|
+    200.times do |n|
 
       User.create!(first_name: Faker::Name.first_name,
                    last_name: Faker::Name.last_name,
                    phone_number: Faker::PhoneNumber.phone_number,
                    email: Faker::Internet.email,
                    password: 'foobar22',
-                   password_confirmation: 'foobar22'
+                   password_confirmation: 'foobar22',
+                   dealer_id: 1
                   )
     end
-
   end
 end

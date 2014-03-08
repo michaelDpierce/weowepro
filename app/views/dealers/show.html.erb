@@ -1,9 +1,43 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "#{@dealer.name}") %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @dealer.name %>
-</p>
+<h1>My Dealership Information</h1>
 
-<%= link_to 'Edit', edit_dealer_path(@dealer) %> |
-<%= link_to 'Back', dealers_path %>
+<div id='userformbutton'>
+<%=link_to 'Edit Information', edit_dealer_path(@dealer),
+    class: 'btn btn-primary btn-sm'%>
+</div>
+
+<br> <br>
+
+<div class='table-responsive'>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+    <th style='width:25%'>Name</th>
+      <td><%= @dealer.name %></td>
+    </tr>
+    <tr>
+    <th>Address 1</th>
+      <td><%= @dealer.address_1 %></td>
+    </tr>
+    <tr>
+    <th>Address 2</th>
+      <td><%= @dealer.address_2 %></td>
+    </tr>
+    <tr>
+    <th>City</th>
+      <td><%= @dealer.city %></td>
+    </tr>
+    <tr>
+    <th>State</th>
+      <td><%= @dealer.state %></td>
+    </tr>
+    <tr>
+    <th>Zip Code</th>
+      <td><%= @dealer.zip %></td>
+    </tr>
+    <tr>
+    <th>Phone Number</th>
+      <td><%= @dealer.phone_number %></td>
+    </tr>
+  </table>
+</div>

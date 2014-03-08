@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306034554) do
+ActiveRecord::Schema.define(version: 20140308183808) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone_number"
   end
 
   create_table "users", force: true do |t|
@@ -35,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140306034554) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
+    t.integer  "dealer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -74,6 +81,8 @@ ActiveRecord::Schema.define(version: 20140306034554) do
     t.boolean  "status"
     t.string   "vehicle_model"
     t.string   "color"
+    t.integer  "dealer_id"
+    t.integer  "user_id"
   end
 
 end
