@@ -32,6 +32,34 @@ namespace :db do
                         theyowe_info: 'They owe...',
                         customer_total_value: (500..3000).to_a.sample.round(2),
                         custom_date: Time.now - rand(90).day,
+                        pending: [true, false].sample,
+                        completed: false,
+                        user_id: (1..200).to_a.sample,
+                        dealer_id: 1
+                      )
+    end
+
+    200.times do |n|
+
+      WeoweForm.create!(customer_first_name: Faker::Name.first_name,
+                        customer_last_name: Faker::Name.last_name,
+                        customer_phone_mobile: Faker::PhoneNumber.phone_number,
+                        customer_email: Faker::Internet.email,
+                        stock_number: (10000..19999).to_a.sample,
+                        year: (1980..2014).to_a.sample,
+                        make: %w(GMC Ford Dodge BMW Jeep).sample,
+                        vehicle_model: %w(Mustang 5i Viper Wrangler).sample,
+                        color: %w(Red Black Green Yellow Silver White).sample,
+                        sold_date: Time.now - rand(90).day,
+                        weowe_info: 'We owe...',
+                        dealer_parts_value: (500..3000).to_a.sample.round(2),
+                        dealer_labor_value: (500..3000).to_a.sample.round(2),
+                        dealer_total_value: (500..3000).to_a.sample.round(2),
+                        theyowe_info: 'They owe...',
+                        customer_total_value: (500..3000).to_a.sample.round(2),
+                        custom_date: Time.now - rand(90).day,
+                        pending: false,
+                        completed: [true, false].sample,
                         user_id: (1..200).to_a.sample,
                         dealer_id: 1
                       )

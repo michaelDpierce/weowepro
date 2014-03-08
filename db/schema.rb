@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308210646) do
+ActiveRecord::Schema.define(version: 20140308220149) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20140308210646) do
     t.string   "color"
     t.integer  "dealer_id"
     t.integer  "user_id"
+    t.boolean  "pending",                                       default: true
+    t.boolean  "completed",                                     default: false
   end
 
 end

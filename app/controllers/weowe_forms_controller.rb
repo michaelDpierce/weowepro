@@ -7,11 +7,11 @@ class WeoweFormsController < ApplicationController
   # GET /weowe_forms
   # GET /weowe_forms.json
   def index
-    @weowe_forms = WeoweForm.all
     @index = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
                                   :make, :vehicle_model, :color,
                                   :customer_last_name, :customer_first_name,
-                                  :dealer_total_value)
+                                  :dealer_total_value, :pending, :completed)
+                                  .where(pending: false, completed: false)
     respond_to do |format|
       format.html
       format.json do
@@ -22,11 +22,11 @@ class WeoweFormsController < ApplicationController
   end
 
   def pending
-    @weowe_forms = WeoweForm.all
-    @pending= WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
+    @pending = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
                                   :make, :vehicle_model, :color,
                                   :customer_last_name, :customer_first_name,
-                                  :dealer_total_value)
+                                  :dealer_total_value, :pending, :completed)
+                                  .where(pending: true, completed: false)
     respond_to do |format|
       format.html
       format.json do
@@ -37,11 +37,11 @@ class WeoweFormsController < ApplicationController
   end
 
   def closed
-    @weowe_forms = WeoweForm.all
-    @closed= WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
+    @closed = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
                                   :make, :vehicle_model, :color,
                                   :customer_last_name, :customer_first_name,
-                                  :dealer_total_value)
+                                  :dealer_total_value, :pending, :completed)
+                                  .where(pending: false, completed: true)
     respond_to do |format|
       format.html
       format.json do
