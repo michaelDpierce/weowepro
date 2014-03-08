@@ -6,11 +6,15 @@ class WeoweFormsController < ApplicationController
   # GET /weowe_forms.json
   def index
     @weowe_forms = WeoweForm.all
+    @index = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
+                                  :make, :vehicle_model, :color,
+                                  :customer_last_name, :customer_first_name,
+                                  :dealer_total_value)
     respond_to do |format|
       format.html
       format.json do
         render json:
-          @weowe_forms
+          @index
       end
     end
   end

@@ -14,18 +14,18 @@ namespace :db do
                         vehicle_model: %w(Mustang 5i Viper Wrangler).sample,
                         color: %w(Red Black Green Yellow Silver White).sample,
                         sold_date: Time.now - rand(90).day,
-                        weowe_info: Faker::Lorem.characters(char_count = 255),
+                        weowe_info: 'We owe...',
                         dealer_parts_value: (500..3000).to_a.sample.round(2),
                         dealer_labor_value: (500..3000).to_a.sample.round(2),
                         dealer_total_value: (500..3000).to_a.sample.round(2),
-                        theyowe_info: Faker::Lorem.characters(char_count = 255),
+                        theyowe_info: 'They owe...',
                         customer_total_value: (500..3000).to_a.sample.round(2),
                         custom_date: Time.now - rand(90).day
                       )
     end
 
-    User.create!(first_name: Michael,
-                 last_name: Pierce,
+    User.create!(first_name: 'Michael',
+                 last_name: 'Pierce',
                  phone_number: '720-387-9691',
                  email: 'example@weowepro.com',
                  password: 'foobar22',
