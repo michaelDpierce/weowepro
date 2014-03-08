@@ -1,4 +1,6 @@
 class WeoweFormsController < ApplicationController
+  include WeoweFormsHelper
+
   before_action :set_weowe_form, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
@@ -39,7 +41,7 @@ class WeoweFormsController < ApplicationController
     @weowe_form = WeoweForm.new(weowe_form_params)
     @weowe_form.custom_date = Time.now
     @weowe_form.user_id = current_user.id
-    @weowe_form.dealer_total_value = (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value)
+    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value,@weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.save
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully created.' }
@@ -54,7 +56,7 @@ class WeoweFormsController < ApplicationController
   # PATCH/PUT /weowe_forms/1
   # PATCH/PUT /weowe_forms/1.json
   def update
-    @weowe_form.dealer_total_value = (@weowe_form.dealer_parts_value + @weowe_form.dealer_labor_value)
+    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value,@weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.update(weowe_form_params)
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully updated.' }
