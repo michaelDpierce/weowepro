@@ -21,6 +21,36 @@ class WeoweFormsController < ApplicationController
     end
   end
 
+  def pending
+    @weowe_forms = WeoweForm.all
+    @pending= WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
+                                  :make, :vehicle_model, :color,
+                                  :customer_last_name, :customer_first_name,
+                                  :dealer_total_value)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json:
+          @pending
+      end
+    end
+  end
+
+  def closed
+    @weowe_forms = WeoweForm.all
+    @closed= WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
+                                  :make, :vehicle_model, :color,
+                                  :customer_last_name, :customer_first_name,
+                                  :dealer_total_value)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json:
+          @closed
+      end
+    end
+  end
+
   # GET /weowe_forms/1
   # GET /weowe_forms/1.json
   def show

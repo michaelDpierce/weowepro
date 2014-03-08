@@ -9,6 +9,9 @@ Weowe::Application.routes.draw do
   get 'static_pages/help'
   get 'static_pages/contact'
   get 'static_pages/about'
-  match '/dashboard', to: 'static_pages#dashboard', via: 'get'
+  match '/dashboard',          to: 'static_pages#dashboard', via: 'get'
+
+  match '/pending', to: 'weowe_forms#pending',    via: 'get'
+  match '/closed', to: 'weowe_forms#closed',    via: 'get'
 
 end

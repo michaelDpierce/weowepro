@@ -9,12 +9,12 @@
       <%= link_to 'New Form', new_weowe_form_path,
         class: 'btn btn-primary btn-fix-width', role: 'button' %>
       <% if current_user.admin? %>
-        <%= link_to 'Pending Forms', '#',
+        <%= link_to 'Pending Forms', pending_path,
           class: 'btn btn-warning btn-fix-width', role: 'button' %>
       <% end %>
-      <%= link_to 'Form Index', weowe_forms_path,
+      <%= link_to 'Open Forms', weowe_forms_path,
         class: 'btn btn-success btn-fix-width', role: 'button' %>
-      <%= link_to 'Form Archieve', '#',
+      <%= link_to 'Closed Forms', '#',
         class: 'btn btn-danger btn-fix-width', role: 'button' %>
     </div>
   </center>
@@ -28,14 +28,14 @@
     class: 'btn btn-primary btn-lg btn-block', role: 'button' %>
   <br>
   <% if current_user.admin? %>
-    <%= link_to 'Pending Form\'s', '#',
+    <%= link_to 'Pending Forms', pending_path,
       class: 'btn btn-warning btn-lg btn-block', role: 'button' %>
     <br>
   <% end %>
-  <%= link_to 'Form Index', weowe_forms_path,
+  <%= link_to 'Open Forms', weowe_forms_path,
     class: 'btn btn-success btn-lg btn-block', role: 'button' %>
   <br>
-  <%= link_to 'Form Archieve', '#',
+  <%= link_to 'Closed Forms', '#',
     class: 'btn btn-danger btn-lg btn-block', role: 'button' %>
   <br><br>
 </div>
