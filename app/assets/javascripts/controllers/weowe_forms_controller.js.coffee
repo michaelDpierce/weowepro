@@ -1,6 +1,7 @@
 @weowepro.controller 'WeoweFormsCtrl', ['$scope', 'WeoweForms',
   @WeoweFormsCtrl = ($scope, WeoweForms) ->
-    $scope.sorter =
+
+    $scope.predicate =
       value: 'custom_date'
 
     WeoweForms.index (data) ->
