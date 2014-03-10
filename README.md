@@ -1,7 +1,7 @@
 # WeOwePro
 
 ## Start The Webserver
-`foreman start`
+`foreman start` or `rails s`
 
 ## Populate Development Database
 
