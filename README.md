@@ -1,7 +1,7 @@
 # WeOwePro
 
 ## Start The Webserver
-`foreman start`
+`foreman start` or `rails s`
 
 ## Populate Development Database
 
@@ -12,7 +12,7 @@
 ## Heroku
 To update: `git push heroku master` then `heroku run rake db:migrate`
 
-To populate: `heroku run rake db:populate` (Only do this if the database is not populated)
+To populate: `heroku pg:reset DATABASE` then `heroku run rake db:populate` 
 
 Check # of Dyno's: `heroku ps`
 
