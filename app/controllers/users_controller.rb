@@ -20,7 +20,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if current_user
+      @user = User.new
+    else
+      @user = User.new
+      render layout: 'devise'
+    end
   end
 
   private
