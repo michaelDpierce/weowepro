@@ -8,7 +8,7 @@
          <a href="" ng-click="predicate.value = 'id'; reverse=!reverse">
            ID</a>
         </th>
-        <th>
+        <th class = 'hidden xs'>>
          <a href="" ng-click="predicate.value = 'custom_date'; reverse=!reverse">
            Date Submitted</a>
         </th>
@@ -16,19 +16,19 @@
           <a href="" ng-click="predicate.value = 'stock_number'; reverse=!reverse">
             Stock Number</a>
         </th>
-        <th>
+        <th class = 'hidden xs'>>
           <a href="" ng-click="predicate.value = 'year'; reverse=!reverse">
             Year</a>
         </th>
-        <th>
+        <th class = 'hidden xs'>>
           <a href="" ng-click="predicate.value = 'make'; reverse=!reverse">
             Make</a>
         </th>
-        <th>
+        <th class = 'hidden xs'>>
           <a href="" ng-click="predicate.value = 'vehicle_model'; reverse=!reverse">
             Model</a>
         </th>
-        <th>
+        <th class = 'hidden xs'>>
           <a href="" ng-click="predicate.value = 'color'; reverse=!reverse">
             Color</a>
         </th>
@@ -36,7 +36,7 @@
           <a href="" ng-click="predicate.value = 'customer_last_name'; reverse=!reverse">
             Last Name</a>
         </th>
-        <th>
+        <th class = 'hidden xs'>>
           <a href="" ng-click="predicate.value = 'customer_first_name'; reverse=!reverse">
             First Name</a>
         </th>
@@ -55,14 +55,14 @@
             {{form.id}}
           </a>
         </td>
-        <td>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
+        <td class = 'hidden xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
         <td>{{form.stock_number}}</td>
-        <td>{{form.year}}</td>
-        <td>{{form.make}}</td>
-        <td>{{form.vehicle_model}}</td>
-        <td>{{form.color}}</td>
+        <td class = 'hidden xs'>{{form.year}}</td>
+        <td class = 'hidden xs'>{{form.make}}</td>
+        <td class = 'hidden xs'>{{form.vehicle_model}}</td>
+        <td class = 'hidden xs'>{{form.color}}</td>
         <td>{{form.customer_last_name}}</td>
-        <td>{{form.customer_first_name}}</td>
+        <td class = 'hidden xs'>{{form.customer_first_name}}</td>
         <td>{{form.dealer_total_value | currency}}</td>
       </tr>
     </tbody>

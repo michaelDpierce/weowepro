@@ -8,11 +8,11 @@
          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
            Last Name</a>
         </th>
-        <th>
+        <th class = 'hidden xs'>
          <a href="" ng-click="predicate.value = 'first_name'; reverse=!reverse">
-           First Name</a>
+           First Name </a>
         </th>
-        <th>
+        <th class = 'hidden xs'>
          <a href="" ng-click="predicate.value = 'email'; reverse=!reverse">
            Email</a>
         </th>
@@ -31,8 +31,8 @@
             {{user.last_name}}
           </a>
         </td>
-        <td>{{user.first_name}}</td>
-        <td>{{user.email}}</td>
+        <td class='hidden xs'>{{user.first_name}}</td>
+        <td class='hidden xs'>{{user.email}}</td>
         <td>{{user.phone_number}}</td>
       </tr>
     </tbody>
