@@ -7,40 +7,43 @@
     class: 'btn btn-primary btn-sm'%>
 </div>
 
+<br><br>
+
 <% if current_user.admin? %>
+
   <ul class='pull-right'>
-    <% if @weowe_form.pending? %>
+    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: false %>
         <%= f.hidden_field :completed, value: false %>
-        <%= f.submit 'Approve Form' %>
-      <% end %>
-    <% else %>
-      <%= bootstrap_form_for @weowe_form do |f| %>
-        <%= f.hidden_field :pending, value: true %>
-        <%= f.hidden_field :completed, value: false %>
-        <%= f.submit 'Mark Pending'  %>
-      <% end %>
+        <%= f.submit 'Move to Queue >' %>
     <% end %>
-  </ul>
-  <ul class='pull-right'>
-    <% if @weowe_form.completed? %>
-      <%= bootstrap_form_for @weowe_form do |f| %>
-        <%= f.hidden_field :completed, value: false %>
-        <%= f.hidden_field :pending, value: false %>
-        <%= f.submit 'Mark Open' %>
-      <% end %>
-    <% else %>
+    <% elsif @weowe_form.pending == false && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: true %>
         <%= f.hidden_field :pending, value: false %>
-        <%= f.submit 'Mark Complete' %>
+        <%= f.submit 'Move to Completed >' %>
       <% end %>
     <% end %>
   </ul>
-<% end %>
 
-<br><br>
+<ul class='pull-right'>
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :pending, value: true %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.submit '< Move to Pending' %>
+    <% end %>
+  <% elsif @weowe_form.pending == false && @weowe_form.completed == true %>
+    <%= bootstrap_form_for @weowe_form do |f| %>
+      <%= f.hidden_field :completed, value: false %>
+      <%= f.hidden_field :pending, value: false %>
+      <%= f.submit '< Move to Queue' %>
+    <% end %>
+  <% end %>
+</ul>
+
+<% end %>
 
 <div class='table-responsive'>
   <h4> Customer Information </h4>
