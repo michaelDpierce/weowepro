@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
 
   def dashboard
   end
+
+  def stats
+  end
 end
