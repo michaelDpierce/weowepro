@@ -37,17 +37,17 @@ class WeoweFormsController < ApplicationController
     end
   end
 
-  def closed
-    @closed = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
+  def completed
+    @completed = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
                                   :make, :vehicle_model, :color,
                                   :customer_last_name, :customer_first_name,
                                   :dealer_total_value, :pending, :completed)
-
+                                  .where(pending: false, completed: true)
     respond_to do |format|
       format.html
       format.json do
         render json:
-          @closed
+          @completed
       end
     end
   end

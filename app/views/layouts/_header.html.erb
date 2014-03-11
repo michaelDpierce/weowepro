@@ -25,7 +25,7 @@
             <% end %>
             <li><%= link_to 'Open', weowe_forms_path %></li>
             <% if current_user.admin? %>
-              <li><%= link_to 'Closed', closed_path %></li>
+              <li><%= link_to 'Closed', completed_path %></li>
             <% end %>
             <% if current_user.admin? %>
               <li><%= link_to 'Statistics', stats_path %></li>

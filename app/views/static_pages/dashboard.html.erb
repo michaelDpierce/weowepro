@@ -14,7 +14,7 @@
       <% end %>
       <%= link_to 'Open Forms', weowe_forms_path,
         class: 'btn btn-success btn-fix-width', role: 'button' %>
-      <%= link_to 'Closed Forms', '#',
+      <%= link_to 'Closed Forms', completed_path,
         class: 'btn btn-danger btn-fix-width', role: 'button' %>
     </div>
   </center>
@@ -35,7 +35,7 @@
   <%= link_to 'Open Forms', weowe_forms_path,
     class: 'btn btn-success btn-lg btn-block', role: 'button' %>
   <br>
-  <%= link_to 'Closed Forms', '#',
+  <%= link_to 'Closed Forms', completed_path,
     class: 'btn btn-danger btn-lg btn-block', role: 'button' %>
   <br><br>
 </div>

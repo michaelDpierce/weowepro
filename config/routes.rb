@@ -12,7 +12,7 @@ Weowe::Application.routes.draw do
   match '/dashboard',          to: 'static_pages#dashboard', via: 'get'
 
   match '/pending', to: 'weowe_forms#pending',    via: 'get'
-  match '/closed', to: 'weowe_forms#closed',    via: 'get'
+  match '/completed', to: 'weowe_forms#completed',    via: 'get'
 
   match '/stats', to: 'static_pages#stats',    via: 'get'
 

@@ -1,6 +1,6 @@
 <div ng-app='weowepro' class='table-responsive'>
 
-  <table ng-controller='ClosedFormsCtrl'
+  <table ng-controller='CompletedFormsCtrl'
     class='table table-hover table-condensed' >
     <thead>
       <tr>
@@ -48,7 +48,7 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat='form in closedForms | orderBy:predicate.value:reverse |
+      <tr ng-repeat='form in completedForms | orderBy:predicate.value:reverse |
                      filter:search'>
         <td>
           <a ng-href='/weowe_forms/{{form.id}}'>

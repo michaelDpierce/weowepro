@@ -1,7 +1,7 @@
 <div ng-app='weowepro'>
-  <div ng-controller='ClosedFormsCtrl'>
-    <% provide(:title, 'Closed') %>
-    <h1>Closed Forms</h1>
+  <div ng-controller='CompletedFormsCtrl'>
+    <% provide(:title, 'Pending') %>
+    <h1>Completed Forms</h1>
 
     <div class='row'>
       <div class='col-md-3'>
@@ -19,12 +19,11 @@
           class: 'btn btn-primary btn-sm', role: 'button' %>
         <%= link_to 'Open Forms', weowe_forms_path,
           class: 'btn btn-success btn-sm', role: 'button' %>
-        <%= link_to 'Closed Forms', closed_path,
+        <%= link_to 'Closed Forms', completed_path,
           class: 'btn btn-danger btn-sm', role: 'button' %>
       </div>
     </div>
     <br><br><br>
-    <%= render 'closed' %>
+    <%= render 'completed' %>
   </div>
 </div>
-
