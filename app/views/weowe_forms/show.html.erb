@@ -1,14 +1,5 @@
 <% provide(:title, 'Form Record') %>
 
-<br>
-
-<div id='userformbutton'>
-<%=link_to 'Edit Record', edit_weowe_form_path(@weowe_form),
-    class: 'btn btn-primary btn-sm'%>
-</div>
-
-<br><br>
-
 <% if current_user.admin? %>
 
   <ul class='pull-right'>
@@ -16,13 +7,13 @@
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: false %>
         <%= f.hidden_field :completed, value: false %>
-        <%= f.submit 'Move to Queue >' %>
+        <%= f.submit 'Move to Open >' %>
     <% end %>
     <% elsif @weowe_form.pending == false && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: true %>
         <%= f.hidden_field :pending, value: false %>
-        <%= f.submit 'Move to Completed >' %>
+        <%= f.submit 'Move to Closed >' %>
       <% end %>
     <% end %>
   </ul>
@@ -38,12 +29,14 @@
     <%= bootstrap_form_for @weowe_form do |f| %>
       <%= f.hidden_field :completed, value: false %>
       <%= f.hidden_field :pending, value: false %>
-      <%= f.submit '< Move to Queue' %>
+      <%= f.submit '< Move to Open' %>
     <% end %>
   <% end %>
 </ul>
 
 <% end %>
+
+<br><br>
 
 <div class='table-responsive'>
   <h4> Customer Information </h4>
@@ -133,5 +126,14 @@
       <td><%= User.find(@weowe_form.user_id).last_name %></td>
     </tr>
   </table>
+
+  <ul class='pull-left'>
+    <div id='userformbutton'>
+    <%=link_to 'Edit Record', edit_weowe_form_path(@weowe_form),
+        class: 'btn btn-primary btn-sm'%>
+    </div>
+  </ul>
+
+  <br><br>
 
 </div>
