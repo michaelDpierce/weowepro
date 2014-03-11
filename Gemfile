@@ -15,6 +15,10 @@ group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'rubocop'
+  gem 'guard-rspec'
+  gem 'guard-bundler'
+  gem 'spork-rails', '4.0.0'
+  gem 'guard-spork', '1.5.0'
 end
 
 group :test do
