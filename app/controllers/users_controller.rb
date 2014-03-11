@@ -16,6 +16,21 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+            flash[:success] = 'Profile updated'
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  def create
+    @user = User.new(user_params)
+    @user.save ? redirect_to_created_user : render('index')
+  end
+
   def show
   end
 
@@ -29,6 +44,15 @@ class UsersController < ApplicationController
   end
 
   private
+
+  include ApplicationHelper
+  include UsersHelper
+
+  def redirect_to_created_user
+    flash[:success] = 'You have successfully created a user account!'
+
+    signed_in? ? redirect_to(@user) : sign_in_and_redirect(@user)
+  end
 
   def set_user
     @user = User.find(params[:id])
