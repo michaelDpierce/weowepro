@@ -8,4 +8,34 @@ class User < ActiveRecord::Base
          :trackable
 
   belongs_to :dealer
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  before_save { self.email = email.downcase }
+
+  validates_presence_of :dealer_id
+  validates :first_name, presence: true, length: { maximum: 15 }
+  validates :last_name,  presence: true, length: { maximum: 25 }
+  validates :email, presence: true,
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  validates :password,
+            confirmation: true,
+            presence: true,
+            length: { minimum: 6 },
+            on: :create
+  validates :password,
+            confirmation: true,
+            presence: true,
+            length: { minimum: 6 },
+            on: :update,
+            allow_blank: true
+
+  def self.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def self.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
 end
