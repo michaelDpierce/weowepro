@@ -7,12 +7,14 @@
 
 `rake db:reset`
 
+`rake db:migrate`
+
 `rake db:populate` 
 
 ## Heroku
-To update: `git push heroku master` then `heroku run rake db:migrate`
+To update: `git push heroku master`
 
-To populate: `heroku pg:reset DATABASE` then `heroku run rake db:populate` 
+To populate: `heroku pg:reset DATABASE` > `heroku run rake db:migrate` > `heroku run rake db:populate` 
 
 Check # of Dyno's: `heroku ps`
 
