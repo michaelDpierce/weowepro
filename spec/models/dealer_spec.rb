@@ -43,9 +43,4 @@ describe Dealer do
     before { @dealer.zip = ' ' }
     it { should_not be_valid }
   end
-
-  describe 'phone_number is not present' do
-    before { @dealer.phone_number = ' ' }
-    it { should_not be_valid }
-  end
 end

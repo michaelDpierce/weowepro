@@ -8,12 +8,12 @@
       <%= f.select :dealer_id, options_from_collection_for_select(Dealer.all, :id, :name) %>
     <% end %>
 
-    <%= f.text_field :first_name, label: 'First Name' %>
-    <%= f.text_field :last_name, label: 'Last Name' %>
-    <%= f.text_field :email, label: 'Email' %>
-    <%= f.text_field :phone_number, label: 'Phone Number' %>
-    <%= f.text_field :password, label: 'Password' %>
-    <%= f.text_field :password_confirmation, label: 'Password Conformation' %>
+    <%= f.text_field :first_name, label: 'First Name *' %>
+    <%= f.text_field :last_name, label: 'Last Name *' %>
+    <%= f.text_field :email, label: 'Email *' %>
+    <%= f.text_field :phone_number, label: 'Phone Number *' %>
+    <%= f.text_field :password, label: 'Password *' %>
+    <%= f.text_field :password_confirmation, label: 'Password Conformation *' %>
 
     <%= f.primary ( f.object.new_record? ?  'Create User' :
     'Save Changes' ) %>
