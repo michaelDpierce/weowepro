@@ -5,6 +5,10 @@ class WeoweFormsController < ApplicationController
   before_action :set_weowe_form, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
+  def dashboard
+    @last_ten = WeoweForm.all.order('id desc').limit(5)
+  end
+
   # GET /weowe_forms
   # GET /weowe_forms.json
   def index

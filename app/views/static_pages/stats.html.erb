@@ -22,7 +22,7 @@
           <%=  number_to_currency(WeoweForm.where(pending: true, completed: false).sum(:dealer_labor_value)) %>
         </td>
         <td>
-          <%=  number_to_currency(WeoweForm.where(pending: true, completed: false).sum(:dealer_total_value)) %>
+          <%= number_to_currency(WeoweForm.where(pending: true, completed: false).sum(:dealer_parts_value)) %>
         </td>
         <td>
           <%=  number_to_currency(WeoweForm.where(pending: true, completed: false).sum(:customer_total_value)) %>

@@ -6,4 +6,14 @@ module WeoweFormsHelper
     total = parts + labor
   end
 
+  def classification(pending, completed)
+    if pending == true && completed == false
+      @status = 'Pending'
+    elsif pending == false && completed == false
+      @status = 'Open'
+    else
+      @status = 'Closed'
+    end
+    return @status
+  end
 end

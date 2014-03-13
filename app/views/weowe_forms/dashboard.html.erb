@@ -5,6 +5,10 @@
 </div>
 <div class='hidden-xs'>
   <center>
+    <h3>Most Recent Form Status</h3>
+    <br>
+    <%= render 'dashboard' %>
+    <br><br>
     <div class='btn-group'>
       <%= link_to 'New Form', new_weowe_form_path,
         class: 'btn btn-primary btn-fix-width', role: 'button' %>
@@ -17,8 +21,8 @@
       <%= link_to 'Closed Forms', completed_path,
         class: 'btn btn-danger btn-fix-width', role: 'button' %>
     </div>
-  </center>
-  <br><br>
+</center>
+
 </div>
 
 <div class='visible-xs'>
@@ -37,5 +41,10 @@
   <br>
   <%= link_to 'Closed Forms', completed_path,
     class: 'btn btn-danger btn-lg btn-block', role: 'button' %>
-  <br><br>
+  <br>
+    <center>
+      <h3>Most Recent Form Status</h3>
+      <%= render 'dashboard' %>
+    </center>
+    <br><br>
 </div>
