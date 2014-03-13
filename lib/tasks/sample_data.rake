@@ -9,7 +9,7 @@ namespace :db do
                      city: Faker::Address.city,
                      state: Faker::Address.state_abbr,
                      zip: Faker::Address.zip_code,
-                     phone_number: Faker::PhoneNumber.phone_number
+                     phone_number: Faker::PhoneNumber.phone_number,
                      time_zone:  'Mountain Time (US & Canada)'
                     )
     end
