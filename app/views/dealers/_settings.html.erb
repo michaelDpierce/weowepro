@@ -1,0 +1,10 @@
+<div class='userform well'>
+  <%= bootstrap_form_for(@dealer,
+    layout: :inline, label_col: 'col-sm-4', control_col: 'col-sm-8') do |f| %>
+
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
+    <%= f.primary ( f.object.new_record? ?  'Create New Dealership' :
+    'Save Changes' ) %>
+  <% end %>
+</div>
+</div>

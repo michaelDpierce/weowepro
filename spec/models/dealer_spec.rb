@@ -8,7 +8,8 @@ describe Dealer do
                          city: 'Lakewood',
                          state: 'CO',
                          zip: 80228,
-                         phone_number: '720.387.9691'
+                         phone_number: '720.387.9691',
+                         time_zone: 'Mountain Time (US & Canada)'
                      )
   end
 
@@ -21,6 +22,7 @@ describe Dealer do
   it { should respond_to(:state) }
   it { should respond_to(:zip) }
   it { should respond_to(:phone_number) }
+  it { should respond_to :time_zone }
   it { should be_valid }
 
   describe 'when name is not present' do

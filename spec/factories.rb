@@ -8,6 +8,7 @@ FactoryGirl.define do
     state                 'CO'
     zip                   '80228'
     phone_number          '720-387-9691'
+    time_zone             'Mountain Time (US & Canada)'
   end
 
   factory :weowe_form do
