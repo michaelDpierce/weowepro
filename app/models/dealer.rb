@@ -8,8 +8,6 @@ class Dealer < ActiveRecord::Base
   validates_presence_of :city
   validates_presence_of :state
   validates_presence_of :zip
-  validates_inclusion_of :time_zone
-
-   validates_inclusion_of :time_zone,
+  validates_inclusion_of :time_zone,
                          in: ActiveSupport::TimeZone.zones_map(&:name)
 end

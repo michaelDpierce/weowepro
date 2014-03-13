@@ -13,6 +13,7 @@
     <%= f.text_field :state, label: 'State *' %>
     <%= f.text_field :zip, label: 'Zip Code *' %>
     <%= f.text_field :phone_number, label: 'Phone Number' %>
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
     <%= f.primary ( f.object.new_record? ?  'Create New Dealership' :
     'Save Changes' ) %>
 

@@ -7,26 +7,11 @@
       <div class='panel-heading'>
         <h4 class='panel-title'>
           <a data-toggle='collapse' data-parent="#accordion" href="#collapseOne">
-            Manage Account Settings
-          </a>
-        </h4>
-      </div>
-      <div id='collapseOne' class='panel-collapse collapse in'>
-        <div class='panel-body'>
-          <%= render 'settings' %>
-        </div>
-      </div>
-    </div>
-
-    <div class='panel panel-default'>
-      <div class='panel-heading'>
-        <h4 class='panel-title'>
-          <a data-toggle='collapse' data-parent="#accordion" href="#collapseTwo">
            Manage Billing Information
           </a>
         </h4>
       </div>
-      <div id='collapseTwo' class='panel-collapse collapse'>
+      <div id='collapseOne' class='panel-collapse collapse'>
         <div class='panel-body'>
           <%= render 'billing' %>
         </div>
@@ -36,12 +21,12 @@
     <div class='panel panel-default'>
       <div class='panel-heading'>
         <h4 class='panel-title'>
-          <a data-toggle='collapse' data-parent="#accordion" href="#collapseThree">
+          <a data-toggle='collapse' data-parent="#accordion" href="#collapseTwo">
            Manage Dealership Information
           </a>
         </h4>
       </div>
-      <div id='collapseThree' class='panel-collapse collapse'>
+      <div id='collapseTwo' class='panel-collapse collapse'>
         <div class='panel-body'>
           <%= render 'dealership_info' %>
         </div>

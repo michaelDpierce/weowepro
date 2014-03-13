@@ -29,6 +29,10 @@
       <td class='fixtablewidthadmin'> <%= @dealer.phone_number %> </td>
     </tr>
     <tr>
+      <th>Time Zone</th>
+      <td class='fixtablewidthadmin'> <%= @dealer.time_zone %> </td>
+    </tr>
+    <tr>
       <td> <%= link_to ' Edit', edit_dealer_path(current_user.dealer_id),
         class: 'glyphicon glyphicon-pencil' %>
       </td>
