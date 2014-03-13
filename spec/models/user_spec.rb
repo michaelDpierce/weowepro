@@ -2,9 +2,12 @@ require 'spec_helper'
 
 describe User do
   before do
-    @user = User.new(first_name: 'First', last_name: 'Last',
-                     email: 'user@example.com', password: 'foobar77',
-                     password_confirmation: 'foobar77', dealer_id: 1,
+    @user = User.new(first_name: 'First',
+                     last_name: 'Last',
+                     email: 'user@example.com',
+                     password: 'foobar77',
+                     password_confirmation: 'foobar77',
+                     dealer_id: 1
                      )
   end
 

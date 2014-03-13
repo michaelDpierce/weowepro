@@ -25,10 +25,10 @@ FactoryGirl.define do
     weowe_info            'blah'
     theyowe_info          'blah'
     customer_signature    'Michael Pierce'
-    dealer_parts_value    5000
-    dealer_labor_value    7000
-    dealer_total_value    12000
-    customer_total_value  3000
+    dealer_parts_value    50
+    dealer_labor_value    700
+    dealer_total_value    750
+    customer_total_value  300
     pending               true
     completed             false
     user_id               1

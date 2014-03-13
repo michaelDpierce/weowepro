@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe Dealer do
   before do
-    @dealer = Dealer.new(name: 'Autonation', address_1: '14270 W Warren Dr',
-                     address_2: 'Unit B', city: 'Lakewood',
-                     state: 'CO', zip: 80228, phone_number: '720.387.9691'
+    @dealer = Dealer.new(name: 'Autonation',
+                         address_1: '14270 W Warren Dr',
+                         address_2: 'Unit B',
+                         city: 'Lakewood',
+                         state: 'CO',
+                         zip: 80228,
+                         phone_number: '720.387.9691'
                      )
   end
 
