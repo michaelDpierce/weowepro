@@ -3,5 +3,12 @@ class Dealer < ActiveRecord::Base
   has_many :users
   has_many :weowe_forms
 
-  accepts_nested_attributes_for :users
+  validates_presence_of :name
+  validates_presence_of :address_1
+  validates_presence_of :address_2
+  validates_presence_of :city
+  validates_presence_of :state
+  validates_presence_of :zip
+  validates_presence_of :phone_number
+
 end

@@ -5,7 +5,7 @@ Weowe::Application.routes.draw do
   resources :weowe_forms
   resources :users
 
-  root 'static_pages#dashboard'
+  root 'weowe_forms#dashboard'
   get 'static_pages/help'
   get 'static_pages/contact'
   get 'static_pages/about'
