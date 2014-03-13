@@ -2,6 +2,8 @@
   <%= bootstrap_form_for(@user,
     style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
 
+    <%= render 'shared/error_messages_users' %>
+
     <legend><%= legend %></legend>
 
     <% unless signed_in? %>
