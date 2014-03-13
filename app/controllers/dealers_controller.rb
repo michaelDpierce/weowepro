@@ -12,6 +12,10 @@ class DealersController < ApplicationController
   def show
   end
 
+  def admin
+     @dealer = Dealer.find(current_user.dealer_id)
+  end
+
   # GET /dealers/new
   def new
     if current_user

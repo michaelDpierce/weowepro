@@ -34,8 +34,7 @@
             <ul class = 'dropdown-menu'>
               <li><%= link_to 'My Profile', current_user %></li>
               <% if current_user.admin? %>
-                <li><%= link_to 'Billing','#' %></li>
-                <li><%= link_to 'Settings','#' %></li>
+                <li><%= link_to 'Preferences', admin_path %></li>
               <% end %>
               <li class='divider'></li>
               <li>

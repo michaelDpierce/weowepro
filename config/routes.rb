@@ -14,6 +14,8 @@ Weowe::Application.routes.draw do
   match '/pending', to: 'weowe_forms#pending',    via: 'get'
   match '/completed', to: 'weowe_forms#completed',    via: 'get'
 
+  match '/admin', to: 'dealers#admin',    via: 'get'
+
   match '/stats', to: 'static_pages#stats',    via: 'get'
 
 end
