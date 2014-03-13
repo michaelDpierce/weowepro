@@ -10,6 +10,7 @@ gem 'faker', '1.1.2'
 gem 'jquery-turbolinks'
 gem 'unicorn'
 gem 'angularjs-rails'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
