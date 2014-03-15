@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe WeoweForm do
   before do
-    @weowe_form = WeoweForm.new(weowe_id: '1',
-                                customer_first_name: 'Michael',
+    @weowe_form = WeoweForm.new(customer_first_name: 'Michael',
                                 customer_last_name: 'Pierce',
                                 customer_phone_mobile: '720.387.9691',
                                 customer_email: 'matchmike1313@gmail.com',
@@ -30,7 +29,6 @@ describe WeoweForm do
 
   subject { @weowe_form }
 
-  it { should respond_to(:weowe_id) }
   it { should respond_to(:customer_first_name) }
   it { should respond_to(:customer_last_name) }
   it { should respond_to(:customer_phone_mobile) }
