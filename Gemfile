@@ -8,7 +8,6 @@ gem 'bootstrap_form', github: 'potenza/bootstrap_form'
 gem 'devise'
 gem 'faker', '1.1.2'
 gem 'jquery-turbolinks'
-gem 'unicorn'
 gem 'angularjs-rails'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
@@ -42,4 +41,5 @@ end
 group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
