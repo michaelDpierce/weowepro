@@ -12,6 +12,10 @@
          <a href="" ng-click="predicate.value = 'custom_date'; reverse=!reverse">
            Date</a>
         </th>
+        <th class = 'hidden-xs'>
+         <a href="" ng-click="predicate.value = 'custom_date'; reverse=!reverse">
+           Salesperson</a>
+        </th>
         <th>
           <a href="" ng-click="predicate.value = 'stock_number'; reverse=!reverse">
             Stock #</a>
@@ -56,6 +60,7 @@
          </a>
        </td>
        <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
+       <td class = 'hidden-xs'>{{form.user.last_name}}</td>
        <td>{{form.stock_number}}</td>
        <td class = 'hidden-xs'>{{form.year}}</td>
        <td class = 'hidden-xs'>{{form.make}}</td>
