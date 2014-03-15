@@ -6,7 +6,7 @@ module ApplicationHelper
     notice: 'alert-info'
   }
 
-BASE_TITLE = 'WeOwePro'
+  BASE_TITLE = 'WeOwePro'
 
   def full_title(page_title)
     if page_title.empty?

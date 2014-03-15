@@ -1,16 +1,10 @@
 class WeoweFormsController < ApplicationController
-  include ApplicationHelper
-  include WeoweFormsHelper
-
   before_action :set_weowe_form, only: [:show, :edit, :update, :destroy]
-  helper_method :sort_column, :sort_direction
 
   def dashboard
-    @last_ten = WeoweForm.all.order('updated_at desc').limit(5)
+    @activity = WeoweForm.all.order('updated_at desc').limit(5)
   end
 
-  # GET /weowe_forms
-  # GET /weowe_forms.json
   def index
     @index = WeoweForm.all.where(pending: false, completed: false)
     respond_to do |format|
@@ -25,23 +19,19 @@ class WeoweFormsController < ApplicationController
       format.html
       format.json
       end
-    end
+  end
 
-    def completed
-      @completed = WeoweForm.all.where(pending: false, completed: true)
-      respond_to do |format|
-        format.html
-        format.json
-        end
+  def completed
+    @completed = WeoweForm.all.where(pending: false, completed: true)
+    respond_to do |format|
+      format.html
+      format.json
       end
+  end
 
-
-  # GET /weowe_forms/1
-  # GET /weowe_forms/1.json
   def show
   end
 
-  # GET /weowe_forms/new
   def new
     if current_user
       @weowe_form = WeoweForm.new
@@ -50,12 +40,9 @@ class WeoweFormsController < ApplicationController
     end
   end
 
-  # GET /weowe_forms/1/edit
   def edit
   end
 
-  # POST /weowe_forms
-  # POST /weowe_forms.json
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
     @weowe_form.custom_date = Time.now
@@ -72,8 +59,6 @@ class WeoweFormsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /weowe_forms/1
-  # PATCH/PUT /weowe_forms/1.json
   def update
     @weowe_form.update_attributes(weowe_form_params)
     @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value,@weowe_form.dealer_labor_value)
@@ -88,8 +73,6 @@ class WeoweFormsController < ApplicationController
     end
   end
 
-  # DELETE /weowe_forms/1
-  # DELETE /weowe_forms/1.json
   def destroy
     @weowe_form.destroy
     respond_to do |format|
@@ -99,27 +82,10 @@ class WeoweFormsController < ApplicationController
   end
 
   private
+    include ApplicationHelper
+    include WeoweFormsHelper
 
-    def sort_column
-      params[:sort] || "customer_last_name"
-    end
-
-    def sort_direction
-      params[:direction] || "asc"
-    end
-
-    # Use callbacks to share common setup or constraints between actions.
     def set_weowe_form
       @weowe_form = WeoweForm.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def weowe_form_params
-      params.require(:weowe_form)
-      .permit(:customer_first_name, :customer_last_name, :customer_phone_mobile,
-              :customer_email, :stock_number, :make, :vehicle_model, :year,
-              :sold_date,:weowe_info, :theyowe_info, :customer_signature,
-              :custom_date, :color, :dealer_labor_value, :dealer_parts_value,
-              :dealer_total_value, :pending, :completed, :user_id, :dealer_id)
     end
 end
