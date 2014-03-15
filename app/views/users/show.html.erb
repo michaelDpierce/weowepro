@@ -16,6 +16,19 @@
       <% end %>
     <% end %>
   </ul>
+  <ul class='pull-right'>
+    <% if @user.admin? %>
+      <%= bootstrap_form_for @user do |f| %>
+        <%= f.hidden_field :admin, value: false %>
+        <%= f.submit 'Remove Admin' %>
+      <% end %>
+    <% else %>
+      <%= bootstrap_form_for @user do |f| %>
+        <%= f.hidden_field :admin, value: true %>
+        <%= f.submit 'Add Admin'  %>
+      <% end %>
+    <% end %>
+  </ul>
 <% end %>
 
 <br> <br>
@@ -38,8 +51,13 @@
     <th>Phone</th>
       <td><%= @user.phone_number %></td>
     </tr>
+    <tr>
     <th>Active</th>
       <td><%= boolean_to_words(@user.active) %></td>
+    </tr>
+    <tr>
+    <th>Admin</th>
+      <td><%= boolean_to_words(@user.admin) %></td>
     </tr>
   </table>
 </div>

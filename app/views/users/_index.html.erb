@@ -20,9 +20,13 @@
          <a href="" ng-click="predicate.value = 'phone_number'; reverse=!reverse">
            Phone Number</a>
         </th>
-        <th>
+        <th class = 'hidden-xs'>
          <a href="" ng-click="predicate.value = 'active'; reverse=!reverse">
            Active</a>
+        </th>
+        <th class = 'hidden-xs'>
+         <a href="" ng-click="predicate.value = 'active'; reverse=!reverse">
+           Admin</a>
         </th>
       </tr>
     </thead>
@@ -39,6 +43,7 @@
         <td class='hidden-xs'>{{user.email}}</td>
         <td>{{user.phone_number}}</td>
         <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
+        <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
       </tr>
     </tbody>
   </table>
