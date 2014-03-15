@@ -1,7 +1,7 @@
-<% provide(:title, 'Form Record') %>
+<% provide(:title, "Form #{@weowe_form.id}") %>
 
 <br>
-
+<h1><%= "Form #{@weowe_form.id}" %></h1>
 <% if current_user.admin? %>
 
   <ul class='pull-right'>
@@ -131,11 +131,18 @@
 
   <ul class='pull-left'>
     <div id='userformbutton'>
-    <%=link_to 'Edit Record', edit_weowe_form_path(@weowe_form),
+    <%=link_to 'Edit Form', edit_weowe_form_path(@weowe_form),
         class: 'btn btn-primary btn-sm'%>
     </div>
   </ul>
 
+  <ul class='pull-left'>
+    <div id='userformbutton'>
+    <%=link_to 'Delete Form', @weowe_form, method: :delete,
+     data: { confirm: 'Are you sure?' },
+        class: 'btn btn-danger btn-sm'%>
+    </div>
+  </ul>
   <br><br>
 
 </div>

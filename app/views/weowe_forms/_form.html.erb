@@ -14,7 +14,7 @@
     <%= f.text_field :customer_email, label: 'Email' %>
 
     <center><h4>Vehicle Information</h4></center>
-    <%= f.text_field :stock_number, label: 'Stock Number *' %>
+    <%= f.text_field :stock_number, label: 'Stock # *' %>
     <%= f.select :year,
                  options_for_select((1980..2014).to_a.reverse!),
                  label: 'Year *' %>

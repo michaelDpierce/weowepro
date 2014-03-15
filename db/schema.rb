@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140313030822) do
+ActiveRecord::Schema.define(version: 20140315184426) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -51,8 +51,6 @@ ActiveRecord::Schema.define(version: 20140313030822) do
 
   create_table "weowe_forms", force: true do |t|
     t.integer  "weowe_id"
-    t.integer  "duration"
-    t.integer  "invoice_id"
     t.string   "customer_first_name"
     t.string   "customer_last_name"
     t.string   "customer_address_1"
@@ -74,19 +72,18 @@ ActiveRecord::Schema.define(version: 20140313030822) do
     t.string   "salesman_last_name"
     t.text     "weowe_info"
     t.text     "theyowe_info"
-    t.string   "salesman_signature"
     t.string   "customer_signature"
     t.decimal  "dealer_parts_value",    precision: 8, scale: 2
     t.decimal  "dealer_labor_value",    precision: 8, scale: 2
     t.decimal  "dealer_total_value",    precision: 8, scale: 2
     t.decimal  "customer_total_value",  precision: 8, scale: 2
-    t.boolean  "status"
     t.string   "vehicle_model"
     t.string   "color"
     t.integer  "dealer_id"
     t.integer  "user_id"
     t.boolean  "pending",                                       default: true
     t.boolean  "completed",                                     default: false
+    t.datetime "age"
   end
 
 end

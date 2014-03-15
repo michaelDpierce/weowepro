@@ -6,7 +6,7 @@ class WeoweFormsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def dashboard
-    @last_ten = WeoweForm.all.order('id desc').limit(5)
+    @last_ten = WeoweForm.all.order('updated_at desc').limit(5)
   end
 
   # GET /weowe_forms
