@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :trackable
 
   belongs_to :dealer
+  has_many :weowe_forms
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

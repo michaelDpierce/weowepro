@@ -1,5 +1,6 @@
 class WeoweForm < ActiveRecord::Base
   belongs_to :dealer
+  belongs_to :user
 
   validates_presence_of :customer_first_name
   validates_presence_of :customer_last_name
