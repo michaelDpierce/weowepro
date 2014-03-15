@@ -20,34 +20,21 @@ class WeoweFormsController < ApplicationController
   end
 
   def pending
-    @pending = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
-                                  :make, :vehicle_model, :color,
-                                  :customer_last_name, :customer_first_name,
-                                  :dealer_total_value, :pending, :completed)
-                                  .where(pending: true, completed: false)
+    @pending = WeoweForm.all.where(pending: true, completed: false)
     respond_to do |format|
       format.html
-      format.json do
-        render json:
-          @pending
+      format.json
       end
     end
-  end
 
-  def completed
-    @completed = WeoweForm.all.select(:id, :custom_date, :stock_number, :year,
-                                  :make, :vehicle_model, :color,
-                                  :customer_last_name, :customer_first_name,
-                                  :dealer_total_value, :pending, :completed)
-                                  .where(pending: false, completed: true)
-    respond_to do |format|
-      format.html
-      format.json do
-        render json:
-          @completed
+    def completed
+      @completed = WeoweForm.all.where(pending: false, completed: true)
+      respond_to do |format|
+        format.html
+        format.json
+        end
       end
-    end
-  end
+
 
   # GET /weowe_forms/1
   # GET /weowe_forms/1.json
