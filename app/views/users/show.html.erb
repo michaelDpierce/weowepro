@@ -2,10 +2,21 @@
 
 <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 
-<div id='userformbutton'>
-<%=link_to 'Edit Information', edit_user_path(@user),
-    class: 'btn btn-primary btn-sm'%>
-</div>
+<% if current_user.admin? %>
+  <ul class='pull-right'>
+    <% if @user.active? %>
+      <%= bootstrap_form_for @user do |f| %>
+        <%= f.hidden_field :active, value: false %>
+        <%= f.submit 'Deactivate' %>
+      <% end %>
+    <% else %>
+      <%= bootstrap_form_for @user do |f| %>
+        <%= f.hidden_field :active, value: true %>
+        <%= f.submit 'Activate'  %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
 
 <br> <br>
 
@@ -27,5 +38,13 @@
     <th>Phone</th>
       <td><%= @user.phone_number %></td>
     </tr>
+    <th>Active</th>
+      <td><%= boolean_to_words(@user.active) %></td>
+    </tr>
   </table>
+</div>
+
+<div id='userformbutton'>
+<%=link_to 'Edit Information', edit_user_path(@user),
+    class: 'btn btn-primary btn-sm'%>
 </div>

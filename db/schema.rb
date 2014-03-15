@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140315184426) do
+=======
+ActiveRecord::Schema.define(version: 20140315204406) do
+>>>>>>> 13c935bc12a30c53c4ca8ecbdee1ec3c0db5934e
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -44,13 +48,19 @@ ActiveRecord::Schema.define(version: 20140315184426) do
     t.string   "phone_number"
     t.integer  "dealer_id"
     t.boolean  "admin",                  default: false
+    t.boolean  "active",                 default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "weowe_forms", force: true do |t|
+<<<<<<< HEAD
     t.integer  "weowe_id"
+=======
+    t.integer  "duration"
+    t.integer  "invoice_id"
+>>>>>>> 13c935bc12a30c53c4ca8ecbdee1ec3c0db5934e
     t.string   "customer_first_name"
     t.string   "customer_last_name"
     t.string   "customer_address_1"

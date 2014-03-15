@@ -19,10 +19,7 @@ class WeoweFormsController < ApplicationController
                                   .where(pending: false, completed: false)
     respond_to do |format|
       format.html
-      format.json do
-        render json:
-          @index
-      end
+      format.json
     end
   end
 
