@@ -20,6 +20,10 @@
          <a href="" ng-click="predicate.value = 'phone_number'; reverse=!reverse">
            Phone Number</a>
         </th>
+        <th>
+         <a href="" ng-click="predicate.value = 'active'; reverse=!reverse">
+           Active</a>
+        </th>
       </tr>
     </thead>
 
@@ -34,6 +38,7 @@
         <td class='hidden-xs'>{{user.first_name}}</td>
         <td class='hidden-xs'>{{user.email}}</td>
         <td>{{user.phone_number}}</td>
+        <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
       </tr>
     </tbody>
   </table>
