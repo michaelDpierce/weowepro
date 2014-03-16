@@ -9,7 +9,7 @@ gem 'devise'
 gem 'faker', '1.1.2'
 gem 'jquery-turbolinks'
 gem 'angularjs-rails'
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', github: 'https://github.com/stripe/stripe-ruby'
 gem 'jbuilder', '~> 1.2'
 
 group :development, :test do

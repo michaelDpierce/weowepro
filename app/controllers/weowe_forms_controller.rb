@@ -21,7 +21,7 @@ class WeoweFormsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      end
+    end
   end
 
   def completed
@@ -30,7 +30,7 @@ class WeoweFormsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      end
+    end
   end
 
   def show
@@ -51,7 +51,7 @@ class WeoweFormsController < ApplicationController
     @weowe_form = WeoweForm.new(weowe_form_params)
     @weowe_form.custom_date = Time.now
     @weowe_form.user_id = current_user.id
-    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value,@weowe_form.dealer_labor_value)
+    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value, @weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.save
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully created.' }
@@ -86,10 +86,11 @@ class WeoweFormsController < ApplicationController
   end
 
   private
-    include ApplicationHelper
-    include WeoweFormsHelper
 
-    def set_weowe_form
-      @weowe_form = WeoweForm.find(params[:id])
-    end
+  include ApplicationHelper
+  include WeoweFormsHelper
+
+  def set_weowe_form
+    @weowe_form = WeoweForm.find(params[:id])
+  end
 end
