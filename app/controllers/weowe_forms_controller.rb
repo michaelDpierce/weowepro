@@ -65,7 +65,7 @@ class WeoweFormsController < ApplicationController
 
   def update
     @weowe_form.update_attributes(weowe_form_params)
-    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value,@weowe_form.dealer_labor_value)
+    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value, @weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.update(weowe_form_params)
         format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully updated.' }

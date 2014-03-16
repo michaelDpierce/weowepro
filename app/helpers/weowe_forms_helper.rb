@@ -41,6 +41,6 @@ module WeoweFormsHelper
     else
       @status = 'Closed'
     end
-    return @status
+    @status
   end
 end
