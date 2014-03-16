@@ -3,8 +3,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(dealer_id: current_user.dealer_id)
-    respond_to { |format| format.html }
-    respond_to { |format| format.json }
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def edit

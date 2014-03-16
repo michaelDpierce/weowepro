@@ -14,6 +14,7 @@
   <body>
     <%= render 'layouts/header' %>
     <div class='container'>
+      <% browser_check %>
       <%= flash_messages %>
       <%= yield %>
       <%= render 'layouts/footer' %>

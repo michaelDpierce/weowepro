@@ -168,9 +168,10 @@ legend{
   @extend .error;
 }
 
-.btn{
+.btnfix{
   width: 150px;
   display: block;
+  margin: auto;
 }
 
 // Default form width convenience class

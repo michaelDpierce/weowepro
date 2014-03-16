@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/fnando/browser.git
+  revision: 51be5baf95dc8051729a883ffc130b6e16002f00
+  specs:
+    browser (0.4.1)
+
+GIT
   remote: git://github.com/potenza/bootstrap_form.git
   revision: 2c67704174943fc5526dbad44b184e26ac5d4f07
   specs:
@@ -267,6 +273,7 @@ DEPENDENCIES
   angularjs-rails
   bootstrap-sass (= 3.0.3.0)
   bootstrap_form!
+  browser!
   capybara (= 2.1.0)
   coffee-rails (= 4.0.1)
   devise

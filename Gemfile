@@ -11,6 +11,7 @@ gem 'jquery-turbolinks'
 gem 'angularjs-rails'
 gem 'stripe'
 gem 'jbuilder', '~> 1.2'
+gem 'browser', github: 'fnando/browser'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

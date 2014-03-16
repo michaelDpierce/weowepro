@@ -7,24 +7,27 @@ class WeoweFormsController < ApplicationController
   end
 
   def index
-    @index = WeoweForm.where(dealer_id: current_user.dealer_id,
-                             pending: false, completed: false)
-    respond_to { |format| format.html }
-    respond_to { |format| format.json }
+    index_view
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def pending
-    @pending = WeoweForm.where(dealer_id: current_user.dealer_id,
-                               pending: true, completed: false)
-    respond_to { |format| format.html }
-    respond_to { |format| format.json }
+    pending_view
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def completed
-    @completed = WeoweForm.where(dealer_id: current_user.dealer_id,
-                                 pending: false, completed: true)
-    respond_to { |format| format.html }
-    respond_to { |format| format.json }
+    completed_view
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show
@@ -46,7 +49,7 @@ class WeoweFormsController < ApplicationController
     create_default_methods
 
     message = 'Weowe form was successfully created.'
-    handle_action(@weowe_form, message, :new, &:save)
+    handle_action(@weowe_form, message, :dashboard, &:save)
   end
 
   def update
@@ -68,9 +71,24 @@ class WeoweFormsController < ApplicationController
   include ApplicationHelper
   include WeoweFormsHelper
 
+  def index_view
+    @index = WeoweForm.where(dealer_id: current_user.dealer_id,
+                             pending: false, completed: false)
+  end
+
+  def pending_view
+    @pending = WeoweForm.where(dealer_id: current_user.dealer_id,
+                               pending: true, completed: false)
+  end
+
+  def completed_view
+    @completed = WeoweForm.where(dealer_id: current_user.dealer_id,
+                                 pending: false, completed: true)
+  end
+
   def update_message
     message = 'Weowe form was successfully updated.'
-    handle_action(@weowe_form, message, :edit) do |resource|
+    handle_action(@weowe_form, message, :dashboard) do |resource|
       resource.update(weowe_form_params)
     end
   end
