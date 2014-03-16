@@ -2,11 +2,13 @@ class WeoweFormsController < ApplicationController
   before_action :set_weowe_form, only: [:show, :edit, :update, :destroy]
 
   def dashboard
-    @activity = WeoweForm.all.order('updated_at desc').limit(5)
+    @activity = WeoweForm.where(dealer_id: current_user.dealer_id)
+                         .order('updated_at desc').limit(5)
   end
 
   def index
-    @index = WeoweForm.all.where(pending: false, completed: false)
+    @index = WeoweForm.where(dealer_id: current_user.dealer_id,
+                             pending: false, completed: false)
     respond_to do |format|
       format.html
       format.json
@@ -14,7 +16,8 @@ class WeoweFormsController < ApplicationController
   end
 
   def pending
-    @pending = WeoweForm.all.where(pending: true, completed: false)
+    @pending = WeoweForm.where(dealer_id: current_user.dealer_id,
+                               pending: true, completed: false)
     respond_to do |format|
       format.html
       format.json
@@ -22,7 +25,8 @@ class WeoweFormsController < ApplicationController
   end
 
   def completed
-    @completed = WeoweForm.all.where(pending: false, completed: true)
+    @completed = WeoweForm.where(dealer_id: current_user.dealer_id,
+                                 pending: false, completed: true)
     respond_to do |format|
       format.html
       format.json
