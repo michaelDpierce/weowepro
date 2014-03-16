@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable,
          :rememberable,
-         :trackable
+         :trackable,
+         :validatable
 
   belongs_to :dealer
   has_many :weowe_forms
@@ -20,6 +21,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+
   validates :password,
             confirmation: true,
             presence: true,

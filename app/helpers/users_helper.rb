@@ -6,7 +6,9 @@ module UsersHelper
                   :phone_number,
                   :dealer_id,
                   :admin,
-                  :active
+                  :active,
+                  :password,
+                  :password_confirmation
                 ]
 
   def user_params

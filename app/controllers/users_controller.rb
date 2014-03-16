@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show]
-
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.where(dealer_id: current_user.dealer_id)
     respond_to do |format|
       format.html
       format.json do
@@ -16,24 +15,6 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-            flash[:success] = 'Profile updated'
-      redirect_to @user
-    else
-      render 'edit'
-    end
-  end
-
-  def create
-    @user = User.new(user_params)
-    @user.save ? redirect_to_created_user : render('index')
-  end
-
-  def show
-  end
-
   def new
     if current_user
       @user = User.new
@@ -43,16 +24,42 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def create
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'User account was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @user.update_attributes(user_params)
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Profile updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def show
+  end
+
   private
 
   include ApplicationHelper
   include UsersHelper
-
-  def redirect_to_created_user
-    flash[:success] = 'You have successfully created a user account!'
-
-    signed_in? ? redirect_to(@user) : sign_in_and_redirect(@user)
-  end
 
   def set_user
     @user = User.find(params[:id])
