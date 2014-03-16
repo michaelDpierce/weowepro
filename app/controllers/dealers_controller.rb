@@ -59,12 +59,11 @@ class DealersController < ApplicationController
 
   private
 
+  include ApplicationHelper
+  include DealersHelper
+
   def set_dealer
     @dealer = Dealer.find(params[:id])
   end
 
-  def dealer_params
-    params.require(:dealer).permit(:name, :address_1, :address_2, :city,
-                                   :state, :zip, :phone_number, :time_zone)
-  end
 end
