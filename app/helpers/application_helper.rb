@@ -38,4 +38,17 @@ module ApplicationHelper
   def boolean_to_words(value)
     value ? 'Yes' : 'No'
   end
+
+  def handle_action(resource, message, page)
+    if yield(resource)
+      handle_action_true
+    else
+      render page
+    end
+  end
+
+  def handle_action_true
+    flash[:success] = message
+    redirect_to resource
+  end
 end

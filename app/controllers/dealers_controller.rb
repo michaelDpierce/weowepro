@@ -25,27 +25,15 @@ class DealersController < ApplicationController
 
   def create
     @dealer = Dealer.new(dealer_params)
-
-    respond_to do |format|
-      if @dealer.save
-        format.html { redirect_to @dealer, notice: 'Dealer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @dealer }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @dealer.errors, status: :unprocessable_entity }
-      end
-    end
+    message = 'Dealer was successfully created.'
+    handle_action(@dealer, message, :new, &:save)
   end
 
   def update
-    respond_to do |format|
-      if @dealer.update(dealer_params)
-        format.html { redirect_to @dealer, notice: 'Dealer was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @dealer.errors, status: :unprocessable_entity }
-      end
+    message = 'Dealer was successfully updated.'
+
+    handle_action(@dealer, message, :edit) do |resource|
+      resource.update(dealer_params)
     end
   end
 
@@ -65,5 +53,4 @@ class DealersController < ApplicationController
   def set_dealer
     @dealer = Dealer.find(params[:id])
   end
-
 end

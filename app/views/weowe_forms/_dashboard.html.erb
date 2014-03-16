@@ -20,18 +20,13 @@
         <td><%= User.find(item.user_id).last_name %></td>
         <td><%= item.customer_last_name %></td>
         <td><%= number_to_currency(item.dealer_total_value) %></td>
-        <% if classification(item.pending, item.completed) == 'Open' %>
-          <td class='success'>
-            <%= classification(item.pending, item.completed) %>
+        <% if item.pending == false && item.completed == false %>
+          <td class='success'> Open </td>
           </td>
-          <% elsif classification(item.pending, item.completed) == 'Pending' %>
-            <td class='warning'>
-              <%= classification(item.pending, item.completed) %>
-            </td>
+          <% elsif item.pending == true && item.completed == false %>
+            <td class='warning'> Pending </td>
           <% else %>
-            <td class='danger'>
-              <%= classification(item.pending, item.completed) %>
-            </td>
+            <td class='danger'> Closed </td>
         <% end %>
       </tr>
     <% end %>

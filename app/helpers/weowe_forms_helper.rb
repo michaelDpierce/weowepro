@@ -32,9 +32,4 @@ module WeoweFormsHelper
     labor   = labor_value.nil? ? 0 : labor_value
     @total == parts + labor
   end
-
-  def classification(pending, completed)
-    @status = (pending == true && completed == false) ? 'Pending' : ''
-    @status = (pending == false && completed == false) ? 'Open' : 'Closes'
-  end
 end

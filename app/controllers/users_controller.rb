@@ -3,25 +3,15 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(dealer_id: current_user.dealer_id)
-    respond_to do |format|
-      format.html
-      format.json do
-        render json:
-          @users
-      end
-    end
+    respond_to { |format| format.html }
+    respond_to { |format| format.json }
   end
 
   def edit
   end
 
   def new
-    if current_user
-      @user = User.new
-    else
-      @user = User.new
-      render layout: 'devise'
-    end
+    current_user ? @user = User.new : devise_user_render
   end
 
   def edit
@@ -30,27 +20,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.dealer_id = current_user.dealer_id
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User account was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    message = 'User account was successfully created.'
+    handle_action(@user, message, :new, &:save)
   end
 
   def update
     @user.update_attributes(user_params)
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Profile updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    message = 'Profile updated.'
+    handle_action(@user, message, :edit) do |resource|
+      resource.update(user_params)
     end
   end
 
@@ -61,6 +39,11 @@ class UsersController < ApplicationController
 
   include ApplicationHelper
   include UsersHelper
+
+  def devise_user_render
+    @user = User.new
+    render layout: 'devise'
+  end
 
   def set_user
     @user = User.find(params[:id])

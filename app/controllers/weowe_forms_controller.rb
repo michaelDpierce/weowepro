@@ -9,28 +9,22 @@ class WeoweFormsController < ApplicationController
   def index
     @index = WeoweForm.where(dealer_id: current_user.dealer_id,
                              pending: false, completed: false)
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    respond_to { |format| format.html }
+    respond_to { |format| format.json }
   end
 
   def pending
     @pending = WeoweForm.where(dealer_id: current_user.dealer_id,
                                pending: true, completed: false)
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    respond_to { |format| format.html }
+    respond_to { |format| format.json }
   end
 
   def completed
     @completed = WeoweForm.where(dealer_id: current_user.dealer_id,
                                  pending: false, completed: true)
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    respond_to { |format| format.html }
+    respond_to { |format| format.json }
   end
 
   def show
@@ -49,33 +43,16 @@ class WeoweFormsController < ApplicationController
 
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
-    @weowe_form.custom_date = Time.now
-    @weowe_form.user_id = current_user.id
-    @weowe_form.dealer_id = current_user.dealer_id
-    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value, @weowe_form.dealer_labor_value)
-    respond_to do |format|
-      if @weowe_form.save
-        format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @weowe_form }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @weowe_form.errors, status: :unprocessable_entity }
-      end
-    end
+    create_default_methods
+
+    message = 'Weowe form was successfully created.'
+    handle_action(@weowe_form, message, :new, &:save)
   end
 
   def update
     @weowe_form.update_attributes(weowe_form_params)
-    @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value, @weowe_form.dealer_labor_value)
-    respond_to do |format|
-      if @weowe_form.update(weowe_form_params)
-        format.html { redirect_to @weowe_form, notice: 'Weowe form was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @weowe_form.errors, status: :unprocessable_entity }
-      end
-    end
+    calculate_dealer_total
+    update_message
   end
 
   def destroy
@@ -91,7 +68,28 @@ class WeoweFormsController < ApplicationController
   include ApplicationHelper
   include WeoweFormsHelper
 
+  def update_message
+    message = 'Weowe form was successfully updated.'
+    handle_action(@weowe_form, message, :edit) do |resource|
+      resource.update(weowe_form_params)
+    end
+  end
+
   def set_weowe_form
     @weowe_form = WeoweForm.find(params[:id])
+  end
+
+  def create_default_methods
+    @weowe_form.custom_date = Time.now
+    @weowe_form.user_id = current_user.id
+    @weowe_form.dealer_id = current_user.dealer_id
+    @weowe_form.dealer_total_value =
+    calculate_dealer_total
+  end
+
+  def calculate_dealer_total
+    @weowe_form.dealer_total_value =
+    verify_total(@weowe_form.dealer_parts_value,
+                 @weowe_form.dealer_labor_value)
   end
 end
