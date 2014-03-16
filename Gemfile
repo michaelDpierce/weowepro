@@ -48,5 +48,3 @@ group :production do
 end
 
 gem 'unicorn'
-
-
