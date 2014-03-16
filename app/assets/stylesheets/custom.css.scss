@@ -16,7 +16,6 @@ section {
   overflow: auto;
 }
 
-
 textarea {
   resize: vertical;
 }
@@ -74,7 +73,6 @@ P {
   text-decoration: none;
   }
 }
-
 
 /* Footer */
 
@@ -175,38 +173,14 @@ legend{
   display: block;
 }
 
-.btn-fix-width{
-  width: 150px;
-}
-
-.fixbtn {
- margin: 7px;
-}
-
 // Default form width convenience class
 .userform{
   @extend .col-sm-8;
   @extend .col-sm-offset-2;
 }
 
-/* Users index */
-
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $lightgrey;
-    &:last-child {
-      border-bottom: 1px solid $lightgrey;
-    }
-  }
+/* tables */
+.fixtable {
+  width: 50%;
 }
 
-
-#adjusttablewidth {
-  width: 400px;
-
-
-}
