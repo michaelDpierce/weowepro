@@ -9,7 +9,7 @@ class DealersController < ApplicationController
   end
 
   def admin
-     @dealer = Dealer.find(current_user.dealer_id)
+    @dealer = Dealer.find(current_user.dealer_id)
   end
 
   def new
@@ -59,12 +59,12 @@ class DealersController < ApplicationController
 
   private
 
-    def set_dealer
-      @dealer = Dealer.find(params[:id])
-    end
+  def set_dealer
+    @dealer = Dealer.find(params[:id])
+  end
 
-    def dealer_params
-      params.require(:dealer).permit(:name, :address_1, :address_2, :city,
-                                     :state, :zip, :phone_number, :time_zone)
-    end
+  def dealer_params
+    params.require(:dealer).permit(:name, :address_1, :address_2, :city,
+                                   :state, :zip, :phone_number, :time_zone)
+  end
 end

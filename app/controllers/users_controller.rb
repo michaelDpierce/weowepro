@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.dealer_id = current_user.dealer_id
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User account was successfully created.' }

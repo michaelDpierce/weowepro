@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   private
 
   def dealer_time_zone(&block)
-   Time.use_zone(current_user.dealer.time_zone, &block)
+    Time.use_zone(current_user.dealer.time_zone, &block)
   end
 end

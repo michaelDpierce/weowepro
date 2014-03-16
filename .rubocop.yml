@@ -6,11 +6,6 @@ AllCops:
   Excludes:
     - db/**
     - bin/**
-    - config/initializers/devise.rb
-    - config/environments/test.rb
-    - config/enviorments/production.rb
-    - config/enviorments/development.rb
-    - config/initializers/secret_token.rb
 
 Documentation:
   Enabled: false

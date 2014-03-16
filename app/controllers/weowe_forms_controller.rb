@@ -51,6 +51,7 @@ class WeoweFormsController < ApplicationController
     @weowe_form = WeoweForm.new(weowe_form_params)
     @weowe_form.custom_date = Time.now
     @weowe_form.user_id = current_user.id
+    @weowe_form.dealer_id = current_user.dealer_id
     @weowe_form.dealer_total_value = verify_total(@weowe_form.dealer_parts_value, @weowe_form.dealer_labor_value)
     respond_to do |format|
       if @weowe_form.save

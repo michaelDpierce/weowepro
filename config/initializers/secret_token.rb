@@ -11,6 +11,7 @@
 # if you're sharing your code publicly.
 require 'securerandom'
 
+# rubocop:disable all
 def secure_token
   token_file = Rails.root.join('.secret')
   if File.exist?(token_file)
@@ -23,5 +24,6 @@ def secure_token
     token
   end
 end
+# rubocop:enable all
 
 Weowe::Application.config.secret_key_base = secure_token
