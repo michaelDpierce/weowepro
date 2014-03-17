@@ -49,7 +49,7 @@ To populate: `heroku pg:reset DATABASE` > `heroku run rake db:migrate` > `heroku
 ### Other Useful Commands
 Check # of Dyno's: `heroku ps`
 
-Open app nn browser: `heroku open`
+Open app in browser: `heroku open`
 
 Server logs: `heroku logs` or for more information `heroku logs --tail`
 
