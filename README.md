@@ -11,6 +11,28 @@
 
 `rake db:populate` 
 
+## Git Commands
+
+Create and checkout new branch `git checkout -b new_branch_name`
+
+Stage files `git add -A`
+
+Commit files `git commit -m "Message here"`
+
+Push new branch onto Gihub `git push -u origin new_branch_name`
+
+***
+
+Push to master `git push origin master`
+
+***
+
+List branches `git branch`
+
+Switch to new branch `git checkout (branch)`
+
+Delete local branch `git branch -d (branch)`
+
 ## Heroku
 To update: `git push heroku master`
 
