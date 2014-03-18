@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pp'
 
 describe 'Check In Page' do
   let!(:dealer) { FactoryGirl.create(:dealer) }
