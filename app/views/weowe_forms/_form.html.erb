@@ -34,13 +34,15 @@
     <%= f.text_area :theyowe_info, hide_label: :true, size: '2x' %>
     <%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value' %>
 
-    <center><h4>Customer Signature *</h4></center>
+    <center>
+        <h4>Customer Signature *</h4>
+    </center>
     <%= f.text_field :customer_signature, hide_label: :true %>
+
 
     <% unless f.object.new_record? %>
         <center><h4>Admin Fields</h4></center>
-          <%= f.date_select :custom_date,
-            label: 'Date Submitted' %>
+          <%= f.date_select :custom_date, label: 'Date Submitted' %>
     <% end %>
 
     <%= f.primary ( f.object.new_record? ?  'Submit Form' :
