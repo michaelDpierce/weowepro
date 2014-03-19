@@ -47,14 +47,12 @@ class WeoweFormsController < ApplicationController
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
     create_default_methods
-
     message = 'Weowe form was successfully created.'
     handle_action(@weowe_form, message, :new, &:save)
   end
 
   def update
     @weowe_form.update_attributes(weowe_form_params)
-    calculate_dealer_total
     update_message
   end
 
@@ -101,13 +99,6 @@ class WeoweFormsController < ApplicationController
     @weowe_form.custom_date = Time.now
     @weowe_form.user_id = current_user.id
     @weowe_form.dealer_id = current_user.dealer_id
-    @weowe_form.dealer_total_value =
-    calculate_dealer_total
   end
 
-  def calculate_dealer_total
-    @weowe_form.dealer_total_value =
-    verify_total(@weowe_form.dealer_parts_value,
-                 @weowe_form.dealer_labor_value)
-  end
 end

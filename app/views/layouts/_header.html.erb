@@ -21,6 +21,7 @@
               Forms<b class = 'caret'></b></a>
           <ul class = 'dropdown-menu'>
             <% if current_user.admin? %>
+              <li><%= link_to 'New Form', new_weowe_form_path %></li>
               <li><%= link_to 'Pending', pending_path %></li>
               <li><%= link_to 'Open', weowe_forms_path %></li>
               <li><%= link_to 'Closed', completed_path %></li>
