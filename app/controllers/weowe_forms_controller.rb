@@ -100,5 +100,4 @@ class WeoweFormsController < ApplicationController
     @weowe_form.user_id = current_user.id
     @weowe_form.dealer_id = current_user.dealer_id
   end
-
 end
