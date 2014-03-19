@@ -49,7 +49,7 @@ class WeoweFormsController < ApplicationController
     create_default_methods
 
     message = 'Weowe form was successfully created.'
-    handle_action(@weowe_form, message, :dashboard, &:save)
+    handle_action(@weowe_form, message, :new, &:save)
   end
 
   def update
