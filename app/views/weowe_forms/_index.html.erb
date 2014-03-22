@@ -5,8 +5,8 @@
     <thead>
       <tr>
         <th>
-         <a href="" ng-click="predicate.value = 'id'; reverse=!reverse">
-           ID</a>
+          <a href="" ng-click="predicate.value = 'stock_number'; reverse=!reverse">
+            Stock #</a>
         </th>
         <th class = 'hidden-xs'>
          <a href="" ng-click="predicate.value = 'custom_date'; reverse=!reverse">
@@ -15,10 +15,6 @@
         <th class = 'hidden-xs'>
          <a href="" ng-click="predicate.value = 'custom_date'; reverse=!reverse">
            Salesperson</a>
-        </th>
-        <th>
-          <a href="" ng-click="predicate.value = 'stock_number'; reverse=!reverse">
-            Stock #</a>
         </th>
         <th class = 'hidden-xs'>
           <a href="" ng-click="predicate.value = 'year'; reverse=!reverse">
@@ -56,12 +52,11 @@
                      filter:search'>
         <td>
           <a ng-href='/weowe_forms/{{form.id}}'>
-            {{form.id}}
+            {{form.stock_number}}
           </a>
         </td>
         <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
         <td class = 'hidden-xs'>{{form.user.last_name}}</td>
-        <td>{{form.stock_number}}</td>
         <td class = 'hidden-xs'>{{form.year}}</td>
         <td class = 'hidden-xs'>{{form.make}}</td>
         <td class = 'hidden-xs'>{{form.vehicle_model}}</td>

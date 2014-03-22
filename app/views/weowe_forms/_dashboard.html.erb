@@ -1,9 +1,8 @@
 <table class='table table-bordered table-condensed fixtable' >
   <thead>
     <tr>
-      <th>ID</th>
+      <th>Stock #</th>
       <th class='hidden-xs'>Date</th>
-      <th class='hidden-xs'>Stock #</th>
       <th>Salesperson</th>
       <th>Customer</th>
       <th>Value</th>
@@ -14,9 +13,8 @@
   <tbody>
     <% @activity.each do |item| %>
       <tr>
-        <td><%= link_to item.id, item %></td>
+        <td class='hidden-xs'><%= link_to item.stock_number, item %></td>
         <td class='hidden-xs'><%= item.created_at.strftime('%-m/%-d/%Y') %></td>
-        <td class='hidden-xs'><%= item.stock_number %></td>
         <td><%= User.find(item.user_id).last_name %></td>
         <td><%= item.customer_last_name %></td>
         <td><%= number_to_currency(item.dealer_total_value) %></td>
