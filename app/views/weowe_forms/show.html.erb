@@ -9,13 +9,13 @@
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: false %>
         <%= f.hidden_field :completed, value: false %>
-        <%= f.submit 'Move to Open >' %>
+        <%= f.submit 'APPROVE' %>
     <% end %>
     <% elsif @weowe_form.pending == false && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: true %>
         <%= f.hidden_field :pending, value: false %>
-        <%= f.submit 'Move to Closed >' %>
+        <%= f.submit 'COMPLETED' %>
       <% end %>
     <% end %>
   </ul>
