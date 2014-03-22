@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315204406) do
+ActiveRecord::Schema.define(version: 20140319152021) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20140315204406) do
     t.boolean  "pending",                                       default: true
     t.boolean  "completed",                                     default: false
     t.datetime "age"
+    t.string   "name_confirmation"
+    t.text     "signature"
   end
 
 end

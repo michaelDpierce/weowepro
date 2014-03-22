@@ -1,0 +1,55 @@
+<% provide(:title, "Form #{@weowe_form.id}") %>
+
+<div class='pull-left'>
+  <div style="font-size: 20pt"><%= @weowe_form.dealer.name %></div>
+    <%= "#{@weowe_form.dealer.address_1} #{@weowe_form.dealer.address_2}" %> <br />
+    <%= "#{@weowe_form.dealer.city}, #{@weowe_form.dealer.state}, #{@weowe_form.dealer.zip}" %> <br />
+    <%= "#{@weowe_form.dealer.phone_number}" %> <br />
+  </div>
+
+<div class='pull-right'>
+  <div style="font-size: 20pt">
+    <center>
+      VOID 30 DAYS <br /> AFTER SALE
+    </center>
+  </div>
+</div>
+
+<br><br><br><br><br>
+
+<center style="font-size: 40pt">DUE BILL</center>
+<hr>
+<center style="font-size: 14pt">WORK PROMISED TO BE PERFORMED AT TIME OF SALE</center>
+<hr>
+<table class='table table-bordered table-condensed' >
+  <tr>
+    <td>DATE: <%= Time.now.strftime('%-m/%-d/%Y')%></td>
+    <td colspan="2">SALESPERSON: <%=  "#{User.find(@weowe_form.user_id).first_name}
+                                       #{User.find(@weowe_form.user_id).last_name}" %></td>
+  </tr>
+  <tr>
+    <td colspan="5"> <%= "CUSTOMER INFORMATION: #{@weowe_form.customer_first_name}
+                                   #{@weowe_form.customer_last_name},
+                                   #{@weowe_form.customer_phone_mobile},
+                                   #{@weowe_form.customer_email}"%></td>
+  </tr>
+  <tr>
+    <td colspan="5"> <%= "VEHICLE INFORMATION: #{@weowe_form.color},
+                                  #{@weowe_form.make},
+                                  #{@weowe_form.vehicle_model},
+                                  #{@weowe_form.year};
+                                  STOCK #: #{@weowe_form.stock_number}" %></td>
+  </tr>
+</table>
+
+<hr>
+<center style="font-size: 14pt">PRESENT THIS ORDER WHEN WORK IS TO BE COMPLETED</center>
+<hr>
+
+<hr>
+<center style="font-size: 14pt"><%= "#{@weowe_form.dealer.name} OWES".upcase %></center>
+<hr>
+<br><br><br>
+<hr>
+<center style="font-size: 14pt">CUSTOMER OWES</center>
+<hr>
