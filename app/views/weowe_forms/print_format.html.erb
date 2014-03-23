@@ -1,25 +1,21 @@
 <% provide(:title, "Form #{@weowe_form.id}") %>
 
-<div class='pull-left'>
+<div class='pull-right'>
   <div style="font-size: 20pt"><%= @weowe_form.dealer.name %></div>
     <%= "#{@weowe_form.dealer.address_1} #{@weowe_form.dealer.address_2}" %> <br />
     <%= "#{@weowe_form.dealer.city}, #{@weowe_form.dealer.state}, #{@weowe_form.dealer.zip}" %> <br />
     <%= "#{@weowe_form.dealer.phone_number}" %> <br />
   </div>
 
-<div class='pull-right'>
-  <div style="font-size: 20pt">
-    <center>
-      VOID 30 DAYS <br /> AFTER SALE
-    </center>
-  </div>
+<div class='pull-left'>
+  <%= image_tag @weowe_form.dealer.logo.url, height: '100' %>
 </div>
 
 <br><br><br><br><br>
 
 <center style="font-size: 40pt">DUE BILL</center>
 <hr>
-<center style="font-size: 14pt">WORK PROMISED TO BE PERFORMED AT TIME OF SALE</center>
+<center style="font-size: 14pt"> VOID 30 DAYS AFTER SALE</center>
 <hr>
 <table class='table table-bordered table-condensed' >
   <tr>
