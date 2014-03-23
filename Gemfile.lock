@@ -60,6 +60,10 @@ GEM
       nio4r (>= 0.5.0)
     childprocess (0.5.1)
       ffi (~> 1.0, >= 1.0.11)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -136,10 +140,17 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.9.0)
+    nested_form_fields (0.5.0)
+      rails (>= 3.2.0)
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     parser (2.1.7)
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
@@ -280,6 +291,8 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
+  nested_form_fields
+  paperclip
   pg (= 0.15.1)
   rails (= 4.0.2)
   rails_12factor

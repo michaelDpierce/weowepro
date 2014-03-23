@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315204406) do
+ActiveRecord::Schema.define(version: 20140323003544) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 20140315204406) do
     t.string   "zip"
     t.string   "phone_number"
     t.string   "time_zone"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -84,6 +88,17 @@ ActiveRecord::Schema.define(version: 20140315204406) do
     t.boolean  "pending",                                       default: true
     t.boolean  "completed",                                     default: false
     t.datetime "age"
+    t.string   "name_confirmation"
+    t.text     "signature"
+  end
+
+  create_table "weowe_items", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "quantity"
+    t.decimal  "parts_value", precision: 8, scale: 2
+    t.decimal  "labor_value", precision: 8, scale: 2
   end
 
 end

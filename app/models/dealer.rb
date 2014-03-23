@@ -9,4 +9,11 @@ class Dealer < ActiveRecord::Base
   validates_presence_of :zip
   validates_inclusion_of :time_zone,
                          in: ActiveSupport::TimeZone.zones_map(&:name)
+
+  ATTACHED_PATH = ':rails_root/public/system/:attachment/:id/:style/:filename'
+
+  has_attached_file :logo,
+                    path: ATTACHED_PATH,
+                    url: '/system/:attachment/:id/:style/:filename'
+
 end
