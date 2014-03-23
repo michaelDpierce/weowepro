@@ -4,6 +4,10 @@
 <h1><%= "Form #{@weowe_form.id}" %></h1>
 <% if current_user.admin? %>
 
+<div class-'pull-left'>
+<%= link_to_function("Print this Page", "javascript:print()") %>
+</div>
+
   <ul class='pull-right'>
     <% if @weowe_form.pending == true && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>

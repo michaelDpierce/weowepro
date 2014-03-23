@@ -140,8 +140,6 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.9.0)
-    nested_form_fields (0.5.0)
-      rails (>= 3.2.0)
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -291,7 +289,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
-  nested_form_fields
   paperclip
   pg (= 0.15.1)
   rails (= 4.0.2)
