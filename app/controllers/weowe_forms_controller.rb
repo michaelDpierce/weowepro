@@ -34,10 +34,6 @@ class WeoweFormsController < ApplicationController
   def show
   end
 
-  def print_format
-    render layout: "print"
-  end
-
   def new
     if current_user
       @weowe_form = WeoweForm.new
