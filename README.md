@@ -33,6 +33,9 @@ Push to master `git push origin master`
 ***
 
 ### Other Useful Commands
+
+Rebuild Schema `rake db:schema:dump`
+
 List branches `git branch`
 
 Switch to new branch `git checkout (branch)`
