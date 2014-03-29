@@ -10,12 +10,12 @@
     <%= render 'dashboard' %>
     <br><br>
     <div class='btn-group'>
-      <%= link_to 'New Form', new_weowe_form_path,
-        class: 'btn btn-primary btn-fix-width', role: 'button' %>
-      <% if current_user.admin? %>
-        <%= link_to 'Sales', pending_path,
-          class: 'btn btn-warning btn-fix-width', role: 'button' %>
+      <% if current_user.department == 'Manager' || current_user.department == 'Sales' %>
+        <%= link_to 'New Form', new_weowe_form_path,
+          class: 'btn btn-primary btn-fix-width', role: 'button' %>
       <% end %>
+      <%= link_to 'Sales', pending_path,
+        class: 'btn btn-warning btn-fix-width', role: 'button' %>
       <%= link_to 'Service', weowe_forms_path,
         class: 'btn btn-success btn-fix-width', role: 'button' %>
       <%= link_to 'Closed', completed_path,
@@ -28,14 +28,14 @@
 <div class='visible-xs'>
   <h1>Dashboard</h1>
   <br>
-  <%= link_to 'New Form', new_weowe_form_path,
-    class: 'btn btn-primary btn-lg btn-block', role: 'button' %>
+  <% if current_user.department == 'Manager' || current_user.department == 'Sales' %>
+    <%= link_to 'New Form', new_weowe_form_path,
+      class: 'btn btn-primary btn-lg btn-block', role: 'button' %>
+  <% end %>
   <br>
-  <% if current_user.admin? %>
     <%= link_to 'Sales', pending_path,
       class: 'btn btn-warning btn-lg btn-block', role: 'button' %>
     <br>
-  <% end %>
   <%= link_to 'Service', weowe_forms_path,
     class: 'btn btn-success btn-lg btn-block', role: 'button' %>
   <br>
