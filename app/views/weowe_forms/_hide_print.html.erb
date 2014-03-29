@@ -1,5 +1,5 @@
 <h1><%= "Form #{@weowe_form.id}" %></h1>
-<% if current_user.admin? %>
+<% if current_user.department = 'Manager' %>
   <ul class='pull-right'>
     <% if @weowe_form.pending == true && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
@@ -8,7 +8,13 @@
         <%= f.submit 'Move to Open >', :class =>
                      'btn btnfix btn-default btn-sm' %>
       <% end %>
-    <% elsif @weowe_form.pending == false && @weowe_form.completed == false %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if current_user.department = 'Manager' || current_user.department = 'Service' %>
+  <ul class='pull-right'>
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: true %>
         <%= f.hidden_field :pending, value: false %>
@@ -17,10 +23,14 @@
       <% end %>
     <% end %>
   </ul>
-  <ul class='pull-right'>
-  <%= link_to_function('Print this Page', 'javascript:print()', :class =>
-                       'btn btnfix btn-default btn-sm') %>
-  </ul>
+<% end %>
+
+<ul class='pull-right'>
+<%= link_to_function('Print this Page', 'javascript:print()', :class =>
+                     'btn btnfix btn-default btn-sm') %>
+</ul>
+
+<% if current_user.department = 'Manager' %>
   <ul class='pull-right'>
     <% if @weowe_form.pending == false && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
@@ -29,7 +39,13 @@
         <%= f.submit '< Move to Pending', :class =>
                      'btn btnfix btn-default btn-sm' %>
       <% end %>
-    <% elsif @weowe_form.pending == false && @weowe_form.completed == true %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if current_user.department = 'Manager' || current_user.department = 'Service' %>
+  <ul class='pull-right'>
+    <% if @weowe_form.pending == false && @weowe_form.completed == true %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: false %>
         <%= f.hidden_field :pending, value: false %>
