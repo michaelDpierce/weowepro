@@ -1,16 +1,23 @@
-<h2>Change your password</h2>
+<% provide(:title, 'Password Reset') %>
+<br><br><br>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div class='row well'>
+  <div class='userform'>
+    <center>
+      <h1> Change your password </h1>
+    </center>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
+    <%= bootstrap_form_for(resource, :as => resource_name,password_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
+      <%= f.password_field :password, :autofocus => true %></div>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
+      <%= f.password_field :password_confirmation %></div>
 
-<%= render "devise/shared/links" %>
+      <div><%= f.submit "Change my password" %></div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
