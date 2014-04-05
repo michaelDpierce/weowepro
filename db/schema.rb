@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329181704) do
+ActiveRecord::Schema.define(version: 20140405195212) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -106,8 +106,9 @@ ActiveRecord::Schema.define(version: 20140329181704) do
     t.datetime "updated_at"
     t.text     "description"
     t.integer  "quantity"
-    t.decimal  "parts_value", precision: 8, scale: 2
-    t.decimal  "labor_value", precision: 8, scale: 2
+    t.decimal  "parts_value",   precision: 8, scale: 2
+    t.decimal  "labor_value",   precision: 8, scale: 2
+    t.integer  "weowe_form_id"
   end
 
 end

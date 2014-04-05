@@ -62,13 +62,12 @@ class WeoweItemsController < ApplicationController
   end
 
   private
+
+  include ApplicationHelper
+  include WeoweItemsHelper
     # Use callbacks to share common setup or constraints between actions.
     def set_weowe_item
       @weowe_item = WeoweItem.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def weowe_item_params
-      params[:weowe_item]
-    end
 end

@@ -109,20 +109,15 @@
 
 <h4> We Owe </h4>
     <table class='table table-bordered table-condensed' >
-      <tr>
-      <th style='width:25%'>Description</th>
-        <td><%= @weowe_form.weowe_info %></td>
-      </tr>
+      <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
+      <% @weowe_form.weowe_items.each_with_index do |item, index| %>
             <tr>
-      <th>Parts Value</th>
-        <td><%= number_to_currency(@weowe_form.dealer_parts_value) %></td>
-      </tr>
-      <th>Labor Value</th>
-        <td><%= number_to_currency(@weowe_form.dealer_labor_value) %></td>
-      </tr>
-      <th>Total Value</th>
-        <td><%= number_to_currency(@weowe_form.dealer_total_value) %></td>
-      </tr>
+              <th> <%= index + 1 %> </th>
+              <td><%= item.description %></td>
+              <td><%= item.quantity %></td>
+              <td><%= item.parts_value %></td>
+            </tr>
+        <% end %>
     </table>
 
 <h4> Customer Owes </h4>

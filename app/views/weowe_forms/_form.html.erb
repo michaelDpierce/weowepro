@@ -25,25 +25,18 @@
       label: 'Date Sold *' %>
 
     <center><h4>We Owe *</h4></center>
-    <%= f.text_area :weowe_info, hide_label: :true, size: '2x' %>
 
-    <% unless f.object.new_record? %>
-      <%= f.text_field :dealer_parts_value, prepend: '$', label: 'Parts Value' %>
-      <%= f.text_field :dealer_labor_value, prepend: '$', label: 'Labor Value' %>
+    <%= f.fields_for :weowe_items do |builder| %>
+      <%= render 'weowe_item_fields', f: builder %>
     <% end %>
 
-    <%= f.text_field :dealer_total_value, prepend: '$', label: 'Total Value' %>
-    <br>
+    <%= link_to_add_fields raw('<i class="glyphicon glyphicon-plus-sign glyphicon-2x"></i> Add WeOwe'),
+      f, :weowe_items %>
+    <br><br>
 
     <center><h4>Customer Owes</h4></center>
-    <%= f.text_area :theyowe_info, hide_label: :true, size: '2x' %>
+    <%= f.text_area :theyowe_info, label: 'Description', size: '2x' %>
     <%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value' %>
-
-    <center>
-        <h4>Customer Signature *</h4>
-    </center>
-    <%= f.text_field :customer_signature, hide_label: :true %>
-
 
     <% unless f.object.new_record? %>
         <center><h4>Admin Fields</h4></center>
