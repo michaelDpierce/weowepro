@@ -32,6 +32,7 @@ class WeoweFormsController < ApplicationController
   end
 
   def show
+    @skip_footer = true
   end
 
   def new

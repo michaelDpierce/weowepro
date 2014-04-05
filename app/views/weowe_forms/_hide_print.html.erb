@@ -108,17 +108,17 @@
     </table>
 
 <h4> We Owe </h4>
-    <table class='table table-bordered table-condensed' >
-      <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
-      <% @weowe_form.weowe_items.each_with_index do |item, index| %>
-            <tr>
-              <th> <%= index + 1 %> </th>
-              <td><%= item.description %></td>
-              <td><%= item.quantity %></td>
-              <td><%= item.parts_value %></td>
-            </tr>
-        <% end %>
-    </table>
+  <table class='table table-bordered table-condensed' >
+    <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
+    <% @weowe_form.weowe_items.each_with_index do |item, index| %>
+          <tr>
+            <th> <%= index + 1 %> </th>
+            <td><%= item.description %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.parts_value %></td>
+          </tr>
+      <% end %>
+  </table>
 
 <h4> Customer Owes </h4>
     <table class='table table-bordered table-condensed' >
