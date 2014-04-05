@@ -27,6 +27,8 @@
     <%= render 'index' %>
     <div class='well'>
       <center>
+        <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
+        <br>
         <div class='btn-group'>
           <%= link_to 'Add Form', new_weowe_form_path,
             class: 'btn btn-primary', role: 'button' %>

@@ -48,7 +48,7 @@
 
     <tbody>
       <tr ng-repeat='form in pendingForms | orderBy:predicate.value:reverse |
-                     filter:search'>
+                     filter:search | limitTo:totalDisplayed'>
         <td>
           <a ng-href='/weowe_forms/{{form.id}}'>
             {{form.stock_number}}

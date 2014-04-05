@@ -14,7 +14,7 @@ namespace :db do
                     )
     end
 
-    200.times do |n|
+    1000.times do |n|
 
       WeoweForm.create!(customer_first_name: Faker::Name.first_name,
                         customer_last_name: Faker::Name.last_name,
@@ -41,7 +41,7 @@ namespace :db do
                       )
     end
 
-    200.times do |n|
+    1000.times do |n|
 
       WeoweForm.create!(customer_first_name: Faker::Name.first_name,
                         customer_last_name: Faker::Name.last_name,
