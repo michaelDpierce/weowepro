@@ -2,7 +2,7 @@
   @WeoweFormsCtrl = ($scope, WeoweForms) ->
 
     $scope.predicate =
-      value: 'custom_date'
+      value: '-custom_date'
 
     $scope.totalDisplayed = 50
 
