@@ -7,20 +7,12 @@
       <tr>
         <th>Metric</th>
         <th>Count</td>
-        <th>Dealer Parts Value</th>
-        <th>Dealer Labor Value</th>
         <th>Dealer Total Value</th>
         <th>Customer Total Value</th>
       </tr>
       <tr>
-        <td>Pending Forms</td>
+        <td>Sales Forms</td>
         <td><%= WeoweForm.where(pending: true, completed: false).count %></td>
-        <td>
-          <%= number_to_currency(WeoweForm.where(pending: true, completed: false).sum(:dealer_parts_value)) %>
-        </td>
-        <td>
-          <%=  number_to_currency(WeoweForm.where(pending: true, completed: false).sum(:dealer_labor_value)) %>
-        </td>
         <td>
           <%= number_to_currency(WeoweForm.where(pending: true, completed: false).sum(:dealer_parts_value)) %>
         </td>
@@ -29,14 +21,8 @@
         </td>
       </tr>
       <tr>
-        <td>Current Forms</td>
+        <td>Service Forms</td>
         <td><%= WeoweForm.where(pending: false, completed: false).count %></td>
-        <td>
-          <%= number_to_currency(WeoweForm.where(pending: false, completed: false).sum(:dealer_parts_value)) %>
-        </td>
-        <td>
-          <%=  number_to_currency(WeoweForm.where(pending: false, completed: false).sum(:dealer_labor_value)) %>
-        </td>
         <td>
           <%=  number_to_currency(WeoweForm.where(pending: false, completed: false).sum(:dealer_total_value)) %>
         </td>
@@ -48,12 +34,6 @@
         <td>Completed Forms</td>
         <td><%= WeoweForm.where(pending: false, completed: true).count %></td>
         <td>
-          <%= number_to_currency(WeoweForm.where(pending: false, completed: true).sum(:dealer_parts_value)) %>
-        </td>
-        <td>
-          <%=  number_to_currency(WeoweForm.where(pending: false, completed: true).sum(:dealer_labor_value)) %>
-        </td>
-        <td>
           <%=  number_to_currency(WeoweForm.where(pending: false, completed: true).sum(:dealer_total_value)) %>
         </td>
         <td>
@@ -63,12 +43,6 @@
       <tr>
         <th>Totals</th>
         <th><%= WeoweForm.count %></th>
-        <th>
-          <%= number_to_currency(WeoweForm.sum(:dealer_parts_value)) %>
-        </th>
-        <th>
-          <%=  number_to_currency(WeoweForm.sum(:dealer_labor_value)) %>
-        </th>
         <th>
           <%=  number_to_currency(WeoweForm.sum(:dealer_total_value)) %>
         </th>
