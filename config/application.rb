@@ -42,9 +42,9 @@ module Weowe
     config.to_prepare do
       Devise::SessionsController.layout SESSIONS
       Devise::RegistrationsController.layout REGISTRATION
-      Devise::ConfirmationsController.layout 'application'
-      Devise::UnlocksController.layout 'application'
-      Devise::PasswordsController.layout 'application'
+      Devise::ConfirmationsController.layout REGISTRATION
+      Devise::UnlocksController.layout REGISTRATION
+      Devise::PasswordsController.layout REGISTRATION
     end
   end
 end
