@@ -88,7 +88,8 @@ namespace :db do
                    password: 'foobar22',
                    password_confirmation: 'foobar22',
                    dealer_id: 1,
-                   department: %w(Service Sales).sample
+                   department: %w(Service Sales).sample,
+                   confirmed_at: DateTime.now
                   )
     end
   end

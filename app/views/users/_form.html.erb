@@ -10,7 +10,10 @@
       <%= f.select :dealer_id, options_from_collection_for_select(Dealer.all, :id, :name) %>
     <% end %>
 
+    <% if signed_in? %>
     <%= f.hidden_field :dealer_id, value: current_user.dealer_id %>
+    <% end %>
+
     <%= f.text_field :first_name, label: 'First Name *' %>
     <%= f.text_field :last_name, label: 'Last Name *' %>
     <%= f.text_field :email, label: 'Email *' %>
