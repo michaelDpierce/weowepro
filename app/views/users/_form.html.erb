@@ -11,11 +11,12 @@
     <% end %>
 
     <%= f.hidden_field :dealer_id, value: current_user.dealer_id %>
-
     <%= f.text_field :first_name, label: 'First Name *' %>
     <%= f.text_field :last_name, label: 'Last Name *' %>
     <%= f.text_field :email, label: 'Email *' %>
     <%= f.text_field :phone_number, label: 'Phone Number *' %>
+    <%= f.select :active, [['Yes', true], ['No', false]] %>
+    <%= f.select :department, ['Sales', 'Service', 'Manager', 'Unassigned'] %>
 
     <% if f.object.new_record? %>
       <%= f.text_field :password, label: 'Password *' %>

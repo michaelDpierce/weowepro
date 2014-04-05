@@ -6,7 +6,8 @@ module DealersHelper
                    :state,
                    :zip,
                    :phone_number,
-                   :time_zone
+                   :time_zone,
+                   :logo
                   ]
 
   def dealer_params

@@ -12,7 +12,7 @@
     <div class = 'collapse navbar-collapse navHeaderCollapse'>
       <ul class = 'nav navbar-nav navbar-right' >
         <% if user_signed_in? %>
-          <% if current_user.admin? %>
+          <% if current_user.department == 'Manager' %>
             <li><%= link_to 'Users', users_path %></li>
           <% end %>
 
@@ -20,7 +20,7 @@
             <a href = '#' class = 'dropdown-toggle' data-toggle = 'dropdown'>
               Forms<b class = 'caret'></b></a>
           <ul class = 'dropdown-menu'>
-            <% if current_user.admin? %>
+            <% if current_user.department == 'Manager' %>
               <li><%= link_to 'New Form', new_weowe_form_path %></li>
               <li><%= link_to 'Sales', pending_path %></li>
               <li><%= link_to 'Service', weowe_forms_path %></li>
@@ -34,7 +34,7 @@
               Account<b class = 'caret'></b></a>
             <ul class = 'dropdown-menu'>
               <li><%= link_to 'My Profile', current_user %></li>
-              <% if current_user.admin? %>
+              <% if current_user.department == 'Manager' %>
                 <li><%= link_to 'Preferences', admin_path %></li>
               <% end %>
               <li class='divider'></li>

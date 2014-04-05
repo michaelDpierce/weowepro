@@ -1,0 +1,71 @@
+<% provide(:title, "Form #{@weowe_form.id}") %>
+
+<div class='pull-right'>
+  <div style="font-size: 20pt"><%= @weowe_form.dealer.name %></div>
+    <%= "#{@weowe_form.dealer.address_1} #{@weowe_form.dealer.address_2}" %> <br />
+    <%= "#{@weowe_form.dealer.city}, #{@weowe_form.dealer.state}, #{@weowe_form.dealer.zip}" %> <br />
+    <%= "#{@weowe_form.dealer.phone_number}" %> <br />
+  </div>
+
+<div class='pull-left'>
+  <%= image_tag @weowe_form.dealer.logo.url, height: '100' %>
+</div>
+
+<br><br><br><br><br>
+
+<center style="font-size: 40pt">DUE BILL</center>
+
+<center style="font-size: 14pt"> VOID 30 DAYS AFTER SALE</center>
+
+<table class='table table-bordered table-condensed' >
+  <tr>
+    <td>DATE: <%= Time.now.strftime('%-m/%-d/%Y')%></td>
+    <td colspan="2">
+      SALESPERSON: <%= "#{User.find(@weowe_form.user_id).first_name}
+                        #{User.find(@weowe_form.user_id).last_name}" %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <%= "CUSTOMER INFORMATION: #{@weowe_form.customer_first_name}
+          #{@weowe_form.customer_last_name},
+          #{@weowe_form.customer_phone_mobile},
+          #{@weowe_form.customer_email}"%>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <%= "VEHICLE INFORMATION: #{@weowe_form.color},
+          #{@weowe_form.make},
+          #{@weowe_form.vehicle_model},
+          #{@weowe_form.year};
+          STOCK #: #{@weowe_form.stock_number}" %>
+    </td>
+  </tr>
+</table>
+
+<center style="font-size: 14pt"><%= "#{@weowe_form.dealer.name} OWES".upcase %></center>
+<p>1. </p>
+<p>2. </p>
+<p>3. </p>
+
+<center style="font-size: 14pt">CUSTOMER OWES</center>
+<p>1. </p>
+<p>2. </p>
+<p>3. </p>
+
+<center style="font-size: 10pt">
+  NOTE: THE ABOVE PROMISED WORK IS ONLY WORK TO BE PERFORMED FREE OF CHARGE OR INCLUDED
+  IN NEGOTIATED PRICE. ANY ADDITIONAL WORK WILL BE CHARGED FOR IN ACCORDANCE WITH THE TYPE OF WARRENTY
+  ISSUED AT TIME OF SALE, AND WILL BE CASH ON DELIVERY. ALL WORK MUST BE DONE IN OUR SHOP,
+  AND YOU MUST MAKE AN ADVANCE APPOINTMENT WITH THE SERVICE DEPARTMENT BEFORE THE ABOVE WORK
+  CAN BE PERFORMED.
+</center>
+<br>
+
+<div class='pull-left'>
+  <p> Salesperson _________________________</p>
+</div>
+<div class='pull-right'>
+  <p> Customer _________________________</p>
+</div>

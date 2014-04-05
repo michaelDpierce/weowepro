@@ -1,5 +1,6 @@
 class WeoweFormsController < ApplicationController
-  before_action :set_weowe_form, only: [:show, :edit, :update, :destroy]
+  before_action :set_weowe_form, only: [:show, :edit, :update, :destroy,
+                                        :print_format]
 
   def dashboard
     @activity = WeoweForm.where(dealer_id: current_user.dealer_id)

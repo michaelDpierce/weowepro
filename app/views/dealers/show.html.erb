@@ -7,13 +7,16 @@
     class: 'btn btn-primary btn-sm'%>
 </div>
 
-<br> <br>
+<br><br>
 
 <div class='table-responsive'>
   <table class='table table-bordered table-condensed' >
     <tr>
     <th style='width:25%'>Name</th>
       <td><%= @dealer.name %></td>
+    </tr>
+    <th>Logo</th>
+      <td><%= image_tag @dealer.logo.url, height: '100' %></td>
     </tr>
     <tr>
     <th>Address 1</th>

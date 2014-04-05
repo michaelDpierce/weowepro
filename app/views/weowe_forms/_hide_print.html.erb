@@ -1,0 +1,165 @@
+<h1><%= "Form #{@weowe_form.id}" %></h1>
+<% if current_user.department = 'Manager' %>
+  <ul class='pull-right'>
+    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :pending, value: false %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.submit 'Move to Open >', :class =>
+                     'btn btnfix btn-default btn-sm' %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if current_user.department = 'Manager' || current_user.department = 'Service' %>
+  <ul class='pull-right'>
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :completed, value: true %>
+        <%= f.hidden_field :pending, value: false %>
+        <%= f.submit 'Move to Closed >', :class =>
+                       'btn btnfix btn-default btn-sm'  %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<ul class='pull-right'>
+<%= link_to_function('Print this Page', 'javascript:print()', :class =>
+                     'btn btnfix btn-default btn-sm') %>
+</ul>
+
+<% if current_user.department = 'Manager' %>
+  <ul class='pull-right'>
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :pending, value: true %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.submit '< Move to Pending', :class =>
+                     'btn btnfix btn-default btn-sm' %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if current_user.department = 'Manager' || current_user.department = 'Service' %>
+  <ul class='pull-right'>
+    <% if @weowe_form.pending == false && @weowe_form.completed == true %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.hidden_field :pending, value: false %>
+        <%= f.submit '< Move to Open', :class =>
+                       'btn btnfix btn-default btn-sm' %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<br><br><br>
+
+<div class='table-responsive'>
+  <h4> Customer Information </h4>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+      <th style='width:25%'>First Name</th>
+        <td><%= @weowe_form.customer_first_name %></td>
+      </tr>
+      <tr>
+      <th>Last Name</th>
+        <td><%= @weowe_form.customer_last_name %></td>
+      </tr>
+      <tr>
+      <th>Mobile #</th>
+        <td><%= @weowe_form.customer_phone_mobile %></td>
+      </tr>
+      <tr>
+      <th>Email</th>
+        <td><%= @weowe_form.customer_email %></td>
+      </tr>
+    </table>
+
+<h4> Vehicle Information </h4>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+      <th style='width:25%'>Stock Number</th>
+        <td><%= @weowe_form.stock_number %></td>
+      </tr>
+      <tr>
+      <th>Year</th>
+        <td><%= @weowe_form.year%></td>
+      </tr>
+      <tr>
+      <th>Make</th>
+        <td><%= @weowe_form.make %></td>
+      </tr>
+      <tr>
+      <th>Model</th>
+        <td><%= @weowe_form.vehicle_model %></td>
+      </tr>
+      <tr>
+      <th>Color</th>
+        <td><%= @weowe_form.color %></td>
+      </tr>
+      <tr>
+      <th>Date Sold</th>
+        <td><%= @weowe_form.sold_date.strftime('%-m/%-d/%Y') %></td>
+      </tr>
+    </table>
+
+<h4> We Owe </h4>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+      <th style='width:25%'>Description</th>
+        <td><%= @weowe_form.weowe_info %></td>
+      </tr>
+            <tr>
+      <th>Parts Value</th>
+        <td><%= number_to_currency(@weowe_form.dealer_parts_value) %></td>
+      </tr>
+      <th>Labor Value</th>
+        <td><%= number_to_currency(@weowe_form.dealer_labor_value) %></td>
+      </tr>
+      <th>Total Value</th>
+        <td><%= number_to_currency(@weowe_form.dealer_total_value) %></td>
+      </tr>
+    </table>
+
+<h4> Customer Owes </h4>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+      <th style='width:25%'>Description</th>
+        <td><%= @weowe_form.theyowe_info %></td>
+      </tr>
+      <th>Total Value</th>
+        <td><%= number_to_currency(@weowe_form.customer_total_value) %></td>
+      </tr>
+    </table>
+
+<h4> Sales Person </h4>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+    <th style='width:25%'>First Name </th>
+      <td><%= User.find(@weowe_form.user_id).first_name %></td>
+    </tr>
+    <th>Last Name </th>
+      <td><%= User.find(@weowe_form.user_id).last_name %></td>
+    </tr>
+  </table>
+
+  <ul class='pull-left'>
+    <div id='userformbutton'>
+    <%=link_to 'Edit Form', edit_weowe_form_path(@weowe_form),
+        class: 'btn btnfix btn-primary btn-sm'%>
+    </div>
+  </ul>
+
+  <ul class='pull-left'>
+    <div id='userformbutton'>
+    <%=link_to 'Delete Form', @weowe_form, method: :delete,
+     data: { confirm: 'Are you sure?' },
+        class: 'btn btnfix btn-danger btn-sm'%>
+    </div>
+  </ul>
+  <br><br>
+</div>

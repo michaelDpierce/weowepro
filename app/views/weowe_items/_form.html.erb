@@ -1,0 +1,17 @@
+<%= form_for(@weowe_item) do |f| %>
+  <% if @weowe_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weowe_item.errors.count, "error") %> prohibited this weowe_item from being saved:</h2>
+
+      <ul>
+      <% @weowe_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

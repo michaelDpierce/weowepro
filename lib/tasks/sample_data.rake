@@ -75,7 +75,8 @@ namespace :db do
                  password: 'foobar22',
                  password_confirmation: 'foobar22',
                  dealer_id: 1,
-                 admin: true
+                 department: 'Manager',
+                 confirmed_at: DateTime.now
                )
 
     200.times do |n|
@@ -87,7 +88,7 @@ namespace :db do
                    password: 'foobar22',
                    password_confirmation: 'foobar22',
                    dealer_id: 1,
-                   admin: false
+                   department: %w(Service Sales).sample
                   )
     end
   end

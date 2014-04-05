@@ -17,6 +17,7 @@ gem 'turbolinks'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '3.0.3.0'
 gem 'stripe'
+gem 'paperclip'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -42,6 +43,5 @@ end
 group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
-
-gem 'unicorn'
