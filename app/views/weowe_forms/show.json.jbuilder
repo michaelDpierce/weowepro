@@ -1,1 +1,1 @@
-json.extract! @weowe_form, :created_at, :updated_at
+json.extract! @weowe_form, *WeoweForm.column_names

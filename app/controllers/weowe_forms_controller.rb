@@ -50,13 +50,20 @@ class WeoweFormsController < ApplicationController
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
     create_default_methods
-    message = 'Weowe form was successfully created.'
-    handle_action(@weowe_form, message, :new, &:save)
+    if @weowe_form.save
+      render :show
+    else
+      render json: @weowe_form.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    @weowe_form.update_attributes(weowe_form_params)
-    update_message
+    if @weowe_form.update_attributes(weowe_form_params)
+      message = 'Weowe form was successfully updated.'
+      render :show
+    else
+      render json: @weowe_form.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
