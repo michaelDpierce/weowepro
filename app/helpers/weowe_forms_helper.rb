@@ -19,7 +19,8 @@ module WeoweFormsHelper
                       :pending,
                       :completed,
                       :user_id,
-                      :dealer_id
+                      :dealer_id,
+                      weowe_items_attributes: [:id, :weowe_form_id, :description, :_destroy]
                      ]
 
   def weowe_form_params
