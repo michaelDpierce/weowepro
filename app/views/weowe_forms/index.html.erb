@@ -1,8 +1,8 @@
-<div ng-app='weowepro'>
-  <div ng-controller='WeoweFormsCtrl'>
+<div data-ng-app='weowepro'>
+  <div data-ng-controller='WeoweFormsCtrl'>
     <% provide(:title, 'Service') %>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <h1>Service</h1>
-
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">

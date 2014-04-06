@@ -10,7 +10,7 @@
       $scope.alerts = []
       $scope.alerts.push
         type: "success"
-        msg: "Form for #{data.customer_first_name} #{data.customer_last_name} approved and sent to Service!"
+        msg: "Form for #{data.customer_first_name} #{data.customer_last_name} approved and sent to Service."
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1
