@@ -14,7 +14,7 @@ namespace :db do
                     )
     end
 
-    200.times do |n|
+    1.times do |n|
 
       WeoweForm.create!(customer_first_name: Faker::Name.first_name,
                         customer_last_name: Faker::Name.last_name,
@@ -36,12 +36,12 @@ namespace :db do
                         customer_signature: 'Michael Pierce',
                         pending: [true, false].sample,
                         completed: false,
-                        user_id: (1..200).to_a.sample,
+                        user_id: (1..2).to_a.sample,
                         dealer_id: 1
                       )
     end
 
-    200.times do |n|
+    2.times do |n|
 
       WeoweForm.create!(customer_first_name: Faker::Name.first_name,
                         customer_last_name: Faker::Name.last_name,
@@ -63,7 +63,7 @@ namespace :db do
                         customer_signature: 'Michael Pierce',
                         pending: false,
                         completed: [true, false].sample,
-                        user_id: (1..200).to_a.sample,
+                        user_id: (1..2).to_a.sample,
                         dealer_id: 1
                       )
     end
@@ -71,7 +71,7 @@ namespace :db do
     User.create!(first_name: 'Michael',
                  last_name: 'Pierce',
                  phone_number: '720-387-9691',
-                 email: 'example@weowepro.com',
+                 email: 'matchmike1313@gmail.com',
                  password: 'foobar22',
                  password_confirmation: 'foobar22',
                  dealer_id: 1,
@@ -79,7 +79,7 @@ namespace :db do
                  confirmed_at: DateTime.now
                )
 
-    200.times do |n|
+    1.times do |n|
 
       User.create!(first_name: Faker::Name.first_name,
                    last_name: Faker::Name.last_name,

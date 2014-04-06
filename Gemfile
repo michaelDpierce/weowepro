@@ -18,6 +18,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '3.0.3.0'
 gem 'stripe'
 gem 'paperclip'
+gem 'sendgrid'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
