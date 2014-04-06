@@ -2,7 +2,7 @@ Weowe::Application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
 
-  # config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'}
+  config.action_mailer.default_url_options = { :host => 'weowepro.herokuapp.com'}
   # ActionMailer::Base.smtp_settings = {
   #   :address        => "smtp.sendgrid.net",
   #   :port           => "587",
