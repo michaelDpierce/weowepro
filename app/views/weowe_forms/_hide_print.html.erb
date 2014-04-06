@@ -1,15 +1,18 @@
 <h1><%= "Form #{@weowe_form.id}" %></h1>
 <% if current_user.department = 'Manager' %>
+
   <ul class='pull-right'>
     <% if @weowe_form.pending == true && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: false %>
         <%= f.hidden_field :completed, value: false %>
-        <%= f.submit 'Move to Open >', :class =>
-                     'btn btnfix btn-default btn-sm' %>
+        <%= f.submit 'Approve', :class =>
+        'btn btnfix btn-success btn-sm' %>
       <% end %>
     <% end %>
   </ul>
+
+
 <% end %>
 
 <% if current_user.department = 'Manager' || current_user.department = 'Service' %>
@@ -18,8 +21,8 @@
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: true %>
         <%= f.hidden_field :pending, value: false %>
-        <%= f.submit 'Move to Closed >', :class =>
-                       'btn btnfix btn-default btn-sm'  %>
+        <%= f.submit 'Complete', :class =>
+                       'btn btnfix btn-success btn-sm'  %>
       <% end %>
     <% end %>
   </ul>
@@ -36,8 +39,8 @@
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: true %>
         <%= f.hidden_field :completed, value: false %>
-        <%= f.submit '< Move to Pending', :class =>
-                     'btn btnfix btn-default btn-sm' %>
+        <%= f.submit 'Return to Sales', :class =>
+                     'btn btnfix btn-danger btn-sm' %>
       <% end %>
     <% end %>
   </ul>
@@ -49,8 +52,8 @@
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: false %>
         <%= f.hidden_field :pending, value: false %>
-        <%= f.submit '< Move to Open', :class =>
-                       'btn btnfix btn-default btn-sm' %>
+        <%= f.submit 'Return to Service', :class =>
+                       'btn btnfix btn-danger btn-sm' %>
       <% end %>
     <% end %>
   </ul>
