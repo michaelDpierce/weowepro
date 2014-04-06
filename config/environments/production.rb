@@ -2,6 +2,19 @@ Weowe::Application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
 
+  config.action_mailer.default_url_options = { :host => 'weowepro.herokuapp.com' }
+  ActionMailer::Base.smtp_settings = {
+    :address        => "smtp.sendgrid.net",
+    :port           => "25",
+    :authentication => :plain,
+    :user_name      => 'app22681995@heroku.com',
+    :password       => 'jukmrjnc',
+    :domain         => 'heroku.com',
+  }
+
+
+
+
   config.action_mailer.delivery_method = :test
 
   # Code is not reloaded between requests.
