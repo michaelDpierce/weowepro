@@ -1,8 +1,8 @@
 <div data-ng-app='weowepro'>
   <div data-ng-controller='PendingFormsCtrl'>
     <% provide(:title, 'Sales') %>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <h1>Sales</h1>
-
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">
