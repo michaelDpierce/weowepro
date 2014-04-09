@@ -42,7 +42,7 @@
           <a href="" ng-click="predicate.value = 'dealer_total_value'; reverse=!reverse">
             Total Value</a>
         </th>
-        <th></th>
+
       </tr>
     </thead>
 
@@ -63,9 +63,7 @@
         <td>{{form.customer_last_name}}</td>
         <td class = 'hidden-xs'>{{form.customer_first_name}}</td>
         <td>{{form.dealer_total_value | currency}}</td>
-        <td ng-click='deleteRow(form)'>
-          <check-in info='form'></check-in>
-        </td>
+
       </tr>
     </tbody>
   </table>
