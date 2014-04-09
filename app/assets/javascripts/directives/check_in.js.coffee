@@ -1,6 +1,6 @@
 @weowepro.directive 'checkIn', ->
   restrict: 'E'
-  templateUrl: '/check_in'
+  template:"<button class='btn btn-success'>Complete</button>"
   scope:
     form: '=info'
 
