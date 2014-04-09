@@ -22,4 +22,3 @@
 #= require modules
 #= require_tree .
 
-$(".alert").alert()
