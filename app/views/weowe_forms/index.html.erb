@@ -1,5 +1,5 @@
-<div data-ng-app='weowepro'>
-  <div data-ng-controller='WeoweFormsCtrl'>
+<div ng-app='weowepro'>
+  <div ng-controller='WeoweFormsCtrl'>
     <% provide(:title, 'Service') %>
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <h1>Service</h1>
