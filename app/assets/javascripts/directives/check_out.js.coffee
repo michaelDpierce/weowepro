@@ -1,6 +1,7 @@
 @weowepro.directive 'checkOut', ->
   restrict: 'E'
   template: "<button class='btn btn-success'>Approve</button>"
+  replace: true
   scope:
     form: '=info'
 
