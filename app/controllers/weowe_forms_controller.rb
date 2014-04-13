@@ -59,6 +59,7 @@ class WeoweFormsController < ApplicationController
 
   def update
     if @weowe_form.update_attributes(weowe_form_params)
+      @weowe_form.dealer_id = current_user.dealer_id
       message = 'Weowe form was successfully updated.'
       render :show
     else

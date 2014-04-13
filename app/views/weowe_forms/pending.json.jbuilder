@@ -9,6 +9,7 @@ json.array!(@pending) do |form|
   json.extract! form, :customer_last_name
   json.extract! form, :customer_first_name
   json.extract! form, :dealer_total_value
+  json.extract! form, :dealer_id
 
   json.user do
     json.id form.user.id
