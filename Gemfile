@@ -21,6 +21,7 @@ gem 'stripe'
 gem 'paperclip'
 gem 'angular_rails_csrf'
 gem 'sendgrid'
+gem 'angular-ui-bootstrap-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
