@@ -3,7 +3,7 @@
 <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 
 <% if current_user.department == 'Manager' %>
-  <ul class='pull-right'>
+  <div class='pull-left'>
     <% if @user.active? %>
       <%= bootstrap_form_for @user do |f| %>
         <%= f.hidden_field :active, value: false %>
@@ -15,8 +15,8 @@
         <%= f.submit 'Activate'  %>
       <% end %>
     <% end %>
-  </ul>
-  <ul class='pull-right'>
+  </div>
+  <ul class='pull-left'>
     <% if @user.department == 'Manager' %>
       <%= bootstrap_form_for @user do |f| %>
         <%= f.hidden_field :department, value: 'Unassigned' %>
@@ -30,6 +30,11 @@
     <% end %>
   </ul>
 <% end %>
+
+<div id='userformbutton' class='pull-right'>
+<%=link_to 'Edit Information', edit_user_path(@user),
+    class: 'btn btnfix btn-primary btn-sm'%>
+</div>
 
 <br> <br>
 
@@ -69,7 +74,3 @@
   </table>
 </div>
 
-<div id='userformbutton'>
-<%=link_to 'Edit Information', edit_user_path(@user),
-    class: 'btn btnfix btn-primary btn-sm'%>
-</div>
