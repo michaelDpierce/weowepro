@@ -44,7 +44,7 @@
           </a>
         </td>
         <td class='hidden-xs'>{{user.first_name}}</td>
-        <td class='hidden-xs'>{{user.email}}</td>
+        <td class='hidden-xs'><%= mail_to '{{user.email}}' %></td>
         <td>{{user.phone_number}}</td>
         <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
         <td class='hidden-xs'>{{user.department | adminConversion}}</td>
@@ -53,5 +53,3 @@
     </tbody>
   </table>
 </div>
-
-

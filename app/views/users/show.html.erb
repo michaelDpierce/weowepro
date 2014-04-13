@@ -44,8 +44,12 @@
       <td><%= @user.last_name %></td>
     </tr>
     <tr>
-    <th>Email</th>
-      <td><%= @user.email %></td>
+      <th> Email </th>
+      <td>
+      <%= mail_to "#{@user.email}" do %>
+        <span> <%= @user.email %> </span>
+      <% end %>
+      </td>
     </tr>
     <tr>
     <th>Phone</th>
