@@ -13,18 +13,18 @@
   <tbody>
     <% @activity.each do |item| %>
       <tr>
-        <td class='hidden-xs'><%= link_to item.stock_number, item %></td>
+        <td><%= link_to item.stock_number, item %></td>
         <td class='hidden-xs'><%= item.created_at.strftime('%-m/%-d/%Y') %></td>
         <td><%= User.find(item.user_id).last_name %></td>
         <td><%= item.customer_last_name %></td>
         <td><%= number_to_currency(item.dealer_total_value) %></td>
         <% if item.pending == false && item.completed == false %>
-          <td class='success'> Open </td>
+          <td class='success'> Sales </td>
           </td>
           <% elsif item.pending == true && item.completed == false %>
-            <td class='warning'> Pending </td>
+            <td class='warning'> Service </td>
           <% else %>
-            <td class='danger'> Closed </td>
+            <td class='danger'> Completed </td>
         <% end %>
       </tr>
     <% end %>
