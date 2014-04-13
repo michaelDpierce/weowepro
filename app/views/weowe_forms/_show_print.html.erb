@@ -6,7 +6,9 @@
   </div>
 
 <div class='pull-left'>
-  <%= image_tag @weowe_form.dealer.logo.url, width: '350px' %>
+  <% if @weowe_form.dealer.logo? %>
+    <%= image_tag @weowe_form.dealer.logo.url, width: '350px' %>
+  <% end %>
 </div>
 
 <br><br><br><br><br>
@@ -47,7 +49,7 @@
   <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
   <% @weowe_form.weowe_items.each_with_index do |item, index| %>
         <tr>
-          <th> <%= index + 1 %> </th>
+          <th><%= index + 1 %> </th>
           <td><%= item.description %></td>
           <td><%= item.quantity %></td>
           <td><%= item.parts_value %></td>
@@ -55,25 +57,27 @@
     <% end %>
 </table>
 
-<center style="font-size: 14pt">CUSTOMER OWES</center>
-<table class='table table-bordered table-condensed' >
-  <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
-          <tr>
-            <td> 1. </td>
-            <td><%= @weowe_form.theyowe_info %></td>
-            <td> 1 </td>
-            <td><%= number_to_currency(@weowe_form.customer_total_value) %></td>
-          </tr>
-  </table>
-<br>
+<% if @weowe_form.theyowe_info? %>
+  <center style="font-size: 14pt">CUSTOMER OWES</center>
+  <table class='table table-bordered table-condensed' >
+    <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
+            <tr>
+              <td> 1. </td>
+              <td><%= @weowe_form.theyowe_info %></td>
+              <td> 1 </td>
+              <td><%= number_to_currency(@weowe_form.customer_total_value) %></td>
+            </tr>
+    </table>
+  <br>
+<% end %>
 
-<center style="font-size: 10pt">
+<div style="font-size: 8pt">
   NOTE: THE ABOVE PROMISED WORK IS ONLY WORK TO BE PERFORMED FREE OF CHARGE OR INCLUDED
   IN NEGOTIATED PRICE. ANY ADDITIONAL WORK WILL BE CHARGED FOR IN ACCORDANCE WITH THE TYPE OF WARRENTY
   ISSUED AT TIME OF SALE, AND WILL BE CASH ON DELIVERY. ALL WORK MUST BE DONE IN OUR SHOP,
   AND YOU MUST MAKE AN ADVANCE APPOINTMENT WITH THE SERVICE DEPARTMENT BEFORE THE ABOVE WORK
   CAN BE PERFORMED.
-</center>
+</div>
 <br>
 
 <div class='pull-left'>
