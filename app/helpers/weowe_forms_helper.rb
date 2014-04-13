@@ -20,7 +20,9 @@ module WeoweFormsHelper
                       :completed,
                       :user_id,
                       :dealer_id,
-                      weowe_items_attributes: [:id, :weowe_form_id, :description, :_destroy]
+                      weowe_items_attributes: [:id, :weowe_form_id,
+                                               :description, :quantity,
+                                               :parts_value, :_destroy]
                      ]
 
   def weowe_form_params

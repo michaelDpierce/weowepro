@@ -79,6 +79,17 @@ namespace :db do
                  confirmed_at: DateTime.now
                )
 
+    User.create!(first_name: 'Michael',
+                 last_name: 'Pierce',
+                 phone_number: '720-387-9691',
+                 email: 'example2@weowepro.com',
+                 password: 'foobar22',
+                 password_confirmation: 'foobar22',
+                 dealer_id: 2,
+                 department: 'Manager',
+                 confirmed_at: DateTime.now
+               )
+
     200.times do |n|
 
       User.create!(first_name: Faker::Name.first_name,

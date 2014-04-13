@@ -1,12 +1,12 @@
 <div class='pull-right'>
-  <div style="font-size: 20pt"><%= @weowe_form.dealer.name %></div>
+  <div style="font-size: 16pt"><%= @weowe_form.dealer.name %></div>
     <%= "#{@weowe_form.dealer.address_1} #{@weowe_form.dealer.address_2}" %> <br />
     <%= "#{@weowe_form.dealer.city}, #{@weowe_form.dealer.state}, #{@weowe_form.dealer.zip}" %> <br />
     <%= "#{@weowe_form.dealer.phone_number}" %> <br />
   </div>
 
 <div class='pull-left'>
-  <%= image_tag @weowe_form.dealer.logo.url, height: '100' %>
+  <%= image_tag @weowe_form.dealer.logo.url, width: '350px' %>
 </div>
 
 <br><br><br><br><br>
