@@ -45,7 +45,7 @@
         </td>
         <td class='hidden-xs'>{{user.first_name}}</td>
         <td class='hidden-xs'><%= mail_to '{{user.email}}' %></td>
-        <td>{{user.phone_number}}</td>
+        <td><a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</td>
         <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
         <td class='hidden-xs'>{{user.department | adminConversion}}</td>
         <td class='hidden-xs'>{{user.department}}</td>

@@ -59,6 +59,10 @@ module ApplicationHelper
     value == 'Manager' ? 'Yes' : 'No'
   end
 
+  def phone_number_link(text)
+    link_to text, "tel:#{text}"
+  end
+
   def handle_action(resource, message, page)
     if yield(resource)
       handle_action_true(message, resource)
