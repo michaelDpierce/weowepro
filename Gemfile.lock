@@ -244,6 +244,7 @@ GEM
       websocket (~> 1.0.4)
     sendgrid (1.2.0)
       json
+      json
     slop (3.5.0)
     spork (1.0.0rc4)
     spork (1.0.0rc4-x86-mingw32)
