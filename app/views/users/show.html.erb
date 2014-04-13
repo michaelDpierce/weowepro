@@ -55,6 +55,9 @@
     <th>Active</th>
       <td><%= boolean_to_words(@user.active) %></td>
     </tr>
+    <th>Admin</th>
+      <td><%= admin_to_words(@user.department) %></td>
+    </tr>
     <tr>
     <th>Department</th>
       <td><%= @user.department %></td>

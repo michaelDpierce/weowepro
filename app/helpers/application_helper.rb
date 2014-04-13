@@ -55,6 +55,10 @@ module ApplicationHelper
     value ? 'Yes' : 'No'
   end
 
+  def admin_to_words(value)
+    value == 'Manager' ? 'Yes' : 'No'
+  end
+
   def handle_action(resource, message, page)
     if yield(resource)
       handle_action_true(message, resource)
