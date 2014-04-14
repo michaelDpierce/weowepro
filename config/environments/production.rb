@@ -2,37 +2,8 @@ Weowe::Application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
 
-<<<<<<< HEAD
-  # config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'}
-  #  config.action_mailer.delivery_method = :smtp
-  # ActionMailer::Base.smtp_settings = {
-  #   :address        => "smtp.sendgrid.net",
-  #   :port           => "587",
-  #   :authentication => :plain,
-  #   :user_name      => ENV['SENDGRID_USERNAME'],
-  #   :password       => ENV['SENDGRID_PASSWORD'],
-  #   :domain         => ENV['SENDGRID_DOMAIN'],
-  #   :enable_starttls_auto => true
-  # }
-=======
   #Email works in development without these two lines
   config.action_mailer.default_url_options = { :host => 'weowepro.heroku.com' }
->>>>>>> c072bb086501b24c804f583214ca586daa43c48d
-
-  ActionMailer::Base.smtp_settings = {
-     :address        => 'smtp.sendgrid.net',
-     :port           => '587',
-     :authentication => :plain,
-     :user_name      => ENV['SENDGRID_USERNAME'],
-     :password       => ENV['SENDGRID_PASSWORD'],
-     :domain         => 'heroku.com'
-   }
-
-   ActionMailer::Base.delivery_method = :smtp
-
-   config.action_mailer.default_url_options = { :host => 'weowepro.herokuapp.com'
-
-
 
   #Development worked when this was uncommented
   #config.action_mailer.delivery_method = :test
