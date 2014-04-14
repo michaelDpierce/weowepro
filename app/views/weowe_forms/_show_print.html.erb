@@ -48,13 +48,23 @@
 <table class='table table-bordered table-condensed' >
   <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
   <% @weowe_form.weowe_items.each_with_index do |item, index| %>
-        <tr>
-          <th><%= index + 1 %> </th>
-          <td><%= item.description %></td>
-          <td><%= item.quantity %></td>
-          <td><%= item.parts_value %></td>
-        </tr>
-    <% end %>
+    <tr>
+      <th><%= index + 1 %> </th>
+      <td><%= item.description %></td>
+      <td><%= item.quantity %></td>
+      <td><%= number_to_currency(item.parts_value) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Totals</th>
+    <td>N/A</td>
+    <td><%= WeoweItem.sum(:quantity,
+                          conditions: {weowe_form_id: [@weowe_form.id]}) %>
+    </td>
+    <td><%= number_to_currency(WeoweItem.sum(:parts_value,
+                              conditions: {weowe_form_id: [@weowe_form.id]})) %>
+    </td>
+  </tr>
 </table>
 
 <% if @weowe_form.theyowe_info? %>
