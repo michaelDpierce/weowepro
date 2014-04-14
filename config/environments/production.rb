@@ -2,6 +2,7 @@ Weowe::Application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
 
+<<<<<<< HEAD
   # config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'}
   #  config.action_mailer.delivery_method = :smtp
   # ActionMailer::Base.smtp_settings = {
@@ -13,6 +14,10 @@ Weowe::Application.configure do
   #   :domain         => ENV['SENDGRID_DOMAIN'],
   #   :enable_starttls_auto => true
   # }
+=======
+  #Email works in development without these two lines
+  config.action_mailer.default_url_options = { :host => 'weowepro.heroku.com' }
+>>>>>>> c072bb086501b24c804f583214ca586daa43c48d
 
   ActionMailer::Base.smtp_settings = {
      :address        => 'smtp.sendgrid.net',
@@ -29,7 +34,8 @@ Weowe::Application.configure do
 
 
 
-  config.action_mailer.delivery_method = :test
+  #Development worked when this was uncommented
+  #config.action_mailer.delivery_method = :test
 
   # Code is not reloaded between requests.
   config.cache_classes = true
