@@ -4,7 +4,7 @@ Weowe::Application.configure do
 
   #Email works in development without these two lines
   config.action_mailer.default_url_options = { :host => 'weowepro.heroku.com' }
-  #config.action_mailer.delivery_method = :smtp
+
 
 
   #Development worked when this was uncommented
