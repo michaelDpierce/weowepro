@@ -3,6 +3,7 @@ Weowe::Application.routes.draw do
 
   resources :dealers
   resources :weowe_forms
+  resources :weowe_items
   resources :users
   resources :charges
 

@@ -124,10 +124,22 @@
             <th> <%= index + 1 %> </th>
             <td><%= item.description %></td>
             <td><%= item.quantity %></td>
-            <td><%= item.parts_value %></td>
+            <td><%= number_to_currency(item.parts_value) %></td>
           </tr>
       <% end %>
+      <tr class='success'>
+        <th>Totals</th>
+        <td>N/A</td>
+        <td><%= WeoweItem.sum(:quantity,
+                              conditions: {weowe_form_id: [@weowe_form.id]}) %>
+        </td>
+        <td><%= number_to_currency(WeoweItem.sum(:parts_value,
+                                  conditions: {weowe_form_id: [@weowe_form.id]})) %>
+        </td>
+      </tr>
   </table>
+
+  <div> <%= @weowe_form.weowe_items.sum(:parts_value) %> </div>
 
 <h4> Customer Owes </h4>
     <table class='table table-bordered table-condensed' >
