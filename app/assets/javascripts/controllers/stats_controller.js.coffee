@@ -1,5 +1,5 @@
 @weowepro.controller 'StatsCtrl', ['$scope',
-  @StatsCtrl = ($scope) ->
+  @WeoweFormsCtrl = ($scope) ->
     $scope.today1 = ->
       $scope.dt1 = new Date()
       return
