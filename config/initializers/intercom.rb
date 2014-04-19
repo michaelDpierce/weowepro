@@ -32,6 +32,12 @@ IntercomRails.config do |config|
   #
   # config.user.model = Proc.new { User }
 
+  config.user.custom_data = {
+    first_name:    proc { |current_user| current_user.first_name },
+    last_name:     proc { |current_user| current_user.last_name },
+    phone_number:  proc { |current_user| current_user.phone_number }
+  }
+
   # == User Custom Data
   # A hash of additional data you wish to send about your users.
   # You can provide either a method name which will be sent to the current
