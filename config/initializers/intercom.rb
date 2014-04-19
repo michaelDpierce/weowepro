@@ -35,7 +35,8 @@ IntercomRails.config do |config|
   config.user.custom_data = {
     first_name:    proc { |current_user| current_user.first_name },
     last_name:     proc { |current_user| current_user.last_name },
-    phone_number:  proc { |current_user| current_user.phone_number }
+    phone_number:  proc { |current_user| current_user.phone_number },
+    department:  proc { |current_user| current_user.department }
   }
 
   # == User Custom Data
