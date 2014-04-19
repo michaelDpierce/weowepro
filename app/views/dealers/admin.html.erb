@@ -1,14 +1,33 @@
 <% provide(:title, 'Preferences') %>
 <h1>Preferences</h1>
-<div ng-app="weowepro">
-  <div ng-controller="AdminCtrl">
-    <accordion close-others="oneAtATime">
-      <accordion-group heading="Manage Billing Information">
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Manage Billing Information
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
         <%= render 'billing' %>
-      </accordion-group>
-      <accordion-group heading="Manage Dealership Information">
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Manage Dealership Information
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
         <%= render 'dealership_info' %>
-      </accordion-group>
-    </accordion>
+      </div>
+    </div>
   </div>
 </div>

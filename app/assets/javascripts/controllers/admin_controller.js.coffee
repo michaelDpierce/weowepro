@@ -1,4 +1,4 @@
-@weowepro.controller 'AdminCtrl', ['$scope',
+@weowepro.controller 'AdminCtrl', ['$scope'
   @WeoweFormsCtrl = ($scope) ->
     $scope.oneAtATime = true
 ]
