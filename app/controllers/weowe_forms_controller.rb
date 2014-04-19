@@ -38,7 +38,6 @@ class WeoweFormsController < ApplicationController
   def new
     if current_user
       @weowe_form = WeoweForm.new
-      @weowe_form.weowe_items.build
     else
       redirect_to root_path
     end

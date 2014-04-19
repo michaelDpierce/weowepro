@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @user.dealer_id = current_user.dealer_id
     message = 'User account was successfully created.'
     handle_action(@user, message, :new, &:save)
+
   end
 
   def update
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
     message = 'Profile updated.'
     handle_action(@user, message, :edit) do |resource|
       resource.update(user_params)
+    CustomerMailer.form_completed(@user).deliver
     end
   end
 
