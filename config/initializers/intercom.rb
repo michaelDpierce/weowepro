@@ -39,6 +39,12 @@ IntercomRails.config do |config|
     department:  proc { |current_user| current_user.department }
   }
 
+  config.company.current = proc { current_dealer }
+
+  config.company.custom_data = {
+    name: proc { |current_dealer| current_dealer.name }
+  }
+
   # == User Custom Data
   # A hash of additional data you wish to send about your users.
   # You can provide either a method name which will be sent to the current
