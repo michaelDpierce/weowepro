@@ -15,6 +15,12 @@ Weowe::Application.routes.draw do
 
   match '/admin', to: 'dealers#admin',    via: 'get'
 
-  match '/stats', to: 'static_pages#stats',    via: 'get'
+  match '/stats',
+        to: 'static_pages#stats',
+        via: 'get'
+  match '/stats',
+        to: 'static_pages#stats',
+        via: 'post'
+
   match '/about', to: 'static_pages#about',    via: 'get'
 end
