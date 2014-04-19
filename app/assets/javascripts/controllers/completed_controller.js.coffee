@@ -4,10 +4,10 @@
     $scope.predicate =
       value: '-custom_date'
 
-    $scope.totalDisplayed = 50
+    $scope.totalDisplayed = 20
 
     $scope.loadMore = ->
-      $scope.totalDisplayed += 100
+      $scope.totalDisplayed += 50
 
     CompletedForms.index (data) ->
       $scope.completedForms = data
