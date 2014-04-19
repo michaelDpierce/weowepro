@@ -35,9 +35,8 @@ module WeoweFormsHelper
                       :description_5,
                       :quantity_5,
                       :dealer_total_value_5,
-                      weowe_items_attributes: [:id, :weowe_form_id,
-                                               :description, :quantity,
-                                               :parts_value, :_destroy]
+                      :approved_trigger,
+                      :completed_trigger
                      ]
 
   def weowe_form_params

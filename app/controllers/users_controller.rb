@@ -33,8 +33,7 @@ class UsersController < ApplicationController
     @user.update_attributes(user_params)
     message = 'Profile updated.'
     handle_action(@user, message, :edit) do |resource|
-      resource.update(user_params)
-    CustomerMailer.form_completed(@user).deliver
+    resource.update(user_params)
     end
   end
 

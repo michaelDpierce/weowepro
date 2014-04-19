@@ -65,6 +65,16 @@ class WeoweFormsController < ApplicationController
                                                   @weowe_form.dealer_total_value_4,
                                                   @weowe_form.dealer_total_value_5)
       message = 'Weowe form was successfully updated.'
+      @approved = WeoweForm.new(:approved_trigger => params[:approved_trigger])
+      if @weowe_form.update_attributes(params[@approved])
+        CustomerMailer.form_approved(@weowe_form.customer_email).deliver
+      end
+      @completed = WeoweForm.new(:completed_trigger => params[:completed_trigger])
+      if @weowe_form.update_attributes(params[@completed])
+        CustomerMailer.form_completed(@weowe_form.customer_email).deliver
+      end
+
+
       render :show
     else
       render json: @weowe_form.errors, status: :unprocessable_entity
