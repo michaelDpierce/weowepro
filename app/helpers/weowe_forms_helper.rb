@@ -46,6 +46,6 @@ module WeoweFormsHelper
 
   def dealer_sum(val1, val2, val3, val4, val5)
     @array = [val1, val2, val3, val4, val5].compact
-    @array.inject{|sum, x| sum + x }
+    @array.reduce { |sum, x| sum + x }
   end
 end

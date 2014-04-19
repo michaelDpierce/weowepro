@@ -15,5 +15,4 @@ class Dealer < ActiveRecord::Base
   has_attached_file :logo,
                     path: ATTACHED_PATH,
                     url: '/system/:attachment/:id/:style/:filename'
-
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419023820) do
+ActiveRecord::Schema.define(version: 20140419041132) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -114,16 +114,6 @@ ActiveRecord::Schema.define(version: 20140419023820) do
     t.text     "description_5"
     t.integer  "quantity_5"
     t.decimal  "dealer_total_value_5",  precision: 8, scale: 2
-  end
-
-  create_table "weowe_items", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "description"
-    t.integer  "quantity"
-    t.decimal  "parts_value",   precision: 8, scale: 2
-    t.decimal  "labor_value",   precision: 8, scale: 2
-    t.integer  "weowe_form_id"
   end
 
 end
