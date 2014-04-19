@@ -36,7 +36,7 @@ IntercomRails.config do |config|
     first_name:    proc { |current_user| current_user.first_name },
     last_name:     proc { |current_user| current_user.last_name },
     phone_number:  proc { |current_user| current_user.phone_number },
-    department:  proc { |current_user| current_user.department }
+    department:    proc { |current_user| current_user.department }
   }
 
   # config.company.current = proc { Dealer.current_user }
