@@ -1,19 +1,19 @@
 IntercomRails.config do |config|
   # == Intercom app_id
   # 
-  config.app_id = ENV["INTERCOM_APP_ID"] || "foeq1vzj"
+  config.app_id = ENV["INTERCOM_APP_ID"] || "2c70a80687d8d4b9a16c2894b415c5e5aef58e05"
 
   # == Intercom secret key 
   # This is required to enable secure mode, you can find it on your Intercom 
   # "security" configuration page.
   # 
-  config.api_secret = "6fT56-aVtPz4PkfQ43S5KhMVOBDjvfIgcuxImu6c"
+  # config.api_secret = "..."
 
   # == Intercom API Key
   # This is required for some Intercom rake tasks like importing your users;
   # you can generate one at https://www.intercom.io/apps/api_keys.
   #
-  config.api_key = "3b37ae9850c2e98b5a4280677dee146b7cfdfebb"
+  # config.api_key = "..."
 
   # == Enabled Environments
   # Which environments is auto inclusion of the Javascript enabled for
