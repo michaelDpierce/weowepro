@@ -19,12 +19,12 @@
         <td><%= item.customer_last_name %></td>
         <td><%= number_to_currency(item.dealer_total_value) %></td>
         <% if item.pending == false && item.completed == false %>
-          <td class='success'> Sales </td>
+          <td class='danger'> Sales </td>
           </td>
           <% elsif item.pending == true && item.completed == false %>
             <td class='warning'> Service </td>
           <% else %>
-            <td class='danger'> Completed </td>
+            <td class='success'> Completed </td>
         <% end %>
       </tr>
     <% end %>
