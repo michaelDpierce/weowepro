@@ -19,7 +19,7 @@ IntercomRails.config do |config|
   # == Enabled Environments
   # Which environments is auto inclusion of the Javascript enabled for
   #
-  config.enabled_environments = %w{'development', 'production'}
+  config.enabled_environments = ['development', 'production']
 
   # == Current user method/variable
   # The method/variable that contains the logged in user in your controllers.
@@ -37,13 +37,10 @@ IntercomRails.config do |config|
   # You can provide either a method name which will be sent to the current
   # user object, or a Proc which will be passed the current user.
   #
-  config.user.custom_data = {
-    first_name:    proc { |current_user| current_user.first_name },
-    last_name:     proc { |current_user| current_user.last_name },
-    department:    proc { |current_user| current_user.department },
-    email:         proc { |current_user| current_user.email },
-    phone_number:  proc { |current_user| current_user.phone_number }
-  }
+  # config.user.custom_data = {
+  #   :plan => Proc.new { |current_user| current_user.plan.name },
+  #   :favorite_color => :favorite_color
+  # }
 
   # == User -> Company association
   # A Proc that given a user returns an array of companies
@@ -57,14 +54,15 @@ IntercomRails.config do |config|
   # in your controllers. 'Companies' are generic groupings of users, so this
   # could be a company, app or group.
   #
-  # config.company.current = Proc.new { current_account }
+  # config.company.current = Proc.new { current_company }
 
   # == Company Custom Data
   # A hash of additional data you wish to send about a company.
   # This works the same as User custom data above.
   #
   # config.company.custom_data = {
-  #   name: proc { |current_account| current_account.name }
+  #   :number_of_messages => Proc.new { |app| app.messages.count },
+  #   :is_interesting => :is_interesting?
   # }
 
   # == Company Plan name
@@ -73,7 +71,7 @@ IntercomRails.config do |config|
   # e.g. Messaging, Free, Pro, etc.
   #
   # config.company.plan =
-  # Proc.new { |current_company| current_company.plan.name }
+  #Proc.new { |current_company| current_company.plan.name }
 
   # == Company Monthly Spend
   # This is the amount the company spends each month on your app.
