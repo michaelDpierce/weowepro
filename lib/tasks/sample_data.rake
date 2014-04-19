@@ -79,8 +79,8 @@ namespace :db do
                  confirmed_at: DateTime.now
                )
 
-    User.create!(first_name: 'Michael',
-                 last_name: 'Pierce',
+    User.create!(first_name: 'Kris',
+                 last_name: 'Turner',
                  phone_number: '720-387-9691',
                  email: 'example2@weowepro.com',
                  password: 'foobar22',
