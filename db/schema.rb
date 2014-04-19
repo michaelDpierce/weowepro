@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405195212) do
+ActiveRecord::Schema.define(version: 20140419023820) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -99,6 +99,21 @@ ActiveRecord::Schema.define(version: 20140405195212) do
     t.datetime "age"
     t.string   "name_confirmation"
     t.text     "signature"
+    t.text     "description_1"
+    t.integer  "quantity_1"
+    t.decimal  "dealer_total_value_1",  precision: 8, scale: 2
+    t.text     "description_2"
+    t.integer  "quantity_2"
+    t.decimal  "dealer_total_value_2",  precision: 8, scale: 2
+    t.text     "description_3"
+    t.integer  "quantity_3"
+    t.decimal  "dealer_total_value_3",  precision: 8, scale: 2
+    t.text     "description_4"
+    t.integer  "quantity_4"
+    t.decimal  "dealer_total_value_4",  precision: 8, scale: 2
+    t.text     "description_5"
+    t.integer  "quantity_5"
+    t.decimal  "dealer_total_value_5",  precision: 8, scale: 2
   end
 
   create_table "weowe_items", force: true do |t|

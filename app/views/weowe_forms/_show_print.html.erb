@@ -45,27 +45,62 @@
 </table>
 
 <center style="font-size: 14pt"><%= "#{@weowe_form.dealer.name} OWES".upcase %></center>
-<table class='table table-bordered table-condensed' >
-  <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
-  <% @weowe_form.weowe_items.each_with_index do |item, index| %>
-    <tr>
-      <th><%= index + 1 %> </th>
-      <td><%= item.description %></td>
-      <td><%= item.quantity %></td>
-      <td><%= number_to_currency(item.parts_value) %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <th>Totals</th>
-    <td>N/A</td>
-    <td><%= WeoweItem.sum(:quantity,
-                          conditions: {weowe_form_id: [@weowe_form.id]}) %>
-    </td>
-    <td><%= number_to_currency(WeoweItem.sum(:parts_value,
-                              conditions: {weowe_form_id: [@weowe_form.id]})) %>
-    </td>
-  </tr>
-</table>
+  <table class='table table-bordered table-condensed' >
+    <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
+      <% if @weowe_form.description_1? %>
+        <tr>
+          <th style='width:25%'>1</th>
+          <td><%= @weowe_form.description_1 %></td>
+          <td><%= @weowe_form.quantity_1 %></td>
+          <td><%= number_to_currency(@weowe_form.dealer_total_value_1) %></td>
+        </tr>
+      <% end %>
+      <% if @weowe_form.description_2? %>
+        <tr>
+          <th>2</th>
+          <td><%= @weowe_form.description_2 %></td>
+          <td><%= @weowe_form.quantity_2 %></td>
+          <td><%= number_to_currency(@weowe_form.dealer_total_value_2) %></td>
+        </tr>
+      <% end %>
+      <% if @weowe_form.description_3? %>
+        <tr>
+          <th>3</th>
+          <td><%= @weowe_form.description_3 %></td>
+          <td><%= @weowe_form.quantity_3 %></td>
+          <td><%= number_to_currency(@weowe_form.dealer_total_value_3) %></td>
+        </tr>
+      <% end %>
+      <% if @weowe_form.description_4? %>
+        <tr>
+          <th>4</th>
+          <td><%= @weowe_form.description_4 %></td>
+          <td><%= @weowe_form.quantity_4 %></td>
+          <td><%= number_to_currency(@weowe_form.dealer_total_value_4) %></td>
+        </tr>
+      <% end %>
+      <% if @weowe_form.description_5? %>
+        <tr>
+          <th>5</th>
+          <td><%= @weowe_form.description_5 %></td>
+          <td><%= @weowe_form.quantity_5 %></td>
+          <td><%= number_to_currency(@weowe_form.dealer_total_value_5) %></td>
+        </tr>
+      <% end %>
+
+       <tr class='success'>
+        <th>Totals</th>
+        <td>N/A</td>
+        <td>
+          <%= @weowe_form.quantity_1 + @weowe_form.quantity_2 +
+                @weowe_form.quantity_3 + @weowe_form.quantity_4 +
+                @weowe_form.quantity_5 %>
+        </td>
+        <td>
+          <%= number_to_currency(@weowe_form.dealer_total_value) %>
+        </td>
+      </tr>
+  </table>
 
 <% if @weowe_form.theyowe_info? %>
   <center style="font-size: 14pt">CUSTOMER OWES</center>
