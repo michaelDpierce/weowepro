@@ -5,12 +5,11 @@ require File.expand_path('../application', __FILE__)
 Weowe::Application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => 'app22681995@heroku.com',
-  :password       => 'Wasd1313!',
-  :domain         => 'heroku.com',
-  :enable_starttls_auto => true
+  address: 'smtp.sendgrid.net',
+  port: '587',
+  authentication: :plain,
+  user_name: 'app22681995@heroku.com',
+  password: 'Wasd1313!',
+  domain: 'heroku.com',
+  enable_starttls_auto: true
 }
-

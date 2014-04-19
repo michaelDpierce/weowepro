@@ -13,6 +13,10 @@
     <%= f.text_field :customer_phone_mobile, label: 'Mobile #' %>
     <%= f.text_field :customer_email, label: 'Email' %>
 
+    <center><h4>Customer Owes</h4></center>
+    <%= f.text_area :theyowe_info, label: 'Description', size: '1x' %>
+    <%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value' %>
+
     <center><h4>Vehicle Information</h4></center>
     <%= f.text_field :stock_number, label: 'Stock # *' %>
     <%= f.select :year,
@@ -26,17 +30,56 @@
 
     <center><h4>We Owe *</h4></center>
 
-    <%= f.fields_for :weowe_items do |builder| %>
-      <%= render 'weowe_item_fields', f: builder %>
-    <% end %>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#item1" data-toggle="tab">Item #1</a></li>
+      <li><a href="#item2" data-toggle="tab">Item #2</a></li>
+      <li><a href="#item3" data-toggle="tab">Item #3</a></li>
+      <li><a href="#item4" data-toggle="tab">Item #4</a></li>
+      <li><a href="#item5" data-toggle="tab">Item #5</a></li>
+    </ul>
 
-    <%= link_to_add_fields raw('<i class="glyphicon glyphicon-plus-sign glyphicon-2x"></i> Add WeOwe'),
-      f, :weowe_items %>
-    <br><br>
-
-    <center><h4>Customer Owes</h4></center>
-    <%= f.text_area :theyowe_info, label: 'Description', size: '2x' %>
-    <%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value' %>
+    <div class="tab-content">
+      <div class="tab-pane active" id="item1">
+        <br>
+        <%= f.text_area :description_1, label: 'Description' %>
+        <%= f.select :quantity_1,
+                     options_for_select((1..10).to_a),
+                     label: 'Quantity' %>
+        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+      </div>
+      <div class="tab-pane" id="item2">
+        <br>
+        <%= f.text_area :description_2, label: 'Description' %>
+        <%= f.select :quantity_2,
+                     options_for_select((1..10).to_a),
+                     label: 'Quantity' %>
+        <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Total Value' %>
+      </div>
+      <div class="tab-pane" id="item3">
+        <br>
+        <%= f.text_area :description_3, label: 'Description' %>
+        <%= f.select :quantity_3,
+                     options_for_select((1..10).to_a),
+                     label: 'Quantity' %>
+        <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Total Value' %>
+      </div>
+      <div class="tab-pane" id="item4">
+        <br>
+        <%= f.text_area :description_4, label: 'Description' %>
+        <%= f.select :quantity_4,
+                     options_for_select((1..10).to_a),
+                     label: 'Quantity' %>
+        <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Total Value' %>
+      </div>
+      <div class="tab-pane" id="item5">
+        <br>
+    <%= f.text_area :description_5, label: 'Description' %>
+    <%= f.select :quantity_5,
+                 options_for_select((1..10).to_a),
+                 label: 'Quantity' %>
+    <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Total Value' %>
+      </div>
+    </div>
 
     <% unless f.object.new_record? %>
         <center><h4>Admin Fields</h4></center>
