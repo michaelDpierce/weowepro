@@ -92,9 +92,7 @@
         <th>Totals</th>
         <td>N/A</td>
         <td>
-          <%= @weowe_form.quantity_1 + @weowe_form.quantity_2 +
-                @weowe_form.quantity_3 + @weowe_form.quantity_4 +
-                @weowe_form.quantity_5 %>
+          <%= @weowe_form.dealer_total_value %>
         </td>
         <td>
           <%= number_to_currency(@weowe_form.dealer_total_value) %>
