@@ -22,11 +22,15 @@
         </th>
         <th class = 'hidden-xs'>
          <a href="" ng-click="predicate.value = 'active'; reverse=!reverse">
+           Department</a>
+        </th>
+        <th class = 'hidden-xs'>
+         <a href="" ng-click="predicate.value = 'active'; reverse=!reverse">
            Active</a>
         </th>
         <th class = 'hidden-xs'>
          <a href="" ng-click="predicate.value = 'department'; reverse=!reverse">
-           Department</a>
+           Admin</a>
         </th>
       </tr>
     </thead>
@@ -42,8 +46,9 @@
         <td class='hidden-xs'>{{user.first_name}}</td>
         <td class='hidden-xs'><%= mail_to '{{user.email}}' %></td>
         <td><a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</td>
-        <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
         <td class='hidden-xs'>{{user.department}}</td>
+        <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
+        <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
       </tr>
     </tbody>
   </table>

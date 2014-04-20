@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_a00876
 <% provide(:title, 'Sign In') %>
 <br><br><br>
 
@@ -17,32 +16,7 @@
     <% end %>
 
    <%= render "devise/shared/links" %>
-    <!-- <div> Don't have an account? <%= link_to(' Sign Up', new_user_path) %></div> -->
-  </div>
-</div>
-</div>
-
-=======
-<% provide(:title, 'Sign In') %>
-<br><br><br>
-
-<div class='row well'>
-  <div class='userform'>
-    <center>
-      <h1>COMSA Tracker</h1>
-    </center>
-
-    <%= bootstrap_form_for(resource, :as => resource_name,
-                           :url => session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, :autofocus => true %>
-      <%= f.password_field :password %>
-
-      <%= f.primary 'Login' %>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
     <div> Don't have an account? <%= link_to(' Sign Up', new_user_path) %></div>
   </div>
 </div>
-
->>>>>>> .merge_file_a04868
+</div>

@@ -2,7 +2,7 @@
 
 <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 
-<% if @user != current_user %>
+<% if @user != current_user && current_user.admin? %>
   <div class='pull-left'>
     <% if @user.active? %>
       <%= bootstrap_form_for @user do |f| %>
@@ -17,12 +17,12 @@
     <% end %>
   </div>
   <ul class='pull-left'>
-    <% if @user.department == 'Manager' %>
+    <% if @user.admin == true %>
       <%= bootstrap_form_for @user do |f| %>
         <%= f.hidden_field :department, value: 'Unassigned' %>
         <%= f.submit 'Remove Admin' %>
       <% end %>
-    <% elsif @user.department != 'Manager' %>
+    <% elsif @user.admin == false %>
       <%= bootstrap_form_for @user do |f| %>
         <%= f.hidden_field :department, value: 'Manager' %>
         <%= f.submit 'Add Admin' %>
@@ -65,7 +65,7 @@
       <td><%= boolean_to_words(@user.active) %></td>
     </tr>
     <th>Admin</th>
-      <td><%= admin_to_words(@user.department) %></td>
+      <td><%= boolean_to_words(@user.admin) %></td>
     </tr>
     <tr>
     <th>Department</th>

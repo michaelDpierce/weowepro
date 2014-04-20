@@ -76,6 +76,7 @@ namespace :db do
                  password_confirmation: 'foobar22',
                  dealer_id: 1,
                  department: 'Manager',
+                 admin: true,
                  confirmed_at: DateTime.now
                )
 
@@ -86,7 +87,8 @@ namespace :db do
                  password: 'foobar22',
                  password_confirmation: 'foobar22',
                  dealer_id: 2,
-                 department: 'Manager',
+                 department: 'Sales',
+                 admin: false,
                  confirmed_at: DateTime.now
                )
 
