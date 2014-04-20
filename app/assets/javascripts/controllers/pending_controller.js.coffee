@@ -25,10 +25,10 @@
 
     $scope.alerts = []
 
-    $scope.addAlert = (alert, message) ->
+    $scope.addAlert = (message) ->
       $scope.alerts = []
       $scope.alerts.push
-        type: alert
+        type: 'info'
         msg: message
 
     $scope.closeAlert = (index) ->
