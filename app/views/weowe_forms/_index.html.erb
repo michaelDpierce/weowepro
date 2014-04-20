@@ -64,7 +64,7 @@
         <td class = 'hidden-xs'>{{form.customer_first_name}}</td>
         <td>{{form.dealer_total_value | currency}}</td>
         <td ng-click='deleteRow(form)'>
-          <complete ng-click="addAlert(customAlert(form), customMsg(form))" info='form'></complete>
+          <complete-form ng-click="addAlert(customAlert(form), customMsg(form))" info='form'></complete-form>
         </td>
       </tr>
     </tbody>
