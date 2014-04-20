@@ -33,6 +33,7 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'debugger'
+  gem 'mailcatcher'
 end
 
 group :test do
