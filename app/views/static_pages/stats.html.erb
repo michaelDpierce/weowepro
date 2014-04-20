@@ -1,10 +1,7 @@
-<div ng-app="weowepro">
-  <div ng-controller="AnalyticsCtrl">
-    <% provide(:title, 'Statistics') %>
-    <h1 class='hidden-xs'>Statistics</h1>
-    <div class='row'>
-      <div class='col-md-6 well'><%= render 'form' %></div>
-      <div class='col-md-6'><%= render 'stats_table' %></div>
-    </div>
-  </div>
+<% provide(:title, 'Statistics') %>
+<h1 class='hidden-xs'>Statistics</h1>
+<div class='row'>
+  <div class='col-md-6 well'><%= render 'form' %></div>
+  <div class='col-md-6'><%= render 'stats_table' %></div>
 </div>
+
