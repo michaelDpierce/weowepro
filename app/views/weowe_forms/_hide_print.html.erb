@@ -1,18 +1,17 @@
-<% if current_user.department = 'Manager' %>
-
+<% if current_user.admin? %>
   <ul class='pull-right'>
     <% if @weowe_form.pending == true && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :pending, value: false %>
         <%= f.hidden_field :completed, value: false %>
         <%= f.submit 'Approve', :class =>
-        'btn btnfix btn-success btn-sm' %>
+        'btn btnfix btn-warning btn-sm' %>
       <% end %>
     <% end %>
   </ul>
 <% end %>
 
-<% if current_user.department = 'Manager' || current_user.department = 'Service' %>
+<% if current_user.admin? || current_user.department = 'Service' %>
   <ul class='pull-right'>
     <% if @weowe_form.pending == false && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
@@ -30,7 +29,7 @@
                      'btn btnfix btn-default btn-sm') %>
 </ul>
 
-<% if current_user.department = 'Manager' %>
+<% if current_user.admin? %>
   <ul class='pull-right'>
     <% if @weowe_form.pending == false && @weowe_form.completed == false %>
       <%= bootstrap_form_for @weowe_form do |f| %>
@@ -43,14 +42,14 @@
   </ul>
 <% end %>
 
-<% if current_user.department = 'Manager' || current_user.department = 'Service' %>
+<% if current_user.admin? || current_user.department = 'Service' %>
   <ul class='pull-right'>
     <% if @weowe_form.pending == false && @weowe_form.completed == true %>
       <%= bootstrap_form_for @weowe_form do |f| %>
         <%= f.hidden_field :completed, value: false %>
         <%= f.hidden_field :pending, value: false %>
         <%= f.submit 'Return to Service', :class =>
-                       'btn btnfix btn-danger btn-sm' %>
+                       'btn btnfix btn-warning btn-sm' %>
       <% end %>
     <% end %>
   </ul>
