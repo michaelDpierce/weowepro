@@ -1,4 +1,4 @@
 @weowepro = angular.module 'weowepro',
-  ['ngResource', 'weoweproFilters', 'ui.bootstrap']
+  ['ngResource', 'weoweproFilters', 'ngAnimate', 'ui.bootstrap']
 
 @weoweproFilters = angular.module 'weoweproFilters', []

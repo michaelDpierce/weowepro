@@ -1,5 +1,5 @@
-@weowepro.controller 'WeoweFormsCtrl', ['$scope', 'WeoweForms',
-  @WeoweFormsCtrl = ($scope, WeoweForms) ->
+@weowepro.controller 'WeoweFormsCtrl', ['$scope', 'WeoweForms', 'Alert', 'Message'
+  @WeoweFormsCtrl = ($scope, WeoweForms, Alert, Message) ->
 
     $scope.predicate =
       value: '-custom_date'
@@ -22,11 +22,11 @@
 
     $scope.alerts = []
 
-    $scope.addAlert = (alert, message) ->
+    $scope.addAlert = (Alert, Message) ->
       $scope.alerts = []
       $scope.alerts.push
-        type: alert
-        msg: message
+        type: Alert
+        msg: Message
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1
