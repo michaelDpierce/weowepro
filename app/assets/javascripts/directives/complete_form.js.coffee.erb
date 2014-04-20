@@ -1,6 +1,6 @@
 @weowepro.directive 'completeForm', ->
   restrict: 'E'
-  templateUrl:'<%= asset_path("complete_form.html") %>'
+  template: "<button class='btn btn-success'>Complete</button>"
   replace: true
   scope:
     form: '=info'
