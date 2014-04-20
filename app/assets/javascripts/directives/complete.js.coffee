@@ -1,15 +1,15 @@
-@weowepro.directive 'checkOut', ->
+@weowepro.directive 'complete', ->
   restrict: 'E'
-  templateUrl: '/check_out'
+  templateUrl: '/complete'
   replace: true
   scope:
     form: '=info'
 
   link: (scope, element, attrs) ->
     element.bind 'click', ->
-      scope.form.completed = false
+      scope.form.completed = true
       scope.form.pending = false
-      scope.form.approved_trigger = true
+      scope.form.completed_trigger = true
 
       scope.form.$update (newForm, putResponseHeaders) ->
         console.log 'Great Success!'

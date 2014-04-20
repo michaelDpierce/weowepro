@@ -21,7 +21,7 @@
       message = if form.customer_email then YES else NO
 
     $scope.customAlert = (form) ->
-      alert = if form.customer_email then 'success' else 'danger'
+      alert = if form.customer_email then 'warning' else 'info'
 
     $scope.alerts = []
 

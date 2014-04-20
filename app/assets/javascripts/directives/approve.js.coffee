@@ -1,15 +1,15 @@
-@weowepro.directive 'checkIn', ->
+@weowepro.directive 'approve', ->
   restrict: 'E'
-  template:"<button class='btn btn-success'>Complete</button>"
+  templateUrl: '/approve'
   replace: true
   scope:
     form: '=info'
 
   link: (scope, element, attrs) ->
     element.bind 'click', ->
-      scope.form.completed = true
+      scope.form.completed = false
       scope.form.pending = false
-      scope.form.completed_trigger = true
+      scope.form.approved_trigger = true
 
       scope.form.$update (newForm, putResponseHeaders) ->
         console.log 'Great Success!'
