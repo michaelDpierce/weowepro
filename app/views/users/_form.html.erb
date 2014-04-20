@@ -20,9 +20,9 @@
     <%= f.text_field :phone_number, label: 'Phone Number *' %>
     <% if @user.department == 'Manager' %>
       <%= f.select :active, [['Yes', true], ['No', false]] %>
-      <%= f.select :department, ['Sales', 'Service', 'Manager', 'Unassigned'] %>
+      <%= f.select :department, ['F&I', 'Sales', 'Service', 'Manager', 'Unassigned'] %>
     <% else %>
-      <%= f.select :department, ['Sales', 'Service', 'Unassigned'] %>
+      <%= f.select :department, ['F&I', 'Sales', 'Service', 'Unassigned'] %>
     <% end %>
 
     <% if f.object.new_record? %>
