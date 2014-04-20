@@ -1,25 +1,26 @@
-@weowepro.controller 'StatsCtrl', ['$scope',
-  @StatsControllerCtrl = ($scope) ->
-    $scope.today1 = ->
-      $scope.dt1 = new Date()
+# @weowepro.controller 'StatsCtrl', ['$scope',
+#   @StatsControllerCtrl = ($scope) ->
 
-    $scope.today2 = ->
-      $scope.dt2 = new Date()
+#     $scope.today1 = ->
+#       $scope.dt1 = new Date()
 
-    $scope.today1()
-    $scope.today2()
+#     $scope.today2 = ->
+#       $scope.dt2 = new Date()
 
-    $scope.open1 = ($event) ->
-      $event.preventDefault()
-      $event.stopPropagation()
-      $scope.opened1 = true
+#     $scope.today1()
+#     $scope.today2()
 
-    $scope.open2 = ($event) ->
-      $event.preventDefault()
-      $event.stopPropagation()
-      $scope.opened2 = true
+#     $scope.open1 = ($event) ->
+#       $event.preventDefault()
+#       $event.stopPropagation()
+#       $scope.opened1 = true
 
-    $scope.dateOptions =
-      "year-format": "'yy'"
-      "starting-day": 1
-]
+#     $scope.open2 = ($event) ->
+#       $event.preventDefault()
+#       $event.stopPropagation()
+#       $scope.opened2 = true
+
+#     $scope.dateOptions =
+#       "year-format": "'yy'"
+#       "starting-day": 1
+# ]
