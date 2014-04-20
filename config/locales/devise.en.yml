@@ -13,7 +13,7 @@ en:
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account will be locked."
       not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired. Please sign in again to continue."
+      timeout: ""
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
@@ -41,7 +41,7 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
     sessions:
-      signed_in: "Signed in successfully."
+      signed_in: ""
       signed_out: "Signed out successfully."
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
