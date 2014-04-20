@@ -1,6 +1,5 @@
 <div class='userform well'>
-  <%= bootstrap_form_for(@weowe_form,
-    layout: :horizontal, label_col: 'col-sm-4', control_col: 'col-sm-8') do |f| %>
+  <%= bootstrap_form_for(@weowe_form) do |f| %>
 
     <%= render 'shared/error_messages_weowe_forms' %>
 
@@ -30,54 +29,73 @@
 
     <center><h4>We Owe *</h4></center>
 
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#item1" data-toggle="tab">Item #1</a></li>
-      <li><a href="#item2" data-toggle="tab">Item #2</a></li>
-      <li><a href="#item3" data-toggle="tab">Item #3</a></li>
-      <li><a href="#item4" data-toggle="tab">Item #4</a></li>
-      <li><a href="#item5" data-toggle="tab">Item #5</a></li>
-    </ul>
-
-    <div class="tab-content">
-      <div class="tab-pane active" id="item1">
-        <br>
-        <%= f.text_area :description_1, label: 'Description' %>
+    <div class='row'>
+      <div class='col-md-6 col-xs-18'>
+        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #1' %>
+      </div>
+      <div class='col-md-2 col-xs-4'>
         <%= f.select :quantity_1,
                      options_for_select((1..10).to_a),
                      {include_blank: true, label: 'Quantity'} %>
+      </div>
+      <div class='col-md-4 col-xs-8'>
         <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
       </div>
-      <div class="tab-pane" id="item2">
-        <br>
-        <%= f.text_area :description_2, label: 'Description' %>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-xs-18'>
+        <%= f.text_field :description_2, label: 'Description', placeholder: 'Item #2' %>
+      </div>
+      <div class='col-md-2 col-xs-4'>
         <%= f.select :quantity_2,
                      options_for_select((1..10).to_a),
                      {include_blank: true, label: 'Quantity'} %>
-        <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Total Value' %>
       </div>
-      <div class="tab-pane" id="item3">
-        <br>
-        <%= f.text_area :description_3, label: 'Description' %>
-        <%= f.select :quantity_3,
+      <div class='col-md-4 col-xs-8'>
+        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-xs-18'>
+        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #3' %>
+      </div>
+      <div class='col-md-2 col-xs-4'>
+        <%= f.select :quantity_1,
                      options_for_select((1..10).to_a),
                      {include_blank: true, label: 'Quantity'} %>
-        <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Total Value' %>
       </div>
-      <div class="tab-pane" id="item4">
-        <br>
-        <%= f.text_area :description_4, label: 'Description' %>
-        <%= f.select :quantity_4,
+      <div class='col-md-4 col-xs-8'>
+        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-xs-18'>
+        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #4' %>
+      </div>
+      <div class='col-md-2 col-xs-4'>
+        <%= f.select :quantity_1,
                      options_for_select((1..10).to_a),
                      {include_blank: true, label: 'Quantity'} %>
-        <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Total Value' %>
       </div>
-      <div class="tab-pane" id="item5">
-        <br>
-    <%= f.text_area :description_5, label: 'Description' %>
-        <%= f.select :quantity_5,
+      <div class='col-md-4 col-xs-8'>
+        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-xs-18'>
+        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #5' %>
+      </div>
+      <div class='col-md-2 col-xs-4'>
+        <%= f.select :quantity_1,
                      options_for_select((1..10).to_a),
                      {include_blank: true, label: 'Quantity'} %>
-    <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Total Value' %>
+      </div>
+      <div class='col-md-4 col-xs-8'>
+        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
       </div>
     </div>
 
