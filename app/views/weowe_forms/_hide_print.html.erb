@@ -1,3 +1,15 @@
+<div style='float:left;width:150px'>
+  <table class='table table-bordered table-condensed' style='text-align: center;'>
+    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+      <td class='danger'> Status: Sales </td>
+      <% elsif @weowe_form.pending == false && @weowe_form.completed == false %>
+        <td class='warning'> Status: Service </td>
+      <% else %>
+        <td class='success'> Status: Completed </td>
+    <% end %>
+  </table>
+</div>
+
 <% if current_user.admin? %>
   <ul class='pull-right'>
     <% if @weowe_form.pending == true && @weowe_form.completed == false %>
