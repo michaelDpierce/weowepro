@@ -1,8 +1,8 @@
 <div ng-app='weowepro'>
   <div ng-controller='CompletedFormsCtrl'>
     <% provide(:title, 'Completed') %>
-    <h1>Completed</h1>
-
+    <h1 class='hidden-xs'>Completed</h1>
+    <center><h4 class='visible-xs'>Completed</h4></center>
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">
@@ -14,7 +14,7 @@
       </div>
       <div class='col-md-5'></div>
       <div class='col-md-4'>
-      <div class='btn-group'>
+      <div class='btn-group hidden-xs'>
         <%= link_to 'Add Form', new_weowe_form_path,
           class: 'btn btn-primary btn-sm', role: 'button' %>
         <%= link_to 'Sales', pending_path,
@@ -23,13 +23,13 @@
           class: 'btn btn-warning btn-sm', role: 'button' %>
       </div>
     </div>
-    <br><br><br>
+    <div class='hidden-xs'><br><br></div><br>
     <%= render 'completed' %>
     <div class='well'>
       <center>
         <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
         <br><br>
-        <div class='btn-group'>
+        <div class='btn-group hidden-xs'>
           <%= link_to 'Add Form', new_weowe_form_path,
             class: 'btn btn-primary', role: 'button' %>
           <%= link_to 'Sales', pending_path,
@@ -41,3 +41,5 @@
     </div>
   </div>
 </div>
+
+

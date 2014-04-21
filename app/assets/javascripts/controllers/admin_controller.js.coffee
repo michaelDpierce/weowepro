@@ -1,4 +1,4 @@
-# @weowepro.controller 'AdminCtrl', ['$scope',
-#   @AdminControllerCtrl = ($scope) ->
-#     $scope.oneAtATime = false
-# ]
+@weowepro.controller 'AdminCtrl', ['$scope',
+  @AdminControllerCtrl = ($scope) ->
+    $scope.oneAtATime = false
+]

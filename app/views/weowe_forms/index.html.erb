@@ -2,7 +2,8 @@
   <div ng-controller='WeoweFormsCtrl'>
     <% provide(:title, 'Service') %>
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <h1>Service</h1>
+    <h1 class='hidden-xs'>Service</h1>
+    <center><h4 class='visible-xs'>Service</h4></center>
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">
@@ -14,7 +15,7 @@
       </div>
       <div class='col-md-5'></div>
       <div class='col-md-4'>
-      <div class='btn-group'>
+      <div class='btn-group hidden-xs'>
         <%= link_to 'Add Form', new_weowe_form_path,
           class: 'btn btn-primary btn-sm', role: 'button' %>
         <%= link_to 'Sales', pending_path,
@@ -23,13 +24,13 @@
           class: 'btn btn-success btn-sm', role: 'button' %>
       </div>
     </div>
-    <br><br><br>
+     <div class='hidden-xs'><br><br></div><br>
     <%= render 'index' %>
     <div class='well'>
       <center>
         <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
         <br>
-        <div class='btn-group'>
+        <div class='btn-group hidden-xs'>
           <%= link_to 'Add Form', new_weowe_form_path,
             class: 'btn btn-primary', role: 'button' %>
           <%= link_to 'Sales', pending_path,

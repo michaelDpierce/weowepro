@@ -26,29 +26,10 @@
 </div>
 
 <div class='visible-xs'>
-  <center><h4>Dashboard</h4></center>
-  <br>
-  <% if current_user.department == 'Manager' || current_user.department == 'Sales' %>
-    <%= link_to 'New Form', new_weowe_form_path,
-      class: 'btn btn-primary btn-lg btn-block', role: 'button' %>
-  <% end %>
-  <br>
-    <%= link_to 'Sales', pending_path,
-      class: 'btn btn-danger btn-lg btn-block', role: 'button' %>
-    <br>
-  <%= link_to 'Service', weowe_forms_path,
-    class: 'btn btn-warning btn-lg btn-block', role: 'button' %>
-  <br>
-  <%= link_to 'Completed', completed_path,
-    class: 'btn btn-success btn-lg btn-block', role: 'button' %>
-  <br>
+  <center><h3>Dashboard</h3></center>
     <center>
-      <h3>Most Recent Form Status</h3>
+      <h4>Most Recent Form Status</h4>
       <%= render 'dashboard' %>
     </center>
     <br><br>
 </div>
-
-
-    <h1 class='hidden-xs'>Resend Confirmation Instructions</h1>
-    <center><h4 class='visible-xs'>Resend Confirmation Instructions</h4></center>

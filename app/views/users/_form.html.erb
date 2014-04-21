@@ -3,7 +3,8 @@
 
     <%= render 'shared/error_messages_users' %>
 
-    <legend><%= legend %></legend>
+    <h1 class='hidden-xs'><%= legend %></h1>
+    <center><h3 class='visible-xs'><%= legend %></h3></center>
 
     <% unless signed_in? %>
       <%= f.select :dealer_id, options_from_collection_for_select(Dealer.all, :id, :name) %>

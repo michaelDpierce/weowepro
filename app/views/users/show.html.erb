@@ -1,42 +1,45 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name.each_char.first}.") %>
 
-<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<h1 class='hidden-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<center><h4 class='visible-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h4></center>
 
-<% if @user != current_user && current_user.admin? %>
-  <div class='pull-left'>
-    <% if @user.active? %>
-      <%= bootstrap_form_for @user do |f| %>
-        <%= f.hidden_field :active, value: false %>
-        <%= f.submit 'Deactivate' %>
+<div class='hidden-xs'>
+  <% if @user != current_user && current_user.admin? %>
+    <div class='pull-left'>
+      <% if @user.active? %>
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.hidden_field :active, value: false %>
+          <%= f.submit 'Deactivate' %>
+        <% end %>
+      <% elsif @user.active == false %>
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.hidden_field :active, value: true %>
+          <%= f.submit 'Activate'  %>
+        <% end %>
       <% end %>
-    <% elsif @user.active == false %>
-      <%= bootstrap_form_for @user do |f| %>
-        <%= f.hidden_field :active, value: true %>
-        <%= f.submit 'Activate'  %>
+    </div>
+    <ul class='pull-left'>
+      <% if @user.admin == true %>
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.hidden_field :department, value: 'Unassigned' %>
+          <%= f.submit 'Remove Admin' %>
+        <% end %>
+      <% elsif @user.admin == false %>
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.hidden_field :department, value: 'Manager' %>
+          <%= f.submit 'Add Admin' %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <ul class='pull-left'>
-    <% if @user.admin == true %>
-      <%= bootstrap_form_for @user do |f| %>
-        <%= f.hidden_field :department, value: 'Unassigned' %>
-        <%= f.submit 'Remove Admin' %>
-      <% end %>
-    <% elsif @user.admin == false %>
-      <%= bootstrap_form_for @user do |f| %>
-        <%= f.hidden_field :department, value: 'Manager' %>
-        <%= f.submit 'Add Admin' %>
-      <% end %>
-    <% end %>
-  </ul>
-<% end %>
+    </ul>
+  <% end %>
+</div>
 
 <div id='userformbutton' class='pull-right'>
-<%=link_to 'Edit Information', edit_user_path(@user),
+<%=link_to 'Edit', edit_user_path(@user),
     class: 'btn btnfix btn-primary btn-sm'%>
 </div>
 
-<br> <br>
+<br><br>
 
 <div class='table-responsive'>
   <table class='table table-bordered table-condensed' >

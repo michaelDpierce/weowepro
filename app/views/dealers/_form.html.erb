@@ -4,7 +4,8 @@
 
     <%= render 'shared/error_messages_dealers' %>
 
-    <legend><%= legend %></legend>
+    <h1 class='hidden-xs'><%= legend %></h1>
+    <center><h3 class='visible-xs'><%= legend %></h3></center>
 
     <%= f.text_field :name, label: 'Dealership Name *' %>
     <%= f.text_field :address_1, label: 'Address 1 *' %>

@@ -5,8 +5,9 @@
       <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
         <div class="btn-group dropup">
           <div class="btn-group">
-            <%= link_to 'New Form', new_weowe_form_path, class: 'btn btn-primary', role: 'button' %>
-
+            <% if current_user.department == 'Manager' || current_user.department == 'Sales' || current_user.admin? %>
+              <%= link_to 'Add Form', new_weowe_form_path, class: 'btn btn-primary', role: 'button' %>
+            <% end %>
             <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle custom" data-toggle="dropdown">
                 Form Index
@@ -40,3 +41,6 @@
   <%= debug(params) if Rails.env.development? %>
   </center>
 </footer>
+
+
+
