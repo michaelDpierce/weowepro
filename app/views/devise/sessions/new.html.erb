@@ -1,11 +1,8 @@
 <% provide(:title, 'Sign In') %>
-<br><br><br>
-
 <div class='userform well'>
   <div class='userform'>
-    <center>
-      <h1> We Owe Pro </h1>
-    </center>
+    <h1 class='hidden-xs'>We Owe Pro</h1>
+    <center><h4 class='visible-xs'>We Owe Pro</h4></center>
 
     <%= bootstrap_form_for(resource, :as => resource_name,
                            :url => session_path(resource_name)) do |f| %>

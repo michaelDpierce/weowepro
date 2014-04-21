@@ -26,7 +26,7 @@
 </div>
 
 <div class='visible-xs'>
-  <h1>Dashboard</h1>
+  <center><h4>Dashboard</h4></center>
   <br>
   <% if current_user.department == 'Manager' || current_user.department == 'Sales' %>
     <%= link_to 'New Form', new_weowe_form_path,
@@ -48,3 +48,7 @@
     </center>
     <br><br>
 </div>
+
+
+    <h1 class='hidden-xs'>Resend Confirmation Instructions</h1>
+    <center><h4 class='visible-xs'>Resend Confirmation Instructions</h4></center>
