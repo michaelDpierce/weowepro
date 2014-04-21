@@ -68,6 +68,7 @@ namespace :db do
                       )
     end
 
+    # Main admin user for popualte data
     User.create!(first_name: 'Michael',
                  last_name: 'Pierce',
                  phone_number: '720-387-9691',
@@ -80,15 +81,54 @@ namespace :db do
                  confirmed_at: DateTime.now
                )
 
-    User.create!(first_name: 'Kris',
-                 last_name: 'Turner',
+    # Dealership #2 usernames
+
+    #Manager
+    User.create!(first_name: 'Michael',
+                 last_name: 'Pierce',
                  phone_number: '720-387-9691',
-                 email: 'example2@weowepro.com',
+                 email: 'mpierce@dealership.com',
                  password: 'foobar22',
                  password_confirmation: 'foobar22',
                  dealer_id: 2,
+                 department: 'Manager',
+                 admin: true,
+                 confirmed_at: DateTime.now
+               )
+
+    User.create!(first_name: 'Ryan',
+                 last_name: 'Lacy',
+                 phone_number: '720-387-9691',
+                 email: 'rlacy@dealership.com',
+                 password: 'foobar22',
+                 password_confirmation: 'foobar22',
+                 dealer_id: 1,
                  department: 'Sales',
                  admin: false,
+                 confirmed_at: DateTime.now
+               )
+
+    User.create!(first_name: 'Kris',
+                 last_name: 'Turner',
+                 phone_number: '720-387-9691',
+                 email: 'kturner@dealership.com',
+                 password: 'foobar22',
+                 password_confirmation: 'foobar22',
+                 dealer_id: 2,
+                 department: 'Service',
+                 admin: true,
+                 confirmed_at: DateTime.now
+               )
+
+    User.create!(first_name: 'Johnny',
+                 last_name: 'Lamb',
+                 phone_number: '720-387-9691',
+                 email: 'jlamb@dealership.com',
+                 password: 'foobar22',
+                 password_confirmation: 'foobar22',
+                 dealer_id: 2,
+                 department: 'F&I',
+                 admin: true,
                  confirmed_at: DateTime.now
                )
 
