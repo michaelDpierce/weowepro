@@ -17,12 +17,15 @@
     <%= f.text_field :last_name, label: 'Last Name *' %>
     <%= f.text_field :email, label: 'Email *' %>
     <%= f.text_field :phone_number, label: 'Phone Number *' %>
-    <% if current_user.admin? %>
-      <%= f.select :admin, [['Yes', true], ['No', false]] %>
-      <%= f.select :active, [['Yes', true], ['No', false]] %>
-      <%= f.select :department, ['F&I', 'Sales', 'Service', 'Manager', 'Unassigned'] %>
-    <% else %>
-      <%= f.select :department, ['F&I', 'Sales', 'Service', 'Unassigned'] %>
+
+    <% if signed_in? %>
+      <% if current_user.admin? %>
+        <%= f.select :admin, [['Yes', true], ['No', false]] %>
+        <%= f.select :active, [['Yes', true], ['No', false]] %>
+        <%= f.select :department, ['F&I', 'Sales', 'Service', 'Manager', 'Unassigned'] %>
+      <% else %>
+        <%= f.select :department, ['F&I', 'Sales', 'Service', 'Unassigned'] %>
+      <% end %>
     <% end %>
 
     <% if f.object.new_record? %>
