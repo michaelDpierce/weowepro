@@ -32,6 +32,17 @@ class User < ActiveRecord::Base
             on: :update,
             allow_blank: true
 
+  comma do
+    last_name 'Last Name'
+    first_name 'First Name'
+    email 'Email'
+    phone_number 'Phone Number'
+    department 'Department'
+    active 'Active'
+    admin 'Admin'
+
+  end
+
   def self.new_remember_token
     SecureRandom.urlsafe_base64
   end

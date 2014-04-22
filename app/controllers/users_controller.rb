@@ -6,6 +6,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+      format.csv do
+        render csv: @users, filename: 'users'
+      end
     end
   end
 

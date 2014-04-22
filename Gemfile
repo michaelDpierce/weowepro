@@ -23,6 +23,7 @@ gem 'angular_rails_csrf'
 gem 'sendgrid'
 gem 'angular-ui-bootstrap-rails'
 gem 'intercom-rails', '~> 0.2.24'
+gem 'comma', '~> 3.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

@@ -12,6 +12,9 @@ class WeoweFormsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+      format.csv do
+        render csv: @index, filename: 'service'
+      end
     end
   end
 
@@ -20,6 +23,9 @@ class WeoweFormsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+      format.csv do
+        render csv: @pending, filename: 'sales'
+      end
     end
   end
 
@@ -28,6 +34,9 @@ class WeoweFormsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+      format.csv do
+        render csv: @completed, filename: 'completed'
+      end
     end
   end
 
