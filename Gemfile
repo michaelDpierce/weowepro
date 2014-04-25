@@ -20,7 +20,7 @@ gem 'stripe'
 gem 'paperclip'
 gem 'angular_rails_csrf'
 gem 'sendgrid'
-gem 'angular-ui-bootstrap-rails'
+# gem 'angular-ui-bootstrap-rails'
 gem 'intercom-rails'
 gem 'comma', '~> 3.0'
 
