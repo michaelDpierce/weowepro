@@ -2,6 +2,7 @@
   <div data-ng-controller='PendingFormsCtrl'>
     <% provide(:title, 'Sales') %>
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
     <h1 class='hidden-xs'>Sales</h1>
     <center><h4 class='visible-xs'>Sales</h4></center>
     <div class='row'>
