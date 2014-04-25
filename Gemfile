@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-# ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.2'
 gem 'bootstrap_form'
@@ -21,7 +20,7 @@ gem 'stripe'
 gem 'paperclip'
 gem 'angular_rails_csrf'
 gem 'sendgrid'
-gem 'angular-ui-bootstrap-rails'
+# gem 'angular-ui-bootstrap-rails'
 gem 'intercom-rails'
 gem 'comma', '~> 3.0'
 
