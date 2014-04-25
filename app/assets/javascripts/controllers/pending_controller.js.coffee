@@ -9,27 +9,27 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 50
 
-    $scope.customMsg = (form) ->
-      YES = "Form for #{form.customer_first_name}
-              #{form.customer_last_name}
-              has been approved and moved to service.
-              Copy sent to customer via email."
-      NO = "Form for #{form.customer_first_name}
-              #{form.customer_last_name}
-              has been approved and moved to service.
-              Please provide customer with paper copy."
-      message = if form.customer_email then YES else NO
+    # $scope.customMsg = (form) ->
+    #   YES = "Form for #{form.customer_first_name}
+    #           #{form.customer_last_name}
+    #           has been approved and moved to service.
+    #           Copy sent to customer via email."
+    #   NO = "Form for #{form.customer_first_name}
+    #           #{form.customer_last_name}
+    #           has been approved and moved to service.
+    #           Please provide customer with paper copy."
+    #   message = if form.customer_email then YES else NO
 
-    $scope.customAlert = (form) ->
-      alert = if form.customer_email then 'warning' else 'info'
+    # $scope.customAlert = (form) ->
+    #   alert = if form.customer_email then 'warning' else 'info'
 
     $scope.alerts = []
 
-    $scope.addAlert = (message) ->
+    $scope.addAlert = ->
       $scope.alerts = []
       $scope.alerts.push
         type: 'info'
-        msg: message
+        msg: 'message'
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1
