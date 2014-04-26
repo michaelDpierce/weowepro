@@ -52,11 +52,6 @@
 
       $scope.alert = {title: 'Holy guacamole!', content: 'Best check yo self, you\'re not looking too good.', type: 'info'};
 
-      // Service usage
-      var myAlert = $alert({title: 'Holy guacamole!', content: 'Best check yo self, you\'re not looking too good.', placement: 'top', type: 'info', keyboard: true, show: false});
-      $scope.showAlert = function() {
-        myAlert.show(); // or myAlert.$promise.then(myAlert.show) if you use an external html template
-      };
 
     });
 
@@ -66,21 +61,12 @@
 
   <div ng-controller="MainCtrl">
 
-<div class="bs-docs-section" ng-controller="AlertDemoCtrl">
+    <div class="bs-docs-section" ng-controller="AlertDemoCtrl">
 
-    <button type="button" class="btn btn-lg btn-primary" data-placement="top" data-container="body" data-duration="15" bs-alert="alert">Click to toggle alert
-      <br />
-      <small>(using an object)</small>
-    </button>
+        <button type="button" class="btn btn-lg btn-primary" data-placement="top" data-container="body" data-duration="15" bs-alert="alert">Click to toggle alert
+        </button>
 
 
+    </div>
   </div>
-
-
-
-
-
 </div>
-
-  </div>
-
