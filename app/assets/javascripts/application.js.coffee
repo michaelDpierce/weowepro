@@ -19,6 +19,10 @@
 #= require angular
 #= require angular-resource
 #= require angular-animate
+#= require angular-strap
+#= require angular-strap/bootstrap-datepicker
+#= require angular-strap/bootstrap-select
+#= require angular-strap/bootstrap-datepicker
 
 #= require modules
 #= require_tree .

@@ -1,26 +1,8 @@
     <% provide(:title, 'Statistics') %>
 
-    <script>
-      var app = angular.module('mgcrea.ngStrapDocs', ['ngAnimate', 'ngSanitize', 'mgcrea.ngStrap']);
 
-      app.controller('MainCtrl', function($scope) {
-      });
 
-      'use strict';
-
-      angular.module('mgcrea.ngStrapDocs')
-
-      .controller('TimepickerDemoCtrl', function($scope, $http) {
-        $scope.time = new Date(1970, 0, 1, 10, 30);
-        $scope.selectedTimeAsNumber = 10 * 36e5;
-        $scope.selectedTimeAsString = '10:00';
-        $scope.sharedDate = new Date(new Date().setMinutes(0));
-        $scope.sharedDate2 = new Date(new Date().setMinutes(0));
-      });
-    </script>
-
-<div ng-app="mgcrea.ngStrapDocs">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<div ng-app="weowepro">
   <script src="//code.angularjs.org/1.2.16/angular.min.js" data-semver="1.2.16"></script>
   <script src="//code.angularjs.org/1.2.16/angular-animate.min.js" data-semver="1.2.16"></script>
   <script src="//code.angularjs.org/1.2.16/angular-sanitize.min.js" data-semver="1.2.16"></script>
@@ -28,7 +10,7 @@
   <script src="//mgcrea.github.io/angular-strap/dist/angular-strap.tpl.js" data-semver="v2.0.1"></script>
   <script src="//mgcrea.github.io/angular-strap/scripts/docs.tpl.min.js" data-semver="v2.0.1"></script>
 
-  <body ng-controller="MainCtrl">
+  <body ng-controller="TimepickerDemoCtrl">
 
     <div class="bs-docs-section" ng-controller="TimepickerDemoCtrl">
 
@@ -40,13 +22,13 @@
           <div class="form-group">
             <label class="control-label"><i class="fa fa-calendar"></i> Start Date</label><br>
             <div class="form-group">
-              <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
+              <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Click to enter start date" bs-datepicker>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label"><i class="fa fa-calendar"></i> End Date</label><br>
             <div class="form-group">
-              <input type="text" size="10" class="form-control" ng-model="sharedDate2" data-autoclose="1" placeholder="Date" bs-datepicker>
+              <input type="text" size="10" class="form-control" ng-model="sharedDate2" data-autoclose="1" placeholder="Click to enter end date" bs-datepicker>
             </div>
           </div>
         <br>

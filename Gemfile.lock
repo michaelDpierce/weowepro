@@ -28,6 +28,7 @@ GEM
     angular_rails_csrf (1.0.1)
       rails (>= 3, < 5)
     angularjs-rails (1.2.16)
+    angularstrap-rails (0.7.6)
     arel (4.0.2)
     ast (2.0.0)
     bcrypt (3.1.7)
@@ -321,6 +322,7 @@ PLATFORMS
 DEPENDENCIES
   angular_rails_csrf
   angularjs-rails
+  angularstrap-rails
   bcrypt
   bootstrap-sass (= 3.0.3.0)
   bootstrap_form
