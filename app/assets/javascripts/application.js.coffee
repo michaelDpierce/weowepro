@@ -19,6 +19,9 @@
 #= require angular
 #= require angular-resource
 #= require angular-animate
+#= require angular-sanitize
+#= require angular-strap.min
+#= require angular-strap-tpl.min
 
 #= require modules
 #= require_tree .
