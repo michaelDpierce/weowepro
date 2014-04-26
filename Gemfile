@@ -23,6 +23,7 @@ gem 'sendgrid'
 # gem 'angular-ui-bootstrap-rails'
 gem 'intercom-rails'
 gem 'comma', '~> 3.0'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
