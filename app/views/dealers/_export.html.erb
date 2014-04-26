@@ -1,9 +1,16 @@
-<%= link_to 'Users', users_path(format: 'csv'),
-    class: 'btn btn-primary btn-sm' %>
-<%= link_to 'All Pending', pending_path(format: 'csv'),
-    class: 'btn btn-danger btn-sm' %>
-<%= link_to 'All Sales', weowe_forms_path(format: 'csv'),
-    class: 'btn btn-warning btn-sm' %>
-<%= link_to 'All Completed', completed_path(format: 'csv'),
-    class: 'btn btn-success btn-sm' %>
-
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Data Export</h3>
+  </div>
+  <div class="panel-body">
+    <%= link_to 'Users', users_path(format: 'csv'),
+        class: 'btn btn-primary btn-sm' %>
+    <%= link_to 'All Pending', pending_path(format: 'csv'),
+        class: 'btn btn-danger btn-sm' %>
+    <%= link_to 'All Sales', weowe_forms_path(format: 'csv'),
+        class: 'btn btn-warning btn-sm' %>
+    <%= link_to 'All Completed', completed_path(format: 'csv'),
+        class: 'btn btn-success btn-sm' %>
+  </div>
+</div>

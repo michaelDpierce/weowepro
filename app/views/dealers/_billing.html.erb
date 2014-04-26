@@ -1,9 +1,17 @@
-<form action="/charge" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_br3CFmqOcRfScd6aHGqxYCr2"
-    data-name="WeowePro"
-    data-description="A month's subscription"
-    data-amount="30000">
-  </script>
-</form>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Billing</h3>
+  </div>
+  <div class="panel-body">
+    <form action="/charge" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_br3CFmqOcRfScd6aHGqxYCr2"
+        data-name="WeowePro"
+        data-description="A month's subscription"
+        data-amount="30000">
+      </script>
+    </form>
+  </div>
+</div>
