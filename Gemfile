@@ -24,7 +24,6 @@ gem 'sendgrid'
 gem 'intercom-rails'
 gem 'comma', '~> 3.0'
 gem 'font-awesome-sass'
-gem 'angularstrap-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

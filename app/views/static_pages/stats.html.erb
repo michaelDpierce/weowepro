@@ -1,8 +1,20 @@
     <% provide(:title, 'Statistics') %>
 
+    <script>
+      var app = angular.module('mgcrea.ngStrapDocs', ['ngAnimate', 'ngSanitize', 'mgcrea.ngStrap']);
 
+      'use strict';
 
-<div ng-app="weowepro">
+      angular.module('mgcrea.ngStrapDocs')
+
+      app.controller('TimepickerDemoCtrl', function($scope, $http) {
+        $scope.sharedDate = new Date(new Date().setMinutes(0));
+        $scope.sharedDate2 = new Date(new Date().setMinutes(0));
+      });
+    </script>
+
+<div ng-app="mgcrea.ngStrapDocs">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
   <script src="//code.angularjs.org/1.2.16/angular.min.js" data-semver="1.2.16"></script>
   <script src="//code.angularjs.org/1.2.16/angular-animate.min.js" data-semver="1.2.16"></script>
   <script src="//code.angularjs.org/1.2.16/angular-sanitize.min.js" data-semver="1.2.16"></script>
@@ -22,13 +34,13 @@
           <div class="form-group">
             <label class="control-label"><i class="fa fa-calendar"></i> Start Date</label><br>
             <div class="form-group">
-              <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Click to enter start date" bs-datepicker>
+              <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label"><i class="fa fa-calendar"></i> End Date</label><br>
             <div class="form-group">
-              <input type="text" size="10" class="form-control" ng-model="sharedDate2" data-autoclose="1" placeholder="Click to enter end date" bs-datepicker>
+              <input type="text" size="10" class="form-control" ng-model="sharedDate2" data-autoclose="1" placeholder="Date" bs-datepicker>
             </div>
           </div>
         <br>
