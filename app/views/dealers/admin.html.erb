@@ -21,3 +21,49 @@
 <div id="export" class="collapse">
 <%= render 'export' %>
 </div>
+
+<link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/angular-motion.min.css">
+<link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/bootstrap-additions.min.css">
+<link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/libraries.min.css">
+
+<script src="//code.angularjs.org/1.2.16/angular.min.js" data-semver="1.2.16"></script>
+<script src="//code.angularjs.org/1.2.16/angular-animate.min.js" data-semver="1.2.16"></script>
+<script src="//code.angularjs.org/1.2.16/angular-sanitize.min.js" data-semver="1.2.16"></script>
+<script src="//mgcrea.github.io/angular-strap/dist/angular-strap.js" data-semver="v2.0.1"></script>
+<script src="//mgcrea.github.io/angular-strap/dist/angular-strap.tpl.js" data-semver="v2.0.1"></script>
+<script src="//mgcrea.github.io/angular-strap/scripts/docs.tpl.min.js" data-semver="v2.0.1"></script>
+
+<script>
+  var app = angular.module('mgcrea.ngStrapDocs', ['ngAnimate', 'ngSanitize', 'mgcrea.ngStrap']);
+
+  app.controller('MainCtrl', function($scope) {
+  });
+
+  'use strict';
+
+  angular.module('mgcrea.ngStrapDocs')
+
+  .controller('AlertDemoCtrl', function($scope, $templateCache, $timeout, $alert) {
+
+    $scope.alert = {title: 'Holy guacamole!', content: 'Best check yo self, you\'re not looking too good.', type: 'info'};
+
+  });
+</script>
+
+<div ng-app="mgcrea.ngStrapDocs">
+    <div ng-controller="MainCtrl">
+
+      <div class="bs-docs-section" ng-controller="AlertDemoCtrl">
+
+
+
+
+
+        <button type="button" class="btn btn-lg btn-primary" data-placement="top" data-container="body" data-duration="3" bs-alert="alert">Click to toggle alert
+          <br />
+          <small>(using an object)</small>
+        </button>
+
+      </div>
+    </div>
+</div>
