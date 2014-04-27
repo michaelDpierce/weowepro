@@ -16,5 +16,5 @@ class Dealer < ActiveRecord::Base
                     path: ATTACHED_PATH,
                     url: '/system/:attachment/:id/:style/:filename'
 
-  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  validates_attachment :logo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
 end
