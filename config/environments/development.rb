@@ -32,4 +32,6 @@ Weowe::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.assets.raise_production_errors = true
+
 end
