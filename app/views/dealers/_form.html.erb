@@ -14,6 +14,8 @@
     <%= f.text_field :state, label: 'State *' %>
     <%= f.text_field :zip, label: 'Zip Code *' %>
     <%= f.text_field :phone_number, label: 'Phone Number' %>
+    <%= f.text_field :email_domain, label: 'Email Domain',
+                      placeholder: 'i.e., DealerEmailDomain.com' %>
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
     <%= f.file_field :logo %>
     <%= f.primary ( f.object.new_record? ?  'Create New Dealership' :

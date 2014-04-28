@@ -7,7 +7,8 @@ module DealersHelper
                    :zip,
                    :phone_number,
                    :time_zone,
-                   :logo
+                   :logo,
+                   :email_domain
                   ]
 
   def dealer_params

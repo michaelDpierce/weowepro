@@ -13,6 +13,16 @@
     </p>
     <p> Sincerely, </p>
     <br>
-    <p> </p>
+    <hr>
+    <legend><b><%= Dealer.find(@weowe_form.dealer_id).name %>
+      <br>
+      <%= Dealer.find(@weowe_form.dealer_id).address_1 %>
+      <br>
+      <%= Dealer.find(@weowe_form.dealer_id).city %>,
+      <%= Dealer.find(@weowe_form.dealer_id).state %>
+      <%= Dealer.find(@weowe_form.dealer_id).zip %>
+      <br>
+      <%= Dealer.find(@weowe_form.dealer_id).phone_number %>
+    </b></legend>
   </body>
 </html>
