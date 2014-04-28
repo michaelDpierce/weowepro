@@ -35,9 +35,7 @@
         <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #1 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.select :quantity_1,
-                     options_for_select((1..10).to_a),
-                     {include_blank: true, label: 'Quantity'} %>
+        <%= f.text_field :quantity_1, label: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
         <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
@@ -49,54 +47,46 @@
         <%= f.text_field :description_2, label: 'Description', placeholder: 'Item #2 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.select :quantity_2,
-                     options_for_select((1..10).to_a),
-                     {include_blank: true, label: 'Quantity'} %>
+        <%= f.text_field :quantity_2, label: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Total Value' %>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-6 col-xs-18'>
-        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #3 (Max 35 Characters)' %>
+        <%= f.text_field :description_3, label: 'Description', placeholder: 'Item #3 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.select :quantity_1,
-                     options_for_select((1..10).to_a),
-                     {include_blank: true, label: 'Quantity'} %>
+        <%= f.text_field :quantity_3, label: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Total Value' %>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-6 col-xs-18'>
-        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #4 (Max 35 Characters)' %>
+        <%= f.text_field :description_4, label: 'Description', placeholder: 'Item #4 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.select :quantity_1,
-                     options_for_select((1..10).to_a),
-                     {include_blank: true, label: 'Quantity'} %>
+        <%= f.text_field :quantity_4, label: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Total Value' %>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-6 col-xs-18'>
-        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #5 (Max 35 Characters)' %>
+        <%= f.text_field :description_5, label: 'Description', placeholder: 'Item #5 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.select :quantity_1,
-                     options_for_select((1..10).to_a),
-                     {include_blank: true, label: 'Quantity'} %>
+        <%= f.text_field :quantity_5, label: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Total Value' %>
       </div>
     </div>
 
@@ -104,6 +94,10 @@
         <center><h4>Admin Fields</h4></center>
           <%= f.date_select :custom_date, label: 'Date Submitted' %>
     <% end %>
+
+    <%= f.hidden_field :custom_date, value: Time.now %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :dealer_id, value: current_user.dealer_id %>
 
     <%= f.primary ( f.object.new_record? ?  'Submit Form' :
     'Save Changes' ) %>

@@ -1,4 +1,4 @@
 @weowepro.factory 'CompletedForms', ['$resource',
   ($resource) ->
-    $resource('/weowe_forms.json', {}, { index: { method: 'GET', isArray: true}})
+    $resource('/completed.json', {}, { index: { method: 'GET', isArray: true}})
 ]

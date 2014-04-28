@@ -34,8 +34,6 @@
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1
 
-
-
     $scope.deleteRow = (form) ->
       $scope.pendingForms.splice $scope.pendingForms.indexOf(form), 1
 

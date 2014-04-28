@@ -67,7 +67,6 @@ class WeoweFormsController < ApplicationController
 
   def update
     if @weowe_form.update_attributes(weowe_form_params)
-      @weowe_form.dealer_id = current_user.dealer_id
       @weowe_form.dealer_total_value = dealer_sum(@weowe_form.dealer_total_value_1,
                                                   @weowe_form.dealer_total_value_2,
                                                   @weowe_form.dealer_total_value_3,
@@ -135,9 +134,6 @@ class WeoweFormsController < ApplicationController
   end
 
   def create_default_methods
-    @weowe_form.custom_date = Time.now
-    @weowe_form.user_id = current_user.id
-    @weowe_form.dealer_id = current_user.dealer_id
     @weowe_form.dealer_total_value = dealer_sum(@weowe_form.dealer_total_value_1,
                                                 @weowe_form.dealer_total_value_2,
                                                 @weowe_form.dealer_total_value_3,

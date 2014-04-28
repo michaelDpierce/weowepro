@@ -22,3 +22,4 @@ json.array!(@pending) do |form|
     json.last_name form.user.last_name
   end
 end
+

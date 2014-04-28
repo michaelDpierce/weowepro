@@ -3,6 +3,7 @@ module WeoweFormsHelper
                       :customer_last_name,
                       :customer_phone_mobile,
                       :customer_email,
+                      :customer_total_value,
                       :stock_number,
                       :make,
                       :vehicle_model,
