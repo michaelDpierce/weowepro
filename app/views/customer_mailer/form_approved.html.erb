@@ -4,15 +4,79 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>
-      Here is a copy of the due bill for your recent purchase!
+
+    <p> Dear <%= @weowe_form.customer_first_name %>, </p>
+
+    <p> Here is a copy of the due bill from your recent purchase.</p>
+
+    <legend><b><u>Vehicle Information</u></b></legend>
+
+        <legend>Stock Number: <%= @weowe_form.stock_number %></legend>
+        <legend>Year: <%= @weowe_form.year%></legend>
+        <legend>Make: <%= @weowe_form.make%></legend>
+        <legend>Model: <%= @weowe_form.vehicle_model%></legend>
+        <legend>Color: <%= @weowe_form.color%></legend>
+        <legend>Date of Sale: <%= @weowe_form.sold_date.strftime('%-m/%-d/%Y')%></legend>
+   <br>
+
+   <legend><b><u><%= Dealer.find(@weowe_form.dealer_id).name %> owes you:</u></b></legend>
+
+        <% if @weowe_form.description_1? %>
+            <legend>Description: <%= @weowe_form.description_1 %></legend>
+            <legend>Quantity: <%= @weowe_form.quantity_1 %></legend>
+            <legend>Value: <%= number_to_currency(@weowe_form.dealer_total_value_1) %></legend>
+        <% end %>
+        <% if @weowe_form.description_2? %>
+            <br>
+            <legend>Description: <%= @weowe_form.description_2 %></legend>
+            <legend>Quantity: <%= @weowe_form.quantity_2 %></legend>
+            <legend>Value: <%= number_to_currency(@weowe_form.dealer_total_value_2) %></legend>
+        <% end %>
+        <% if @weowe_form.description_3? %>
+            <br>
+            <legend>Description: <%= @weowe_form.description_3 %> <b>Description: </b></legend>
+            <legend>Quantity: <%= @weowe_form.quantity_3 %></legend>
+            <legend>Value: <%= number_to_currency(@weowe_form.dealer_total_value_3) %></legend>
+        <% end %>
+        <% if @weowe_form.description_4? %>
+            <br>
+            <legend>Description: <%= @weowe_form.description_4 %> <b>Description: </b></legend>
+            <legend>Quantity: <%= @weowe_form.quantity_4 %></legend>
+            <legend>Value: <%= number_to_currency(@weowe_form.dealer_total_value_4) %></legend>
+        <% end %>
+        <% if @weowe_form.description_5? %>
+            <br>
+            <legend>Description: <%= @weowe_form.description_5 %> <b>Description: </b></legend>
+            <legend>Quantity: <%= @weowe_form.quantity_5 %></legend>
+            <legend>Value: <%= number_to_currency(@weowe_form.dealer_total_value_5) %></legend>
+        <% end %>
     <br>
-    </p>
-    <p>
-      We appreciate your business.
-    </p>
-    <p><%= Time.now %></p>
-    <br>
-    <p> </p>
+
+    <legend><b><u>You owe <%= Dealer.find(@weowe_form.dealer_id).name %>:</u></b></legend>
+        <% if @weowe_form.theyowe_info? %>
+          <legend>Description: <%= @weowe_form.theyowe_info %></legend>
+          <legend>Total Value: <%= number_to_currency(@weowe_form.customer_total_value) %></legend>
+      <% end %>
+
+      <br>
+      <p> The representative that completed this form for your sale is
+          <%= User.find(@weowe_form.user_id).first_name %>
+          <%= User.find(@weowe_form.user_id).last_name %>.
+          <br>
+          Please contact us with any questions, comments or concerns.
+          We appreciate your business!
+      </p>
+      <hr>
+    <legend><b><%= Dealer.find(@weowe_form.dealer_id).name %>
+      <br>
+      <%= Dealer.find(@weowe_form.dealer_id).address_1 %>
+      <br>
+      <%= Dealer.find(@weowe_form.dealer_id).city %>,
+      <%= Dealer.find(@weowe_form.dealer_id).state %>
+      <%= Dealer.find(@weowe_form.dealer_id).zip %>
+      <br>
+      <%= Dealer.find(@weowe_form.dealer_id).phone_number %>
+    </b></legend>
+
   </body>
 </html>
