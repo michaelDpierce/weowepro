@@ -77,14 +77,14 @@ class WeoweFormsController < ApplicationController
       if @weowe_form.pending == false && @weowe_form.completed == false
         @approved = WeoweForm.new(:approved_trigger => params[:approved_trigger])
         if @weowe_form.update_attributes(params[@approved])
-          CustomerMailer.form_approved(@weowe_form, email_domain_handler).deliver
+          CustomerMailer.form_approved(@weowe_form).deliver
         end
       end
 
       if @weowe_form.pending == false && @weowe_form.completed == true
         @completed = WeoweForm.new(:completed_trigger => params[:completed_trigger])
         if @weowe_form.update_attributes(params[@completed])
-          CustomerMailer.form_completed(@weowe_form, email_domain_handler).deliver
+          CustomerMailer.form_completed(@weowe_form).deliver
         end
       end
 
@@ -140,11 +140,4 @@ class WeoweFormsController < ApplicationController
                                                 @weowe_form.dealer_total_value_4,
                                                 @weowe_form.dealer_total_value_5)
   end
-
-  def email_domain_handler
-    @dealer_id = current_user.dealer_id
-    @dealer = Dealer.find(@dealer_id)
-    @dealer.email_domain? ? @dealer.email_domain : '@weowepro.com'
-  end
-
 end
