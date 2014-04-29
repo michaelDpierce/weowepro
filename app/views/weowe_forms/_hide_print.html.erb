@@ -290,7 +290,6 @@
 </table>
 
 <% if @weowe_form.pending == true && @weowe_form.completed == false %>
-
   <ul class='pull-left'>
     <div id='userformbutton'>
       <%= link_to 'Send Approve Email',
@@ -300,11 +299,9 @@
                   class: "btn btnfix btn-info btn-sm" %>
     </div>
   </ul>
-
 <% end %>
 
 <% if @weowe_form.pending == false && @weowe_form.completed == false %>
-
   <ul class='pull-left'>
     <div id='userformbutton'>
       <%= link_to 'Send Completed Email',
@@ -314,7 +311,6 @@
                   class: "btn btnfix btn-info btn-sm" %>
     </div>
   </ul>
-
 <% end %>
 
 <ul class='pull-left hidden-xs'>
