@@ -28,8 +28,15 @@
      <div class='hidden-xs'><br><br></div><br>
     <%= render 'index' %>
     <center>
-      <hr>
-      <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+      <div ng-show="(weoweForms | filter:search).length == 0">
+        <hr>
+        <h4>No results found</h4>
+        <btn class="btn btn-default" ng-click="search=''">New Search</btn>
+      </div>
+      <div ng-hide="(weoweForms | filter:search).length == 0">
+        <hr>
+        <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+      </div>
     </center>
 </div>
 
