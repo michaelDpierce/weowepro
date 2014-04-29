@@ -28,20 +28,10 @@
     </div>
     <div class='hidden-xs'><br><br></div><br>
     <%= render 'pending' %>
-    <div class='well'>
-      <center>
-        <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
-        <br><br>
-        <div class='btn-group hidden-xs'>
-          <%= link_to 'Add Form', new_weowe_form_path,
-            class: 'btn btn-primary', role: 'button' %>
-          <%= link_to 'Service', weowe_forms_path,
-            class: 'btn btn-warning', role: 'button' %>
-          <%= link_to 'Completed', completed_path,
-            class: 'btn btn-success', role: 'button' %>
-        </div>
-      </center>
-    </div>
+    <center>
+      <hr>
+      <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+    </center>
   </div>
 </div>
 
