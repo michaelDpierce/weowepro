@@ -1,10 +1,10 @@
 <% provide(:title, 'Dashboard') %>
 
-<div class='jumbotron hidden-xs'>
-  <h1>We Owe Pro Dashboard</h1>
-</div>
-<div class='hidden-xs'>
-  <center>
+<center>
+  <div class='jumbotron hidden-xs'>
+    <h1>We Owe Pro Dashboard</h1>
+  </div>
+  <div class='hidden-xs'>
     <h3>Recent Activity</h3>
     <br>
     <%= render 'dashboard' %>
@@ -21,15 +21,14 @@
       <%= link_to 'Completed', completed_path,
         class: 'btn btn-success btn-fix-width', role: 'button' %>
     </div>
-</center>
 
-</div>
 
-<div class='visible-xs'>
-  <center><h3>Dashboard</h3></center>
-    <center>
-      <h4>Most Recent Form Status</h4>
-      <%= render 'dashboard' %>
-    </center>
+  </div>
+
+  <div class='visible-xs'>
+    <h3>Dashboard</h3>
+    <h4>Most Recent Form Status</h4>
+    <%= render 'dashboard' %>
     <br><br>
-</div>
+  </div>
+</center>
