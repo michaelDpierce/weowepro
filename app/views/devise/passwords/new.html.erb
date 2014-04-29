@@ -1,9 +1,10 @@
 <% provide(:title, 'Forgot Your Password?') %>
-<div class='userform well'>
-  <div class='userform'>
-    <h1 class='hidden-xs'>Forgot Your Password?</h1>
-    <center><h4 class='visible-xs'>Forgot Your Password?</h4></center>
 
+<div class='box-position'>
+  <center>
+    <p class='header-font'>WeOwePro</p>
+  </center>
+  <div class='fixwidth box'>
     <%= bootstrap_form_for(resource,
                            :as => resource_name,
                            :url => password_path(resource_name),
@@ -12,12 +13,17 @@
                            left: 'col-sm-4',
                            right: 'col-sm-8') do |f| %>
       <%= devise_error_messages! %>
-      <%= f.email_field :email, :autofocus => true %>
-      <%= f.primary 'Send me reset password instructions' %>
+      <center><h4>Forgot Your Password?</h4></center><hr>
+      <%= f.email_field :email, :autofocus => true, hide_label: true, placeholder: 'Email' %>
+      <center>
+        <%= f.submit 'Reset My Password', class: 'devise-buttons' %>
+      </center>
     <% end %>
-
+    <hr>
     <%= render "devise/shared/links" %>
+    <div class='visible-xs'>
+      <br>
+      <%= render "devise/shared/mobile_footer" %>
     </div>
   </div>
 </div>
-
