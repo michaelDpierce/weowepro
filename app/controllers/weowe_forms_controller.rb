@@ -72,22 +72,6 @@ class WeoweFormsController < ApplicationController
                                                   @weowe_form.dealer_total_value_3,
                                                   @weowe_form.dealer_total_value_4,
                                                   @weowe_form.dealer_total_value_5)
-      message = 'Weowe form was successfully updated.'
-
-      if @weowe_form.pending == false && @weowe_form.completed == false
-        @approved = WeoweForm.new(:approved_trigger => params[:approved_trigger])
-        if @weowe_form.update_attributes(params[@approved])
-          CustomerMailer.form_approved(@weowe_form).deliver
-        end
-      end
-
-      if @weowe_form.pending == false && @weowe_form.completed == true
-        @completed = WeoweForm.new(:completed_trigger => params[:completed_trigger])
-        if @weowe_form.update_attributes(params[@completed])
-          CustomerMailer.form_completed(@weowe_form).deliver
-        end
-      end
-
       render :show
     else
       render json: @weowe_form.errors, status: :unprocessable_entity
@@ -100,6 +84,18 @@ class WeoweFormsController < ApplicationController
       format.html { redirect_to weowe_forms_url }
       format.json { head :no_content }
     end
+  end
+
+  def approve_form
+    @weowe_form = WeoweForm.find(params[:id])
+    CustomerMailer.form_approved(@weowe_form).deliver
+    render :show
+  end
+
+  def complete_form
+    @weowe_form = WeoweForm.find(params[:id])
+    CustomerMailer.form_completed(@weowe_form).deliver
+    render :show
   end
 
   private

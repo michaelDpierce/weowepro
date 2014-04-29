@@ -10,6 +10,9 @@ Weowe::Application.routes.draw do
 
   match '/dashboard', to: 'weowe_forms#dashboard', via: 'get'
 
+  match '/approve_form', to: 'weowe_forms#approve_form', via: 'post'
+  match '/complete_form', to: 'weowe_forms#complete_form', via: 'post'
+
   match '/pending', to: 'weowe_forms#pending',    via: 'get'
   match '/completed', to: 'weowe_forms#completed',    via: 'get'
 

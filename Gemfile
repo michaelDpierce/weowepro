@@ -20,12 +20,12 @@ gem 'stripe'
 gem 'paperclip'
 gem 'angular_rails_csrf'
 gem 'sendgrid'
-# gem 'angular-ui-bootstrap-rails'
 gem 'intercom-rails'
 gem 'comma', '~> 3.0'
 gem 'font-awesome-sass'
 gem 'sprockets_better_errors'
 gem 'aws-sdk'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
