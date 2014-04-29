@@ -20,26 +20,23 @@
         <%= link_to 'Add Form', new_weowe_form_path,
           class: 'btn btn-primary btn-sm', role: 'button' %>
         <%= link_to 'Sales', pending_path,
-          class: 'btn btn-warning btn-sm', role: 'button' %>
+          class: 'btn btn-danger btn-sm', role: 'button' %>
         <%= link_to 'Completed', completed_path,
           class: 'btn btn-success btn-sm', role: 'button' %>
       </div>
     </div>
      <div class='hidden-xs'><br><br></div><br>
     <%= render 'index' %>
-    <div class='well'>
-      <center>
-        <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
-        <br>
-        <div class='btn-group hidden-xs'>
-          <%= link_to 'Add Form', new_weowe_form_path,
-            class: 'btn btn-primary', role: 'button' %>
-          <%= link_to 'Sales', pending_path,
-            class: 'btn btn-warning', role: 'button' %>
-          <%= link_to 'Completed', completed_path,
-            class: 'btn btn-success', role: 'button' %>
-        </div>
-      </center>
-    </div>
+    <center>
+      <div ng-show="(weoweForms | filter:search).length == 0">
+        <hr>
+        <h4>No results found</h4>
+        <btn class="btn btn-default" ng-click="search=''">New Search</btn>
+      </div>
+      <div ng-hide="(weoweForms | filter:search).length == 0">
+        <hr>
+        <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+      </div>
+    </center>
 </div>
 

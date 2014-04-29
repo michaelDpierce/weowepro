@@ -2,7 +2,7 @@
 
   <table ng-controller='CompletedFormsCtrl'
     class='table table-hover table-condensed' >
-    <thead>
+    <thead ng-show='(completedForms | filter:search).length > 0'>
       <tr>
         <th>
          <a href="" ng-click="predicate.value = 'stock_number'; reverse=!reverse">

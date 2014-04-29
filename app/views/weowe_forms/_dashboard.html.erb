@@ -1,3 +1,4 @@
+<center>
 <table class='table table-bordered table-condensed fixtable' >
   <thead>
     <tr>
@@ -5,7 +6,7 @@
       <th class='hidden-xs'>Date</th>
       <th>Salesperson</th>
       <th>Customer</th>
-      <th>Value</th>
+      <th class='hidden-xs'>Value</th>
       <th>Status</th>
     </tr>
   </thead>
@@ -17,7 +18,7 @@
         <td class='hidden-xs'><%= item.created_at.strftime('%-m/%-d/%Y') %></td>
         <td><%= User.find(item.user_id).last_name %></td>
         <td><%= item.customer_last_name %></td>
-        <td><%= number_to_currency(item.dealer_total_value) %></td>
+        <td class='hidden-xs'><%= number_to_currency(item.dealer_total_value) %></td>
         <% if item.pending == true && item.completed == false %>
           <td class='danger'> Sales </td>
           <% elsif item.pending == false && item.completed == false %>
@@ -29,4 +30,4 @@
     <% end %>
   </tbody>
 </table>
-
+</center>

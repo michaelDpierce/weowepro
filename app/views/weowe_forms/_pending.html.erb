@@ -1,6 +1,6 @@
 <div class='table-responsive'>
   <table class='table table-hover table-condensed' >
-    <thead>
+    <thead ng-show='(pendingForms | filter:search).length > 0'>
       <tr>
         <th>
           <a href="" ng-click="predicate.value = 'stock_number'; reverse=!reverse">
@@ -42,7 +42,6 @@
           <a href="" ng-click="predicate.value = 'dealer_total_value'; reverse=!reverse">
             Total Value</a>
         </th>
-
       </tr>
     </thead>
 
@@ -63,7 +62,6 @@
         <td>{{form.customer_last_name}}</td>
         <td class = 'hidden-xs'>{{form.customer_first_name}}</td>
         <td>{{form.dealer_total_value | currency}}</td>
-
       </tr>
     </tbody>
   </table>

@@ -10,10 +10,16 @@ Weowe::Application.routes.draw do
 
   match '/dashboard', to: 'weowe_forms#dashboard', via: 'get'
 
+  match '/approve_form', to: 'weowe_forms#approve_form', via: 'post'
+  match '/complete_form', to: 'weowe_forms#complete_form', via: 'post'
+
   match '/pending', to: 'weowe_forms#pending',    via: 'get'
   match '/completed', to: 'weowe_forms#completed',    via: 'get'
 
   match '/admin', to: 'dealers#admin',    via: 'get'
+
+  match '/privacy', to: 'static_pages#privacy', via: 'get'
+  match '/tos', to: 'static_pages#tos', via: 'get'
 
   match '/stats',
         to: 'static_pages#stats',

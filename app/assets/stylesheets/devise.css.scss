@@ -1,0 +1,122 @@
+  #devise_html {
+    overflow-y: scroll;
+    position: relative;
+    width: 95%;
+    background-color:#ECEEF2;
+  }
+
+  #devise_body {
+    height: 100%;
+    padding-top: 0px;
+    background-color:#ECEEF2;
+  }
+
+  .header-font {
+    font-size: 24px;
+    font-family: 'Gill Sans Ultra Bold';
+    font-weight:900;
+  }
+
+  @media (min-width: 992px) {
+    .fixwidth {
+      width: 375px;
+      margin: 0 auto;
+    }
+
+    .box-position {
+      position:absolute;
+      top: 50%;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .fixwidth {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .box-position {
+      position:absolute;
+      top: 50%;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  .box {
+    background-color:#FFFFFF;
+    box-shadow:rgba(0,0,0,0.5) 0px 0px 24px; border-radius:12px;
+    border:1px solid #999;
+    padding:1em;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    -opera-border-radius:8px;
+    -khtml-border-radius:8px;
+    border-radius:8px;
+  }
+
+  .devise-buttons {
+    -moz-box-shadow:inset 1px 0px 3px 0px #97c4fe;
+    -webkit-box-shadow:inset 1px 0px 3px 0px #97c4fe;
+    box-shadow:inset 1px 0px 3px 0px #97c4fe;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0) );
+    background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+    background-color:#3d94f6;
+    -webkit-border-top-left-radius:10px;
+    -moz-border-radius-topleft:10px;
+    border-top-left-radius:10px;
+    -webkit-border-top-right-radius:10px;
+    -moz-border-radius-topright:10px;
+    border-top-right-radius:10px;
+    -webkit-border-bottom-right-radius:10px;
+    -moz-border-radius-bottomright:10px;
+    border-bottom-right-radius:10px;
+    -webkit-border-bottom-left-radius:10px;
+    -moz-border-radius-bottomleft:10px;
+    border-bottom-left-radius:10px;
+    text-indent:0px;
+    border:1px solid #337fed;
+    display:inline-block;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    font-weight:bold;
+    font-style:normal;
+    height:50px;
+    line-height:50px;
+    width:200px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 5px #1570cd;
+  }
+  .devise-buttons:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6) );
+    background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+    background-color:#1e62d0;
+  }.devise-buttons:active {
+    position:relative;
+    top:1px;
+  }
+
+  #navlist li
+  {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+  }
+
+  #navlist a { color: #999; }
+
+  .footer-center {
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+

@@ -289,6 +289,34 @@
   </tr>
 </table>
 
+<% if @weowe_form.pending == true && @weowe_form.completed == false %>
+
+  <ul class='pull-left'>
+    <div id='userformbutton'>
+      <%= link_to 'Send Approve Email',
+                  { controller: 'weowe_forms', action: 'approve_form',
+                  :id => @weowe_form.id},
+                  method: :post,
+                  class: "btn btnfix btn-info btn-sm" %>
+    </div>
+  </ul>
+
+<% end %>
+
+<% if @weowe_form.pending == false && @weowe_form.completed == false %>
+
+  <ul class='pull-left'>
+    <div id='userformbutton'>
+      <%= link_to 'Send Completed Email',
+                  { controller: 'weowe_forms', action: 'complete_form',
+                  :id => @weowe_form.id},
+                  method: :post,
+                  class: "btn btnfix btn-info btn-sm" %>
+    </div>
+  </ul>
+
+<% end %>
+
 <ul class='pull-left hidden-xs'>
   <div id='userformbutton'>
   <%=link_to 'Edit Form', edit_weowe_form_path(@weowe_form),
@@ -303,4 +331,6 @@
       class: 'btn btnfix btn-danger btn-sm'%>
   </div>
 </ul>
-<br>
+
+<br><br>
+

@@ -1,9 +1,10 @@
 <% provide(:title, 'Password Reset') %>
-<div class='userform well'>
-  <div class='userform'>
-    <h1 class='hidden-xs'>Change your password</h1>
-    <center><h4 class='visible-xs'>Change your password</h4></center>
 
+<div class='box-position'>
+  <center>
+    <p class='header-font'>WeOWePro</p>
+  </center>
+  <div class='fixwidth box'>
     <%= bootstrap_form_for(resource,
                            :as => resource_name,
                            :url => password_path(resource_name),
@@ -12,18 +13,19 @@
                            left: 'col-sm-4',
                            right: 'col-sm-8') do |f| %>
       <%= devise_error_messages! %>
+      <center><h4>Change Your Password</h4></center><hr>
       <%= f.hidden_field :reset_password_token %>
-
-      <%= f.password_field :password, :autofocus => true %>
-
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.primary "Change my password" %>
+      <%= f.password_field :password, :autofocus => true, hide_label: :true, placeholder: 'Password' %>
+      <%= f.password_field :password_confirmation, hide_label: true, placeholder: 'Password Confirmation' %>
+      <center>
+        <%= f.submit 'Change My Password', class: 'devise-buttons' %>
+      </center>
     <% end %>
-
+    <hr>
     <%= render "devise/shared/links" %>
+    <div class='visible-xs'>
+      <br>
+      <%= render "devise/shared/mobile_footer" %>
     </div>
   </div>
 </div>
-
-
