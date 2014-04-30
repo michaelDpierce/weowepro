@@ -1,29 +1,24 @@
 <% provide(:title, 'Sign In') %>
-<br><br><br>
 
-<div class='userform well'>
-  <div class='userform'>
-    <center>
-      <h1> We Owe Pro </h1>
-    </center>
-
+<div class='box-position'>
+  <center>
+    <p class='header-font'>WeOwePro</p>
+  </center>
+  <div class='fixwidth box'>
     <%= bootstrap_form_for(resource, :as => resource_name,
                            :url => session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, :autofocus => true %>
-      <%= f.password_field :password %>
-
-      <%= f.primary 'Login' %>
+      <center><h4>Sign In</h4></center><hr>
+      <%= f.email_field :email, :autofocus => true, hide_label: :true,  placeholder: 'Email' %>
+      <%= f.password_field :password, hide_label: :true, placeholder: 'Password' %>
+      <center>
+        <%= f.submit 'Sign In To Your Account', class: 'devise-buttons' %>
+      </center>
     <% end %>
-
-      <div class='hidden-xs'><hr></div>
-      <%= render "devise/shared/links" %>
-      <div> Don't have an account? <%= link_to(' Sign Up', new_user_path) %></div>
-      <div class='visible-xs'>
-        <br>
-        <%= render "devise/shared/mobile_footer" %>
-      </div>
+    <div class='hidden-xs'><hr></div>
+    <%= render "devise/shared/links" %>
+    <div class='visible-xs'>
+      <br>
+      <%= render "devise/shared/mobile_footer" %>
     </div>
-
   </div>
-</div>
 </div>
