@@ -9,14 +9,9 @@ json.array!(@completed) do |form|
   json.extract! form, :customer_last_name
   json.extract! form, :customer_first_name
   json.extract! form, :dealer_total_value
-  json.extract! form, :dealer_id
-  json.extract! form, :approved_trigger
-  json.extract! form, :completed_trigger
-  json.extract! form, :customer_email
 
   json.user do
-    json.id form.user.id
-    json.first_name form.user.first_name
     json.last_name form.user.last_name
   end
 end
+

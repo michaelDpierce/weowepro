@@ -21,6 +21,8 @@ module Weowe
       g.test_framework false
     end
 
+    MultiJson.use :yajl
+
     # Settings in config/environments/* take precedence over those specified
     # here.
     # Application configuration should go into files in config/initializers

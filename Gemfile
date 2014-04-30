@@ -24,6 +24,7 @@ gem 'intercom-rails'
 gem 'comma', '~> 3.0'
 gem 'aws-sdk'
 gem 'newrelic_rpm'
+gem 'yajl-ruby'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
