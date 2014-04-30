@@ -11,7 +11,9 @@ class WeoweFormsController < ApplicationController
     index_view
     respond_to do |format|
       format.html
-      format.json
+      format.json do
+        render json: @index.to_json
+      end
       format.csv do
         render csv: @index, filename: 'service'
       end
