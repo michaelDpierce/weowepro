@@ -7,7 +7,7 @@
     $scope.totalDisplayed = 25
 
     $scope.loadMore = ->
-      $scope.totalDisplayed += 50
+      $scope.totalDisplayed += 25
 
     PendingForms.index (data) ->
       $scope.pendingForms = data
