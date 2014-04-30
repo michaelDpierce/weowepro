@@ -1,24 +1,26 @@
 <% provide(:title, 'Locked Out') %>
+<br><br><br>
 
-<div class='box-position'>
-  <center>
-    <p class='header-font'>WeOwePro</p>
-  </center>
-  <div class='fixwidth box'>
+<div class='userform well'>
+  <div class='userform'>
+    <center>
+      <h1> Resend unlock instructions </h1>
+    </center>
+
     <%= bootstrap_form_for(resource, :as => resource_name,
                            :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-      <center><h4>Resend unlock instructions</h4></center><hr>
       <%= devise_error_messages! %>
       <%= f.email_field :email, :autofocus => true %></div>
-      <center>
-        <%= f.submit 'Resend unlock instructions', class: 'devise-buttons' %>
-      </center>
+
+
+      <%= f.submit 'Resend unlock instructions' %>
     <% end %>
-    <div class='hidden-xs'><hr></div>
+
     <%= render "devise/shared/links" %>
     <div class='visible-xs'>
       <br>
       <%= render "devise/shared/mobile_footer" %>
     </div>
   </div>
+ </div>
 </div>
