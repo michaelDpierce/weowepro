@@ -22,8 +22,6 @@ gem 'angular_rails_csrf'
 gem 'sendgrid'
 gem 'intercom-rails'
 gem 'comma', '~> 3.0'
-gem 'font-awesome-sass'
-gem 'sprockets_better_errors'
 gem 'aws-sdk'
 gem 'newrelic_rpm'
 
