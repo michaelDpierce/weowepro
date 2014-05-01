@@ -14,6 +14,28 @@ namespace :db do
                     )
     end
 
+    Dealer.create!(name: "Christopher's Dodge World",
+                   address_1: '16777 W Colfax Ave',
+                   address_2:'',
+                   city: 'Golden',
+                   state: 'CO',
+                   zip: '80401',
+                   phone_number: '303-590-7100',
+                   time_zone:  'Mountain Time (US & Canada)'
+                  )
+
+    User.create!(first_name: 'Kurt',
+                 last_name: 'Price',
+                 phone_number: '303-590-7036',
+                 email: 'kp@cdodge.com',
+                 password: 'cdodge14',
+                 password_confirmation: 'cdodge14',
+                 dealer_id: 3,
+                 department: 'Manager',
+                 admin: true,
+                 confirmed_at: DateTime.now
+               )
+
     1000.times do |n|
 
       WeoweForm.create!(customer_first_name: Faker::Name.first_name,
