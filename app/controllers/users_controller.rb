@@ -3,11 +3,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(dealer_id: current_user.dealer_id)
-    respond_to do |format|
-      format.html
-      format.json
-      format.csv do
-        render csv: @users, filename: 'users'
+    if stale?(@users)
+      respond_to do |format|
+        format.html
+        format.json
+        format.csv do
+          render csv: @users, filename: 'users'
+        end
       end
     end
   end

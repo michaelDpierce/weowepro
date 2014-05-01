@@ -2,7 +2,9 @@ class DealersController < ApplicationController
   before_action :set_dealer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dealers = Dealer.all
+    if stale?(@dealers)
+      @dealers = Dealer.all
+    end
   end
 
   def show
