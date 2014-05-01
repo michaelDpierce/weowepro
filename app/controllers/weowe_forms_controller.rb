@@ -28,7 +28,7 @@ class WeoweFormsController < ApplicationController
       respond_to do |format|
         format.html
         format.json do
-          render json: @pending, method: [:id, :custom_date, :stock_number, :year, :make, :vehicle_model, :color, :customer_last_name, :customer_first_name, :dealer_total_value]
+          render json: @pending.select([:id, :custom_date, :stock_number, :year, :make, :vehicle_model, :color, :customer_last_name, :customer_first_name, :dealer_total_value])
         end
         format.csv do
           render csv: @pending, filename: 'sales'
