@@ -9,35 +9,41 @@ class WeoweFormsController < ApplicationController
 
   def index
     index_view
-    respond_to do |format|
-      format.html
-      format.json do
-        render json: @index.to_json
-      end
-      format.csv do
-        render csv: @index, filename: 'service'
+    if stale?(@completed)
+      respond_to do |format|
+        format.html
+        format.json do
+          render json: @index.to_json
+        end
+        format.csv do
+          render csv: @index, filename: 'service'
+        end
       end
     end
   end
 
   def pending
     pending_view
-    respond_to do |format|
-      format.html
-      format.json
-      format.csv do
-        render csv: @pending, filename: 'sales'
+    if stale?(@pending)
+      respond_to do |format|
+        format.html
+        format.json
+        format.csv do
+          render csv: @pending, filename: 'sales'
+        end
       end
     end
   end
 
   def completed
     completed_view
-    respond_to do |format|
-      format.html
-      format.json
-      format.csv do
-        render csv: @completed, filename: 'completed'
+    if stale?(@completed)
+      respond_to do |format|
+        format.html
+        format.json
+        format.csv do
+          render csv: @completed, filename: 'completed'
+        end
       end
     end
   end
