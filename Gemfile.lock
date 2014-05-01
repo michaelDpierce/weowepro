@@ -159,6 +159,7 @@ GEM
       mini_portile (~> 0.5.0)
     nokogiri (1.6.1-x86-mingw32)
       mini_portile (~> 0.5.0)
+    oj (2.8.1)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
@@ -346,6 +347,7 @@ DEPENDENCIES
   jquery-turbolinks
   mailcatcher
   newrelic_rpm
+  oj
   paperclip
   pg (= 0.15.1)
   rails (= 4.0.2)

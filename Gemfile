@@ -26,6 +26,7 @@ gem 'aws-sdk'
 gem 'newrelic_rpm'
 gem 'yajl-ruby'
 gem 'redis'
+gem 'oj'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

@@ -28,7 +28,7 @@ class WeoweFormsController < ApplicationController
       respond_to do |format|
         format.html
         format.json do
-          render json: @pending.lightning
+          render json: Oj.dump(@pending.select([:id, :custom_date, :stock_number, :year, :make, :vehicle_model, :color, :customer_last_name, :customer_first_name, :dealer_total_value]), mode: :compat)
         end
         format.csv do
           render csv: @pending, filename: 'sales'
