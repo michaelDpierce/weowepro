@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-  <div class="panel-heading" style='height: 40px;'>
+<div class='panel panel-default'>
+  <div class='panel-heading' style='height: 40px;'>
     <%=link_to ' Delete', @weowe_form, method: :delete,
      data: { confirm: 'Are you sure?' },
         class: 'glyphicon glyphicon-trash right-show-page'%>
@@ -7,10 +7,28 @@
     <%= link_to_function(' Print', 'javascript:print()', :class =>
                          'glyphicon glyphicon-print right-show-page') %>
 
+    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+          <%= link_to ' Email',
+                      { controller: 'weowe_forms', action: 'approve_form',
+                      :id => @weowe_form.id},
+                      method: :post,
+                      data: { confirm: 'Send Approve Email?' },
+                      class: 'glyphicon glyphicon-envelope right-show-page' %>
+    <% end %>
+
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+          <%= link_to ' Email',
+                      { controller: 'weowe_forms', action: 'complete_form',
+                      :id => @weowe_form.id},
+                      method: :post,
+                      data: { confirm: 'Send Completed Email?' },
+                      class: 'glyphicon glyphicon-envelope right-show-page' %>
+    <% end %>
+
     <%= link_to ' Edit', edit_weowe_form_path(@weowe_form),
                   class: 'glyphicon glyphicon-pencil right-show-page' %>
   </div>
-  <div class="panel-body">
+  <div class='panel-body'>
     <h4> Customer Information </h4>
       <table class='table table-bordered table-condensed' >
         <tr>

@@ -192,13 +192,21 @@ legend{
     display: block;
     margin-right: 30px;
   }
+
+  .table-width-desktop {
+    width: 75%;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 500px) {
   .mobile-btn-fix {
-    margin-top: 5px;
     width: 150px;
     display: block;
-    margin-bottom: 5px;
+  }
+
+  .table-width-desktop {
+    width: 100%;
+    margin: 0 auto;
   }
 }

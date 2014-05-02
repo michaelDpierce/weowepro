@@ -10,47 +10,42 @@
   </table>
 </div>
 
-<% if current_user.admin? || current_user.department = 'Service' %>
-  <div class='pull-right'>
-    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
-      <%= bootstrap_form_for @weowe_form do |f| %>
-        <%= f.hidden_field :pending, value: false %>
-        <%= f.hidden_field :completed, value: false %>
-        <%= f.submit 'Approve', :class =>
-        'btn btnfix btn-warning btn-sm'%>
+  <% if current_user.admin? || current_user.department = 'Service' %>
+    <div class='pull-right'>
+      <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+        <%= bootstrap_form_for @weowe_form do |f| %>
+          <%= f.hidden_field :pending, value: false %>
+          <%= f.hidden_field :completed, value: false %>
+          <%= f.submit 'Approve', :class =>
+          'btn btnfix btn-warning btn-sm'%>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
-      <%= bootstrap_form_for @weowe_form do |f| %>
-        <%= f.hidden_field :completed, value: true %>
-        <%= f.hidden_field :pending, value: false %>
-        <%= f.submit 'Complete', :class =>
-                       'btn btnfix btn-success btn-sm'  %>
+      <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+        <%= bootstrap_form_for @weowe_form do |f| %>
+          <%= f.hidden_field :completed, value: true %>
+          <%= f.hidden_field :pending, value: false %>
+          <%= f.submit 'Complete', :class =>
+                         'btn btnfix btn-success btn-sm'  %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
-  <ul class='pull-right'>
-
-    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
-      <%= bootstrap_form_for @weowe_form do |f| %>
-        <%= f.hidden_field :pending, value: true %>
-        <%= f.hidden_field :completed, value: false %>
-        <%= f.submit 'Return to Sales',
-                      class: 'btn btn-danger btn-sm mobile-btn-fix' %>
+    <ul class='pull-right'>
+      <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+        <%= bootstrap_form_for @weowe_form do |f| %>
+          <%= f.hidden_field :pending, value: true %>
+          <%= f.hidden_field :completed, value: false %>
+          <%= f.submit 'Return to Sales',
+                        class: 'btn btn-danger btn-sm mobile-btn-fix' %>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <% if @weowe_form.pending == false && @weowe_form.completed == true %>
-      <%= bootstrap_form_for @weowe_form do |f| %>
-        <%= f.hidden_field :completed, value: false %>
-        <%= f.hidden_field :pending, value: false %>
-        <%= f.submit 'Return to Service',
-                     class: 'btn btn-warning btn-sm mobile-btn-fix' %>
+      <% if @weowe_form.pending == false && @weowe_form.completed == true %>
+        <%= bootstrap_form_for @weowe_form do |f| %>
+          <%= f.hidden_field :completed, value: false %>
+          <%= f.hidden_field :pending, value: false %>
+          <%= f.submit 'Return to Service',
+                       class: 'btn btn-warning btn-sm mobile-btn-fix' %>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-<% end %>
-
-<br><br><br>
+    </ul>
+  <% end %>
