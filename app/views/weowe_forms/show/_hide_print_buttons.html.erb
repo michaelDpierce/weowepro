@@ -1,0 +1,56 @@
+<div style='float:left;width:150px'>
+  <table class='table table-bordered table-condensed' style='text-align: center;'>
+    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+      <td class='danger'> Sales </td>
+      <% elsif @weowe_form.pending == false && @weowe_form.completed == false %>
+        <td class='warning'> Service </td>
+      <% else %>
+        <td class='success'> Completed </td>
+    <% end %>
+  </table>
+</div>
+
+<% if current_user.admin? || current_user.department = 'Service' %>
+  <div class='pull-right'>
+    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :pending, value: false %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.submit 'Approve', :class =>
+        'btn btnfix btn-warning btn-sm'%>
+      <% end %>
+    <% end %>
+
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :completed, value: true %>
+        <%= f.hidden_field :pending, value: false %>
+        <%= f.submit 'Complete', :class =>
+                       'btn btnfix btn-success btn-sm'  %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <ul class='pull-right'>
+
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :pending, value: true %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.submit 'Return to Sales',
+                      class: 'btn btn-danger btn-sm mobile-btn-fix' %>
+      <% end %>
+    <% end %>
+
+    <% if @weowe_form.pending == false && @weowe_form.completed == true %>
+      <%= bootstrap_form_for @weowe_form do |f| %>
+        <%= f.hidden_field :completed, value: false %>
+        <%= f.hidden_field :pending, value: false %>
+        <%= f.submit 'Return to Service',
+                     class: 'btn btn-warning btn-sm mobile-btn-fix' %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<br><br><br>

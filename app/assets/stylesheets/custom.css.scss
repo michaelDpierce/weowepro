@@ -180,3 +180,25 @@ legend{
   width: 50%;
 }
 
+.right-show-page {
+    text-align: right;
+    float: right;
+    margin-left: 15px;
+}
+
+@media (min-width: 500px) {
+  .mobile-btn-fix {
+    width: 150px;
+    display: block;
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mobile-btn-fix {
+    margin-top: 5px;
+    width: 150px;
+    display: block;
+    margin-bottom: 5px;
+  }
+}
