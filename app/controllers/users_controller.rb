@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     if stale?(@users)
       respond_to do |format|
         format.html
-        format.json
+        format.json do
+          render json: oj_dumper(@users)
+        end
         format.csv do
           render csv: @users, filename: 'users'
         end
@@ -49,6 +51,11 @@ class UsersController < ApplicationController
 
   include ApplicationHelper
   include UsersHelper
+
+  def oj_dumper(view)
+    Oj.dump(view.select([:id, :last_name, :first_name, :email, :phone_number,
+                         :department, :active, :admin]), mode: :compat)
+  end
 
   def devise_user_render
     @user = User.new

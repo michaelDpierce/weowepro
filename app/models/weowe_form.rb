@@ -49,13 +49,4 @@ class WeoweForm < ActiveRecord::Base
     created_at 'Created At'
     updated_at 'Updated At'
   end
-
-  def self.lightning
-    connection.select_all(select([:id, :custom_date, :stock_number, :year, :make, :vehicle_model, :color, :customer_last_name, :customer_first_name, :dealer_total_value]).arel).each do |attrs|
-      attrs.each_key do |attr|
-        attrs[attr] = type_cast_attribute(attr, attrs)
-      end
-    end
-  end
-
 end

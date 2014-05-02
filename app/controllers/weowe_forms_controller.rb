@@ -13,7 +13,7 @@ class WeoweFormsController < ApplicationController
       respond_to do |format|
         format.html
         format.json do
-          render json: @index.to_json
+          render json: oj_dumper(@index)
         end
         format.csv do
           render csv: @index, filename: 'service'
@@ -28,7 +28,7 @@ class WeoweFormsController < ApplicationController
       respond_to do |format|
         format.html
         format.json do
-          render json: Oj.dump(@pending.select([:id, :custom_date, :stock_number, :year, :make, :vehicle_model, :color, :customer_last_name, :customer_first_name, :dealer_total_value]), mode: :compat)
+          render json: oj_dumper(@pending)
         end
         format.csv do
           render csv: @pending, filename: 'sales'
@@ -42,7 +42,9 @@ class WeoweFormsController < ApplicationController
     if stale?(@completed)
       respond_to do |format|
         format.html
-        format.json
+        format.json do
+          render json: oj_dumper(@completed)
+        end
         format.csv do
           render csv: @completed, filename: 'completed'
         end
@@ -112,6 +114,13 @@ class WeoweFormsController < ApplicationController
 
   include ApplicationHelper
   include WeoweFormsHelper
+
+  def oj_dumper(view)
+    Oj.dump(view.select([:id, :custom_date, :stock_number, :year, :make,
+                          :vehicle_model, :color, :customer_last_name,
+                          :customer_first_name, :dealer_total_value]),
+                          mode: :compat)
+  end
 
   def index_view
     @index = WeoweForm.where(dealer_id: current_user.dealer_id,
