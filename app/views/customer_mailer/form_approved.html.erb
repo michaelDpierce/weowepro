@@ -7,7 +7,8 @@
 
     <p> Dear <%= @weowe_form.customer_first_name %>, </p>
 
-    <p> Here is a copy of the due bill from your recent purchase.</p>
+    <p> Here is a copy of the due bill from your recent
+        purchase on <%= Time.now.strftime "%d/%m/%y" %>.</p>
 
     <legend><b><u>Vehicle Information</u></b></legend>
 
