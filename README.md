@@ -1,8 +1,5 @@
 # WeOwePro
 
-## Start The Webserver
-`rails s`
-
 ## Populate Development Database
 `rake db:reset`
 
@@ -23,15 +20,6 @@ Push new branch onto GitHub `git push -u origin new_branch_name`
 
 ***
 
-### Assuming you're on the 'Master' branch
-Stage files
-
-Commit files
-
-Push to master `git push origin master`
-
-***
-
 ### Other Useful Commands
 
 Rebuild Schema `rake db:schema:dump`
@@ -45,20 +33,19 @@ Delete local branch `git branch -d (branch)`
 ## Heroku
 To update: `git push heroku master`
 
-To populate: `heroku pg:reset DATABASE` > `heroku run rake db:migrate` > `heroku run rake db:populate` 
+To populate: `heroku pg:reset DATABASE --weowepro` > `heroku run rake db:migrate` > `heroku run rake db:populate` 
+
+To resrart: `heroku restart`
+
+Check # of Dyno's: `heroku ps`
+
+Server logs: `heroku logs` or for more information `heroku logs --tail`
 
 ***
 
-### Other Useful Commands
-Check # of Dyno's: `heroku ps`
-
-Open app in browser: `heroku open`
-
-Server logs: `heroku logs` or for more information `heroku logs --tail`
+Asset compile problems: In local dev enviortment run `RAILS_ENV=development bundle exec rake assets:precompile` then push to Heroku
 
 ## Run Rubocop
 
 `rubocop` for detailed information see: https://github.com/bbatsov/rubocop
-
-## Line Count
-`find . -name '*.rb' | xargs wc -l`
+`rubocop --auto-correct` will automaticaly fix styling issues
