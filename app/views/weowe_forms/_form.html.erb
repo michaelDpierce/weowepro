@@ -8,23 +8,33 @@
 
     <center><h4>Customer Information</h4></center>
 
-    <%= f.text_field :customer_first_name, label: 'First Name *' %>
-    <%= f.text_field :customer_last_name, label: 'Last Name *' %>
-    <%= f.text_field :customer_phone_mobile, label: 'Mobile #' %>
-    <%= f.text_field :customer_email, label: 'Email' %>
+    <%= f.text_field :customer_first_name, label: 'First Name *',
+                     placeholder: 'First Name *' %>
+    <%= f.text_field :customer_last_name, label: 'Last Name *',
+                     placeholder: 'Last Name *' %>
+    <%= f.text_field :customer_phone_mobile, label: 'Phone Number',
+                     placeholder: 'Phone Number' %>
+    <%= f.text_field :customer_email, label: 'Email',
+                     placeholder: 'Email' %>
 
     <center><h4>Customer Owes</h4></center>
-    <%= f.text_area :theyowe_info, label: 'Description', size: '1x' %>
-    <%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value' %>
+    <%= f.text_area :theyowe_info, label: 'Description', size: '1x',
+                    placeholder: 'Description' %>
+    <%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value',
+                     placeholder: 'Total Value' %>
 
     <center><h4>Vehicle Information</h4></center>
-    <%= f.text_field :stock_number, label: 'Stock # *' %>
+    <%= f.text_field :stock_number, label: 'Stock# *',
+                     placeholder: 'Stock# *' %>
     <%= f.select :year,
                  options_for_select((1980..2014).to_a.reverse!),
                  label: 'Year *' %>
-    <%= f.text_field :make, label: 'Make *' %>
-    <%= f.text_field :vehicle_model, label: 'Model *' %>
-    <%= f.text_field :color, label: 'Color *' %>
+    <%= f.text_field :make, label: 'Make *',
+                     placeholder: 'Make *' %>
+    <%= f.text_field :vehicle_model, label: 'Model *',
+                     placeholder: 'Model *' %>
+    <%= f.text_field :color, label: 'Color *',
+                     placeholder: 'Color *' %>
     <%= f.date_select :sold_date,
       label: 'Date Sold *' %>
 
@@ -35,10 +45,12 @@
         <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #1 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.text_field :quantity_1, label: 'Quantity' %>
+        <%= f.text_field :quantity_1, label: 'Quantity',
+                         placeholder: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value',
+                         placeholder: 'Total Value' %>
       </div>
     </div>
 
@@ -47,10 +59,12 @@
         <%= f.text_field :description_2, label: 'Description', placeholder: 'Item #2 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.text_field :quantity_2, label: 'Quantity' %>
+        <%= f.text_field :quantity_2, label: 'Quantity',
+                         placeholder: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Total Value',
+                         placeholder: 'Total Value' %>
       </div>
     </div>
 
@@ -59,10 +73,12 @@
         <%= f.text_field :description_3, label: 'Description', placeholder: 'Item #3 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.text_field :quantity_3, label: 'Quantity' %>
+        <%= f.text_field :quantity_3, label: 'Quantity',
+                         placeholder: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Total Value',
+                         placeholder: 'Total Value' %>
       </div>
     </div>
 
@@ -71,10 +87,12 @@
         <%= f.text_field :description_4, label: 'Description', placeholder: 'Item #4 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.text_field :quantity_4, label: 'Quantity' %>
+        <%= f.text_field :quantity_4, label: 'Quantity',
+                         placeholder: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Total Value',
+                         placeholder: 'Total Value' %>
       </div>
     </div>
 
@@ -83,10 +101,12 @@
         <%= f.text_field :description_5, label: 'Description', placeholder: 'Item #5 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
-        <%= f.text_field :quantity_5, label: 'Quantity' %>
+        <%= f.text_field :quantity_5, label: 'Quantity',
+                         placeholder: 'Quantity' %>
       </div>
       <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Total Value' %>
+        <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Total Value',
+                         placeholder: 'Total Value' %>
       </div>
     </div>
 

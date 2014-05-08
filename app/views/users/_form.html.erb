@@ -14,10 +14,14 @@
       <%= f.hidden_field :dealer_id, value: current_user.dealer_id %>
     <% end %>
 
-    <%= f.text_field :first_name, label: 'First Name *' %>
-    <%= f.text_field :last_name, label: 'Last Name *' %>
-    <%= f.text_field :email, label: 'Email *' %>
-    <%= f.text_field :phone_number, label: 'Phone Number *' %>
+    <%= f.text_field :first_name, label: 'First Name *',
+                     placeholder: 'First Name *' %>
+    <%= f.text_field :last_name, label: 'Last Name *',
+                     placeholder: 'Last Name *' %>
+    <%= f.text_field :email, label: 'Email *',
+                     placeholder: 'Email *' %>
+    <%= f.text_field :phone_number, label: 'Phone Number *',
+                     placeholder: 'Phone Number *' %>
 
     <% if signed_in? %>
       <% if current_user.admin? %>
@@ -30,11 +34,13 @@
     <% end %>
 
     <% if f.object.new_record? %>
-      <%= f.password_field :password, label: 'Password *' %>
-      <%= f.password_field :password_confirmation, label: 'Password Confirmation *' %>
+      <%= f.password_field :password, label: 'Password *',
+                           placeholder: 'Password *' %>
+      <%= f.password_field :password_confirmation, label: 'Password Confirmation *',
+                           placeholder: 'Password Confirmation *' %>
     <% end %>
 
-    <%= f.primary ( f.object.new_record? ?  'Create User' :
+    <%= f.primary ( f.object.new_record? ?  'Submit' :
     'Save Changes' ) %>
 
   <% end %>
