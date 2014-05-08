@@ -1,4 +1,4 @@
-<div style='float:left;width:150px'>
+<div style='float:left;width:100%'>
   <table class='table table-bordered table-condensed' style='text-align: center;'>
     <% if @weowe_form.pending == true && @weowe_form.completed == false %>
       <td class='danger'> Sales </td>
@@ -30,7 +30,7 @@
       <% end %>
     </div>
 
-    <ul class='pull-right'>
+    <div class='pull-left'>
       <% if @weowe_form.pending == false && @weowe_form.completed == false %>
         <%= bootstrap_form_for @weowe_form do |f| %>
           <%= f.hidden_field :pending, value: true %>
@@ -47,5 +47,7 @@
                        class: 'btn btn-warning btn-sm mobile-btn-fix' %>
         <% end %>
       <% end %>
-    </ul>
+    </div>
   <% end %>
+
+<br>
