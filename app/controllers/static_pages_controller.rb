@@ -3,7 +3,9 @@ class StaticPagesController < ApplicationController
     @start_date = params[:start_date]
     @end_date = params[:end_date]
     @records = WeoweForm.where(updated_at: @start_date..@end_date)
-    @pending = @records.where(pending: true, completed: false)
+    @sales = WeoweForm.where(pending: true, completed: false)
+    @service = WeoweForm.where(pending: false, completed: false)
+    @completed = WeoweForm.where(pending: false, completed: true)
   end
 
   def privacy
