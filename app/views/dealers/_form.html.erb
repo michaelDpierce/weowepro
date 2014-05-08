@@ -1,21 +1,20 @@
 <div class='userform well'>
-  <%= bootstrap_form_for(@dealer,
-    layout: :horizontal, label_col: 'col-sm-4', control_col: 'col-sm-8') do |f| %>
+  <%= bootstrap_form_for(@dealer) do |f| %>
 
     <%= render 'shared/error_messages_dealers' %>
 
     <h1 class='hidden-xs'><%= legend %></h1>
     <center><h3 class='visible-xs'><%= legend %></h3></center>
 
-    <%= f.text_field :name, label: 'Dealership Name *' %>
-    <%= f.text_field :address_1, label: 'Address 1 *' %>
-    <%= f.text_field :address_2, label: 'Address 2' %>
-    <%= f.text_field :city, label: 'City *' %>
-    <%= f.text_field :state, label: 'State *' %>
-    <%= f.text_field :zip, label: 'Zip Code *' %>
-    <%= f.text_field :phone_number, label: 'Phone Number' %>
-    <%= f.text_field :email_domain, label: 'Email Domain',
-                      placeholder: 'i.e., DealerEmailDomain.com' %>
+    <%= f.text_field :name, hide_label: :true, placeholder: 'Dealership Name *' %>
+    <%= f.text_field :address_1, hide_label: :true, placeholder: 'Address 1 *' %>
+    <%= f.text_field :address_2, hide_label: :true, placeholder: 'Address 2' %>
+    <%= f.text_field :city, hide_label: :true, placeholder: 'City *' %>
+    <%= f.text_field :state, hide_label: :true, placeholder: 'State *' %>
+    <%= f.text_field :zip, hide_label: :true, placeholder: 'Zip Code *' %>
+    <%= f.text_field :phone_number, hide_label: :true, placeholder: 'Phone Number' %>
+    <%= f.text_field :email_domain, hide_label: :true, placeholder: 'Email Domain',
+                      placeholder: 'Email domain: e.g., DealerEmailDomain.com' %>
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
     <%= f.file_field :logo %>
     <%= f.primary ( f.object.new_record? ?  'Create New Dealership' :

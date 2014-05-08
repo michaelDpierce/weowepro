@@ -4,12 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+
+    <p> Dear <%= @weowe_form.customer_first_name %>, </p>
+
     <p>
-      Service on your vehicle is completed and your car is ready for pickup!
+      Service on your vehicle has been completed as of <%= Time.now.strftime "%d/%m/%y" %>.
+      Your vehicle is ready for pickup!
     <br>
     </p>
     <p>
-      We appreciate your business. <%= Time.now %>
+      We appreciate your business.
     </p>
     <p> Sincerely, </p>
     <br>
