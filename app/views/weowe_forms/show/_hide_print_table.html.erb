@@ -7,7 +7,7 @@
     <%= link_to_function(' Print', 'javascript:print()', :class =>
                          'glyphicon glyphicon-print right-show-page') %>
 
-    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
           <%= link_to ' Email',
                       { controller: 'weowe_forms', action: 'approve_form',
                       :id => @weowe_form.id},
@@ -16,7 +16,7 @@
                       class: 'glyphicon glyphicon-envelope right-show-page' %>
     <% end %>
 
-    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+    <% if @weowe_form.pending == false && @weowe_form.completed == true %>
           <%= link_to ' Email',
                       { controller: 'weowe_forms', action: 'complete_form',
                       :id => @weowe_form.id},
