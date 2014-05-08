@@ -6,6 +6,12 @@
   <div class="panel-body">
    <table class='table' >
      <tbody>
+        <tr>
+        <th>Logo</th>
+          <td class='fixtablewidthadmin'><%= image_tag @dealer.logo.url,
+                                             height: '100' %>
+          </td>
+        </tr>
        <tr>
          <th>Name</th>
          <td class='fixtablewidthadmin'> <%= @dealer.name %> </td>
@@ -34,6 +40,12 @@
          <th>Phone Number</th>
          <td class='fixtablewidthadmin'>
            <%=phone_number_link(@dealer.phone_number) %>
+         </td>
+       </tr>
+       <tr>
+         <th>Domain</th>
+         <td class='fixtablewidthadmin'>
+           <%= @dealer.email_domain %>
          </td>
        </tr>
        <tr>

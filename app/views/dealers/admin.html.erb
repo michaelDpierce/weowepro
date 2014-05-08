@@ -2,13 +2,16 @@
  <h1 class='hidden-xs'>Preferences</h1>
  <center><h4 class='visible-xs'>Preferences</h4></center>
 
-<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#billing">
+<button type="button" class="btn btn-default" data-toggle="collapse"
+        data-target="#billing">
   Billing
 </button>
-<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#dealership_info">
+<button type="button" class="btn btn-default" data-toggle="collapse"
+        data-target="#dealership_info">
   Dealership Information
 </button>
-<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#export">
+<button type="button" class="btn btn-default" data-toggle="collapse"
+        data-target="#export">
   Data Export
 </button>
 
@@ -21,52 +24,3 @@
 <div id="export" class="collapse">
 <%= render 'export' %>
 </div>
-
-
-
-
-<!-- <div ng-app="weowepro">
-
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/angular-motion.min.css">
-    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/bootstrap-additions.min.css">
-    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/libraries.min.css">
-
-    <script src="//code.angularjs.org/1.2.16/angular.min.js" data-semver="1.2.16"></script>
-    <script src="//code.angularjs.org/1.2.16/angular-animate.min.js" data-semver="1.2.16"></script>
-    <script src="//code.angularjs.org/1.2.16/angular-sanitize.min.js" data-semver="1.2.16"></script>
-    <script src="//mgcrea.github.io/angular-strap/dist/angular-strap.js" data-semver="v2.0.1"></script>
-    <script src="//mgcrea.github.io/angular-strap/dist/angular-strap.tpl.js" data-semver="v2.0.1"></script>
-    <script>
-    var app = angular.module('weowepro', ['ngAnimate', 'ngSanitize', 'mgcrea.ngStrap']);
-
-    app.controller('MainCtrl', function($scope) {
-    });
-
-    'use strict';
-
-    angular.module('weowepro')
-
-    .controller('AlertDemoCtrl', function($scope, $templateCache, $timeout, $alert) {
-
-      $scope.alert = {title: 'Holy guacamole!', content: 'Best check yo self, you\'re not looking too good.', type: 'info'};
-
-
-    });
-
-
-    </script>
-    <script src="//mgcrea.github.io/angular-strap/scripts/docs.tpl.min.js" data-semver="v2.0.1"></script>
-
-  <div ng-controller="MainCtrl">
-
-    <div class="bs-docs-section" ng-controller="AlertDemoCtrl">
-
-        <button type="button" class="btn btn-lg btn-primary" data-placement="top" data-container="body" data-duration="15" bs-alert="alert">Click to toggle alert
-        </button>
-
-
-    </div>
-  </div>
-</div> -->

@@ -11,7 +11,9 @@ class DealersController < ApplicationController
   end
 
   def admin
-    @dealer = Dealer.find(current_user.dealer_id)
+    if stale?(@dealer)
+      @dealer = Dealer.find(current_user.dealer_id)
+    end
   end
 
   def new
