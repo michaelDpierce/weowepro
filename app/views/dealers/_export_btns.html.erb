@@ -1,0 +1,20 @@
+<div class='visible-xs'>
+  <%= link_to 'Sales Staff Contact Information', users_path(format: 'csv'),
+      class: 'btn btn-primary btn-sm btn-block' %>
+  <%= link_to 'Sales Forms', pending_path(format: 'csv'),
+      class: 'btn btn-danger btn-sm btn-block' %>
+  <%= link_to 'Service Forms', weowe_forms_path(format: 'csv'),
+      class: 'btn btn-warning btn-sm btn-block' %>
+  <%= link_to 'Completed Forms', completed_path(format: 'csv'),
+      class: 'btn btn-success btn-sm btn-block' %>
+</div>
+<div class='hidden-xs'>
+  <%= link_to 'Sales Staff Contact Information', users_path(format: 'csv'),
+      class: 'btn btn-primary btn-sm', style: 'width: 200px;'%>
+  <%= link_to 'Sales Forms', pending_path(format: 'csv'),
+      class: 'btn btn-danger btn-sm', style: 'width: 200px;' %>
+  <%= link_to 'Service Forms', weowe_forms_path(format: 'csv'),
+      class: 'btn btn-warning btn-sm', style: 'width: 200px;' %>
+  <%= link_to 'Completed Forms', completed_path(format: 'csv'),
+      class: 'btn btn-success btn-sm', style: 'width: 200px;' %>
+</div>
