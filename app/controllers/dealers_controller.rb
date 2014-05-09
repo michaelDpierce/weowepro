@@ -2,9 +2,7 @@ class DealersController < ApplicationController
   before_action :set_dealer, only: [:show, :edit, :update, :destroy]
 
   def index
-    if stale?(@dealers)
-      @dealers = Dealer.all
-    end
+    redirect_to root_path
   end
 
   def show
