@@ -65,15 +65,15 @@ module ApplicationHelper
 
   def handle_action(resource, message, page)
     if yield(resource)
-      handle_action_true(message, resource)
+      handle_action_true(message, page)
     else
       render page
     end
   end
 
-  def handle_action_true(message, resource)
+  def handle_action_true(message, page)
     flash[:success] = message
-    redirect_to resource
+    redirect_to page
   end
 
   def browser_check
