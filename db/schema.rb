@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509201707) do
+ActiveRecord::Schema.define(version: 20140509205141) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -68,13 +68,8 @@ ActiveRecord::Schema.define(version: 20140509201707) do
   create_table "weowe_forms", force: true do |t|
     t.string   "customer_first_name"
     t.string   "customer_last_name"
-    t.string   "customer_address_1"
-    t.string   "customer_address_2"
-    t.string   "customer_city"
-    t.string   "customer_state"
     t.string   "customer_zip"
     t.string   "customer_phone_mobile"
-    t.string   "customer_address"
     t.string   "customer_email"
     t.datetime "custom_date"
     t.datetime "created_at"
@@ -83,13 +78,7 @@ ActiveRecord::Schema.define(version: 20140509201707) do
     t.integer  "year"
     t.string   "make"
     t.datetime "sold_date"
-    t.string   "salesman_first_name"
-    t.string   "salesman_last_name"
-    t.text     "weowe_info"
     t.text     "theyowe_info"
-    t.string   "customer_signature"
-    t.decimal  "dealer_parts_value",    precision: 8, scale: 2
-    t.decimal  "dealer_labor_value",    precision: 8, scale: 2
     t.decimal  "dealer_total_value",    precision: 8, scale: 2
     t.decimal  "customer_total_value",  precision: 8, scale: 2
     t.string   "vehicle_model"
@@ -98,9 +87,6 @@ ActiveRecord::Schema.define(version: 20140509201707) do
     t.integer  "user_id"
     t.boolean  "pending",                                       default: true
     t.boolean  "completed",                                     default: false
-    t.datetime "age"
-    t.string   "name_confirmation"
-    t.text     "signature"
     t.text     "description_1"
     t.integer  "quantity_1"
     t.decimal  "dealer_total_value_1",  precision: 8, scale: 2
@@ -116,8 +102,6 @@ ActiveRecord::Schema.define(version: 20140509201707) do
     t.text     "description_5"
     t.integer  "quantity_5"
     t.decimal  "dealer_total_value_5",  precision: 8, scale: 2
-    t.boolean  "approved_trigger",                              default: false
-    t.boolean  "completed_trigger",                             default: false
     t.string   "approved_by"
     t.string   "completed_by"
   end
