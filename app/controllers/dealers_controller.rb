@@ -34,7 +34,7 @@ class DealersController < ApplicationController
   def update
     message = 'Dealer was successfully updated.'
 
-    handle_action(@dealer, message, admin_path) do |resource|
+    handle_dealer_action(@dealer, message, admin_path) do |resource|
       resource.update(dealer_params)
     end
 

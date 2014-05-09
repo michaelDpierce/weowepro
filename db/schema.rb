@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427195725) do
+ActiveRecord::Schema.define(version: 20140509201707) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 20140427195725) do
     t.decimal  "dealer_total_value_5",  precision: 8, scale: 2
     t.boolean  "approved_trigger",                              default: false
     t.boolean  "completed_trigger",                             default: false
+    t.string   "approved_by"
+    t.string   "completed_by"
   end
 
 end

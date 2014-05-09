@@ -1,8 +1,8 @@
 <div ng-app='weowepro'>
   <div ng-controller='UsersCtrl'>
-    <% provide(:title, 'Users') %>
-    <h1 class='hidden-xs'>Users</h1>
-    <center><h4 class='visible-xs'>Users</h4></center>
+    <% provide(:title, 'Staff') %>
+    <h1 class='hidden-xs'>Staff</h1>
+    <center><h4 class='visible-xs'>Staff</h4></center>
 
     <div class='row'>
       <div class='col-md-3 col-xs-8'>
@@ -16,7 +16,7 @@
       <div class='col-md-7 col-xs-4'></div>
       <div class='col-md-2 col-xs-2'>
       <div class='btn-group'>
-        <%= link_to 'Add User', new_user_path,
+        <%= link_to 'Add Staff', new_user_path,
           class: 'btn btn-primary btn-sm', role: 'button' %>
       </div>
     </div>

@@ -154,6 +154,18 @@
         <td><%= User.find(@weowe_form.user_id).last_name %></td>
       </tr>
     </table>
+
+    <h4> Admin </h4>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+        <th style='width:25%'>Approved By </th>
+        <td><%= @weowe_form.approved_by %></td>
+      </tr>
+      <tr>
+        <th>Completed By</th>
+        <td><%= @weowe_form.completed_by %></td>
+      </tr>
+    </table>
   </div>
 </div>
 

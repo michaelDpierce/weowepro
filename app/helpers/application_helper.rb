@@ -65,15 +65,28 @@ module ApplicationHelper
 
   def handle_action(resource, message, page)
     if yield(resource)
-      handle_action_true(message, page)
+      handle_action_true(message, resource)
     else
       render page
     end
   end
 
-  def handle_action_true(message, page)
+  def handle_action_true(message, resource)
     flash[:success] = message
-    redirect_to page
+    redirect_to resource
+  end
+
+  def handle_dealer_action(resource, message, page)
+    if yield(resource)
+      handle_dealer_action_true(message, resource)
+    else
+      render page
+    end
+  end
+
+  def handle_dealer_action_true(message, resource)
+    flash[:success] = message
+    redirect_to admin_path
   end
 
   def browser_check
