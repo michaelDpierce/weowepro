@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.skip_confirmation!
-    @user.save!
+    @user.save
     @user.dealer_id = current_user.dealer_id
     message = 'User account was successfully created.'
     handle_action(@user, message, :new, &:save)

@@ -70,24 +70,23 @@ class WeoweFormsController < ApplicationController
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
     create_default_methods
-    if @weowe_form.save
-      render :show
-    else
-      render json: @weowe_form.errors, status: :unprocessable_entity
-    end
+    @weowe_form.save
+    message = 'Form was successfully created.'
+    handle_action(@weowe_form, message, :new, &:save)
   end
 
   def update
-    if @weowe_form.update_attributes(weowe_form_params)
-      @weowe_form.dealer_total_value = dealer_sum(@weowe_form.dealer_total_value_1,
-                                                  @weowe_form.dealer_total_value_2,
-                                                  @weowe_form.dealer_total_value_3,
-                                                  @weowe_form.dealer_total_value_4,
-                                                  @weowe_form.dealer_total_value_5)
-      render :show
-    else
-      render json: @weowe_form.errors, status: :unprocessable_entity
+    @weowe_form.update_attributes(weowe_form_params)
+    @weowe_form.dealer_total_value = dealer_sum(@weowe_form.dealer_total_value_1,
+                                                @weowe_form.dealer_total_value_2,
+                                                @weowe_form.dealer_total_value_3,
+                                                @weowe_form.dealer_total_value_4,
+                                                @weowe_form.dealer_total_value_5)
+    message = 'Form updated.'
+    handle_action(@weowe_form, message, :edit) do |resource|
+    resource.update(weowe_form_params)
     end
+
   end
 
   def destroy
