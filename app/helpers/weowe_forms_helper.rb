@@ -37,7 +37,9 @@ module WeoweFormsHelper
                       :quantity_5,
                       :dealer_total_value_5,
                       :approved_trigger,
-                      :completed_trigger
+                      :completed_trigger,
+                      :approved_by,
+                      :completed_by
                      ]
 
   def weowe_form_params

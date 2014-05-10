@@ -1,12 +1,17 @@
 <% provide(:title, 'Sign In') %>
-<br><br><br>
+<br>
+
+<center>
+  <font size='30px'>WeOwePro</font>
+</center>
+
+<br>
 
 <div class='userform well'>
   <div class='userform'>
     <center>
-      <h1> We Owe Pro </h1>
+      <h4> Sign In</h4>
     </center>
-
     <%= bootstrap_form_for(resource, :as => resource_name,
                            :url => session_path(resource_name)) do |f| %>
       <%= f.email_field :email, :autofocus => true %>

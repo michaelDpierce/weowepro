@@ -76,6 +76,19 @@ module ApplicationHelper
     redirect_to resource
   end
 
+  def handle_dealer_action(resource, message, page)
+    if yield(resource)
+      handle_dealer_action_true(message, resource)
+    else
+      render page
+    end
+  end
+
+  def handle_dealer_action_true(message, resource)
+    flash[:success] = message
+    redirect_to admin_path
+  end
+
   def browser_check
     unless browser.modern?
       flash[:error] = "You are not using a browser that we support. " \

@@ -6,14 +6,22 @@
     <h1 class='hidden-xs'><%= legend %></h1>
     <center><h3 class='visible-xs'><%= legend %></h3></center>
 
-    <%= f.text_field :name, hide_label: :true, placeholder: 'Dealership Name *' %>
-    <%= f.text_field :address_1, hide_label: :true, placeholder: 'Address 1 *' %>
-    <%= f.text_field :address_2, hide_label: :true, placeholder: 'Address 2' %>
-    <%= f.text_field :city, hide_label: :true, placeholder: 'City *' %>
-    <%= f.text_field :state, hide_label: :true, placeholder: 'State *' %>
-    <%= f.text_field :zip, hide_label: :true, placeholder: 'Zip Code *' %>
-    <%= f.text_field :phone_number, hide_label: :true, placeholder: 'Phone Number' %>
-    <%= f.text_field :email_domain, hide_label: :true, placeholder: 'Email Domain',
+    <%= f.text_field :name, hide_label: :true,
+                     placeholder: 'Dealership Name *' %>
+    <%= f.text_field :address_1, hide_label: :true,
+                     placeholder: 'Address 1 *' %>
+    <%= f.text_field :address_2, hide_label: :true,
+                     placeholder: 'Address 2' %>
+    <%= f.text_field :city, hide_label: :true,
+                     placeholder: 'City *' %>
+    <%= f.text_field :state, hide_label: :true,
+                     placeholder: 'State *' %>
+    <%= f.text_field :zip, hide_label: :true,
+                     placeholder: 'Zip Code *' %>
+    <%= f.text_field :phone_number, hide_label: :true,
+                     placeholder: 'Phone Number' %>
+    <%= f.text_field :email_domain, hide_label: :true,
+                     placeholder: 'Email Domain',
                       placeholder: 'Email domain: e.g., DealerEmailDomain.com' %>
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
     <%= f.file_field :logo %>

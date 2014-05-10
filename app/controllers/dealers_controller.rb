@@ -2,16 +2,16 @@ class DealersController < ApplicationController
   before_action :set_dealer, only: [:show, :edit, :update, :destroy]
 
   def index
-    if stale?(@dealers)
-      @dealers = Dealer.all
-    end
+    redirect_to root_path
   end
 
   def show
   end
 
   def admin
-    @dealer = Dealer.find(current_user.dealer_id)
+    if stale?(@dealer)
+      @dealer = Dealer.find(current_user.dealer_id)
+    end
   end
 
   def new
@@ -34,9 +34,10 @@ class DealersController < ApplicationController
   def update
     message = 'Dealer was successfully updated.'
 
-    handle_action(@dealer, message, :edit) do |resource|
+    handle_dealer_action(@dealer, message, admin_path) do |resource|
       resource.update(dealer_params)
     end
+
   end
 
   def destroy
