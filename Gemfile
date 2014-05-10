@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 gem 'bootstrap_form'
 gem 'devise'
 gem 'faker', '1.1.2'
@@ -38,6 +38,7 @@ group :development, :test do
   gem 'guard-spork', '1.5.0'
   gem 'debugger'
   gem 'mailcatcher'
+  gem 'brakeman'
 end
 
 group :test do
