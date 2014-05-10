@@ -82,6 +82,11 @@ class WeoweFormsController < ApplicationController
                                                 @weowe_form.dealer_total_value_3,
                                                 @weowe_form.dealer_total_value_4,
                                                 @weowe_form.dealer_total_value_5)
+    @weowe_form.dealer_wholesale = dealer_sum(@weowe_form.dealer_wholesale_1,
+                                              @weowe_form.dealer_wholesale_2,
+                                              @weowe_form.dealer_wholesale_3,
+                                              @weowe_form.dealer_wholesale_4,
+                                              @weowe_form.dealer_wholesale_5)
     message = 'Form updated.'
     handle_action(@weowe_form, message, :edit) do |resource|
     resource.update(weowe_form_params)
@@ -153,5 +158,10 @@ class WeoweFormsController < ApplicationController
                                                 @weowe_form.dealer_total_value_3,
                                                 @weowe_form.dealer_total_value_4,
                                                 @weowe_form.dealer_total_value_5)
+    @weowe_form.dealer_wholesale = dealer_sum(@weowe_form.dealer_wholesale_1,
+                                              @weowe_form.dealer_wholesale_2,
+                                              @weowe_form.dealer_wholesale_3,
+                                              @weowe_form.dealer_wholesale_4,
+                                              @weowe_form.dealer_wholesale_5)
   end
 end
