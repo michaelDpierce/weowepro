@@ -4,7 +4,7 @@ class RemoveUnneededWeoweformColumns < ActiveRecord::Migration
     remove_column :weowe_forms, :customer_address_2
     remove_column :weowe_forms, :customer_city
     remove_column :weowe_forms, :customer_state
-    remove_column :weowe_forms, :zip
+    remove_column :weowe_forms, :customer_zip
     remove_column :weowe_forms, :customer_address
     remove_column :weowe_forms, :salesman_first_name
     remove_column :weowe_forms, :salesman_last_name
