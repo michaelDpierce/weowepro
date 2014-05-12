@@ -24,3 +24,4 @@ class ChargesController < ApplicationController
   end
   # rubocop:enable all
 end
+

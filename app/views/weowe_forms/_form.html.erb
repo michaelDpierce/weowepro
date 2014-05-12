@@ -1,8 +1,6 @@
 <div class='userform well'>
   <%= bootstrap_form_for(@weowe_form) do |f| %>
 
-    <%= render 'shared/error_messages_weowe_forms' %>
-
     <h1 class='hidden-xs'><%= legend %></h1>
     <center><h3 class='visible-xs'><%= legend %></h3></center>
 
@@ -38,77 +36,112 @@
     <%= f.date_select :sold_date,
       label: 'Date Sold *' %>
 
-    <center><h4>We Owe *</h4></center>
+    <center><h4>We Owe</h4></center>
 
     <div class='row'>
-      <div class='col-md-6 col-xs-18'>
+      <div class='col-md-10 col-xs-8'>
         <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #1 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_1, label: 'Quantity',
-                         placeholder: 'Quantity' %>
+                         placeholder: 'Qty' %>
       </div>
-      <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Total Value',
-                         placeholder: 'Total Value' %>
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Retail',
+                         placeholder: 'Retail' %>
+      </div>
+
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_wholesale_1, prepend: '$', label: 'Wholesale',
+                         placeholder: 'Wholesale' %>
       </div>
     </div>
 
+    <hr>
+
     <div class='row'>
-      <div class='col-md-6 col-xs-18'>
+      <div class='col-md-10 col-xs-8'>
         <%= f.text_field :description_2, label: 'Description', placeholder: 'Item #2 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_2, label: 'Quantity',
-                         placeholder: 'Quantity' %>
+                         placeholder: 'Qty' %>
       </div>
-      <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Total Value',
-                         placeholder: 'Total Value' %>
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Retail',
+                         placeholder: 'Retail' %>
+      </div>
+
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_wholesale_2, prepend: '$', label: 'Wholesale',
+                         placeholder: 'Wholesale' %>
       </div>
     </div>
 
+    <hr>
+
     <div class='row'>
-      <div class='col-md-6 col-xs-18'>
+      <div class='col-md-10 col-xs-8'>
         <%= f.text_field :description_3, label: 'Description', placeholder: 'Item #3 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_3, label: 'Quantity',
-                         placeholder: 'Quantity' %>
+                         placeholder: 'Qty' %>
       </div>
-      <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Total Value',
-                         placeholder: 'Total Value' %>
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Retail',
+                         placeholder: 'Retail' %>
+      </div>
+
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_wholesale_3, prepend: '$', label: 'Wholesale',
+                         placeholder: 'Wholesale' %>
       </div>
     </div>
 
+    <hr>
+
     <div class='row'>
-      <div class='col-md-6 col-xs-18'>
+      <div class='col-md-10 col-xs-8'>
         <%= f.text_field :description_4, label: 'Description', placeholder: 'Item #4 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_4, label: 'Quantity',
-                         placeholder: 'Quantity' %>
+                         placeholder: 'Qty' %>
       </div>
-      <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Total Value',
-                         placeholder: 'Total Value' %>
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Retail',
+                         placeholder: 'Retail' %>
+      </div>
+
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_wholesale_4, prepend: '$', label: 'Wholesale',
+                         placeholder: 'Wholesale' %>
       </div>
     </div>
 
+    <hr>
+
     <div class='row'>
-      <div class='col-md-6 col-xs-18'>
+      <div class='col-md-10 col-xs-8'>
         <%= f.text_field :description_5, label: 'Description', placeholder: 'Item #5 (Max 35 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_5, label: 'Quantity',
-                         placeholder: 'Quantity' %>
+                         placeholder: 'Qty' %>
       </div>
-      <div class='col-md-4 col-xs-8'>
-        <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Total Value',
-                         placeholder: 'Total Value' %>
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Retail',
+                         placeholder: 'Retail' %>
+      </div>
+
+      <div class='col-md-6 col-xs-6'>
+        <%= f.text_field :dealer_wholesale_5, prepend: '$', label: 'Wholesale',
+                         placeholder: 'Wholesale' %>
       </div>
     </div>
+
+    <hr>
 
     <% unless f.object.new_record? %>
         <center><h4>Admin Fields</h4></center>

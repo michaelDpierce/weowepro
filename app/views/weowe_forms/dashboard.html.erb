@@ -10,7 +10,7 @@
     <%= render 'dashboard' %>
     <br><br>
     <div class='btn-group'>
-      <% if current_user.department == 'Manager' || current_user.department == 'Sales' %>
+      <% if current_user.admin? %>
         <%= link_to 'New Form', new_weowe_form_path,
           class: 'btn btn-primary btn-fix-width', role: 'button' %>
       <% end %>

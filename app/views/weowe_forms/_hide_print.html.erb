@@ -38,7 +38,7 @@
     </ul>
   <% end %>
 
-  <% if current_user.admin? || current_user.department = 'Service' %>
+  <% if current_user.admin? %>
     <ul class='pull-right'>
       <% if @weowe_form.pending == false && @weowe_form.completed == false %>
         <%= bootstrap_form_for @weowe_form do |f| %>
@@ -69,7 +69,7 @@
     </ul>
   <% end %>
 
-  <% if current_user.admin? || current_user.department = 'Service' %>
+  <% if current_user.admin? %>
     <ul class='pull-right'>
       <% if @weowe_form.pending == false && @weowe_form.completed == true %>
         <%= bootstrap_form_for @weowe_form do |f| %>
@@ -85,7 +85,7 @@
 </div>
 
 <div class='visible-xs'>
-  <% if current_user.admin? || current_user.department = 'Service' %>
+  <% if current_user.admin? %>
     <div class='pull-right'>
       <% if @weowe_form.pending == true && @weowe_form.completed == false %>
         <%= bootstrap_form_for @weowe_form do |f| %>
@@ -98,7 +98,7 @@
     </div>
   <% end %>
 
-  <% if current_user.admin? || current_user.department = 'Service' %>
+  <% if current_user.admin? %>
     <div class='pull-right'>
       <% if @weowe_form.pending == false && @weowe_form.completed == false %>
         <%= bootstrap_form_for @weowe_form do |f| %>
@@ -124,7 +124,7 @@
     </div>
   <% end %>
 
-  <% if current_user.admin? || current_user.department = 'Service' %>
+  <% if current_user.admin? %>
     <div class='pull-left'>
       <% if @weowe_form.pending == false && @weowe_form.completed == true %>
         <%= bootstrap_form_for @weowe_form do |f| %>

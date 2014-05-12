@@ -7,7 +7,7 @@
     <%= link_to_function(' Print', 'javascript:print()', :class =>
                          'glyphicon glyphicon-print right-show-page') %>
 
-    <% if @weowe_form.pending == true && @weowe_form.completed == false %>
+    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
           <%= link_to ' Email',
                       { controller: 'weowe_forms', action: 'approve_form',
                       :id => @weowe_form.id},
@@ -16,7 +16,7 @@
                       class: 'glyphicon glyphicon-envelope right-show-page' %>
     <% end %>
 
-    <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+    <% if @weowe_form.pending == false && @weowe_form.completed == true %>
           <%= link_to ' Email',
                       { controller: 'weowe_forms', action: 'complete_form',
                       :id => @weowe_form.id},
@@ -82,13 +82,14 @@
       </table>
     <h4> We Owe </h4>
     <table class='table table-bordered table-condensed' >
-      <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
+      <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Retail</th><th>Total Wholesale</th></tr>
         <% if @weowe_form.description_1? %>
           <tr>
             <th style='width:25%'>1</th>
             <td><%= @weowe_form.description_1 %></td>
             <td><%= @weowe_form.quantity_1 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_1) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_wholesale_1) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_2? %>
@@ -97,6 +98,7 @@
             <td><%= @weowe_form.description_2 %></td>
             <td><%= @weowe_form.quantity_2 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_2) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_wholesale_2) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_3? %>
@@ -105,6 +107,7 @@
             <td><%= @weowe_form.description_3 %></td>
             <td><%= @weowe_form.quantity_3 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_3) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_wholesale_3) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_4? %>
@@ -113,6 +116,7 @@
             <td><%= @weowe_form.description_4 %></td>
             <td><%= @weowe_form.quantity_4 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_4) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_wholesale_4) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_5? %>
@@ -121,6 +125,7 @@
             <td><%= @weowe_form.description_5 %></td>
             <td><%= @weowe_form.quantity_5 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_5) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_wholesale_5) %></td>
           </tr>
         <% end %>
          <tr>
@@ -129,6 +134,9 @@
           <td>N/A</td>
           <td>
             <%= number_to_currency(@weowe_form.dealer_total_value) %>
+          </td>
+          <td>
+            <%= number_to_currency(@weowe_form.dealer_wholesale) %>
           </td>
         </tr>
     </table>
@@ -152,6 +160,18 @@
       <tr>
         <th>Last Name </th>
         <td><%= User.find(@weowe_form.user_id).last_name %></td>
+      </tr>
+    </table>
+
+    <h4> Admin </h4>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+        <th style='width:25%'>Approved By </th>
+        <td><%= @weowe_form.approved_by %></td>
+      </tr>
+      <tr>
+        <th>Completed By</th>
+        <td><%= @weowe_form.completed_by %></td>
       </tr>
     </table>
   </div>

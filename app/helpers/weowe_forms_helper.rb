@@ -24,20 +24,26 @@ module WeoweFormsHelper
                       :description_1,
                       :quantity_1,
                       :dealer_total_value_1,
+                      :dealer_wholesale_1,
                       :description_2,
                       :quantity_2,
                       :dealer_total_value_2,
+                      :dealer_wholesale_2,
                       :description_3,
                       :quantity_3,
                       :dealer_total_value_3,
+                      :dealer_wholesale_3,
                       :description_4,
                       :quantity_4,
                       :dealer_total_value_4,
+                      :dealer_wholesale_4,
                       :description_5,
                       :quantity_5,
                       :dealer_total_value_5,
-                      :approved_trigger,
-                      :completed_trigger
+                      :dealer_wholesale_5,
+                      :approved_by,
+                      :completed_by,
+                      :dealer_wholesale
                      ]
 
   def weowe_form_params
