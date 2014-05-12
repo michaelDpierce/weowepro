@@ -14,7 +14,7 @@ class RemoveUnneededWeoweformColumns < ActiveRecord::Migration
     remove_column :weowe_forms, :dealer_labor_value
     remove_column :weowe_forms, :age
     # remove_column :weowe_forms, :name_confirmation
-    remove_column :weowe_forms, :signature
+    # remove_column :weowe_forms, :signature
     remove_column :weowe_forms, :approved_trigger
     remove_column :weowe_forms, :completed_trigger
   end
