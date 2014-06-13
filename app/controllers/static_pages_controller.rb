@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
     @sales = WeoweForm.where(dealer_id: current_user.dealer_id, pending: true, completed: false)
     @service = WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: false)
     @completed = WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true)
+    @total = WeoweForm.where(dealer_id: current_user.dealer_id)
   end
 
   def privacy

@@ -38,12 +38,12 @@
     </tr>
     <tr>
       <th>Totals</th>
-      <th><%= WeoweForm.count %></th>
+      <th><%= @total.count %></th>
       <th>
-        <%= number_to_currency(WeoweForm.sum(:dealer_total_value)) %>
+        <%= number_to_currency(@total.sum(:dealer_total_value)) %>
       </th>
       <th>
-        <%= number_to_currency(WeoweForm.sum(:customer_total_value)) %>
+        <%= number_to_currency(@total.sum(:customer_total_value)) %>
       </th>
     </tr>
   </table>
