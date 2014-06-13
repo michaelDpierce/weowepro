@@ -21,12 +21,12 @@
     <ul class='pull-left'>
       <% if @user.admin == true %>
         <%= bootstrap_form_for @user do |f| %>
-          <%= f.hidden_field :department, value: 'Unassigned' %>
+          <%= f.hidden_field :admin, value: false %>
           <%= f.submit 'Remove Admin' %>
         <% end %>
       <% elsif @user.admin == false %>
         <%= bootstrap_form_for @user do |f| %>
-          <%= f.hidden_field :department, value: 'Manager' %>
+          <%= f.hidden_field :admin, value: true %>
           <%= f.submit 'Add Admin' %>
         <% end %>
       <% end %>

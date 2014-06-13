@@ -7,7 +7,8 @@ module UsersHelper
                  :department,
                  :active,
                  :password,
-                 :password_confirmation
+                 :password_confirmation,
+                 :admin
                 ]
 
   def user_params
