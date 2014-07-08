@@ -11,11 +11,11 @@ class WeoweForm < ActiveRecord::Base
   validates_presence_of :color
   validates_presence_of :sold_date
 
-  validates_length_of :description_1, :maximum => 35
-  validates_length_of :description_2, :maximum => 35
-  validates_length_of :description_3, :maximum => 35
-  validates_length_of :description_4, :maximum => 35
-  validates_length_of :description_5, :maximum => 35
+  validates_length_of :description_1, maximum: 100
+  validates_length_of :description_2, maximum: 100
+  validates_length_of :description_3, maximum: 100
+  validates_length_of :description_4, maximum: 100
+  validates_length_of :description_5, maximum: 100
 
   comma do
     user first_name: 'Salesperson First Name'

@@ -40,7 +40,7 @@
 
     <div class='row'>
       <div class='col-md-10 col-xs-8'>
-        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #1 (Max 35 Characters)' %>
+        <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #1 (Max 100 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_1, label: 'Quantity',
@@ -61,7 +61,7 @@
 
     <div class='row'>
       <div class='col-md-10 col-xs-8'>
-        <%= f.text_field :description_2, label: 'Description', placeholder: 'Item #2 (Max 35 Characters)' %>
+        <%= f.text_field :description_2, label: 'Description', placeholder: 'Item #2 (Max 100 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_2, label: 'Quantity',
@@ -82,7 +82,7 @@
 
     <div class='row'>
       <div class='col-md-10 col-xs-8'>
-        <%= f.text_field :description_3, label: 'Description', placeholder: 'Item #3 (Max 35 Characters)' %>
+        <%= f.text_field :description_3, label: 'Description', placeholder: 'Item #3 (Max 100 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_3, label: 'Quantity',
@@ -103,7 +103,7 @@
 
     <div class='row'>
       <div class='col-md-10 col-xs-8'>
-        <%= f.text_field :description_4, label: 'Description', placeholder: 'Item #4 (Max 35 Characters)' %>
+        <%= f.text_field :description_4, label: 'Description', placeholder: 'Item #4 (Max 100 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_4, label: 'Quantity',
@@ -124,7 +124,7 @@
 
     <div class='row'>
       <div class='col-md-10 col-xs-8'>
-        <%= f.text_field :description_5, label: 'Description', placeholder: 'Item #5 (Max 35 Characters)' %>
+        <%= f.text_field :description_5, label: 'Description', placeholder: 'Item #5 (Max 100 Characters)' %>
       </div>
       <div class='col-md-2 col-xs-4'>
         <%= f.text_field :quantity_5, label: 'Quantity',
@@ -152,7 +152,7 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :dealer_id, value: current_user.dealer_id %>
 
-    <%= f.primary ( f.object.new_record? ?  'Submit Form' :
+    <%= f.primary ( f.object.new_record? ? 'Submit Form' :
     'Save Changes' ) %>
 
   <% end %>
