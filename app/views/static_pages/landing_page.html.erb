@@ -1,0 +1,124 @@
+<center>
+  <div id='header_section'>
+    <br><br><br>
+    <h1 class='cta_text'>SIMPLIFY YOUR WE OWE FORM PROCESS TODAY</h1>
+    <h2 class='cta_text'>
+      ONLINE FORM MANAGEMENT - DESKTOP & MOBILE - ANALYTICS - ONLINE TECH SUPPORT
+    </h2>
+    <br>
+    <%= link_to 'REQUEST A DEMO', '#demo',
+      class: 'btn btn-info btn-sm', role: 'button' %>
+  </div>
+
+  <div id='features_section'>
+    <br><br><br><br>
+    <div class='row' style='text-align: left;'>
+      <div class='col-md-2'></div>
+      <div class='col-md-2'>
+        <h3>Online Form Management</h3>
+        <p>
+          Organize forms by "Sales", "Service", or "Completed".
+        </p>
+      </div>
+      <div class='col-md-2'>
+        <h3>Multi-Platform</h3>
+        <p>
+          We Owe Pro is designed to work on any device, and it will
+          automatically adjust accordingly.
+        </p>
+      </div>
+      <div class='col-md-2'>
+        <h3>Analytics</h3>
+        <p>
+          Robust analytics provides the ability to track the number of forms in
+          each category and the total number of dollars per category.
+        </p>
+      </div>
+      <div class='col-md-2'>
+        <h3>Quick Tech Support</h3>
+        <p>
+          Built in messaging allows for quick and easy communication
+          between our staff and yours.
+        </p>
+      </div>
+    </div>
+    <div class='col-md-2'></div>
+    <br><br><div class='hidden-xs'><br><br><br></div>
+  </div>
+
+  <div id='tour_section'>
+      <div id='tour'>
+        <div class='hidden-xs'>
+          <%= image_tag('/images/imac.png', alt: 'App Pic', width:'500px;') %>
+        </div>
+        <div class='visible-xs'>
+          <%= image_tag('/images/imac.png', alt: 'App Pic', width:'350px;') %>
+        </div>
+        <br>
+        <h4> Want to see more? Click the tour button below. </h4>
+        <br>
+        <%= link_to 'Tour the app', tour_path,
+          class: 'btn btn-info btn-sm', role: 'button' %>
+        <br><br>
+        <h4>Otherwise Request a quote today! </h4>
+        <%= mail_to "sales@weowepro.com" do %>
+          <h4>sales@weowepro.com</h4>
+        <% end %>
+        <a href="tel:720-891-5762">720-891-5762</a>
+      </div>
+    <br><br><br><br>
+  </div>
+
+  <div id="contact_image">
+    <br><br><br>
+    <h1 id='demo' style='color:white;'>"DIGITIZE" YOUR BUSINESS TODAY</h1>
+    <h2 style='color:white;'>Request a 15 minute demo.</h2>
+    <br>
+    <div id='contact_form'>
+      <%= bootstrap_form_for(Demo.new) do |f| %>
+        <%= f.text_field :first_name, placeholder: 'First Name',
+                         hide_label: true %>
+        <%= f.text_field :last_name, placeholder: 'Last Name',
+                         hide_label: true %>
+        <%= f.text_field :phone_number, placeholder: 'Phone Number',
+                         hide_label: true %>
+        <%= f.email_field :email, placeholder: 'Email',
+                         hide_label: true %>
+        <%= f.text_field :dealership, placeholder: 'Dealership Name',
+                         hide_label: true %>
+        <%= f.submit 'Request Demo' %>
+      <% end %>
+    </div>
+  </div>
+</center>
+
+<!-- Have to be here for background image to work -->
+<style>
+  #header_section {
+    background-image:url(/images/blue.png);
+    height:500px;
+  }
+
+ @media (min-width: 700px) {
+    #contact_image {
+      background-image:url(images/mac.jpg);
+      background-size: 100%;
+      height:650px;
+    }
+    #features_section {
+      background-color: white;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #contact_image {
+      background-image:url(/images/blue.png);
+      height:650px;
+    }
+    #features_section {
+      background-color: white;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+</style>

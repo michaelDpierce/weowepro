@@ -1,0 +1,35 @@
+<h1>Listing demos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Dealership</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @demos.each do |demo| %>
+      <tr>
+        <td><%= demo.first_name %></td>
+        <td><%= demo.last_name %></td>
+        <td><%= demo.phone_number %></td>
+        <td><%= demo.email %></td>
+        <td><%= demo.dealership %></td>
+        <td><%= link_to 'Show', demo %></td>
+        <td><%= link_to 'Edit', edit_demo_path(demo) %></td>
+        <td><%= link_to 'Destroy', demo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Demo', new_demo_path %>

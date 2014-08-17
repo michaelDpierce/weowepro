@@ -1,4 +1,6 @@
 Weowe::Application.routes.draw do
+  resources :demos
+
   devise_for :users
 
   resources :dealers
@@ -6,7 +8,7 @@ Weowe::Application.routes.draw do
   resources :users
   resources :charges
 
-  root 'weowe_forms#dashboard'
+  root 'static_pages#landing_page'
 
   match '/dashboard', to: 'weowe_forms#dashboard', via: 'get'
 
@@ -29,4 +31,7 @@ Weowe::Application.routes.draw do
         via: 'post'
 
   match '/about', to: 'static_pages#about',    via: 'get'
+
+  match '/landing_page', to: 'static_pages#landing_page',    via: 'get'
+  match '/tour', to: 'static_pages#tour',    via: 'get'
 end

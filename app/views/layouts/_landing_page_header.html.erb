@@ -1,0 +1,53 @@
+<nav class='navbar-static-top' id='special_nav_top'>
+  <div class='container'>
+    <div class='pull-right' id='sign_in_button'>
+      <%= link_to 'Sign In', new_user_session_path,
+        class: 'btn btn-warning btn-xs', role: 'button' %>
+    </div>
+  </div>
+</nav>
+<div class = 'navbar navbar-default navbar-static-top' id='special_nav_bottom'>
+  <div class = 'container'>
+    <% if @skip_footer == false %>
+    <button class = 'navbar-toggle' data-toggle = 'collapse'
+    data-target = '.navHeaderCollapse'>
+      <span class = 'icon-bar'></span>
+      <span class = 'icon-bar'></span>
+      <span class = 'icon-bar'></span>
+    </button>
+     <% end %>
+    <div id='logo_landing_page'> WeOwePro</div>
+    <div id='logo_landing_page_subheader'
+         class='hidden-xs'> ELIMINATE PAPER FORMS WITH EASE </div>
+      <% if @skip_footer == false %>
+        <div class = 'collapse navbar-collapse navHeaderCollapse'>
+
+          <ul class = 'nav navbar-nav navbar-right' >
+            <li class='nav_element_fix'>
+              <%= link_to 'Features', '#features' %>
+            </li>
+            <li class='nav_element_fix'>
+              <%= link_to 'Tour', '#tour' %>
+            </li>
+            <li class='nav_element_fix'>
+              <%= link_to 'Pricing', '#pricing' %>
+            </li>
+            <li class='nav_element_fix'>
+              <%= link_to 'Get Started Today', '#demo' %>
+            </li>
+          </ul>
+
+        </div>
+        <div class='pull-right hidden-xs' id='cta_button_1'>
+          <%= link_to 'Get Started Today', '#demo',
+            class: 'btn btn-info btn-sm', role: 'button' %>
+        </div>
+    <% else %>
+      <div class='pull-right' id='cta_button_2'>
+        <%= link_to 'Back To Home', root_path,
+          class: 'btn btn-info btn-sm', role: 'button' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
