@@ -1,51 +1,23 @@
-<center>
-  <table class='table table-bordered'>
-    <tr>
-      <th>Metric</th>
-      <th>Count</td>
-      <th>Dealer Total Value</th>
-      <th>Customer Total Value</th>
-    </tr>
-    <tr>
-      <td>Sales Forms</td>
-      <td><%= @sales.count %></td>
-      <td>
-        <%= number_to_currency(@sales.sum(:dealer_total_value)) %>
-      </td>
-      <td>
-        <%= number_to_currency(@sales.sum(:customer_total_value)) %>
-      </td>
-    </tr>
-    <tr>
-      <td>Service Forms</td>
-      <td><%= @service.count %></td>
-      <td>
-        <%= number_to_currency(@service.sum(:dealer_total_value)) %>
-      </td>
-      <td>
-        <%= number_to_currency(@service.sum(:customer_total_value)) %>
-      </td>
-    </tr>
-    <tr>
-      <td>Completed Forms</td>
-      <td><%= @completed.count %></td>
-      <td>
-        <%= number_to_currency(@completed.sum(:dealer_total_value)) %>
-      </td>
-      <td>
-        <%= number_to_currency(@completed.sum(:customer_total_value)) %>
-      </td>
-    </tr>
-    <tr>
-      <th>Totals</th>
-      <th><%= @total.count %></th>
-      <th>
-        <%= number_to_currency(@total.sum(:dealer_total_value)) %>
-      </th>
-      <th>
-        <%= number_to_currency(@total.sum(:customer_total_value)) %>
-      </th>
-    </tr>
-  </table>
-</center>
+<%= column_chart [["Sales Forms", @sales.count],
+                  ["Service Forms", @service.count],
+                  ["Completed Forms", @completed.count]],
+                  colors: ['#3071A9'],
+                  library: {title: 'Forms Submitted',
+                            hAxis: {title: "Category"},
+                            vAxis: {title: "Number of Forms"}} %>
 
+<%= column_chart [["Sales Forms", @sales.sum(:dealer_total_value)],
+                  ["Service Forms", @service.sum(:dealer_total_value)],
+                  ["Completed Forms", @completed.sum(:dealer_total_value)]],
+                  colors: ['#5CB85C'],
+                  library: {title: 'Dealer Total',
+                            hAxis: {title: "Category"},
+                            vAxis: {title: "Total Dollars ($)"}} %>
+
+<%= column_chart [["Sales Forms", @sales.sum(:dealer_wholesale)],
+                  ["Service Forms", @service.sum(:dealer_wholesale)],
+                  ["Completed Forms", @completed.sum(:dealer_wholesale)]],
+                  colors: ['#F0AD4E'],
+                  library: {title: 'Wholesale Total',
+                            hAxis: {title: "Category"},
+                            vAxis: {title: "Total Dollars ($)"}} %>
