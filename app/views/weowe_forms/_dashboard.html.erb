@@ -4,7 +4,7 @@
     <tr>
       <th>Stock #</th>
       <th class='hidden-xs'>Date</th>
-      <th>Salesperson</th>
+      <th class='hidden-xs'>Salesperson</th>
       <th>Customer</th>
       <th class='hidden-xs'>Value</th>
       <th>Status</th>
@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to item.stock_number, item %></td>
         <td class='hidden-xs'><%= item.created_at.strftime('%-m/%-d/%Y') %></td>
-        <td><%= User.find(item.user_id).last_name %></td>
+        <td class='hidden-xs'><%= User.find(item.user_id).last_name %></td>
         <td><%= item.customer_last_name %></td>
         <td class='hidden-xs'><%= number_to_currency(item.dealer_total_value) %></td>
         <% if item.pending == true && item.completed == false %>
