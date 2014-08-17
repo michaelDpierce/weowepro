@@ -16,6 +16,7 @@ class StaticPagesController < ApplicationController
   end
 
   def landing_page
+    @skip_footer = false
     render layout: "landing_page"
   end
 
