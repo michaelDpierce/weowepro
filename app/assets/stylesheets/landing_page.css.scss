@@ -1,0 +1,71 @@
+#special_nav_top {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  height: 50px;
+  background-color: #F8F8F9;
+    }
+
+#special_nav_bottom {
+  background-color: white;
+  min-height: 75px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+    }
+
+#logo_landing_page {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #3F51B5;
+  letter-spacing: -1px;
+  padding-top: 12px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo_landing_page_subheader {
+  position: relative;
+  top: 40px;
+  right: 130px;
+  float: left;
+  margin-right: 10px;
+}
+
+.nav_element_fix {
+  position: relative;
+  top: 15px;
+}
+
+#cta_button_1 {
+  position: relative;
+  bottom: 25px;
+}
+
+#cta_button_2 {
+  position: relative;
+  top: 20px;
+}
+
+#sign_in_button {
+  position: relative;
+  top: 12px;
+}
+
+.cta_text{
+  color: white;
+}
+
+#contact_form {
+  width: 300px;
+}
+
+#tour_image {
+  width:75%; height:75%;
+  border: 2px solid grey;
+}
+
+#tour_page {
+  background-color: #F8F8F9;
+  padding-left: 10px;
+  padding-right: 10px;
+}

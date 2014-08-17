@@ -1,0 +1,24 @@
+<div ng-app='weowepro'>
+  <div ng-controller='TourCtrl'>
+    <div id='tour_page'>
+      <br>
+      <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-1'><p class='pull-left'>Navigation:</p></div>
+        <div class='col-md-2'>
+          <select ng-model='screenshotImage'
+                  ng-options='screenshot.name for screenshot in screenshots'>
+          <option value="">-- Select Page --</option>
+          </select>
+        </div>
+      <br>
+      <center>
+        <img ng-src="images/{{screenshotImage.url}}" id='tour_image'/>
+        <br>
+        <h4> {{screenshotImage.name}} </h4>
+        <p> {{screenshotImage.description}} </p>
+        <br><br><br><br>
+      </center>
+    </div>
+  </div>
+</div>

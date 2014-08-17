@@ -15,5 +15,13 @@ class StaticPagesController < ApplicationController
   def tos
   end
 
+  def landing_page
+    render layout: "landing_page"
+  end
+
+  def tour
+    @skip_footer = true
+    render layout: "landing_page"
+  end
 end
 
