@@ -75,5 +75,9 @@
                       information can be edited and data can be exported."
       }
     ]
+
+    $scope.count = 0
     $scope.screenshotImage = $scope.screenshots[0] # dashboard
+
+
 ]
