@@ -6,23 +6,27 @@
         <label>Navigation</label>
         <br>
         <div class="btn-group">
-          <button type="button" class="btn btn-default" ng-click='count = 0'>1</button>
-          <button type="button" class="btn btn-default" ng-click='count = 1'>2</button>
-          <button type="button" class="btn btn-default" ng-click='count = 2'>3</button>
-          <button type="button" class="btn btn-default" ng-click='count = 3'>4</button>
-          <button type="button" class="btn btn-default" ng-click='count = 4'>5</button>
-          <button type="button" class="btn btn-default" ng-click='count = 5'>6</button>
-          <button type="button" class="btn btn-default" ng-click='count = 6'>7</button>
-          <button type="button" class="btn btn-default" ng-click='count = 7'>8</button>
-          <button type="button" class="btn btn-default" ng-click='count = 8'>9</button>
-          <button type="button" class="btn btn-default" ng-click='count = 9'>10</button>
-          <button type="button" class="btn btn-default" ng-click='count = 10'>11</button>
+          <button type="button" class="btn btn-default" ng-click='count = 1'>1</button>
+          <button type="button" class="btn btn-default" ng-click='count = 2'>2</button>
+          <button type="button" class="btn btn-default" ng-click='count = 3'>3</button>
+          <button type="button" class="btn btn-default" ng-click='count = 4'>4</button>
+          <button type="button" class="btn btn-default" ng-click='count = 5'>5</button>
+          <button type="button" class="btn btn-default" ng-click='count = 6'>6</button>
+          <button type="button" class="btn btn-default" ng-click='count = 7'>7</button>
+          <button type="button" class="btn btn-default" ng-click='count = 8'>8</button>
+          <button type="button" class="btn btn-default" ng-click='count = 9'>9</button>
+          <button type="button" class="btn btn-default" ng-click='count = 10'>10</button>
         </div>
         <br><br>
-        <img ng-src="images/{{screenshots[count].url}}" id='tour_image'/>
+        <div class='hidden-xs'>
+          <img ng-src="images/{{screenshots[count].url}}" id='tour_image'/>
+        </div>
+        <div class='visible-xs'>
+          <img ng-src="images/{{screenshots[count].url}}" id='tour_image_mobile'/>
+        </div>
         <br>
         <h4> {{screenshots[count].name}} </h4>
-        <p> {{screenshots[count].description}} </p>
+        <p id='description'> {{screenshots[count].description}} </p>
         <br><br><br><br>
       </center>
     </div>

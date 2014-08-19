@@ -3,6 +3,11 @@
 
     $scope.screenshots = [
       {
+        name: "Placeholder"
+        url: ""
+        description: ""
+      }
+      {
         name: "Dashboard"
         url: "dashboard.png"
         description: "The Dashboard is designed to provide a quick overview of
@@ -51,11 +56,6 @@
                       category."
       }
       {
-        name: "Add New Employee"
-        url: "new_user.png"
-        description: "Standard form used to add new staff memers."
-      }
-      {
         name: "Employee Profile"
         url: "user_profile.png"
         description: "Employees can view and edit their information here.
@@ -76,8 +76,5 @@
       }
     ]
 
-    $scope.count = 0
-    $scope.screenshotImage = $scope.screenshots[0] # dashboard
-
-
+    $scope.count = 1
 ]

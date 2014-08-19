@@ -73,8 +73,18 @@ html,body
   border: 2px solid grey;
 }
 
+#tour_image_mobile {
+  width:80%; height:80%;
+  border: 2px solid grey;
+}
+
 #tour_page {
   background-color: #F8F8F9;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+#description {
+  width: 50%;
+  text-align: left;
 }
