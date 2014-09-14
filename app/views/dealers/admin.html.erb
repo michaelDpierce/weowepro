@@ -4,26 +4,19 @@
 
 <div class='table-width-desktop'>
   <center>
-    <button type="button" class="btn btn-default pref-btn-fix" data-toggle="collapse"
-            data-target="#billing">
-      Billing
-    </button>
-    <button type="button" class="btn btn-default pref-btn-fix" data-toggle="collapse"
-            data-target="#dealership_info">
+    <button type='button' class='btn btn-default pref-btn-fix' data-toggle='collapse'
+            data-target='#dealership_info'>
       Dealership
     </button>
-    <button type="button" class="btn btn-default pref-btn-fix" data-toggle="collapse"
-            data-target="#export">
+    <button type='button' class='btn btn-default pref-btn-fix' data-toggle='collapse'
+            data-target='#export'>
       Export
     </button>
 
-    <div id="billing" class="collapse">
-      <%= render 'billing' %>
-    </div>
-    <div id="dealership_info" class="collapse">
+    <div id='dealership_info' class='collapse'>
      <%= render 'dealership_info' %>
     </div>
-    <div id="export" class="collapse">
+    <div id='export' class='collapse'>
     <%= render 'export' %>
     </div>
   </center>

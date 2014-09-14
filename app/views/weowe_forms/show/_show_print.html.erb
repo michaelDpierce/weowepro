@@ -21,12 +21,12 @@
   <tr>
     <td>DATE: <%= Time.now.strftime('%-m/%-d/%Y')%></td>
     <td colspan="2">
-      SALESPERSON: <%= "#{User.find(@weowe_form.user_id).first_name}
+      SALES MANAGER: <%= "#{User.find(@weowe_form.user_id).first_name}
                         #{User.find(@weowe_form.user_id).last_name}" %>
     </td>
   </tr>
   <tr>
-    <td colspan="5">
+    <td colspan='5'>
       <%= "CUSTOMER INFORMATION: #{@weowe_form.customer_first_name}
           #{@weowe_form.customer_last_name},
           #{@weowe_form.customer_phone_mobile},
@@ -34,7 +34,7 @@
     </td>
   </tr>
   <tr>
-    <td colspan="5">
+    <td colspan='5'>
       <%= "VEHICLE INFORMATION: #{@weowe_form.color},
           #{@weowe_form.make},
           #{@weowe_form.vehicle_model},
@@ -44,7 +44,7 @@
   </tr>
 </table>
 
-<center style="font-size: 14pt"><%= "#{@weowe_form.dealer.name} OWES".upcase %></center>
+<center style='font-size: 14pt'><%= "#{@weowe_form.dealer.name} OWES".upcase %></center>
   <table class='table table-bordered table-condensed' >
     <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
       <% if @weowe_form.description_1? %>
@@ -114,7 +114,7 @@
   <br>
 <% end %>
 
-<div style="font-size: 8pt">
+<div style='font-size: 8pt'>
   NOTE: THE ABOVE PROMISED WORK IS ONLY WORK TO BE PERFORMED FREE OF CHARGE OR INCLUDED
   IN NEGOTIATED PRICE. ANY ADDITIONAL WORK WILL BE CHARGED FOR IN ACCORDANCE WITH THE TYPE OF WARRENTY
   ISSUED AT TIME OF SALE, AND WILL BE CASH ON DELIVERY. ALL WORK MUST BE DONE IN OUR SHOP,
@@ -124,8 +124,8 @@
 <br>
 
 <div class='pull-left'>
-  <p> Salesperson _________________________</p>
+  <p>Sales Manager _____________________</p>
 </div>
 <div class='pull-right'>
-  <p> Customer _________________________</p>
+  <p>Customer _________________________</p>
 </div>
