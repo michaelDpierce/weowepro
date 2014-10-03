@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140816233138) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.string   "phone_number" 
+    t.string   "phone_number"
     t.string   "time_zone"
     t.string   "logo_file_name"
     t.string   "logo_content_type"

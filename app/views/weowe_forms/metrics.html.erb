@@ -1,0 +1,31 @@
+<div ng-app='weowepro'>
+  <div ng-controller='MetricsCtrl'>
+    <% provide(:title, 'Metrics') %>
+    <h1 class='hidden-xs'>Metrics</h1>
+    <center><h4 class='visible-xs'>Metrics</h4></center>
+    <div class='row'>
+      <div class='col-md-3'>
+        <div class="input-group">
+          <input class="form-control" ng-model="search" placeholder="Search"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+          </span>
+        </div>
+      </div>
+      <div class='col-md-9'></div>
+    </div>
+    <div class='hidden-xs'><br><br></div><br>
+    <%= render 'metrics' %>
+    <center>
+      <div ng-show="(metrics | filter:search).length == 0">
+        <hr>
+        <h4>No results found</h4>
+        <btn class="btn btn-default" ng-click="search=''">New Search</btn>
+      </div>
+      <div ng-hide="(metrics | filter:search).length == 0">
+        <hr>
+        <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+      </div>
+    </center>
+  </div>
+</div>

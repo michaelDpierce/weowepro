@@ -52,6 +52,19 @@ class WeoweFormsController < ApplicationController
     end
   end
 
+  def metrics
+
+
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: completed_view.to_json(include: [
+          :user])
+      end
+    end
+  end
+
   def show
     @skip_footer = true
   end
