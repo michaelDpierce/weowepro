@@ -1,0 +1,85 @@
+<table class='table'>
+
+  <thead ng-show='(metrics | filter:user.last_name)'>
+    <tr>
+      <th>Stock</th>
+      <th>We Owe Description</th>
+      <th>Total Retail</th>
+      <th>Total Wholesale</th>
+      <th>$Δ</th>
+      <th>%Δ</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody ng-repeat="form in metrics | orderBy: 'custom_date' |
+                    filter:user.last_name">
+    <tr>
+     <td>
+       <a ng-href='/weowe_forms/{{form.id}}'>
+         {{form.stock_number}}
+       </a>
+     </td>
+     <td>{{form.description_1}}</td>
+     <td>{{form.dealer_total_value_1 | currency}}</td>
+     <td>{{form.dealer_wholesale_1 | currency}}</td>
+     <td>{{form.dealer_total_value_1 - form.dealer_wholesale_1 | currency}}</td>
+     <td>{{(100*form.dealer_wholesale_1/form.dealer_total_value_1)| number:0}}%</td>
+     <td>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
+    </tr>
+
+    <tr>
+     <td></td>
+     <td>{{form.description_2}}</td>
+     <td>{{form.dealer_total_value_2 | currency}}</td>
+     <td>{{form.dealer_wholesale_2 | currency}}</td>
+     <td>{{form.dealer_total_value_2 - form.dealer_wholesale_2 | currency}}</td>
+     <td>{{(100*form.dealer_wholesale_2/form.dealer_total_value_2)| number:0}}%</td>
+     <td></td>
+    </tr>
+
+    <tr>
+     <td></td>
+     <td>{{form.description_3}}</td>
+     <td>{{form.dealer_total_value_3 | currency}}</td>
+     <td>{{form.dealer_wholesale_3 | currency}}</td>
+     <td>{{form.dealer_total_value_3 - form.dealer_wholesale_3 | currency}}</td>
+     <td>{{(100*form.dealer_wholesale_3/form.dealer_total_value_3)| number:0}}%</td>
+     <td></td>
+    </tr>
+
+    <tr>
+     <td></td>
+     <td>{{form.description_4}}</td>
+     <td>{{form.dealer_total_value_4 | currency}}</td>
+     <td>{{form.dealer_wholesale_4 | currency}}</td>
+     <td>{{form.dealer_total_value_4 - form.dealer_wholesale_4 | currency}}</td>
+     <td>{{(100*form.dealer_wholesale_4/form.dealer_total_value_4)| number:0}}%</td>
+     <td></td>
+    </tr>
+
+    <tr>
+     <td></td>
+     <td>{{form.description_5}}</td>
+     <td>{{form.dealer_total_value_5 | currency}}</td>
+     <td>{{form.dealer_wholesale_5 | currency}}</td>
+     <td>{{form.dealer_total_value_5 - form.dealer_wholesale_5 | currency}}</td>
+     <td>{{(100*form.dealer_wholesale_5/form.dealer_total_value_5)| number:0}}%</td>
+     <td></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td><b>{{form.dealer_total_value | currency}}</b></td>
+      <td><b>{{form.dealer_wholesale | currency}}</b></td>
+      <td><b>{{form.dealer_total_value - form.dealer_wholesale | currency}}</b></td>
+      <td>{{(100*form.dealer_wholesale/form.dealer_total_value)| number:0}}%</td>
+      <td></td>
+    </tr>
+  </tbody>
+
+  <h4> {{total() | currency}} </h4>
+
+
+</table>

@@ -53,14 +53,30 @@ class WeoweFormsController < ApplicationController
   end
 
   def metrics
-
-
-
     respond_to do |format|
       format.html
       format.json do
-        render json: completed_view.to_json(include: [
-          :user])
+        render json: completed_view.select(:id,
+                                            :dealer_total_value_1,
+                                            :dealer_total_value_2,
+                                            :dealer_total_value_3,
+                                            :dealer_total_value_4,
+                                            :dealer_total_value_5,
+                                            :dealer_total_value,
+                                            :dealer_wholesale_1,
+                                            :dealer_wholesale_2,
+                                            :dealer_wholesale_3,
+                                            :dealer_wholesale_4,
+                                            :dealer_wholesale_5,
+                                            :dealer_wholesale,
+                                            :description_1,
+                                            :description_2,
+                                            :description_3,
+                                            :description_4,
+                                            :description_5,
+                                            :custom_date,
+                                            :stock_number,
+                                            :user_id).to_json(include: [:user])
       end
     end
   end

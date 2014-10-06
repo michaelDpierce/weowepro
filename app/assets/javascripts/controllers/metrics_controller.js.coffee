@@ -1,14 +1,17 @@
-@weowepro.controller 'MetricsCtrl', ['$scope', 'Metrics',
-  @WeoweFormsCtrl = ($scope, Metrics) ->
+@weowepro.controller 'MetricsCtrl', ['$scope', 'Metrics', 'Users',
+  @WeoweFormsCtrl = ($scope, Metrics, Users) ->
 
-    $scope.predicate =
-      value: '-custom_date'
+    $scope.total = ->
+      total = 0
+      angular.forEach $scope.metrics.dealer_total_value, (dealer_total) ->
+        total += dealer_total
+        return
 
-    $scope.totalDisplayed = 25
-
-    $scope.loadMore = ->
-      $scope.totalDisplayed += 25
+      total
 
     Metrics.index (data) ->
       $scope.metrics = data
+
+    Users.index (data) ->
+      $scope.weoweUsers = data
 ]

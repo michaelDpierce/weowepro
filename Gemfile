@@ -27,7 +27,9 @@ gem 'newrelic_rpm'
 gem 'yajl-ruby'
 gem 'redis'
 gem 'oj'
-gem "chartkick"
+gem 'chartkick'
+gem 'lodash-rails'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -57,5 +59,3 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn'
 end
-
-

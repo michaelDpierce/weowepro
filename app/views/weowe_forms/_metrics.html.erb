@@ -1,124 +1,48 @@
 <div ng-app='weowepro' class='table-responsive'>
+  <div ng-controller='MetricsCtrl'>
 
-  <table ng-controller='CompletedFormsCtrl'
-    class='table table-hover table-condensed' >
-    <thead ng-show='(completedForms | filter:search).length > 0'>
-      <tr>
-        <th>
-         <a ng-click="predicate.value = 'stock_number'; reverse=!reverse">
-          Stock #</a>
-        </th>
-        <th>
-         <a ng-click="predicate.value = 'stock_number'; reverse=!reverse">
-          We Owe Description</a>
-        </th>
-        <th>
-         <a ng-click="predicate.value = 'stock_number'; reverse=!reverse">
-          Total Retail</a>
-        </th>
-        <th>
-         <a ng-click="predicate.value = 'stock_number'; reverse=!reverse">
-          Total Wholesale</a>
-        </th>
-        <th>
-         <a ng-click="predicate.value = 'stock_number'; reverse=!reverse">
-          Diffrence</a>
-        </th>
-        <th>
-         <a ng-click="predicate.value = 'user.last_name'; reverse=!reverse">
-          Sales Person Last Name</a>
-        </th>
-        <th>
-         <a ng-click="predicate.value = 'user.first_name'; reverse=!reverse">
-          Sales Person First Name</a>
-        </th>
-        <th class = 'hidden-xs'>
-         <a ng-click="predicate.value = 'custom_date'; reverse=!reverse">
-           Date</a>
-        </th>
-      </tr>
-    </thead>
-
-    <tbody ng-repeat='form in metrics | orderBy:predicate.value:reverse |
-                   filter:search | limitTo:totalDisplayed'>
-      <tr>
-       <td>
-         <a ng-href='/weowe_forms/{{form.id}}'>
-           {{form.stock_number}}
-         </a>
-       </td>
-       <td>{{form.description_1}}</td>
-       <td>{{form.dealer_total_value_1 | currency}}</td>
-       <td>{{form.dealer_wholesale_1 | currency}}</td>
-       <td>{{form.dealer_total_value_1 - form.dealer_wholesale_1 | currency}}</td>
-       <td>{{form.user.last_name}}</td>
-       <td>{{form.user.first_name}}</td>
-       <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
-      </tr>
-
-      <tr>
-       <td>
-         <a ng-href='/weowe_forms/{{form.id}}'>
-           {{form.stock_number}}
-         </a>
-       </td>
-       <td>{{form.description_2}}</td>
-       <td>{{form.dealer_total_value_2 | currency}}</td>
-       <td>{{form.dealer_wholesale_2 | currency}}</td>
-       <td>{{form.dealer_total_value_2 - form.dealer_wholesale_2 | currency}}</td>
-       <td>{{form.user.last_name}}</td>
-       <td>{{form.user.first_name}}</td>
-       <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
-      </tr>
-
-      <tr>
-       <td>
-         <a ng-href='/weowe_forms/{{form.id}}'>
-           {{form.stock_number}}
-         </a>
-       </td>
-       <td>{{form.description_3}}</td>
-       <td>{{form.dealer_total_value_3 | currency}}</td>
-       <td>{{form.dealer_wholesale_3 | currency}}</td>
-       <td>{{form.dealer_total_value_3 - form.dealer_wholesale_3 | currency}}</td>
-       <td>{{form.user.last_name}}</td>
-       <td>{{form.user.first_name}}</td>
-       <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
-      </tr>
-
-      <tr>
-       <td>
-         <a ng-href='/weowe_forms/{{form.id}}'>
-           {{form.stock_number}}
-         </a>
-       </td>
-       <td>{{form.description_4}}</td>
-       <td>{{form.dealer_total_value_4 | currency}}</td>
-       <td>{{form.dealer_wholesale_4 | currency}}</td>
-       <td>{{form.dealer_total_value_4 - form.dealer_wholesale_4 | currency}}</td>
-       <td>{{form.user.last_name}}</td>
-       <td>{{form.user.first_name}}</td>
-       <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
-      </tr>
-
-      <tr>
-       <td>
-         <a ng-href='/weowe_forms/{{form.id}}'>
-           {{form.stock_number}}
-         </a>
-       </td>
-       <td>{{form.description_5}}</td>
-       <td>{{form.dealer_total_value_5 | currency}}</td>
-       <td>{{form.dealer_wholesale_5 | currency}}</td>
-       <td>{{form.dealer_total_value_5 - form.dealer_wholesale_5 | currency}}</td>
-       <td>{{form.user.last_name}}</td>
-       <td>{{form.user.first_name}}</td>
-       <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
-      </tr>
-
-
-
-
-    </tbody>
-  </table>
+    <div ng-repeat="user in weoweUsers | filter:salesPersonFilter | orderBy: 'last_name'">
+      <br>
+      <div class='well'>
+        <div class='row'>
+          <div class='col-md-3'>
+            <h4>
+              {{user.last_name}}, {{user.first_name}}
+              <span ng-hide='checked'>
+                <a ng-click='checked = !checked' class='glyphicon glyphicon-chevron-right'></a>
+              </span>
+              <span ng-show='checked'>
+                <a ng-click='checked = !checked' class='glyphicon glyphicon-chevron-down'></a>
+              </span>
+            </h4>
+          </div>
+          <div class='col-md-3'>
+            <h4>
+              Total Retail<br><br>
+              {{totalRetail() | number:0}}
+            </h4>
+          </div>
+          <div class='col-md-3'>
+            <h4>
+              Total Wholesale<br><br>
+              Value
+            </h4>
+          </div>
+          <div class='col-md-3'>
+            <h4>
+              $Δ<br><br>
+              Value
+            </h4>
+          </div>
+        </div>
+        <div ng-if='checked'>
+          <%= render 'metrics_table' %>
+        </div>
+        <div ng-if='!checked'>
+          <!-- LEFT BLANK FOR A PLACEHOLDER -->
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
 </div>

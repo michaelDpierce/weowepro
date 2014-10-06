@@ -1,9 +1,15 @@
 class StaticPagesController < ApplicationController
   def stats
+
+    @sales_staff = User.where(dealer_id: current_user.dealer_id, department: 'Sales').sort_by &:last_name
+    @completed_forms = WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true)
+
     @sales = WeoweForm.where(dealer_id: current_user.dealer_id, pending: true, completed: false)
     @service = WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: false)
     @completed = WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true)
   end
+
+
 
   def privacy
   end
@@ -21,4 +27,3 @@ class StaticPagesController < ApplicationController
     render layout: "landing_page"
   end
 end
-
