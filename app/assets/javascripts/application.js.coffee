@@ -22,8 +22,7 @@
 #= require angular-sanitize
 #= require angular-strap.min
 #= require angular-strap-tpl.min
+#= require toastr
 
 #= require modules
 #= require_tree .
-
-

@@ -1,8 +1,13 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
 /* universal */
 
 $lightgrey: #999;
+
+* {
+  font-family: 'Droid', sans-serif;
+}
 
 html {
   overflow-y: scroll;
@@ -10,6 +15,8 @@ html {
 
 body {
  padding-top: 0px;
+ background-color: #FFFFFF;
+ color: black;
 }
 
 section {
@@ -55,14 +62,62 @@ P {
   line-height: 1.7em;
 }
 
+// Navbar
+$bgDefault      : #263238;
+$bgHighlight    : #263238;
+$colDefault     : #FCFCFC;
+$colHover       : #009587;
+
+.navbar-inverse {
+    background-color: $bgDefault;
+    border-color: $bgHighlight;
+    .navbar-brand {
+        color: $colDefault;
+        &:hover, &:focus {
+            color: $colHover; }}
+    .navbar-nav {
+        > li {
+            > a {
+                color: $colDefault;
+                &:hover, &:focus {
+                    color: $colHover;   }}}
+        .active {
+            > a, > a:hover, > a:focus {
+                color: white;
+                background-color: $bgHighlight; }}
+        .open {
+            > a, > a:hover, > a:focus {
+                color: $colHover;
+                background-color: $bgHighlight;
+                .caret {
+                    border-top-color: $colHover;
+                    border-bottom-color: $colHover; }}}
+        > .dropdown {
+            > a {
+                .caret {
+                    border-top-color: $colDefault;
+                    border-bottom-color: $colDefault; }
+                &:hover, &:focus {
+                    .caret {
+                        border-top-color: $colHover;
+                        border-bottom-color: $colHover; }}}}}
+    .navbar-toggle {
+        border-color: $bgHighlight;
+        &:hover, &:focus {
+            background-color: $bgHighlight; }
+        .icon-bar {
+            background-color: white }}}
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+      border-color: transparent;
+    }
+
+
 /* header */
 
 #logo {
-  float: left;
   margin-right: 10px;
   font-size: 1.7em;
   color: #FFFFFF;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 12px;
   font-weight: bold;
@@ -72,6 +127,33 @@ P {
   color: #fff;
   text-decoration: none;
   }
+}
+
+// Buttons
+.btn-primary {
+   @include button-variant(white, #426FC5, white);
+}
+.btn-warning {
+   @include button-variant(white, #F6774F , white);
+}
+.btn-success {
+   @include button-variant(white, #259B24 , white);
+}
+.btn-danger {
+   @include button-variant(white, #E94043, white);
+}
+.btn-info {
+   @include button-variant(white,  red, white);
+}
+
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 25px;
 }
 
 /* Footer */
@@ -197,6 +279,11 @@ legend{
     width: 75%;
     margin: 0 auto;
   }
+
+  #profile_width{
+    width: 70%;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 500px) {
@@ -214,4 +301,3 @@ legend{
 .pref-btn-fix {
   width: 100px;
 }
-

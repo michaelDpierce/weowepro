@@ -5,19 +5,22 @@
     <center><h4 class='visible-xs'>Staff</h4></center>
 
     <div class='row'>
-      <div class='col-md-3 col-xs-8'>
-        <div class="input-group">
-          <input class="form-control" ng-model="search" placeholder="Search"/>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-search"></span>
+      <div class='col-md-3 col-xs-12'>
+        <div class='input-group'>
+          <input class='form-control' ng-model='search.last_name' placeholder='Search By Last Name'/>
+          <span class='input-group-addon'>
+            <span class='glyphicon glyphicon-search'></span>
           </span>
         </div>
       </div>
-      <div class='col-md-7 col-xs-4'></div>
-      <div class='col-md-2 col-xs-2'>
-      <div class='btn-group'>
-        <%= link_to 'Add Staff', new_user_path,
-          class: 'btn btn-primary btn-sm', role: 'button' %>
+      <div class='col-md-7 col-xs-12'></div>
+      <div class='visible-xs'><br><br></div>
+      <div class='col-md-2 col-xs-12'>
+      <div class='pull-right'>
+        <%= link_to new_user_path,
+                    class:'btn btn-default btn-primary' do %>
+          <i class='fa fa-plus fa-lg'></i> Add Employee
+        <% end %>
       </div>
     </div>
 

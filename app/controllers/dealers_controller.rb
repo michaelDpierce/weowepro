@@ -37,7 +37,6 @@ class DealersController < ApplicationController
     handle_dealer_action(@dealer, message, admin_path) do |resource|
       resource.update(dealer_params)
     end
-
   end
 
   def destroy

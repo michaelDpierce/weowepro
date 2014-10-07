@@ -3,77 +3,82 @@
 <h1 class='hidden-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 <center><h4 class='visible-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h4></center>
 
-<div class='hidden-xs'>
-  <% if @user != current_user && current_user.admin? %>
-    <div class='pull-left'>
-      <% if @user.active? %>
-        <%= bootstrap_form_for @user do |f| %>
-          <%= f.hidden_field :active, value: false %>
-          <%= f.submit 'Deactivate' %>
+<div id='profile_width'>
+  <div class='hidden-xs'>
+    <% if @user != current_user && current_user.admin? %>
+      <div class='pull-left'>
+        <% if @user.active? %>
+          <%= bootstrap_form_for @user do |f| %>
+            <%= f.hidden_field :active, value: false %>
+            <%= f.submit 'Deactivate' %>
+          <% end %>
+        <% elsif @user.active == false %>
+          <%= bootstrap_form_for @user do |f| %>
+            <%= f.hidden_field :active, value: true %>
+            <%= f.submit 'Activate'  %>
+          <% end %>
         <% end %>
-      <% elsif @user.active == false %>
-        <%= bootstrap_form_for @user do |f| %>
-          <%= f.hidden_field :active, value: true %>
-          <%= f.submit 'Activate'  %>
+      </div>
+      <ul class='pull-left'>
+        <% if @user.admin == true %>
+          <%= bootstrap_form_for @user do |f| %>
+            <%= f.hidden_field :admin, value: false %>
+            <%= f.submit 'Remove Admin' %>
+          <% end %>
+        <% elsif @user.admin == false %>
+          <%= bootstrap_form_for @user do |f| %>
+            <%= f.hidden_field :admin, value: true %>
+            <%= f.submit 'Add Admin' %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <ul class='pull-left'>
-      <% if @user.admin == true %>
-        <%= bootstrap_form_for @user do |f| %>
-          <%= f.hidden_field :admin, value: false %>
-          <%= f.submit 'Remove Admin' %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class='pull-right'>
+    <%= link_to edit_user_path(@user),
+                class:'btn btn-default btn-primary' do %>
+      <i class='fa fa-pencil fa-lg'></i> Edit Profile
+    <% end %>
+  </div>
+
+
+
+  <br><br>
+
+  <div class='table-responsive'>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+      <th style='width:25%'>First Name</th>
+        <td><%= @user.first_name %></td>
+      </tr>
+      <tr>
+      <th>Last Name</th>
+        <td><%= @user.last_name %></td>
+      </tr>
+      <tr>
+        <th> Email </th>
+        <td>
+        <%= mail_to "#{@user.email}" do %>
+          <span> <%= @user.email %> </span>
         <% end %>
-      <% elsif @user.admin == false %>
-        <%= bootstrap_form_for @user do |f| %>
-          <%= f.hidden_field :admin, value: true %>
-          <%= f.submit 'Add Admin' %>
-        <% end %>
-      <% end %>
-    </ul>
-  <% end %>
+        </td>
+      </tr>
+      <tr>
+      <th>Phone</th>
+        <td><%= phone_number_link(@user.phone_number) %></td>
+      </tr>
+      <tr>
+      <th>Active</th>
+        <td><%= boolean_to_words(@user.active) %></td>
+      </tr>
+      <th>Admin</th>
+        <td><%= boolean_to_words(@user.admin) %></td>
+      </tr>
+      <tr>
+      <th>Department</th>
+        <td><%= @user.department %></td>
+      </tr>
+    </table>
+  </div>
 </div>
-
-<div id='userformbutton' class='pull-right'>
-<%=link_to 'Edit', edit_user_path(@user),
-    class: 'btn btnfix btn-primary btn-sm'%>
-</div>
-
-<br><br>
-
-<div class='table-responsive'>
-  <table class='table table-bordered table-condensed' >
-    <tr>
-    <th style='width:25%'>First Name</th>
-      <td><%= @user.first_name %></td>
-    </tr>
-    <tr>
-    <th>Last Name</th>
-      <td><%= @user.last_name %></td>
-    </tr>
-    <tr>
-      <th> Email </th>
-      <td>
-      <%= mail_to "#{@user.email}" do %>
-        <span> <%= @user.email %> </span>
-      <% end %>
-      </td>
-    </tr>
-    <tr>
-    <th>Phone</th>
-      <td><%= phone_number_link(@user.phone_number) %></td>
-    </tr>
-    <tr>
-    <th>Active</th>
-      <td><%= boolean_to_words(@user.active) %></td>
-    </tr>
-    <th>Admin</th>
-      <td><%= boolean_to_words(@user.admin) %></td>
-    </tr>
-    <tr>
-    <th>Department</th>
-      <td><%= @user.department %></td>
-    </tr>
-  </table>
-</div>
-

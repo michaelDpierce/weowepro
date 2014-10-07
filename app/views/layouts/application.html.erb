@@ -12,8 +12,7 @@
   <body>
     <%= render 'layouts/header' %>
     <div class='container'>
-      <%= browser_check %>
-      <%= flash_messages %>
+      <%= custom_bootstrap_flash %>
       <%= yield %>
       <%= render "layouts/footer" unless @skip_footer %>
     </div>

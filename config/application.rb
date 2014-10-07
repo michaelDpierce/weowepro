@@ -9,8 +9,8 @@ require 'sprockets/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-SESSIONS = proc { |controller| user_signed_in? ? 'application' : 'devise' }
-REGISTRATION = proc { |controller| user_signed_in? ? 'application' : 'devise' }
+SESSIONS = proc { |_controller| user_signed_in? ? 'application' : 'devise' }
+REGISTRATION = proc { |_controller| user_signed_in? ? 'application' : 'devise' }
 
 module Weowe
   class Application < Rails::Application

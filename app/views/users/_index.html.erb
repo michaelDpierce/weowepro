@@ -1,35 +1,30 @@
-<div ng-app='weowepro' class='table-responsive'>
+<div ng-app='weowepro'>
   <table ng-controller='UsersCtrl'
-    class='table table-hover table-condensed' >
+    class='table' >
     <thead>
       <tr>
         <th>
-         <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+         <a ng-click="predicate.value = 'last_name'; reverse=!reverse">
            Last Name</a>
         </th>
-        <th class = 'hidden-xs'>
-         <a href="" ng-click="predicate.value = 'first_name'; reverse=!reverse">
+        <th class='hidden-xs'>
+         <a ng-click="predicate.value = 'first_name'; reverse=!reverse">
            First Name </a>
         </th>
-        <th class = 'hidden-xs'>
-         <a href="" ng-click="predicate.value = 'email'; reverse=!reverse">
-           Email</a>
+        <th class='hidden-xs'>
+          Email
         </th>
         <th>
-         <a href="" ng-click="predicate.value = 'phone_number'; reverse=!reverse">
-           Phone Number</a>
+          Phone Number
         </th>
         <th class = 'hidden-xs'>
-         <a href="" ng-click="predicate.value = 'active'; reverse=!reverse">
-           Department</a>
+          Department
         </th>
         <th class = 'hidden-xs'>
-         <a href="" ng-click="predicate.value = 'active'; reverse=!reverse">
-           Active</a>
+          Active
         </th>
         <th class = 'hidden-xs'>
-         <a href="" ng-click="predicate.value = 'department'; reverse=!reverse">
-           Admin</a>
+          Admin
         </th>
       </tr>
     </thead>

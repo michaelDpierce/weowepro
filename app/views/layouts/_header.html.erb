@@ -1,3 +1,23 @@
+<div id='top_nav'>
+  <center>
+    <div id='nav_logo'>
+      <%= link_to 'WeOwePro', dashboard_path, id: 'logo' %>
+    </div>
+  </center>
+</div>
+
+<style>
+  #top_nav {
+    color: white;
+    background-color: #21272B;
+    height: 50px;
+  }
+  #nav_logo {
+    padding-top: 12px;
+    margin-top: 0px;
+  }
+</style>
+
 <div class = 'navbar navbar-inverse navbar-static-top'>
   <div class = 'container'>
     <button class = 'navbar-toggle' data-toggle = 'collapse'
@@ -7,9 +27,7 @@
       <span class = 'icon-bar'></span>
     </button>
     <% if signed_in? %>
-      <div class='hidden-xs'>
-        <%= link_to 'WeOwePro', dashboard_path, id: 'logo' %>
-      </div>
+
     <% end %>
 
     <div class = 'collapse navbar-collapse navHeaderCollapse'>
@@ -24,7 +42,7 @@
           <li class = 'dropdown'>
             <a href = '#' class = 'dropdown-toggle' data-toggle = 'dropdown'>
               <span class='glyphicon glyphicon-list-alt'> Forms</span>
-              <span style='background-color:red' class='badge'>
+              <span style='background-color:#009587;' class='badge'>
                 <%= WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: false).count %> In Service
               </span>
               <b class = 'caret'></b>

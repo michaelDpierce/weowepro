@@ -35,8 +35,15 @@
                            placeholder: 'Password Confirmation *' %>
     <% end %>
 
-    <%= f.primary ( f.object.new_record? ?  'Submit' :
-    'Save Changes' ) %>
+    <% if @user.new_record?() %>
+      <button type='submit' class='btn btn-block btn-primary'>
+        <i class='fa fa-check'></i> Create New Employee
+      </button>
+    <% else %>
+      <button type='submit' class='btn btn-block btn-primary'>
+        <i class='fa fa-refresh'></i> Update Employee Information
+      </button>
+    <% end %>
 
   <% end %>
 </div>

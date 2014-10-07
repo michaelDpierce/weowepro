@@ -19,7 +19,7 @@ IntercomRails.config do |config|
   # == Enabled Environments
   # Which environments is auto inclusion of the Javascript enabled for
   #
-  config.enabled_environments = ['development', 'production']
+  config.enabled_environments = %w(development production)
 
   # == Current user method/variable
   # The method/variable that contains the logged in user in your controllers.
@@ -67,7 +67,7 @@ IntercomRails.config do |config|
   # in your controllers. 'Companies' are generic groupings of users, so this
   # could be a company, app or group.
   #
-  config.company.current = Proc.new { current_dealer }
+  config.company.current = proc { current_dealer }
 
   # == Company Custom Data
   # A hash of additional data you wish to send about a company.
@@ -83,7 +83,7 @@ IntercomRails.config do |config|
   # e.g. Messaging, Free, Pro, etc.
   #
   # config.company.plan =
-  #Proc.new { |current_company| current_company.plan.name }
+  # Proc.new { |current_company| current_company.plan.name }
 
   # == Company Monthly Spend
   # This is the amount the company spends each month on your app.
