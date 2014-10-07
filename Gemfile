@@ -27,6 +27,7 @@ gem 'oj'
 gem 'chartkick'
 gem 'toastr-rails'
 gem 'font-awesome-rails'
+gem 'active_link_to'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
