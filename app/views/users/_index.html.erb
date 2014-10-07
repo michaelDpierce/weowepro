@@ -26,6 +26,7 @@
         <th class = 'hidden-xs'>
           Admin
         </th>
+        <th></th>
       </tr>
     </thead>
 
@@ -33,9 +34,7 @@
       <tr ng-repeat='user in weoweUsers | orderBy:predicate.value:reverse |
                      filter:search'>
         <td>
-          <a ng-href='/users/{{user.id}}'>
-            {{user.last_name}}
-          </a>
+          {{user.last_name}}
         </td>
         <td class='hidden-xs'>{{user.first_name}}</td>
         <td class='hidden-xs'><%= mail_to '{{user.email}}' %></td>
@@ -43,6 +42,11 @@
         <td class='hidden-xs'>{{user.department}}</td>
         <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
         <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
+        <td>
+          <%= link_to '/users/{{user.id}}' do %>
+            <i class='fa fa-external-link fa-lg'></i>
+          <% end %>
+        </td>
       </tr>
     </tbody>
   </table>
