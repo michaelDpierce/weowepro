@@ -23,12 +23,22 @@
               <a href='/users'><span class='fa fa-users fa-lg'> Staff</span></a>
             </li>
           <% end %>
+
           <% if current_user.admin == true %>
-            <li class='<%= active_link_to_class('#',
-                active: [['static_pages'], ['stats']]) %>'>
-              <a href='/stats'><span class='fa fa-bar-chart fa-lg'> Statistics</span></a>
+            <li class="<%= active_link_to_class('#',
+                active: [['static_pages'], ['overall', 'staff']]) %> dropdown">
+              <a href = '#' class = 'dropdown-toggle' data-toggle = 'dropdown'>
+                <span class='fa fa-bar-chart fa-lg'> Statistics</span>
+                <b class = 'caret'></b>
+                </a>
+              <ul class = 'dropdown-menu'>
+                <li><a href='/staff'>Sales Staff</span></a></li>
+                  <li><a href='/overall'>Dealership</span></a></li>
+              </ul>
             </li>
+
           <% end %>
+
           <li class="<%= active_link_to_class('#',
               active: [['weowe_forms'], []]) %> dropdown">
             <a href = '#' class = 'dropdown-toggle' data-toggle = 'dropdown'>
@@ -38,12 +48,13 @@
               </span>
               <b class = 'caret'></b>
               </a>
-          <ul class = 'dropdown-menu'>
-            <li><%= link_to 'New Form', new_weowe_form_path %></li>
-            <li><%= link_to 'Sales', pending_path %></li>
-            <li><%= link_to 'Service', weowe_forms_path %></li>
-            <li><%= link_to 'Completed', completed_path %></li>
-          </ul>
+            <ul class = 'dropdown-menu'>
+              <li><%= link_to 'New Form', new_weowe_form_path %></li>
+              <li><%= link_to 'Sales', pending_path %></li>
+              <li><%= link_to 'Service', weowe_forms_path %></li>
+              <li><%= link_to 'Completed', completed_path %></li>
+            </ul>
+          </li>
 
           <li class="<%= active_link_to_class('#',
               active: [['users', 'dealers'], ['show', 'edit', 'admin']]) %> dropdown">

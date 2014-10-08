@@ -24,3 +24,5 @@
 
 #= require modules
 #= require_tree .
+
+#= require highcharts/highcharts

@@ -1,0 +1,31 @@
+<%= high_chart('weoweforms_count', @count) %>
+<br><br>
+
+<center>
+  <h4>Total Retail and Wholesale</h4>
+  <table class='table' style='width: 50%;'>
+    <tr>
+      <th>Metric</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>Total Retail</td>
+      <td>
+        <%=number_to_currency(WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).sum('dealer_total_value'))%>
+      </td>
+    </tr>
+    <tr>
+      <td>Total Wholesale</td>
+      <td>
+        <%=number_to_currency(WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).sum('dealer_wholesale'))%>
+      </td>
+    </tr>
+    <tr>
+      <td>Diffrence</td>
+      <td>
+        <%=number_to_currency(WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).sum('dealer_total_value') -
+           WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).sum('dealer_wholesale'))%>
+      </td>
+    </tr>
+  </table>
+</center>
