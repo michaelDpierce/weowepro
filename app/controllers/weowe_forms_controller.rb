@@ -8,18 +8,13 @@ class WeoweFormsController < ApplicationController
   end
 
   def index
-    index_view
-    # if stale?(@completed)
-    respond_to do |format|
-      format.html
-      format.json do
-        render json: oj_dumper(@index)
+    # if stale?(index_view)
+      respond_to do |format|
+        format.html
+        format.json {render json: service_view}
+        format.csv {render csv: @index, filename: 'service'}
       end
-      format.csv do
-        render csv: @index, filename: 'service'
-      end
-      # end
-    end
+    # end
   end
 
   def pending
@@ -27,27 +22,18 @@ class WeoweFormsController < ApplicationController
     # if stale?(@pending)
     respond_to do |format|
       format.html
-      format.json do
-        render json: oj_dumper(@pending)
-      end
-      format.csv do
-        render csv: @pending, filename: 'sales'
-      end
-      # end
+      format.json {render json: pending_view}
+      format.csv {render csv: @pending, filename: 'sales'}
     end
+    # end
   end
 
   def completed
-    completed_view
     # if stale?(@completed)
     respond_to do |format|
       format.html
-      format.json do
-        render json: oj_dumper(@completed)
-      end
-      format.csv do
-        render csv: @completed, filename: 'completed'
-      end
+      format.json {render json: completed_view}
+      format.csv {render csv: @completed, filename: 'completed'}
     end
     # end
   end
@@ -147,26 +133,25 @@ class WeoweFormsController < ApplicationController
   include ApplicationHelper
   include WeoweFormsHelper
 
-  def oj_dumper(view)
-    Oj.dump(view.select([:id, :custom_date, :stock_number, :year, :make,
-                         :vehicle_model, :color, :customer_last_name,
-                         :customer_first_name, :dealer_total_value]),
-            mode: :compat)
-  end
-
-  def index_view
-    @index = WeoweForm.where(dealer_id: current_user.dealer_id,
-                             pending: false, completed: false)
+  def service_view
+    WeoweForm.where(dealer_id: current_user.dealer_id, pending: false,
+                    completed: false).select('id', 'custom_date', 'stock_number', 'year', 'make',
+                                         'vehicle_model', 'color', 'customer_last_name',
+                                         'customer_first_name', 'dealer_total_value').as_json
   end
 
   def pending_view
-    @pending = WeoweForm.where(dealer_id: current_user.dealer_id,
-                               pending: true, completed: false)
+    WeoweForm.where(dealer_id: current_user.dealer_id, pending: true,
+                    completed: false).select('id', 'custom_date', 'stock_number', 'year', 'make',
+                                         'vehicle_model', 'color', 'customer_last_name',
+                                         'customer_first_name', 'dealer_total_value').as_json
   end
 
   def completed_view
-    @completed = WeoweForm.where(dealer_id: current_user.dealer_id,
-                                 pending: false, completed: true)
+    WeoweForm.where(dealer_id: current_user.dealer_id, pending: false,
+                    completed: true).select('id', 'custom_date', 'stock_number', 'year', 'make',
+                                         'vehicle_model', 'color', 'customer_last_name',
+                                         'customer_first_name', 'dealer_total_value').as_json
   end
 
   def update_message
