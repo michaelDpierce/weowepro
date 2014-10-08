@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: oj_dumper(@users)
+        render json: @users.select('id', 'last_name', 'first_name', 'email', 'phone_number',
+                             'department', 'active', 'admin').as_json
       end
       format.csv do
         render csv: @users, filename: 'users'
@@ -48,11 +49,6 @@ class UsersController < ApplicationController
 
   include ApplicationHelper
   include UsersHelper
-
-  def oj_dumper(view)
-    Oj.dump(view.select([:id, :last_name, :first_name, :email, :phone_number,
-                         :department, :active, :admin]), mode: :compat)
-  end
 
   def devise_user_render
     @user = User.new
