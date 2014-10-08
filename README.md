@@ -2,6 +2,8 @@
 
 [ ![Codeship Status for michaelDpierce/weowepro](https://codeship.io/projects/38cf9820-30ad-0132-a67f-12c40d681460/status)](https://codeship.io/projects/39886)
 
+[![Code Climate](https://codeclimate.com/github/michaelDpierce/weowepro/badges/gpa.svg)](https://codeclimate.com/github/michaelDpierce/weowepro)
+
 [![Throughput Graph](https://graphs.waffle.io/michaeldpierce/weowepro/throughput.svg)](https://waffle.io/michaeldpierce/weowepro/metrics)
 
 ## Populate Development Database
