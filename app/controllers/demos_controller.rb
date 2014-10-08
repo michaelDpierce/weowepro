@@ -1,28 +1,20 @@
 class DemosController < ApplicationController
   before_action :set_demo, only: [:show, :edit, :update, :destroy]
 
-  # GET /demos
-  # GET /demos.json
   def index
     @demos = Demo.all
   end
 
-  # GET /demos/1
-  # GET /demos/1.json
   def show
   end
 
-  # GET /demos/new
   def new
     @demo = Demo.new
   end
 
-  # GET /demos/1/edit
   def edit
   end
 
-  # POST /demos
-  # POST /demos.json
   def create
     @demo = Demo.new(demo_params)
 
@@ -37,8 +29,6 @@ class DemosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /demos/1
-  # PATCH/PUT /demos/1.json
   def update
     respond_to do |format|
       if @demo.update(demo_params)
@@ -51,8 +41,6 @@ class DemosController < ApplicationController
     end
   end
 
-  # DELETE /demos/1
-  # DELETE /demos/1.json
   def destroy
     @demo.destroy
     respond_to do |format|
@@ -63,12 +51,10 @@ class DemosController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_demo
     @demo = Demo.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def demo_params
     params.require(:demo).permit(:first_name, :last_name, :phone_number, :email, :dealership)
   end
