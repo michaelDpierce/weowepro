@@ -24,12 +24,9 @@ Weowe::Application.routes.draw do
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/tos', to: 'static_pages#tos', via: 'get'
 
-  match '/stats',
-        to: 'static_pages#stats',
-        via: 'get'
-  match '/stats',
-        to: 'static_pages#stats',
-        via: 'post'
+  match '/staff', to: 'static_pages#staff',    via: 'get'
+  match '/overall', to: 'static_pages#overall',    via: 'get'
+
 
   match '/about', to: 'static_pages#about',    via: 'get'
 
