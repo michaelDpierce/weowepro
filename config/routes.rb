@@ -6,7 +6,6 @@ Weowe::Application.routes.draw do
   resources :dealers
   resources :weowe_forms
   resources :users
-  resources :charges
 
   root 'static_pages#landing_page'
 

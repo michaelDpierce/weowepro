@@ -20,8 +20,6 @@
 #= require angular-resource
 #= require angular-animate
 #= require angular-sanitize
-#= require angular-strap.min
-#= require angular-strap-tpl.min
 #= require toastr
 
 #= require modules
