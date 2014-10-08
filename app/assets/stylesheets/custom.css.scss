@@ -4,29 +4,23 @@
 /* universal */
 
 $lightgrey: #999;
-
 * {
   font-family: 'Droid', sans-serif;
 }
-
 html {
   overflow-y: scroll;
 }
-
 body {
  padding-top: 0px;
  background-color: #FFFFFF;
  color: black;
 }
-
 section {
   overflow: auto;
 }
-
 textarea {
   resize: vertical;
 }
-
 .center {
   text-align: center;
 
@@ -34,7 +28,6 @@ textarea {
   margin-bottom: 10px;
   }
 }
-
 #top_nav {
   color: white;
   background-color: #21272B;
@@ -50,14 +43,12 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
-
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
-
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
@@ -66,7 +57,6 @@ h2 {
   text-weight: normal;
   color: $lightgrey;
 }
-
 P {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -121,9 +111,7 @@ $colHover       : #009587;
       border-color: transparent;
     }
 
-
 /* header */
-
 #logo {
   margin-right: 10px;
   font-size: 1.7em;
@@ -132,7 +120,6 @@ $colHover       : #009587;
   padding-top: 12px;
   font-weight: bold;
   line-height: 1;
-
   &:hover {
   color: #fff;
   text-decoration: none;
@@ -156,50 +143,32 @@ $colHover       : #009587;
    @include button-variant(white,  red, white);
 }
 
-.btn-circle {
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  padding: 15px 0;
-  font-size: 12px;
-  line-height: 1.42;
-  border-radius: 25px;
-}
-
 /* Footer */
-
 footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: $lightgrey;  //defined via bootstrap-sass gem
 }
-
 footer a {
   color: #555;
 }
-
 footer a:hover {
   color: #222;
 }
-
 footer small {
   float: left;
 }
-
 footer ul {
   float: left;
   list-style: none;
 }
-
 footer ul li {
   float: left;
   margin-left: 10px;
 }
 
 /* mixins, variables, etc. */
-$grayMediumLight: #eaeaea;
-
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -217,18 +186,15 @@ $grayMediumLight: #eaeaea;
 }
 
 /* forms */
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
-
 input {
   height: auto !important;
 }
-
 .date-select{
   .form-group select {
     @extend .col-sm-4;
@@ -242,11 +208,9 @@ input {
     display: block;
   }
 }
-
 legend{
   @extend h1;
 }
-
 #error_explanation {
   color: #f00;
   ul {
@@ -254,7 +218,6 @@ legend{
     margin: 0 0 18px 0;
   }
 }
-
 .btnfix{
   width: 150px;
   display: block;
@@ -271,43 +234,35 @@ legend{
 .fixtable {
   width: 50%;
 }
-
 .right-show-page {
     text-align: right;
     float: right;
     margin-left: 15px;
 }
-
 @media (min-width: 500px) {
   .mobile-btn-fix {
     width: 150px;
     display: block;
-
   }
-
   .table-width-desktop {
     width: 75%;
     margin: 0 auto;
   }
-
   #profile_width{
     width: 70%;
     margin: 0 auto;
   }
 }
-
 @media (max-width: 500px) {
   .mobile-btn-fix {
     width: 150px;
     display: block;
   }
-
   .table-width-desktop {
     width: 100%;
     margin: 0 auto;
   }
 }
-
 .pref-btn-fix {
   width: 100px;
 }
