@@ -1,42 +1,49 @@
 <div ng-app='weowepro'>
   <div ng-controller='WeoweFormsCtrl'>
     <% provide(:title, 'Service') %>
-    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+
     <h1 class='hidden-xs'>Service</h1>
     <center><h4 class='visible-xs'>Service</h4></center>
+
     <div class='row'>
       <div class='col-md-3'>
-        <div class="input-group">
-          <input class="form-control" ng-model="search" placeholder="Search"/>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-search"></span>
+        <div class='input-group'>
+          <input class='form-control' ng-model='search' placeholder='Search'/>
+          <span class='input-group-addon'>
+            <span class='glyphicon glyphicon-search'></span>
           </span>
         </div>
       </div>
       <div class='col-md-5'></div>
       <div class='col-md-4'>
       <div class='btn-group hidden-xs'>
-        <%= link_to 'New Form', new_weowe_form_path,
-          class: 'btn btn-primary btn-sm', role: 'button' %>
-        <%= link_to 'Sales', pending_path,
-          class: 'btn btn-danger btn-sm', role: 'button' %>
-        <%= link_to 'Completed', completed_path,
-          class: 'btn btn-success btn-sm', role: 'button' %>
+        <%= link_to new_weowe_form_path,
+                    class:'btn btn-default btn-primary' do %>
+          <i class='fa fa-plus fa-lg'></i> Add Form
+        <% end %>
+        <%= link_to pending_path,
+                    class:'btn btn-danger btn-warning' do %>
+          <i class='fa fa-user fa-lg'></i> Sales
+        <% end %>
+        <%= link_to completed_path,
+                    class:'btn btn-default btn-success' do %>
+          <i class='fa fa-check-square fa-lg'></i> Completed
+        <% end %>
       </div>
     </div>
-     <div class='hidden-xs'><br><br></div><br>
+
+    <div class='hidden-xs'><br><br></div><br>
     <%= render 'index' %>
+
     <center>
-      <div ng-show="(weoweForms | filter:search).length == 0">
+      <div ng-show='(weoweForms | filter:search).length == 0'>
         <hr>
         <h4>No results found</h4>
-        <btn class="btn btn-default" ng-click="search=''">New Search</btn>
+        <btn class='btn btn-default' ng-click="search=''">New Search</btn>
       </div>
-      <div ng-hide="(weoweForms | filter:search).length == 0">
+      <div ng-hide='(weoweForms | filter:search).length == 0'>
         <hr>
-        <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+        <btn class='btn btn-default' ng-click='loadMore()'>Load More</btn>
       </div>
     </center>
 </div>
-

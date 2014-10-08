@@ -1,65 +1,66 @@
-<div ng-app='weowepro' class='table-responsive'>
+<table ng-controller='CompletedFormsCtrl'
+       class='table' >
+  <thead ng-show='(completedForms | filter:search).length > 0'>
+    <tr>
+      <th>
+       <a ng-click="predicate.value = 'stock_number'; reverse=!reverse">
+        Stock #</a>
+      </th>
+      <th class = 'hidden-xs'>
+       <a ng-click="predicate.value = 'custom_date'; reverse=!reverse">
+         Date</a>
+      </th>
+      <th class = 'hidden-xs'>
+        <a ng-click="predicate.value = 'year'; reverse=!reverse">
+          Year</a>
+      </th>
+      <th class = 'hidden-xs'>
+        <a ng-click="predicate.value = 'make'; reverse=!reverse">
+          Make</a>
+      </th>
+      <th class = 'hidden-xs'>
+        <a ng-click="predicate.value = 'vehicle_model'; reverse=!reverse">
+          Model</a>
+      </th>
+      <th class = 'hidden-xs'>
+        <a ng-click="predicate.value = 'color'; reverse=!reverse">
+          Color</a>
+      </th>
+      <th>
+        <a ng-click="predicate.value = 'customer_last_name'; reverse=!reverse">
+          Last Name</a>
+      </th>
+      <th class = 'hidden-xs'>
+        <a ng-click="predicate.value = 'customer_first_name'; reverse=!reverse">
+          First Name</a>
+      </th>
+      <th>
+        <a ng-click="predicate.value = 'dealer_total_value'; reverse=!reverse">
+          Total Value</a>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
 
-  <table ng-controller='CompletedFormsCtrl'
-    class='table table-hover table-condensed' >
-    <thead ng-show='(completedForms | filter:search).length > 0'>
-      <tr>
-        <th>
-         <a href="" ng-click="predicate.value = 'stock_number'; reverse=!reverse">
-          Stock #</a>
-        </th>
-        <th class = 'hidden-xs'>
-         <a href="" ng-click="predicate.value = 'custom_date'; reverse=!reverse">
-           Date</a>
-        </th>
-        <th class = 'hidden-xs'>
-          <a href="" ng-click="predicate.value = 'year'; reverse=!reverse">
-            Year</a>
-        </th>
-        <th class = 'hidden-xs'>
-          <a href="" ng-click="predicate.value = 'make'; reverse=!reverse">
-            Make</a>
-        </th>
-        <th class = 'hidden-xs'>
-          <a href="" ng-click="predicate.value = 'vehicle_model'; reverse=!reverse">
-            Model</a>
-        </th>
-        <th class = 'hidden-xs'>
-          <a href="" ng-click="predicate.value = 'color'; reverse=!reverse">
-            Color</a>
-        </th>
-        <th>
-          <a href="" ng-click="predicate.value = 'customer_last_name'; reverse=!reverse">
-            Last Name</a>
-        </th>
-        <th class = 'hidden-xs'>
-          <a href="" ng-click="predicate.value = 'customer_first_name'; reverse=!reverse">
-            First Name</a>
-        </th>
-        <th>
-          <a href="" ng-click="predicate.value = 'dealer_total_value'; reverse=!reverse">
-            Total Value</a>
-        </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat='form in completedForms | orderBy:predicate.value:reverse |
-                     filter:search | limitTo:totalDisplayed'>
-       <td>
-         <a ng-href='/weowe_forms/{{form.id}}'>
-           {{form.stock_number}}
-         </a>
-       </td>
-       <td class = 'hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
-       <td class = 'hidden-xs'>{{form.year}}</td>
-       <td class = 'hidden-xs'>{{form.make}}</td>
-       <td class = 'hidden-xs'>{{form.vehicle_model}}</td>
-       <td class = 'hidden-xs'>{{form.color}}</td>
-       <td>{{form.customer_last_name}}</td>
-       <td class = 'hidden-xs'>{{form.customer_first_name}}</td>
-       <td>{{form.dealer_total_value | currency}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <tbody>
+    <tr ng-repeat='form in completedForms | orderBy:predicate.value:reverse |
+                   filter:search | limitTo:totalDisplayed'>
+     <td>
+        {{form.stock_number}}
+     </td>
+     <td class='hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
+     <td class='hidden-xs'>{{form.year}}</td>
+     <td class='hidden-xs'>{{form.make}}</td>
+     <td class='hidden-xs'>{{form.vehicle_model}}</td>
+     <td class='hidden-xs'>{{form.color}}</td>
+     <td>{{form.customer_last_name}}</td>
+     <td class='hidden-xs'>{{form.customer_first_name}}</td>
+     <td>{{form.dealer_total_value | currency}}</td>
+     <td>
+       <%= link_to '/weowe_forms/{{form.id}}' do %>
+         <i class='fa fa-external-link fa-lg'></i>
+       <% end %>
+     </td>
+    </tr>
+  </tbody>
+</table>

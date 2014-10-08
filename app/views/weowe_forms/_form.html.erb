@@ -152,8 +152,15 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :dealer_id, value: current_user.dealer_id %>
 
-    <%= f.primary ( f.object.new_record? ? 'Submit Form' :
-    'Save Changes' ) %>
+    <% if @weowe_form.new_record?() %>
+      <button type='submit' class='btn btn-block btn-primary'>
+        <i class='fa fa-check'></i> Submit Form
+      </button>
+    <% else %>
+      <button type='submit' class='btn btn-block btn-primary'>
+        <i class='fa fa-refresh'></i> Update Form
+      </button>
+    <% end %>
 
   <% end %>
 </div>

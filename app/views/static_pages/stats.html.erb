@@ -6,34 +6,28 @@
     <% @completed_forms.where(user_id: user.id).each do |form| %>
       <div class='well'>
         <div class='row'>
-          <div class='col-md-4'>
+          <div class='col-md-3'>
             <h4>
               <%= user.last_name %>, <%= user.first_name %>
             </h4>
           </div>
-          <div class='col-md-2'>
+          <div class='col-md-3'>
             <h4>
               Total Retail<br><br>
               <%= number_to_currency(@completed_forms.where(user_id: user.id).sum(:dealer_total_value)) %>
             </h4>
           </div>
-          <div class='col-md-2'>
+          <div class='col-md-3'>
             <h4>
               Total Wholesale<br><br>
               <%= number_to_currency(@completed_forms.where(user_id: user.id).sum(:dealer_wholesale)) %>
             </h4>
           </div>
-          <div class='col-md-2'>
+          <div class='col-md-3'>
             <h4>
               Total Profit/Loss<br><br>
               <%= number_to_currency(@completed_forms.where(user_id: user.id).sum(:dealer_total_value) - @completed_forms.where(user_id: user.id).sum(:dealer_wholesale)) %>
             </h4>
-          </div>
-          <div class='col-md-2'>
-            <!-- <h4>
-              %Δ<br><br>
-              <%= (@completed_forms.where(user_id: user.id).sum(:dealer_wholesale)/ @completed_forms.where(user_id: user.id).sum(:dealer_total_value)).round(1)*100%>%
-            </h4> -->
           </div>
         </div>
       </div>

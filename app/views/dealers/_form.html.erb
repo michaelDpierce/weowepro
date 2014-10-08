@@ -23,9 +23,16 @@
                       placeholder: 'Email domain: e.g., DealerEmailDomain.com' %>
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
     <%= f.file_field :logo %>
-    <%= f.primary ( f.object.new_record? ?  'Create New Dealership' :
-    'Save Changes' ) %>
 
+    <% if @dealer.new_record?() %>
+      <button type='submit' class='btn btn-block btn-primary'>
+        <i class='fa fa-check'></i> Create New Dealership
+      </button>
+    <% else %>
+      <button type='submit' class='btn btn-block btn-primary'>
+        <i class='fa fa-refresh'></i> Update Dealership Information
+      </button>
+    <% end %>
   <% end %>
 </div>
 </div>

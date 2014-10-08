@@ -3,15 +3,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(dealer_id: current_user.dealer_id)
-    if stale?(@users)
-      respond_to do |format|
-        format.html
-        format.json do
-          render json: oj_dumper(@users)
-        end
-        format.csv do
-          render csv: @users, filename: 'users'
-        end
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: oj_dumper(@users)
+      end
+      format.csv do
+        render csv: @users, filename: 'users'
       end
     end
   end
@@ -33,14 +31,13 @@ class UsersController < ApplicationController
     @user.dealer_id = current_user.dealer_id
     message = 'User account was successfully created.'
     handle_action(@user, message, :new, &:save)
-
   end
 
   def update
     @user.update_attributes(user_params)
     message = 'Profile updated.'
     handle_action(@user, message, :edit) do |resource|
-    resource.update(user_params)
+      resource.update(user_params)
     end
   end
 

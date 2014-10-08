@@ -9,47 +9,47 @@ class WeoweFormsController < ApplicationController
 
   def index
     index_view
-    if stale?(@completed)
-      respond_to do |format|
-        format.html
-        format.json do
-          render json: oj_dumper(@index)
-        end
-        format.csv do
-          render csv: @index, filename: 'service'
-        end
+    # if stale?(@completed)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: oj_dumper(@index)
       end
+      format.csv do
+        render csv: @index, filename: 'service'
+      end
+      # end
     end
   end
 
   def pending
     pending_view
-    if stale?(@pending)
-      respond_to do |format|
-        format.html
-        format.json do
-          render json: oj_dumper(@pending)
-        end
-        format.csv do
-          render csv: @pending, filename: 'sales'
-        end
+    # if stale?(@pending)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: oj_dumper(@pending)
       end
+      format.csv do
+        render csv: @pending, filename: 'sales'
+      end
+      # end
     end
   end
 
   def completed
     completed_view
-    if stale?(@completed)
-      respond_to do |format|
-        format.html
-        format.json do
-          render json: oj_dumper(@completed)
-        end
-        format.csv do
-          render csv: @completed, filename: 'completed'
-        end
+    # if stale?(@completed)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: oj_dumper(@completed)
+      end
+      format.csv do
+        render csv: @completed, filename: 'completed'
       end
     end
+    # end
   end
 
   def metrics
@@ -57,26 +57,26 @@ class WeoweFormsController < ApplicationController
       format.html
       format.json do
         render json: completed_view.select(:id,
-                                            :dealer_total_value_1,
-                                            :dealer_total_value_2,
-                                            :dealer_total_value_3,
-                                            :dealer_total_value_4,
-                                            :dealer_total_value_5,
-                                            :dealer_total_value,
-                                            :dealer_wholesale_1,
-                                            :dealer_wholesale_2,
-                                            :dealer_wholesale_3,
-                                            :dealer_wholesale_4,
-                                            :dealer_wholesale_5,
-                                            :dealer_wholesale,
-                                            :description_1,
-                                            :description_2,
-                                            :description_3,
-                                            :description_4,
-                                            :description_5,
-                                            :custom_date,
-                                            :stock_number,
-                                            :user_id).to_json(include: [:user])
+                                           :dealer_total_value_1,
+                                           :dealer_total_value_2,
+                                           :dealer_total_value_3,
+                                           :dealer_total_value_4,
+                                           :dealer_total_value_5,
+                                           :dealer_total_value,
+                                           :dealer_wholesale_1,
+                                           :dealer_wholesale_2,
+                                           :dealer_wholesale_3,
+                                           :dealer_wholesale_4,
+                                           :dealer_wholesale_5,
+                                           :dealer_wholesale,
+                                           :description_1,
+                                           :description_2,
+                                           :description_3,
+                                           :description_4,
+                                           :description_5,
+                                           :custom_date,
+                                           :stock_number,
+                                           :user_id).to_json(include: [:user])
       end
     end
   end
@@ -118,9 +118,8 @@ class WeoweFormsController < ApplicationController
                                               @weowe_form.dealer_wholesale_5)
     message = 'Form updated.'
     handle_action(@weowe_form, message, :edit) do |resource|
-    resource.update(weowe_form_params)
+      resource.update(weowe_form_params)
     end
-
   end
 
   def destroy
@@ -150,9 +149,9 @@ class WeoweFormsController < ApplicationController
 
   def oj_dumper(view)
     Oj.dump(view.select([:id, :custom_date, :stock_number, :year, :make,
-                          :vehicle_model, :color, :customer_last_name,
-                          :customer_first_name, :dealer_total_value]),
-                          mode: :compat)
+                         :vehicle_model, :color, :customer_last_name,
+                         :customer_first_name, :dealer_total_value]),
+            mode: :compat)
   end
 
   def index_view
