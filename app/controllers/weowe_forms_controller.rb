@@ -8,34 +8,33 @@ class WeoweFormsController < ApplicationController
   end
 
   def index
-    # if stale?(index_view)
+    if stale?(service_view)
       respond_to do |format|
         format.html
         format.json {render json: service_view}
-        format.csv {render csv: @index, filename: 'service'}
+        format.csv {render csv: service_view, filename: 'service'}
       end
-    # end
+    end
   end
 
   def pending
-    pending_view
-    # if stale?(@pending)
-    respond_to do |format|
-      format.html
-      format.json {render json: pending_view}
-      format.csv {render csv: @pending, filename: 'sales'}
+    if stale?(pending_view)
+      respond_to do |format|
+        format.html
+        format.json {render json: pending_view}
+        format.csv {render csv: @pending, filename: 'sales'}
+      end
     end
-    # end
   end
 
   def completed
-    # if stale?(@completed)
-    respond_to do |format|
-      format.html
-      format.json {render json: completed_view}
-      format.csv {render csv: @completed, filename: 'completed'}
+    if stale?(completed_view)
+      respond_to do |format|
+        format.html
+        format.json {render json: completed_view}
+        format.csv {render csv: completed_view, filename: 'completed'}
+      end
     end
-    # end
   end
 
   def metrics

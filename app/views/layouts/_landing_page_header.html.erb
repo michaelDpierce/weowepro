@@ -2,7 +2,7 @@
   <div class='container'>
     <div class='pull-right' id='sign_in_button'>
       <%= link_to 'Sign In', new_user_session_path,
-        class: 'btn btn-warning btn-xs', role: 'button' %>
+        class: 'btn btn-success btn-xs', role: 'button' %>
     </div>
   </div>
 </nav>
@@ -40,14 +40,13 @@
         </div>
         <div class='pull-right hidden-xs' id='cta_button_1'>
           <%= link_to 'Get Started Today', '#demo',
-            class: 'btn btn-info btn-sm', role: 'button' %>
+            class: 'btn btn-primary btn-sm', role: 'button' %>
         </div>
     <% else %>
       <div class='pull-right' id='cta_button_2'>
         <%= link_to 'Back To Home', root_path,
-          class: 'btn btn-info btn-sm', role: 'button' %>
+          class: 'btn btn-primary btn-sm', role: 'button' %>
       </div>
     <% end %>
   </div>
 </div>
-
