@@ -11,6 +11,19 @@
     background-color:#ECEEF2;
   }
 
+  .panel-primary > .panel-heading {
+    background-color: #009587;
+  }
+  .panel-primary {
+    border-color:  #009587;
+  }
+   a.deviselink{
+      color: #009587;
+      &:hover {
+         color: #009587;
+       }
+     }
+
   .header-font {
     font-size: 24px;
     font-family: 'Gill Sans Ultra Bold';
