@@ -5,8 +5,12 @@ describe User do
     @user = User.new(first_name: 'First',
                      last_name: 'Last',
                      email: 'user@example.com',
+                     phone_number: '720.387.9691',
                      password: 'foobar77',
                      password_confirmation: 'foobar77',
+                     admin: true,
+                     active: true,
+                     department: 'Sales',
                      dealer_id: 1
                      )
   end
@@ -16,22 +20,13 @@ describe User do
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
+  it { should respond_to(:phone_number) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:admin) }
+  it { should respond_to(:active) }
+  it { should respond_to(:department) }
   it { should respond_to(:dealer_id) }
-  it { should respond_to(:phone_number) }
-  it { should be_valid }
-  it { should_not be_admin }
-
-  describe 'with admin attribute set to \'true\'' do
-    before do
-      @user.save!
-      @user.toggle!(:admin)
-    end
-
-    it { should be_admin }
-  end
 
   describe 'when password is too short' do
     before { @user.password = 'foo' }
@@ -53,13 +48,8 @@ describe User do
     it { should_not be_valid }
   end
 
-  describe 'when email address is already taken' do
-    before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
-      user_with_same_email.save
-    end
-
+  describe 'when phone number is not present' do
+    before { @user.phone_number = ' ' }
     it { should_not be_valid }
   end
 

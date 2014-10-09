@@ -1,34 +1,41 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+#General
 gem 'rails', '4.0.3'
-gem 'bootstrap_form'
-gem 'devise'
-gem 'faker', '1.1.2'
-gem 'bcrypt'
-gem 'jquery-turbolinks'
-gem 'angularjs-rails'
-gem 'jbuilder', '~> 1.2'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'devise'
+gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass', '3.0.3.0'
+gem 'bcrypt'
+gem 'jquery-turbolinks'
 gem 'uglifier', '~> 2.5.0'
-gem 'paperclip'
-gem 'angular_rails_csrf'
-gem 'sendgrid'
-gem 'intercom-rails'
-gem 'comma', '~> 3.0'
-gem 'aws-sdk'
-gem 'newrelic_rpm'
 gem 'yajl-ruby'
 gem 'oj'
-gem 'chartkick'
-gem 'toastr-rails'
-gem 'font-awesome-rails'
-gem 'active_link_to'
+
+#Front End
+gem 'bootstrap_form'
 gem 'lazy_high_charts'
+gem 'sass-rails', '~> 4.0.0'
+gem 'bootstrap-sass', '3.0.3.0'
+gem 'font-awesome-rails'
+gem 'toastr-rails'
+
+#Utilities
+gem 'faker', '1.1.2'
+gem 'paperclip'
+gem 'active_link_to'
+gem 'sendgrid'
+gem 'aws-sdk'
+gem 'newrelic_rpm'
+gem 'intercom-rails'
+gem 'comma', '~> 3.0'
+
+#Angualr
+gem 'angularjs-rails'
+gem 'angular_rails_csrf'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -38,8 +45,6 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
-  gem 'debugger'
-  # gem 'mailcatcher'
 end
 
 group :test do

@@ -7,9 +7,10 @@ describe Dealer do
                          address_2: 'Unit B',
                          city: 'Lakewood',
                          state: 'CO',
-                         zip: 80_228,
+                         zip: 80228,
                          phone_number: '720.387.9691',
-                         time_zone: 'Mountain Time (US & Canada)'
+                         time_zone: 'Mountain Time (US & Canada)',
+                         email_domain: 'autonation.com'
                      )
   end
 
@@ -23,7 +24,7 @@ describe Dealer do
   it { should respond_to(:zip) }
   it { should respond_to(:phone_number) }
   it { should respond_to :time_zone }
-  it { should be_valid }
+  it { should respond_to :email_domain }
 
   describe 'when name is not present' do
     before { @dealer.name = ' ' }
