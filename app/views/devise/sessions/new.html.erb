@@ -13,7 +13,7 @@
     <div class='panel-body'>
       <%= bootstrap_form_for(resource, :as => resource_name,
                              :url => session_path(resource_name)) do |f| %>
-        <%= f.email_field :email, :autofocus => true, icon: "user" %>
+        <%= f.email_field :email, :autofocus => true %>
         <%= f.password_field :password %>
         <%= f.submit 'Sign In' %>
       <% end %>
