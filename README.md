@@ -4,6 +4,8 @@
 
 [![Code Climate](https://codeclimate.com/github/michaelDpierce/weowepro/badges/gpa.svg)](https://codeclimate.com/github/michaelDpierce/weowepro)
 
+[![Dependency Status](https://gemnasium.com/michaelDpierce/weowepro.svg)](https://gemnasium.com/michaelDpierce/weowepro)
+
 [![Throughput Graph](https://graphs.waffle.io/michaeldpierce/weowepro/throughput.svg)](https://waffle.io/michaeldpierce/weowepro/metrics)
 
 ## Populate Development Database
