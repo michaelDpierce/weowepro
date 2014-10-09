@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe 'Sign In Page' do
 
-  before { visit new_user_session_path }
+  before { visit('/users/sign_in') }
 
   subject { page }
 
-  it { should have_title('COMSA Tracker | Sign In') }
-  it { should have_selector('h1', text: 'COMSA Tracker') }
+  it { should have_title('WeOwePro | Sign In') }
+  it { should have_content('WeOwePro') }
+  it { should have_content('Email') }
+  it { should have_content('Password') }
 end
