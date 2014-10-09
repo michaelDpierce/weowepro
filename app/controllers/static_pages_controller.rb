@@ -2,8 +2,6 @@ class StaticPagesController < ApplicationController
   def staff
     @sales_staff = User.where(dealer_id: current_user.dealer_id, department: 'Sales').sort_by &:last_name
     @completed_forms = WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true)
-
-
   end
 
   def overall
