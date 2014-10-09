@@ -6,6 +6,8 @@
 
 [![Dependency Status](https://gemnasium.com/michaelDpierce/weowepro.svg)](https://gemnasium.com/michaelDpierce/weowepro)
 
+[![Stories in Ready](https://badge.waffle.io/michaeldpierce/weowepro.svg?label=ready&title=Ready)](http://waffle.io/michaeldpierce/weowepro)
+
 [![Throughput Graph](https://graphs.waffle.io/michaeldpierce/weowepro/throughput.svg)](https://waffle.io/michaeldpierce/weowepro/metrics)
 
 ## Populate Development Database
