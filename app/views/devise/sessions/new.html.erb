@@ -1,34 +1,29 @@
 <% provide(:title, 'Sign In') %>
-<br>
+<br><br>
 
-<center>
-  <font size='30px'>WeOwePro</font>
-</center>
+<h1>WeOwePro</h1>
 
-<br>
-
-<div class='userform well'>
-  <div class='userform'>
-    <center>
-      <h4> Sign In</h4>
-    </center>
-    <%= bootstrap_form_for(resource, :as => resource_name,
-                           :url => session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, :autofocus => true, icon: "user" %>
-      <%= f.password_field :password %>
-
-      <%= f.primary 'Login' %>
-    <% end %>
-
+<div style='width: 30%; margin: auto;'>
+  <div class='panel panel-primary'>
+    <div class='panel-heading'>
+      <h3 class='panel-title'>
+        <span class='fa fa-lock'></span> Sign In
+      </h3>
+    </div>
+    <div class='panel-body'>
+      <%= bootstrap_form_for(resource, :as => resource_name,
+                             :url => session_path(resource_name)) do |f| %>
+        <%= f.email_field :email, :autofocus => true, icon: "user" %>
+        <%= f.password_field :password %>
+        <%= f.submit 'Sign In' %>
+      <% end %>
       <div class='hidden-xs'><hr></div>
-      <%= render "devise/shared/links" %>
-      <div> Don't have an account? <%= link_to(' Sign Up', new_user_path) %></div>
+      <%= render 'devise/shared/links' %>
+      <!-- <div> Don't have an account? <%= link_to(' Sign Up', new_user_path) %></div> -->
       <div class='visible-xs'>
         <br>
-        <%= render "devise/shared/mobile_footer" %>
+        <%= render 'devise/shared/mobile_footer' %>
       </div>
     </div>
-
   </div>
-</div>
 </div>
