@@ -42,8 +42,8 @@
   </thead>
 
   <tbody>
-    <tr ng-repeat='form in weoweForms | orderBy:predicate.value:reverse |
-                   filter:search | limitTo:totalDisplayed'>
+    <tr ng-repeat='form in data = (weoweForms | orderBy:predicate.value:reverse |
+                   filter:search | limitTo:totalDisplayed)'>
       <td>
         {{form.stock_number}}
       </td>
@@ -63,3 +63,7 @@
     </tr>
   </tbody>
 </table>
+
+<center>
+  <b style='color: #009586;'>Showing {{data.length}} Records</b>
+</center>
