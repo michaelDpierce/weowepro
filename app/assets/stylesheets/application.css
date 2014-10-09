@@ -11,5 +11,6 @@
  *= require_self
  *= require toastr
  *= require font-awesome
+*= require pace/pace-theme-minimal
  *= require_tree .
  */

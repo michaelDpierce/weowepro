@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_to do |format|
-      format.html
-      format.json {render json: users_index}
-      format.csv {render csv: @users, filename: 'users'}
+    if stale?(users_index)
+      respond_to do |format|
+        format.html
+        format.json {render json: users_index}
+        format.csv {render csv: users_index, filename: 'users'}
+      end
     end
   end
 

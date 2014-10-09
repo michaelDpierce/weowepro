@@ -141,6 +141,8 @@ GEM
       mini_portile (= 0.6.0)
     oj (2.10.0)
     orm_adapter (0.5.0)
+    pace-rails (0.1.1)
+      jquery-rails
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -311,6 +313,7 @@ DEPENDENCIES
   lazy_high_charts
   newrelic_rpm
   oj
+  pace-rails
   paperclip
   pg (= 0.15.1)
   rails (= 4.0.3)
