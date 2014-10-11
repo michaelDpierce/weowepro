@@ -27,5 +27,13 @@
     <div class='hidden-xs'><br><br><br></div>
 
     <%= render 'index' %>
+
+    <center>
+      <div ng-show='(weoweUsers | filter:search).length == 0'>
+        <hr>
+        <h4>No results found</h4>
+        <btn class='btn btn-default' ng-click="search=''">New Search</btn>
+      </div>
+    </center>
   </div>
 </div>

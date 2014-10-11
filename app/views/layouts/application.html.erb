@@ -8,7 +8,9 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <div class='hidden-print'>
+      <%= render 'layouts/header' %>
+    </div>
     <div class='container'>
       <%= custom_bootstrap_flash %>
       <%= yield %>
