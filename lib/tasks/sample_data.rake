@@ -46,7 +46,6 @@ namespace :db do
                     year: (1980..2014).to_a.sample,
                     make: %w(GMC Ford Dodge BMW Jeep).sample,
                     vehicle_model: %w(Mustang 5i Viper Wrangler).sample,
-                    color: %w(Red Black Green Yellow Silver White).sample,
                     sold_date: Time.now - rand(90).day,
                     dealer_total_value_1: rand(100 .. 1000),
                     dealer_total_value_2: rand(100 .. 1000),
@@ -71,6 +70,7 @@ namespace :db do
                     pending: [true, false].sample,
                     completed: false,
                     user_id: (1..200).to_a.sample,
+                    assigned_sales_person_id: (1..200).to_a.sample,
                     dealer_id: 1
                   )
 end
@@ -85,7 +85,6 @@ end
                     year: (1980..2014).to_a.sample,
                     make: %w(GMC Ford Dodge BMW Jeep).sample,
                     vehicle_model: %w(Mustang 5i Viper Wrangler).sample,
-                    color: %w(Red Black Green Yellow Silver White).sample,
                     sold_date: Time.now - rand(90).day,
                     dealer_total_value_1: rand(100 .. 1000),
                     dealer_total_value_2: rand(100 .. 1000),
@@ -110,6 +109,7 @@ end
                     pending: false,
                     completed: [true, false].sample,
                     user_id: (1..50).to_a.sample,
+                    assigned_sales_person_id: (1..200).to_a.sample,
                     dealer_id: 1
                   )
 end

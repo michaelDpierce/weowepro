@@ -13,9 +13,6 @@ module WeoweFormsHelper
                       :theyowe_info,
                       :customer_signature,
                       :custom_date,
-                      :color,
-                      :dealer_labor_value,
-                      :dealer_parts_value,
                       :dealer_total_value,
                       :pending,
                       :completed,
@@ -43,7 +40,8 @@ module WeoweFormsHelper
                       :dealer_wholesale_5,
                       :approved_by,
                       :completed_by,
-                      :dealer_wholesale
+                      :dealer_wholesale,
+                      :assigned_sales_person_id
                      ]
 
   def weowe_form_params

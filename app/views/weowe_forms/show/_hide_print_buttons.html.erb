@@ -20,8 +20,9 @@
                            value: "#{current_user.first_name}
                                    #{current_user.last_name} on
                                    #{Time.now.asctime}" %>
-        <%= f.submit 'Approve', :class =>
-        'btn btnfix btn-warning btn-sm'%>
+        <button type='submit' class='btn btnfix btn-success btn-sm'>
+          <i class='fa fa-check fa-lg'></i> Approve
+        </button>
       <% end %>
     <% end %>
   <% end %>
@@ -35,8 +36,9 @@
                            value: "#{current_user.first_name}
                                    #{current_user.last_name} on
                                    #{Time.now.asctime}" %>
-        <%= f.submit 'Complete', :class =>
-                       'btn btnfix btn-success btn-sm'  %>
+        <button type='submit' class='btn btnfix btn-success btn-sm'>
+          <i class='fa fa-check-square fa-lg'></i> Complete
+        </button>
       <% end %>
     <% end %>
   <% end %>
@@ -49,8 +51,9 @@
         <%= f.hidden_field :pending, value: true %>
         <%= f.hidden_field :completed, value: false %>
         <%= f.hidden_field :approved_by, value: '' %>
-        <%= f.submit 'Return to Sales',
-                      class: 'btn btn-danger btn-sm mobile-btn-fix' %>
+        <button type='submit' class='btn btnfix btn-danger btn-sm'>
+          <i class='fa fa-user fa-lg'></i> Return to Sales
+        </button>
       <% end %>
     <% end %>
     <% if @weowe_form.pending == false && @weowe_form.completed == true %>
@@ -58,8 +61,9 @@
         <%= f.hidden_field :completed, value: false %>
         <%= f.hidden_field :pending, value: false %>
         <%= f.hidden_field :completed_by, value: '' %>
-        <%= f.submit 'Return to Service',
-                     class: 'btn btn-warning btn-sm mobile-btn-fix' %>
+        <button type='submit' class='btn btnfix btn-warning btn-sm'>
+          <i class='fa fa-wrench fa-lg'></i> Return to Service
+        </button>
       <% end %>
     <% end %>
   <% end %>

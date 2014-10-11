@@ -12,7 +12,6 @@ describe WeoweForm do
                                 year: '2014',
                                 make: 'Ford',
                                 vehicle_model: 'Mustang',
-                                color: 'Blue',
                                 sold_date: '2001-01-01',
                                 description_1: 'Blah 1',
                                 quantity_1: '1',
@@ -36,6 +35,7 @@ describe WeoweForm do
                                 dealer_wholesale_5: '2300',
                                 custom_date: '1988-07-13',
                                 user_id: 1,
+                                assigned_sales_person_id: 2,
                                 dealer_id: 1,
                                 pending: true,
                                 completed: false
@@ -43,6 +43,8 @@ describe WeoweForm do
   end
 
   subject { @weowe_form }
+
+  it { should respond_to(:assigned_sales_person_id) }
 
   it { should respond_to(:customer_first_name) }
   it { should respond_to(:customer_last_name) }
@@ -55,7 +57,6 @@ describe WeoweForm do
   it { should respond_to(:year) }
   it { should respond_to(:make) }
   it { should respond_to(:vehicle_model) }
-  it { should respond_to(:color) }
   it { should respond_to(:sold_date) }
 
   it { should respond_to(:description_1) }
@@ -91,11 +92,6 @@ describe WeoweForm do
 
   it { should be_valid }
 
-  describe 'when customer_first_name is not present' do
-    before { @weowe_form.customer_first_name = ' ' }
-    it { should_not be_valid }
-  end
-
   describe 'when customer_last_name is not present' do
     before { @weowe_form.customer_last_name = ' ' }
     it { should_not be_valid }
@@ -118,11 +114,6 @@ describe WeoweForm do
 
   describe 'when vehicle_model is not present' do
     before { @weowe_form.vehicle_model = ' ' }
-    it { should_not be_valid }
-  end
-
-  describe 'when color is not present' do
-    before { @weowe_form.color = ' ' }
     it { should_not be_valid }
   end
 

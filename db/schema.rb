@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816233138) do
+ActiveRecord::Schema.define(version: 20141011020148) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -89,37 +89,38 @@ ActiveRecord::Schema.define(version: 20140816233138) do
     t.string   "make"
     t.datetime "sold_date"
     t.text     "theyowe_info"
-    t.decimal  "dealer_total_value",    precision: 8, scale: 2
-    t.decimal  "customer_total_value",  precision: 8, scale: 2
+    t.decimal  "dealer_total_value",       precision: 8, scale: 2
+    t.decimal  "customer_total_value",     precision: 8, scale: 2
     t.string   "vehicle_model"
     t.string   "color"
     t.integer  "dealer_id"
     t.integer  "user_id"
-    t.boolean  "pending",                                       default: true
-    t.boolean  "completed",                                     default: false
+    t.boolean  "pending",                                          default: true
+    t.boolean  "completed",                                        default: false
     t.text     "description_1"
     t.integer  "quantity_1"
-    t.decimal  "dealer_total_value_1",  precision: 8, scale: 2
+    t.decimal  "dealer_total_value_1",     precision: 8, scale: 2
     t.text     "description_2"
     t.integer  "quantity_2"
-    t.decimal  "dealer_total_value_2",  precision: 8, scale: 2
+    t.decimal  "dealer_total_value_2",     precision: 8, scale: 2
     t.text     "description_3"
     t.integer  "quantity_3"
-    t.decimal  "dealer_total_value_3",  precision: 8, scale: 2
+    t.decimal  "dealer_total_value_3",     precision: 8, scale: 2
     t.text     "description_4"
     t.integer  "quantity_4"
-    t.decimal  "dealer_total_value_4",  precision: 8, scale: 2
+    t.decimal  "dealer_total_value_4",     precision: 8, scale: 2
     t.text     "description_5"
     t.integer  "quantity_5"
-    t.decimal  "dealer_total_value_5",  precision: 8, scale: 2
+    t.decimal  "dealer_total_value_5",     precision: 8, scale: 2
     t.string   "approved_by"
     t.string   "completed_by"
-    t.decimal  "dealer_wholesale",      precision: 8, scale: 2
-    t.decimal  "dealer_wholesale_1",    precision: 8, scale: 2
-    t.decimal  "dealer_wholesale_2",    precision: 8, scale: 2
-    t.decimal  "dealer_wholesale_3",    precision: 8, scale: 2
-    t.decimal  "dealer_wholesale_4",    precision: 8, scale: 2
-    t.decimal  "dealer_wholesale_5",    precision: 8, scale: 2
+    t.decimal  "dealer_wholesale",         precision: 8, scale: 2
+    t.decimal  "dealer_wholesale_1",       precision: 8, scale: 2
+    t.decimal  "dealer_wholesale_2",       precision: 8, scale: 2
+    t.decimal  "dealer_wholesale_3",       precision: 8, scale: 2
+    t.decimal  "dealer_wholesale_4",       precision: 8, scale: 2
+    t.decimal  "dealer_wholesale_5",       precision: 8, scale: 2
+    t.integer  "assigned_sales_person_id"
   end
 
 end
