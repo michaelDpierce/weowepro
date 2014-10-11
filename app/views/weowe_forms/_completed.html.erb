@@ -21,17 +21,9 @@
         <a ng-click="predicate.value = 'vehicle_model'; reverse=!reverse">
           Model</a>
       </th>
-      <th class = 'hidden-xs'>
-        <a ng-click="predicate.value = 'color'; reverse=!reverse">
-          Color</a>
-      </th>
       <th>
         <a ng-click="predicate.value = 'customer_last_name'; reverse=!reverse">
-          Last Name</a>
-      </th>
-      <th class = 'hidden-xs'>
-        <a ng-click="predicate.value = 'customer_first_name'; reverse=!reverse">
-          First Name</a>
+          Last Name / Company</a>
       </th>
       <th>
         <a ng-click="predicate.value = 'dealer_total_value'; reverse=!reverse">
@@ -51,9 +43,7 @@
      <td class='hidden-xs'>{{form.year}}</td>
      <td class='hidden-xs'>{{form.make}}</td>
      <td class='hidden-xs'>{{form.vehicle_model}}</td>
-     <td class='hidden-xs'>{{form.color}}</td>
      <td>{{form.customer_last_name}}</td>
-     <td class='hidden-xs'>{{form.customer_first_name}}</td>
      <td>{{form.dealer_total_value | currency}}</td>
      <td>
        <%= link_to '/weowe_forms/{{form.id}}' do %>
@@ -65,5 +55,5 @@
 </table>
 
 <center>
-  <b style='color: #009586;'>Showing {{data.length}} Records</b>
+  <b class='green-accent'>Showing {{data.length}} Records</b>
 </center>
