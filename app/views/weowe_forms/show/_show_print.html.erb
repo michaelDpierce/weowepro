@@ -125,7 +125,7 @@
   <tr>
     <th>Sales Person</th>
     <td>
-      <% if @weowe_form.assigned_sales_person_id.exists? %>
+      <% if @weowe_form.assigned_sales_person_id? %>
         <%= "#{User.find(@weowe_form.assigned_sales_person_id).last_name},
              #{User.find(@weowe_form.assigned_sales_person_id).first_name}"%>
       <% end %>
