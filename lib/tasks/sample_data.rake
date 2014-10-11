@@ -70,6 +70,7 @@ namespace :db do
                     pending: [true, false].sample,
                     completed: false,
                     user_id: (1..200).to_a.sample,
+                    assigned_sales_person_id: (1..200).to_a.sample,
                     dealer_id: 1
                   )
 end
@@ -108,6 +109,7 @@ end
                     pending: false,
                     completed: [true, false].sample,
                     user_id: (1..50).to_a.sample,
+                    assigned_sales_person_id: (1..200).to_a.sample,
                     dealer_id: 1
                   )
 end

@@ -87,7 +87,6 @@
           <td><%= number_to_currency(@weowe_form.dealer_total_value_5) %></td>
         </tr>
       <% end %>
-
        <tr class='success'>
         <th>Totals</th>
         <td>N/A</td>
@@ -121,6 +120,19 @@
   AND YOU MUST MAKE AN ADVANCE APPOINTMENT WITH THE SERVICE DEPARTMENT BEFORE THE ABOVE WORK
   CAN BE PERFORMED.
 </div>
+<br>
+<table class='table table-bordered table-condensed' >
+  <tr>
+    <th>Sales Person</th>
+    <td>
+      <% if @weowe_form.assigned_sales_person_id? %>
+        <%= "#{User.find(@weowe_form.assigned_sales_person_id).last_name},
+             #{User.find(@weowe_form.assigned_sales_person_id).first_name}"%>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br>
 <br>
 
 <div class='pull-left'>

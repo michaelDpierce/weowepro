@@ -148,6 +148,27 @@
           <td><%= number_to_currency(@weowe_form.customer_total_value) %></td>
         </tr>
       </table>
+
+    <h4> Sales Person </h4>
+    <table class='table table-bordered table-condensed' >
+      <tr>
+        <th style='width:25%'>First Name </th>
+        <td>
+          <% if @weowe_form.assigned_sales_person_id? %>
+            <%= User.find(@weowe_form.assigned_sales_person_id).first_name %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>Last Name </th>
+        <td>
+          <% if @weowe_form.assigned_sales_person_id? %>
+            <%= User.find(@weowe_form.assigned_sales_person_id).last_name %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+
     <h4> Sales Manager </h4>
     <table class='table table-bordered table-condensed' >
       <tr>

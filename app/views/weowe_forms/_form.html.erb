@@ -4,16 +4,19 @@
     <h1 class='hidden-xs'><%= legend %></h1>
     <center><h3 class='visible-xs'><%= legend %></h3></center>
 
-    <center>
-
-
-    </center>
+    <%= f.select :assigned_sales_person_id,
+                 options_from_collection_for_select(
+                  User.where(department: 'Sales').order('last_name'),
+                  :id,
+                  :last_name ),
+                  include_blank: true,
+                  label: 'Assigned Sales Person' %>
 
     <center><h4>Customer Information</h4></center>
 
-    <%= f.text_field :customer_first_name, label: 'First Name *',
+    <%= f.text_field :customer_first_name, label: 'First Name (Optional)',
                      placeholder: 'First Name (Optional)' %>
-    <%= f.text_field :customer_last_name, label: 'Last Name *',
+    <%= f.text_field :customer_last_name, label: 'Last Name / Company *',
                      placeholder: 'Last Name / Company *' %>
     <%= f.text_field :customer_phone_mobile, label: 'Phone Number',
                      placeholder: 'Phone Number' %>

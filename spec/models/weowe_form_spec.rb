@@ -35,6 +35,7 @@ describe WeoweForm do
                                 dealer_wholesale_5: '2300',
                                 custom_date: '1988-07-13',
                                 user_id: 1,
+                                assigned_sales_person_id: 2,
                                 dealer_id: 1,
                                 pending: true,
                                 completed: false
@@ -42,6 +43,8 @@ describe WeoweForm do
   end
 
   subject { @weowe_form }
+
+  it { should respond_to(:assigned_sales_person_id) }
 
   it { should respond_to(:customer_first_name) }
   it { should respond_to(:customer_last_name) }
