@@ -1,20 +1,152 @@
-<!-- <div ng-app='weowepro'>
-  <div ng-controller='MetricsCtrl'>
+<div ng-app='weowepro'>
+  <div ng-controller='WeoweFormsCtrl'>
     <% provide(:title, 'Metrics') %>
-    <h1 class='hidden-xs'>Metrics</h1>
-    <center><h4 class='visible-xs'>Metrics</h4></center>
+    <h1 class='hidden-xs'>Metrics (UNDER CONSTRUCTION)</h1>
+    <center><h4 class='visible-xs'>Metrics (UNDER CONSTRUCTION)</h4></center>
+
     <div class='row'>
-      <div class='col-md-3'>
-        <select ng-model='salesPersonFilter' class='form-control'>
-          <option value=''>All Sales Staff</option>
-          <option ng-repeat="user in weoweUsers | orderBy: 'last_name'"
-                  value='{{user.last_name}}' name=''>
-            {{user.last_name}}, {{user.first_name}}</option>
-        </select>
+      <div class='col-md-3 col-xs-12'>
+        <div class='input-group'>
+          <input class='form-control' ng-model='search.last_name' placeholder='Search By Last Name'/>
+          <span class='input-group-addon'>
+            <span class='glyphicon glyphicon-search'></span>
+          </span>
+        </div>
       </div>
-      <div class='col-md-9'></div>
+      <div class='col-md-7 col-xs-12'></div>
+      <div class='visible-xs'><br><br></div>
+      <div class='col-md-2 col-xs-12'></div>
     </div>
-    <div class='hidden-xs'><br><br></div><br>
-    <%= render 'metrics' %>
+
+    <div class='hidden-xs'><br><br><br></div>
+
+    <div ng-repeat="user in weoweUsers
+                    | filter: {department: 'Sales'}
+                    | filter:search.last_name
+                    | orderBy: 'last_name'">
+      <br>
+      <div class='well'>
+        <div class='row'>
+          <div class='col-md-4'>
+            <h4>
+              {{user.last_name}}, {{user.first_name}}
+              <span ng-hide='checked'>
+                <a ng-click='checked = !checked' class='glyphicon glyphicon-chevron-right'></a>
+              </span>
+              <span ng-show='checked'>
+                <a ng-click='checked = !checked' class='glyphicon glyphicon-chevron-down'></a>
+              </span>
+            </h4>
+          </div>
+          <div class='col-md-2'>
+            <h4>
+              Total Retail<br><br>
+              ${{retail = (weoweForms
+               | filter: {assigned_sales_person_id: user.id}
+               | sumByKey:'dealer_total_value')}}
+            </h4>
+          </div>
+          <div class='col-md-2'>
+            <h4>
+              Total Wholesale<br><br>
+              ${{wholesale = (weoweForms
+               | filter: {assigned_sales_person_id: user.id}
+               | sumByKey:'dealer_wholesale')}}
+            </h4>
+          </div>
+          <div class='col-md-2'>
+            <h4>
+              Total Actual<br><br>
+            </h4>
+          </div>
+          <div class='col-md-2'>
+            <h4>
+              Diffrence<br><br>
+              ${{retail - wholesale}}
+            </h4>
+          </div>
+        </div>
+        <div ng-if='checked'>
+          <table class='table'>
+            <thead>
+              <tr>
+                <th>Stock</th>
+                <th>We Owe Description</th>
+                <th>Total Retail</th>
+                <th>Total Wholesale</th>
+                <th>Total Actual</th>
+                <th>Diffrence</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="form in weoweForms | orderBy: 'custom_date' |
+                              filter: {assigned_sales_person_id: user.id}">
+              <tr>
+               <td>
+                 <a ng-href='/weowe_forms/{{form.id}}'>
+                   {{form.stock_number}}
+                 </a>
+               </td>
+               <td>{{form.description_1}}</td>
+               <td>{{form.dealer_total_value_1 | currency}}</td>
+               <td>{{form.dealer_wholesale_1 | currency}}</td>
+               <td>{{form.dealer_total_value_1 - form.dealer_wholesale_1 | currency}}</td>
+                <td></td>
+               <td>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
+              </tr>
+              <tr>
+               <td></td>
+               <td>{{form.description_2}}</td>
+               <td>{{form.dealer_total_value_2 | currency}}</td>
+               <td>{{form.dealer_wholesale_2 | currency}}</td>
+               <td>{{form.dealer_total_value_2 - form.dealer_wholesale_2 | currency}}</td>
+               <td></td>
+               <td></td>
+              </tr>
+              <tr>
+               <td></td>
+               <td>{{form.description_3}}</td>
+               <td>{{form.dealer_total_value_3 | currency}}</td>
+               <td>{{form.dealer_wholesale_3 | currency}}</td>
+               <td>{{form.dealer_total_value_3 - form.dealer_wholesale_3 | currency}}</td>
+               <td></td>
+               <td></td>
+              </tr>
+              <tr>
+               <td></td>
+               <td>{{form.description_4}}</td>
+               <td>{{form.dealer_total_value_4 | currency}}</td>
+               <td>{{form.dealer_wholesale_4 | currency}}</td>
+               <td>{{form.dealer_total_value_4 - form.dealer_wholesale_4 | currency}}</td>
+               <td></td>
+               <td></td>
+              </tr>
+              <tr>
+               <td></td>
+               <td>{{form.description_5}}</td>
+               <td>{{form.dealer_total_value_5 | currency}}</td>
+               <td>{{form.dealer_wholesale_5 | currency}}</td>
+               <td>{{form.dealer_total_value_5 - form.dealer_wholesale_5 | currency}}</td>
+               <td></td>
+               <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><b>{{form.dealer_total_value | currency}}</b></td>
+                <td><b>{{form.dealer_wholesale | currency}}</b></td>
+                <td><b>{{form.dealer_total_value - form.dealer_wholesale | currency}}</b></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div ng-if='!checked'>
+          <!-- LEFT BLANK FOR A PLACEHOLDER -->
+        </div>
+      </div>
+      <br>
+    </div>
   </div>
-</div> -->
+</div>

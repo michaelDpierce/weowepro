@@ -36,32 +36,6 @@ class WeoweFormsController < ApplicationController
   end
 
   def metrics
-    # respond_to do |format|
-    #   format.html
-    #   format.json do
-    #     render json: completed_view.select(:id,
-    #                                        :dealer_total_value_1,
-    #                                        :dealer_total_value_2,
-    #                                        :dealer_total_value_3,
-    #                                        :dealer_total_value_4,
-    #                                        :dealer_total_value_5,
-    #                                        :dealer_total_value,
-    #                                        :dealer_wholesale_1,
-    #                                        :dealer_wholesale_2,
-    #                                        :dealer_wholesale_3,
-    #                                        :dealer_wholesale_4,
-    #                                        :dealer_wholesale_5,
-    #                                        :dealer_wholesale,
-    #                                        :description_1,
-    #                                        :description_2,
-    #                                        :description_3,
-    #                                        :description_4,
-    #                                        :description_5,
-    #                                        :custom_date,
-    #                                        :stock_number,
-    #                                        :user_id).to_json(include: [:user])
-    #   end
-    # end
   end
 
   def show
@@ -133,9 +107,29 @@ class WeoweFormsController < ApplicationController
   def weowe_data
     WeoweForm.where(dealer_id: current_user.dealer_id)
              .select('id', 'custom_date', 'stock_number', 'year', 'make',
-                                         'vehicle_model', 'color', 'customer_last_name',
-                                         'customer_first_name', 'dealer_total_value', 'pending', 'completed').as_json
+                     'vehicle_model', 'color', 'customer_last_name',
+                     'customer_first_name', 'dealer_total_value', 'pending',
+                     'completed', 'assigned_sales_person_id',
+                     'dealer_wholesale',
+                                                            'dealer_total_value_1',
+                                                            'dealer_total_value_2',
+                                                            'dealer_total_value_3',
+                                                            'dealer_total_value_4',
+                                                            'dealer_total_value_5',
+                                                            'dealer_total_value',
+                                                            'dealer_wholesale_1',
+                                                            'dealer_wholesale_2',
+                                                            'dealer_wholesale_3',
+                                                            'dealer_wholesale_4',
+                                                            'dealer_wholesale_5',
+                                                            'dealer_wholesale',
+                                                            'description_1',
+                                                            'description_2',
+                                                            'description_3',
+                                                            'description_4',
+                                                            'description_5').as_json
   end
+
 
   def update_message
     message = 'Weowe form was successfully updated.'
