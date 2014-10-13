@@ -8,62 +8,34 @@ class WeoweFormsController < ApplicationController
   end
 
   def index
-    if stale?(service_view)
+    if stale?(weowe_data)
       respond_to do |format|
         format.html
-        format.json {render json: service_view}
+        format.json {render json: weowe_data}
         format.csv {render csv: service_view, filename: 'service'}
       end
     end
   end
 
   def pending
-    if stale?(pending_view)
+    if stale?(weowe_data)
       respond_to do |format|
         format.html
-        format.json {render json: pending_view}
         format.csv {render csv: @pending, filename: 'sales'}
       end
     end
   end
 
   def completed
-    if stale?(completed_view)
+    if stale?(weowe_data)
       respond_to do |format|
         format.html
-        format.json {render json: completed_view}
         format.csv {render csv: completed_view, filename: 'completed'}
       end
     end
   end
 
   def metrics
-    # respond_to do |format|
-    #   format.html
-    #   format.json do
-    #     render json: completed_view.select(:id,
-    #                                        :dealer_total_value_1,
-    #                                        :dealer_total_value_2,
-    #                                        :dealer_total_value_3,
-    #                                        :dealer_total_value_4,
-    #                                        :dealer_total_value_5,
-    #                                        :dealer_total_value,
-    #                                        :dealer_wholesale_1,
-    #                                        :dealer_wholesale_2,
-    #                                        :dealer_wholesale_3,
-    #                                        :dealer_wholesale_4,
-    #                                        :dealer_wholesale_5,
-    #                                        :dealer_wholesale,
-    #                                        :description_1,
-    #                                        :description_2,
-    #                                        :description_3,
-    #                                        :description_4,
-    #                                        :description_5,
-    #                                        :custom_date,
-    #                                        :stock_number,
-    #                                        :user_id).to_json(include: [:user])
-    #   end
-    # end
   end
 
   def show
@@ -132,26 +104,32 @@ class WeoweFormsController < ApplicationController
   include ApplicationHelper
   include WeoweFormsHelper
 
-  def service_view
-    WeoweForm.where(dealer_id: current_user.dealer_id, pending: false,
-                    completed: false).select('id', 'custom_date', 'stock_number', 'year', 'make',
-                                         'vehicle_model', 'color', 'customer_last_name',
-                                         'customer_first_name', 'dealer_total_value').as_json
+  def weowe_data
+    WeoweForm.where(dealer_id: current_user.dealer_id)
+             .select('id', 'custom_date', 'stock_number', 'year', 'make',
+                     'vehicle_model', 'color', 'customer_last_name',
+                     'customer_first_name', 'dealer_total_value', 'pending',
+                     'completed', 'assigned_sales_person_id',
+                     'dealer_wholesale',
+                                                            'dealer_total_value_1',
+                                                            'dealer_total_value_2',
+                                                            'dealer_total_value_3',
+                                                            'dealer_total_value_4',
+                                                            'dealer_total_value_5',
+                                                            'dealer_total_value',
+                                                            'dealer_wholesale_1',
+                                                            'dealer_wholesale_2',
+                                                            'dealer_wholesale_3',
+                                                            'dealer_wholesale_4',
+                                                            'dealer_wholesale_5',
+                                                            'dealer_wholesale',
+                                                            'description_1',
+                                                            'description_2',
+                                                            'description_3',
+                                                            'description_4',
+                                                            'description_5').as_json
   end
 
-  def pending_view
-    WeoweForm.where(dealer_id: current_user.dealer_id, pending: true,
-                    completed: false).select('id', 'custom_date', 'stock_number', 'year', 'make',
-                                         'vehicle_model', 'color', 'customer_last_name',
-                                         'customer_first_name', 'dealer_total_value').as_json
-  end
-
-  def completed_view
-    WeoweForm.where(dealer_id: current_user.dealer_id, pending: false,
-                    completed: true).select('id', 'custom_date', 'stock_number', 'year', 'make',
-                                         'vehicle_model', 'color', 'customer_last_name',
-                                         'customer_first_name', 'dealer_total_value').as_json
-  end
 
   def update_message
     message = 'Weowe form was successfully updated.'
