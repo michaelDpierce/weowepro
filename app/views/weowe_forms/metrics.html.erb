@@ -20,7 +20,10 @@
 
     <div class='hidden-xs'><br><br><br></div>
 
-    <div ng-repeat="user in weoweUsers | filter: {department: 'Sales'} | orderBy: 'last_name'">
+    <div ng-repeat="user in weoweUsers
+                    | filter: {department: 'Sales'}
+                    | filter:search.last_name
+                    | orderBy: 'last_name'">
       <br>
       <div class='well'>
         <div class='row'>
