@@ -3,7 +3,7 @@
     <br><br><br>
     <h1 class='cta_text'>SIMPLIFY YOUR WE OWE FORM PROCESS TODAY</h1>
     <h2 class='cta_text'>
-      ONLINE FORM MANAGEMENT - DESKTOP & MOBILE - ANALYTICS - ONLINE TECH SUPPORT
+      PAPERLESS WE OWE FORM MANAGEMENT FOR AUTOMOTIVE DEALERSHIPS
     </h2>
     <br>
     <%= link_to 'REQUEST A DEMO', '#demo',
@@ -12,55 +12,48 @@
 
   <div id='features_section'>
     <br><br><br><br>
-    <div class='row' style='text-align: left;'>
+    <div id='features'>
+      <div class='row' style='text-align: middle;'>
+        <div class='col-md-2'></div>
+        <div class='col-md-2'>
+          <h3>Online Form Management</h3>
+          <p>
+            Integrated we owe form management and communication between service and sales departments.
+          </p>
+        </div>
+        <div class='col-md-2'>
+          <h3>Multi-Platform</h3><br>
+          <p>
+            Designed with mobile in mind. We Owe Pro will work on any device, anywhere.
+          </p>
+        </div>
+        <div class='col-md-2'>
+          <h3>Analytics</h3><br>
+          <p>
+            Robust analytics provides the ability to track expenses and salesperson performance in real time.
+          </p>
+        </div>
+        <div class='col-md-2'>
+          <h3>Concierge Level<br> Service</h3>
+          <p>
+            Built-in messaging allows for quick and easy communication
+            between our staff and yours.
+          </p>
+        </div>
+      </div>
       <div class='col-md-2'></div>
-      <div class='col-md-2'>
-        <h3>Online Form Management</h3>
-        <p>
-          Organize forms by "Sales", "Service", or "Completed".
-        </p>
-      </div>
-      <div class='col-md-2'>
-        <h3>Multi-Platform</h3>
-        <p>
-          We Owe Pro is designed to work on any device, and it will
-          automatically adjust accordingly.
-        </p>
-      </div>
-      <div class='col-md-2'>
-        <h3>Analytics</h3>
-        <p>
-          Robust analytics provides the ability to track the number of forms in
-          each category and the total number of dollars per category.
-        </p>
-      </div>
-      <div class='col-md-2'>
-        <h3>Quick Tech Support</h3>
-        <p>
-          Built in messaging allows for quick and easy communication
-          between our staff and yours.
-        </p>
-      </div>
+      <div class='hidden-xs'><br><br><br></div>
     </div>
-    <div class='col-md-2'></div>
-    <br><br><div class='hidden-xs'><br><br><br></div>
-  </div>
 
   <div id='tour_section'>
-      <div id='tour'>
+      <div id='demo'>
         <div class='hidden-xs'>
           <%= image_tag('/images/imac.png', alt: 'App Pic', width:'500px;') %>
         </div>
         <div class='visible-xs'>
           <%= image_tag('/images/imac.png', alt: 'App Pic', width:'300px;') %>
         </div>
-        <br>
-        <h4> Want to see more? Click the tour button below. </h4>
-        <br>
-        <%= link_to 'Tour the app', tour_path,
-          class: 'btn btn-primary btn-sm', role: 'button' %>
-        <br><br>
-        <h4>Otherwise Request a quote today! </h4>
+        <h4> Request a demo today! </h4>
         <%= mail_to "sales@weowepro.com" do %>
           <h4>sales@weowepro.com</h4>
         <% end %>
@@ -71,8 +64,8 @@
 
   <div id="contact_image">
     <br><br><br>
-    <h1 id='demo' style='color:white;'>"DIGITIZE" YOUR BUSINESS TODAY</h1>
-    <h2 style='color:white;'>Request a 15 minute demo.</h2>
+    <h1 id='demo' class='grey-accent'> DIGITIZE YOUR BUSINESS TODAY</h1>
+    <h2 class='grey-accent'>Request a 15 minute demo.</h2>
     <br>
     <div id='contact_form'>
       <%= bootstrap_form_for(Demo.new) do |f| %>
