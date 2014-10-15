@@ -36,6 +36,12 @@ class WeoweFormsController < ApplicationController
   end
 
   def metrics
+    if stale?(sales_person_index)
+      respond_to do |format|
+        format.html
+        format.json {render json: sales_person_index}
+      end
+    end
   end
 
   def show
@@ -130,6 +136,10 @@ class WeoweFormsController < ApplicationController
                                                             'description_5').as_json
   end
 
+  def sales_person_index
+    User.where(dealer_id: current_user.dealer_id, department: 'Sales')
+        .select('id', 'last_name', 'first_name', 'phone_number').as_json
+  end
 
   def update_message
     message = 'Weowe form was successfully updated.'

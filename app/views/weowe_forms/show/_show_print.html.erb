@@ -130,6 +130,11 @@
              #{User.find(@weowe_form.assigned_sales_person_id).first_name}"%>
       <% end %>
     </td>
+    <td>
+      <% if @weowe_form.assigned_sales_person_id? %>
+        <%= User.find(@weowe_form.assigned_sales_person_id).phone_number %>
+      <% end %>
+    </td>
   </tr>
 </table>
 <br>

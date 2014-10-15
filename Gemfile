@@ -36,7 +36,7 @@ gem 'comma', '~> 3.0'
 #Angualr
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'
-
+gem 'angular-ui-bootstrap-rails', '~> 0.11.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
