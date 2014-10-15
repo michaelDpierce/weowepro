@@ -57,19 +57,19 @@
       </thead>
 
       <tbody>
-        <tr ng-repeat='user in weoweUsers | orderBy:predicate.value:reverse |
+        <tr ng-repeat='user in ::weoweUsers | orderBy:predicate.value:reverse |
                        filter:search'>
           <td>
-            {{user.last_name}}
+            {{::user.last_name}}
           </td>
-          <td class='hidden-xs'>{{user.first_name}}</td>
-          <td class='hidden-xs'><%= mail_to '{{user.email}}' %></td>
-          <td><a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</td>
-          <td class='hidden-xs'>{{user.department}}</td>
-          <td class='hidden-xs'>{{user.active | booleanToWords}}</td>
-          <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
+          <td class='hidden-xs'>{{::user.first_name}}</td>
+          <td class='hidden-xs'><%= mail_to '{{::user.email}}' %></td>
+          <td><a ng-href='tel:{{::user.phone_number}}'>{{::user.phone_number}}</td>
+          <td class='hidden-xs'>{{::user.department}}</td>
+          <td class='hidden-xs'>{{::user.active | booleanToWords}}</td>
+          <td class='hidden-xs'>{{::user.admin | booleanToWords}}</td>
           <td>
-            <%= link_to '/users/{{user.id}}' do %>
+            <%= link_to '/users/{{::user.id}}' do %>
               <i class='fa fa-external-link fa-lg'></i>
             <% end %>
           </td>

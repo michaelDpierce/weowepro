@@ -78,16 +78,16 @@
                                       | filter: {pending: false, completed: false}
                                       | limitTo:totalDisplayed)'>
           <td>
-            {{form.stock_number}}
+            {{::form.stock_number}}
           </td>
-          <td class='hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
-          <td class='hidden-xs'>{{form.year}}</td>
-          <td class='hidden-xs'>{{form.make}}</td>
-          <td class='hidden-xs'>{{form.vehicle_model}}</td>
-          <td>{{form.customer_last_name}}</td>
-          <td>{{form.dealer_total_value | currency}}</td>
+          <td class='hidden-xs'>{{::form.custom_date | date:'MM/dd/yyyy'}}</td>
+          <td class='hidden-xs'>{{::form.year}}</td>
+          <td class='hidden-xs'>{{::form.make}}</td>
+          <td class='hidden-xs'>{{::form.vehicle_model}}</td>
+          <td>{{::form.customer_last_name}}</td>
+          <td>{{::form.dealer_total_value | currency}}</td>
           <td>
-            <%= link_to '/weowe_forms/{{form.id}}' do %>
+            <%= link_to '/weowe_forms/{{::form.id}}' do %>
               <i class='fa fa-external-link fa-lg'></i>
             <% end %>
           </td>

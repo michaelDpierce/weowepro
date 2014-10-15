@@ -36,12 +36,12 @@ class WeoweFormsController < ApplicationController
   end
 
   def metrics
-    if stale?(sales_person_index)
+    # if stale?(sales_person_index)
       respond_to do |format|
         format.html
         format.json {render json: sales_person_index}
       end
-    end
+    # end
   end
 
   def show

@@ -7,7 +7,9 @@
     <div class='row'>
       <div class='col-md-3 col-xs-12'>
         <div class='input-group'>
-          <input class='form-control' ng-model='search.last_name' placeholder='Search By Last Name'/>
+          <input class='form-control'
+                 ng-model='search.last_name'
+                 placeholder='Search By Last Name'/>
           <span class='input-group-addon'>
             <span class='glyphicon glyphicon-search'></span>
           </span>
@@ -28,12 +30,16 @@
         <div class='row'>
           <div class='col-md-4'>
             <h4>
-              {{user.last_name}}, {{user.first_name}}
+              {{::user.last_name}}, {{::user.first_name}}
               <span ng-hide='checked'>
-                <a ng-click='checked = !checked' class='glyphicon glyphicon-chevron-right'></a>
+                <a ng-click='checked = !checked'
+                   class='glyphicon glyphicon-chevron-right'>
+                </a>
               </span>
               <span ng-show='checked'>
-                <a ng-click='checked = !checked' class='glyphicon glyphicon-chevron-down'></a>
+                <a ng-click='checked = !checked'
+                   class='glyphicon glyphicon-chevron-down'>
+                </a>
               </span>
             </h4>
           </div>
@@ -78,63 +84,64 @@
                 <th>Date</th>
               </tr>
             </thead>
-            <tbody ng-repeat="form in weoweForms | orderBy: 'custom_date' |
-                              filter: {assigned_sales_person_id: user.id}">
+            <tbody ng-repeat="form in ::weoweForms
+                              | orderBy: 'custom_date'
+                              | filter: {assigned_sales_person_id: user.id}">
               <tr>
                <td>
-                 <a ng-href='/weowe_forms/{{form.id}}'>
-                   {{form.stock_number}}
+                 <a ng-href='/weowe_forms/{{::form.id}}'>
+                   {{::form.stock_number}}
                  </a>
                </td>
-               <td>{{form.description_1}}</td>
-               <td>{{form.dealer_total_value_1 | currency}}</td>
-               <td>{{form.dealer_wholesale_1 | currency}}</td>
-               <td>{{form.dealer_total_value_1 - form.dealer_wholesale_1 | currency}}</td>
+               <td>{{::form.description_1}}</td>
+               <td>{{::form.dealer_total_value_1 | currency}}</td>
+               <td>{{::form.dealer_wholesale_1 | currency}}</td>
+               <td>{{::form.dealer_total_value_1 - form.dealer_wholesale_1 | currency}}</td>
                 <td></td>
-               <td>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
+               <td>{{::form.custom_date | date:'MM/dd/yyyy'}}</td>
               </tr>
               <tr>
                <td></td>
-               <td>{{form.description_2}}</td>
-               <td>{{form.dealer_total_value_2 | currency}}</td>
-               <td>{{form.dealer_wholesale_2 | currency}}</td>
-               <td>{{form.dealer_total_value_2 - form.dealer_wholesale_2 | currency}}</td>
-               <td></td>
-               <td></td>
-              </tr>
-              <tr>
-               <td></td>
-               <td>{{form.description_3}}</td>
-               <td>{{form.dealer_total_value_3 | currency}}</td>
-               <td>{{form.dealer_wholesale_3 | currency}}</td>
-               <td>{{form.dealer_total_value_3 - form.dealer_wholesale_3 | currency}}</td>
+               <td>{{::form.description_2}}</td>
+               <td>{{::form.dealer_total_value_2 | currency}}</td>
+               <td>{{::form.dealer_wholesale_2 | currency}}</td>
+               <td>{{::form.dealer_total_value_2 - form.dealer_wholesale_2 | currency}}</td>
                <td></td>
                <td></td>
               </tr>
               <tr>
                <td></td>
-               <td>{{form.description_4}}</td>
-               <td>{{form.dealer_total_value_4 | currency}}</td>
-               <td>{{form.dealer_wholesale_4 | currency}}</td>
-               <td>{{form.dealer_total_value_4 - form.dealer_wholesale_4 | currency}}</td>
+               <td>{{::form.description_3}}</td>
+               <td>{{::form.dealer_total_value_3 | currency}}</td>
+               <td>{{::form.dealer_wholesale_3 | currency}}</td>
+               <td>{{::form.dealer_total_value_3 - form.dealer_wholesale_3 | currency}}</td>
                <td></td>
                <td></td>
               </tr>
               <tr>
                <td></td>
-               <td>{{form.description_5}}</td>
-               <td>{{form.dealer_total_value_5 | currency}}</td>
-               <td>{{form.dealer_wholesale_5 | currency}}</td>
-               <td>{{form.dealer_total_value_5 - form.dealer_wholesale_5 | currency}}</td>
+               <td>{{::form.description_4}}</td>
+               <td>{{::form.dealer_total_value_4 | currency}}</td>
+               <td>{{::form.dealer_wholesale_4 | currency}}</td>
+               <td>{{::form.dealer_total_value_4 - form.dealer_wholesale_4 | currency}}</td>
+               <td></td>
+               <td></td>
+              </tr>
+              <tr>
+               <td></td>
+               <td>{{::form.description_5}}</td>
+               <td>{{::form.dealer_total_value_5 | currency}}</td>
+               <td>{{::form.dealer_wholesale_5 | currency}}</td>
+               <td>{{::form.dealer_total_value_5 - form.dealer_wholesale_5 | currency}}</td>
                <td></td>
                <td></td>
               </tr>
               <tr>
                 <td></td>
                 <td></td>
-                <td><b>{{form.dealer_total_value | currency}}</b></td>
-                <td><b>{{form.dealer_wholesale | currency}}</b></td>
-                <td><b>{{form.dealer_total_value - form.dealer_wholesale | currency}}</b></td>
+                <td><b>{{::form.dealer_total_value | currency}}</b></td>
+                <td><b>{{::form.dealer_wholesale | currency}}</b></td>
+                <td><b>{{::form.dealer_total_value - form.dealer_wholesale | currency}}</b></td>
                 <td></td>
                 <td></td>
               </tr>
