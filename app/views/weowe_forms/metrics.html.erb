@@ -22,7 +22,7 @@
 
     <div class='hidden-xs'><br><br><br></div>
 
-    <div ng-repeat="user in ::salesStaff
+    <div ng-repeat="user in salesStaff
                     | filter:search.last_name
                     | orderBy: 'last_name'">
       <br>
@@ -46,7 +46,7 @@
           <div class='col-md-2'>
             <h4>
               Total Retail<br><br>
-              ${{retail = (::weoweForms
+              ${{retail = (weoweForms
                | filter: {assigned_sales_person_id: user.id}
                | sumByKey:'dealer_total_value')}}
             </h4>
@@ -54,7 +54,7 @@
           <div class='col-md-2'>
             <h4>
               Total Wholesale<br><br>
-              ${{wholesale = (::weoweForms
+              ${{wholesale = (weoweForms
                | filter: {assigned_sales_person_id: user.id}
                | sumByKey:'dealer_wholesale')}}
             </h4>
