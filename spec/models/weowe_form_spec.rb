@@ -17,22 +17,30 @@ describe WeoweForm do
                                 quantity_1: '1',
                                 dealer_total_value_1: '400',
                                 dealer_wholesale_1: '300',
+                                dealer_actual_1: '200',
                                 description_2: 'Blah 2',
                                 quantity_2: '2',
                                 dealer_total_value_2: '300',
                                 dealer_wholesale_2: '200',
+                                dealer_actual_2: '100',
                                 description_3: 'Blah 3',
                                 quantity_3: '3',
                                 dealer_total_value_3: '600',
                                 dealer_wholesale_3: '200',
+                                dealer_actual_3: '100',
                                 description_4: 'Blah 4',
                                 quantity_4: '4',
                                 dealer_total_value_4: '4100',
                                 dealer_wholesale_4: '3100',
+                                dealer_actual_4: '2500',
                                 description_5: 'Blah 5',
                                 quantity_5: '5',
                                 dealer_total_value_5: '2400',
                                 dealer_wholesale_5: '2300',
+                                dealer_actual_5: '2000',
+                                dealer_wholesale: '12000',
+                                dealer_total_value: '15000',
+                                dealer_total_actual: '10000',
                                 custom_date: '1988-07-13',
                                 user_id: 1,
                                 assigned_sales_person_id: 2,
@@ -63,27 +71,36 @@ describe WeoweForm do
   it { should respond_to(:quantity_1) }
   it { should respond_to(:dealer_total_value_1) }
   it { should respond_to(:dealer_wholesale_1) }
+  it { should respond_to(:dealer_actual_1) }
 
   it { should respond_to(:description_2) }
   it { should respond_to(:quantity_2) }
   it { should respond_to(:dealer_total_value_2) }
   it { should respond_to(:dealer_wholesale_2) }
+  it { should respond_to(:dealer_actual_2) }
 
   it { should respond_to(:description_3) }
   it { should respond_to(:quantity_3) }
   it { should respond_to(:dealer_total_value_3) }
   it { should respond_to(:dealer_wholesale_3) }
+  it { should respond_to(:dealer_actual_3) }
 
   it { should respond_to(:description_4) }
   it { should respond_to(:quantity_4) }
   it { should respond_to(:dealer_total_value_4) }
   it { should respond_to(:dealer_wholesale_4) }
+  it { should respond_to(:dealer_actual_4) }
 
   it { should respond_to(:description_5) }
   it { should respond_to(:quantity_5) }
   it { should respond_to(:dealer_total_value_5) }
   it { should respond_to(:dealer_wholesale_5) }
+  it { should respond_to(:dealer_actual_5) }
 
+  it { should respond_to(:dealer_wholesale) }
+  it { should respond_to(:dealer_total_value) }
+  it { should respond_to(:dealer_total_actual) }
+  
   it { should respond_to(:custom_date) }
   it { should respond_to(:user_id) }
   it { should respond_to(:dealer_id) }
