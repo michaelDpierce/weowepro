@@ -167,9 +167,15 @@
           <% end %>
         </td>
       </tr>
+      <tr>
+        <% if @weowe_form.assigned_sales_person_id? %>
+          <th>Phone Number</th>
+          <td><%= phone_number_link(User.find(@weowe_form.assigned_sales_person_id).phone_number) %></td>
+        <% end %>
+      </tr>
     </table>
 
-    <h4> Sales Manager </h4>
+    <h4>Sales Manager</h4>
     <table class='table table-bordered table-condensed' >
       <tr>
         <th style='width:25%'>First Name </th>
@@ -181,10 +187,10 @@
       </tr>
     </table>
 
-    <h4> Admin </h4>
+    <h4>Admin</h4>
     <table class='table table-bordered table-condensed' >
       <tr>
-        <th style='width:25%'>Approved By </th>
+        <th style='width:25%'>Approved By</th>
         <td><%= @weowe_form.approved_by %></td>
       </tr>
       <tr>

@@ -36,6 +36,12 @@ class WeoweFormsController < ApplicationController
   end
 
   def metrics
+    if stale?(sales_person_index)
+      respond_to do |format|
+        format.html
+        format.json {render json: sales_person_index}
+      end
+    end
   end
 
   def show
@@ -128,6 +134,12 @@ class WeoweFormsController < ApplicationController
                                                             'description_3',
                                                             'description_4',
                                                             'description_5').as_json
+  end
+
+  def sales_person_index
+    User.where(dealer_id: current_user.dealer_id, department: 'Sales')
+        .select('id', 'last_name', 'first_name', 'email', 'phone_number',
+                         'department', 'active', 'admin').as_json
   end
 
 

@@ -20,6 +20,7 @@
 #= require angular-resource
 #= require angular-animate
 #= require angular-sanitize
+#= require angular-ui-bootstrap-tpls
 #= require toastr
 
 #= require modules
