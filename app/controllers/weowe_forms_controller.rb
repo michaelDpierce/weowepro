@@ -138,10 +138,8 @@ class WeoweFormsController < ApplicationController
 
   def sales_person_index
     User.where(dealer_id: current_user.dealer_id, department: 'Sales')
-        .select('id', 'last_name', 'first_name', 'email', 'phone_number',
-                         'department', 'active', 'admin').as_json
+        .select('id', 'last_name', 'first_name', 'phone_number').as_json
   end
-
 
   def update_message
     message = 'Weowe form was successfully updated.'
