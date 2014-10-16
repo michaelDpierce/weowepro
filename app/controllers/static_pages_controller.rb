@@ -31,7 +31,7 @@ class StaticPagesController < ApplicationController
       f.series(service)
       f.series(sales)
       f.series(completed)
-      f.options[:title][:text] = ['Total We Owe Forms']
+      f.options[:title][:text] = ['Total We Owe Forms Count']
       f.options[:xAxis] = {plot_bands: 'none',
                      categories: ['']}
       f.legend(:layout=> 'horizontal',:style=> {:left=> 'auto', :bottom=> 'auto',:top=> 'auto'})
