@@ -27,12 +27,12 @@ class WeoweFormsController < ApplicationController
   end
 
   def completed
-    if stale?(weowe_data)
+    # if stale?(weowe_data)
       respond_to do |format|
         format.html
         format.csv {render csv: completed_view, filename: 'completed'}
       end
-    end
+    # end
   end
 
   def metrics
@@ -129,6 +129,12 @@ class WeoweFormsController < ApplicationController
                                                             'dealer_wholesale_4',
                                                             'dealer_wholesale_5',
                                                             'dealer_wholesale',
+                                                            'dealer_actual_1',
+                                                            'dealer_actual_2',
+                                                            'dealer_actual_3',
+                                                            'dealer_actual_4',
+                                                            'dealer_actual_5',
+                                                            'dealer_total_actual',
                                                             'description_1',
                                                             'description_2',
                                                             'description_3',

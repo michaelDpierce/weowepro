@@ -62,12 +62,15 @@
           <div class='col-md-2'>
             <h4>
               Total Actual<br><br>
+              ${{actual = (weoweForms
+               | filter: {assigned_sales_person_id: user.id}
+               | sumByKey:'dealer_total_actual')}}
             </h4>
           </div>
           <div class='col-md-2'>
             <h4>
               Diffrence<br><br>
-              ${{retail - wholesale}}
+              ${{wholesale - actual}}
             </h4>
           </div>
         </div>
@@ -96,8 +99,8 @@
                <td>{{::form.description_1}}</td>
                <td>{{::form.dealer_total_value_1 | currency}}</td>
                <td>{{::form.dealer_wholesale_1 | currency}}</td>
-               <td>{{::form.dealer_total_value_1 - form.dealer_wholesale_1 | currency}}</td>
-                <td></td>
+               <td>{{::form.dealer_actual_1 | currency}}</td>
+               <td>{{::form.dealer_wholesale_1 - form.dealer_actual_1 | currency}}</td>
                <td>{{::form.custom_date | date:'MM/dd/yyyy'}}</td>
               </tr>
               <tr>
@@ -105,8 +108,8 @@
                <td>{{::form.description_2}}</td>
                <td>{{::form.dealer_total_value_2 | currency}}</td>
                <td>{{::form.dealer_wholesale_2 | currency}}</td>
-               <td>{{::form.dealer_total_value_2 - form.dealer_wholesale_2 | currency}}</td>
-               <td></td>
+               <td>{{::form.dealer_actual_2 | currency}}</td>
+               <td>{{::form.dealer_wholesale_2 - form.dealer_actual_2 | currency}}</td>
                <td></td>
               </tr>
               <tr>
@@ -114,7 +117,8 @@
                <td>{{::form.description_3}}</td>
                <td>{{::form.dealer_total_value_3 | currency}}</td>
                <td>{{::form.dealer_wholesale_3 | currency}}</td>
-               <td>{{::form.dealer_total_value_3 - form.dealer_wholesale_3 | currency}}</td>
+               <td>{{::form.dealer_actual_3 | currency}}</td>
+               <td>{{::form.dealer_wholesale_3 - form.dealer_actual_3 | currency}}</td>
                <td></td>
                <td></td>
               </tr>
@@ -123,8 +127,8 @@
                <td>{{::form.description_4}}</td>
                <td>{{::form.dealer_total_value_4 | currency}}</td>
                <td>{{::form.dealer_wholesale_4 | currency}}</td>
-               <td>{{::form.dealer_total_value_4 - form.dealer_wholesale_4 | currency}}</td>
-               <td></td>
+               <td>{{::form.dealer_actual_4 | currency}}</td>
+               <td>{{::form.dealer_wholesale_4 - form.dealer_actual_4 | currency}}</td>
                <td></td>
               </tr>
               <tr>
@@ -132,8 +136,8 @@
                <td>{{::form.description_5}}</td>
                <td>{{::form.dealer_total_value_5 | currency}}</td>
                <td>{{::form.dealer_wholesale_5 | currency}}</td>
-               <td>{{::form.dealer_total_value_5 - form.dealer_wholesale_5 | currency}}</td>
-               <td></td>
+               <td>{{::form.dealer_actual_5 | currency}}</td>
+               <td>{{::form.dealer_wholesale_5 - form.dealer_actual_5 | currency}}</td>
                <td></td>
               </tr>
               <tr>
@@ -141,8 +145,8 @@
                 <td></td>
                 <td><b>{{::form.dealer_total_value | currency}}</b></td>
                 <td><b>{{::form.dealer_wholesale | currency}}</b></td>
-                <td><b>{{::form.dealer_total_value - form.dealer_wholesale | currency}}</b></td>
-                <td></td>
+                <td><b>{{::form.dealer_total_actual | currency}}</b></td>
+                <td><b>{{::form.dealer_wholesale - form.dealer_total_actual | currency}}</b></td>
                 <td></td>
               </tr>
             </tbody>
