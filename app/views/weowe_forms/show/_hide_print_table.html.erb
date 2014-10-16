@@ -79,7 +79,14 @@
       </table>
     <h4> We Owe </h4>
     <table class='table table-bordered table-condensed' >
-      <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Retail</th><th>Total Wholesale</th></tr>
+      <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Total Retail</th>
+        <th>Total Wholesale</th>
+        <th>Total Actual</th>
+      </tr>
         <% if @weowe_form.description_1? %>
           <tr>
             <th style='width:25%'>1</th>
@@ -87,6 +94,7 @@
             <td><%= @weowe_form.quantity_1 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_1) %></td>
             <td><%= number_to_currency(@weowe_form.dealer_wholesale_1) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_actual_1) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_2? %>
@@ -96,6 +104,7 @@
             <td><%= @weowe_form.quantity_2 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_2) %></td>
             <td><%= number_to_currency(@weowe_form.dealer_wholesale_2) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_actual_2) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_3? %>
@@ -105,6 +114,7 @@
             <td><%= @weowe_form.quantity_3 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_3) %></td>
             <td><%= number_to_currency(@weowe_form.dealer_wholesale_3) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_actual_3) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_4? %>
@@ -114,6 +124,7 @@
             <td><%= @weowe_form.quantity_4 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_4) %></td>
             <td><%= number_to_currency(@weowe_form.dealer_wholesale_4) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_actual_4) %></td>
           </tr>
         <% end %>
         <% if @weowe_form.description_5? %>
@@ -123,17 +134,21 @@
             <td><%= @weowe_form.quantity_5 %></td>
             <td><%= number_to_currency(@weowe_form.dealer_total_value_5) %></td>
             <td><%= number_to_currency(@weowe_form.dealer_wholesale_5) %></td>
+            <td><%= number_to_currency(@weowe_form.dealer_actual_5) %></td>
           </tr>
         <% end %>
          <tr>
           <th>Totals</th>
-          <td>N/A</td>
-          <td>N/A</td>
+          <td></td>
+          <td></td>
           <td>
             <%= number_to_currency(@weowe_form.dealer_total_value) %>
           </td>
           <td>
             <%= number_to_currency(@weowe_form.dealer_wholesale) %>
+          </td>
+          <td>
+            <%= number_to_currency(@weowe_form.  dealer_total_actual) %>
           </td>
         </tr>
     </table>

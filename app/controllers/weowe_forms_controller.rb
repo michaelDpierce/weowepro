@@ -8,13 +8,13 @@ class WeoweFormsController < ApplicationController
   end
 
   def index
-    if stale?(weowe_data)
+    # if stale?(weowe_data)
       respond_to do |format|
         format.html
         format.json {render json: weowe_data}
         format.csv {render csv: service_view, filename: 'service'}
       end
-    end
+    # end
   end
 
   def pending
