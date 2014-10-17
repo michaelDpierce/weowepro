@@ -1,5 +1,15 @@
-@weowepro.controller 'WeoweFormsCtrl', ['$scope', 'WeoweForms', 'Users', 'Sales'
-  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales) ->
+@weowepro.controller 'WeoweFormsCtrl', [
+  '$scope',
+  'WeoweForms',
+  'Users',
+  'Sales'
+  '$modal'
+
+  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales, $modal) ->
+    angular.extend $scope
+    $scope.weoweForms = WeoweForms.index()
+    $scope.weoweUsers = Users.index()
+    $scope.salesStaff = Sales.index()
 
     $scope.predicate =
       value: '-custom_date'
@@ -7,19 +17,38 @@
     $scope.predicateUsers =
       value: 'last_name'
 
-    $scope.selected = undefined;
-
     $scope.totalDisplayed = 25
 
     $scope.loadMore = ->
       $scope.totalDisplayed += 25
 
-    Users.index (data) ->
-      $scope.weoweUsers = data
+    $scope.open = () ->
+      modalInstance = $modal.open
+        templateUrl: 'actual-value.html',
+        controller: WeoweFormsModalCtrl,
+        scope: $scope
+        resolve:
+          data: ->
+            weoweForm: $scope.data.weoweForm
 
-    Sales.index (data) ->
-      $scope.salesStaff = data
+    WeoweFormsModalCtrl = ($scope, $modalInstance) ->
+      angular.extend $scope
 
-    WeoweForms.index (data) ->
-      $scope.weoweForms = data
+      $scope.ok = ->
+        console.log $scope.data.weoweForm.completed
+        console.log $scope.data.weoweForm.pending
+        $scope.data.weoweForm.pending = false
+        $scope.data.weoweForm.pending = true
+        WeoweForms.update id:  $scope.data.weoweForm.id
+        console.log $scope.data.weoweForm.completed
+        console.log $scope.data.weoweForm.pending
+        $modalInstance.close
+
+      $scope.cancel = ->
+        $modalInstance.dismiss "Cancel"
+
+      WeoweFormsModalCtrl['$inject'] = [
+        '$scope'
+        '$modalInstance'
+      ]
 ]

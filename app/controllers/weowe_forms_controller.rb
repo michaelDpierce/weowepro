@@ -79,9 +79,11 @@ class WeoweFormsController < ApplicationController
                                               @weowe_form.dealer_wholesale_3,
                                               @weowe_form.dealer_wholesale_4,
                                               @weowe_form.dealer_wholesale_5)
-    message = 'Form updated.'
-    handle_action(@weowe_form, message, :edit) do |resource|
-      resource.update(weowe_form_params)
+
+    if @weowe_form.update_attributes(weowe_form_params)
+      render json: @weowe_form.as_json
+    else
+      render json: @weowe_form.errors, status: :unprocessable_entity
     end
   end
 
@@ -169,5 +171,10 @@ class WeoweFormsController < ApplicationController
                                               @weowe_form.dealer_wholesale_3,
                                               @weowe_form.dealer_wholesale_4,
                                               @weowe_form.dealer_wholesale_5)
+    @weowe_form.dealer_total_actual = dealer_sum(@weowe_form.dealer_actual_1,
+                                              @weowe_form.dealer_actual_2,
+                                              @weowe_form.dealer_actual_3,
+                                              @weowe_form.dealer_actual_4,
+                                              @weowe_form.dealer_actual_5)
   end
 end
