@@ -8,7 +8,7 @@
     <h1>{{data.user.first_name}} {{data.user.last_name}}</h1>
 
     <div id='profile_width'>
-      <div ng-if='current_user.admin'>
+      <div ng-if='current_user.admin && current_user.id != data.user.id'>
         <div class='pull-left'>
           <btn ng-click='adminButton(data.user)'
                ng-class="{'btn btn-danger': data.user.admin, 'btn btn-success': !data.user.admin}">
