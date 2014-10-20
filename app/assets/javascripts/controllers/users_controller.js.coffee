@@ -76,7 +76,7 @@
           department: $scope.user.department
           password: $scope.user.password
           password_confirmation: $scope.user.password_confirmation
-          dealer_id: 1
+          dealer_id: $scope.dealer_id
 
         .$promise.then (newEmployee) ->
           $scope.weoweUsers.push newEmployee

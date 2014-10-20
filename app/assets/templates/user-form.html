@@ -1,6 +1,5 @@
-<div ng-init="dealer_id = '<%= current_user.dealer_id.to_json %>'"></div>
-
 <div ng-show='editMode'>
+  {{current_user.id}}
   <div class='modal-header'>
       <center>
         <h3 class='modal-title'>Add New Employee</h3>
@@ -44,6 +43,7 @@
           <input type="password" name="password_confirmation" class="form-control" ng-model="user.password_confirmation" ng-minlength="6">
           <p ng-show="userForm.password_confirmation.$error.minlength" class="help-block">Your password confirmation is too short.</p>
       </div>
+      <input type='text' name='dealer_id' ng-model='dealer_id'>
       <button type='submit' class='btn btn-primary btn-block' ng-click='create()'>
         <i class='fa fa-check'></i> Submit
       </button>
