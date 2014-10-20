@@ -12,26 +12,21 @@
 
         <center><h4>Assigned Sales Person</h4></center>
 
-        <input type='text'
-               ng-model='selected'
-               typeahead="user as user.last_name + ', ' + user.first_name for user in ::salesStaff
-                         | filter:$viewValue
-                         | limitTo:8"
-               placeholder='Assign Sales Person'
-               class='form-control'>
+        <div class='input-group'>
+          <input type='text'
+                 ng-model='selected'
+                 typeahead="user as user.last_name + ', ' + user.first_name for user in ::salesStaff
+                           | filter:$viewValue
+                           | limitTo:8"
+                 placeholder='Assign Sales Person'
+                 class='form-control'>
+          <span class='input-group-addon'>
+            <i ng-click="selected = ''" class="fa fa-times fa-lg"> Clear Name</i>
+          </span>
+        </div>
 
         <% if f.object.new_record? %>
           <%= f.hidden_field :assigned_sales_person_id, value: "{{selected.id}}" %>
-        <% end %>
-
-        <% unless f.object.new_record? %>
-          <%= f.select :assigned_sales_person_id,
-             options_from_collection_for_select(
-              User.where(department: 'Sales').order('last_name'),
-              :id,
-              :last_name ),
-              include_blank: true,
-              label: 'Assigned Sales Person' %>
         <% end %>
 
         <center><h4>Customer Information</h4></center>
@@ -189,7 +184,6 @@
             <i class='fa fa-refresh'></i> Update Form
           </button>
         <% end %>
-
       <% end %>
     </div>
     </div>

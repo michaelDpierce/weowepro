@@ -2,12 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    if stale?(users_index)
-      respond_to do |format|
-        format.html
-        format.json {render json: users_index}
-        format.csv {render csv: users_index, filename: 'users'}
-      end
+    respond_to do |format|
+      format.html
+      format.json {render json: users_index}
+      format.csv {render csv: users_index, filename: 'users'}
     end
   end
 
@@ -24,18 +22,29 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.skip_confirmation!
-    @user.save
-    @user.dealer_id = current_user.dealer_id
-    message = 'User account was successfully created.'
-    handle_action(@user, message, :new, &:save)
+    @user.password='password'
+    @user.password_confirmation='password'
+    @user.save!
+
+    if @user.save
+      render json: @user.as_json
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+
   end
 
   def update
-    @user.update_attributes(user_params)
-    message = 'Profile updated.'
-    handle_action(@user, message, :edit) do |resource|
-      resource.update(user_params)
+    if @user.update_attributes(user_params)
+      render json: @user.as_json
+    else
+      render json: @user.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user.destroy
+    render json: 'success'
   end
 
   def show
@@ -49,7 +58,7 @@ class UsersController < ApplicationController
   def users_index
     User.where(dealer_id: current_user.dealer_id)
         .select('id', 'last_name', 'first_name', 'email', 'phone_number',
-                         'department', 'active', 'admin').as_json
+                'department', 'active', 'admin').as_json
   end
 
   def devise_user_render

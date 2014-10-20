@@ -1,7 +1,7 @@
 @weowepro.factory 'WeoweForms', [
   '$resource'
   ($resource) ->
-    $resource('/weowe_forms/:id.json', {id: '@id'},
+    $resource('/weowe_forms/:id.json', null,
       index:
         method: 'GET'
         isArray: true

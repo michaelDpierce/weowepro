@@ -38,6 +38,7 @@ gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 gem 'angular-ui-bootstrap-rails', '~> 0.11.1'
 gem 'angular-rails-templates'
+gem 'lodash-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

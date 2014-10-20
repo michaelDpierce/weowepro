@@ -15,10 +15,10 @@
     </tr>
     <tr>
       <th style='width:5%'>1</th>
-      <td>{{data.weoweForm.description_1}}</td>
-      <td>{{data.weoweForm.quantity_1}}</td>
-      <td>{{data.weoweForm.dealer_total_value_1 | currency}}</td>
-      <td>{{data.weoweForm.dealer_wholesale_1 | currency}}</td>
+      <td>{{::data.weoweForm.description_1}}</td>
+      <td>{{::data.weoweForm.quantity_1}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_1 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_1 | currency}}</td>
       <td>
         <div class='input-group'>
           <span class='input-group-addon'>$</span>
@@ -29,10 +29,10 @@
     </tr>
     <tr>
       <th>2</th>
-      <td>{{data.weoweForm.description_2}}</td>
-      <td>{{data.weoweForm.quantity_2}}</td>
-      <td>{{data.weoweForm.dealer_total_value_2 | currency}}</td>
-      <td>{{data.weoweForm.dealer_wholesale_2 | currency}}</td>
+      <td>{{::data.weoweForm.description_2}}</td>
+      <td>{{::data.weoweForm.quantity_2}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_2 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_2 | currency}}</td>
       <td>
         <div class='input-group'>
           <span class='input-group-addon'>$</span>
@@ -43,10 +43,10 @@
     </tr>
     <tr>
       <th>3</th>
-      <td>{{data.weoweForm.description_3}}</td>
-      <td>{{data.weoweForm.quantity_3}}</td>
-      <td>{{data.weoweForm.dealer_total_value_3 | currency}}</td>
-      <td>{{data.weoweForm.dealer_wholesale_3 | currency}}</td>
+      <td>{{::data.weoweForm.description_3}}</td>
+      <td>{{::data.weoweForm.quantity_3}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_3 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_3 | currency}}</td>
       <td>
         <div class='input-group'>
           <span class='input-group-addon'>$</span>
@@ -57,10 +57,10 @@
     </tr>
     <tr>
       <th>4</th>
-      <td>{{data.weoweForm.description_4}}</td>
-      <td>{{data.weoweForm.quantity_4}}</td>
-      <td>{{data.weoweForm.dealer_total_value_4 | currency}}</td>
-      <td>{{data.weoweForm.dealer_wholesale_4 | currency}}</td>
+      <td>{{::data.weoweForm.description_4}}</td>
+      <td>{{::data.weoweForm.quantity_4}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_4 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_4 | currency}}</td>
       <td>
         <div class='input-group'>
           <span class='input-group-addon'>$</span>
@@ -71,10 +71,10 @@
     </tr>
     <tr>
       <th>5</th>
-      <td>{{data.weoweForm.description_5}}</td>
-      <td>{{data.weoweForm.quantity_5}}</td>
-      <td>{{data.weoweForm.dealer_total_value_5 | currency}}</td>
-      <td>{{data.weoweForm.dealer_wholesale_5 | currency}}</td>
+      <td>{{::data.weoweForm.description_5}}</td>
+      <td>{{::data.weoweForm.quantity_5}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_5 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_5 | currency}}</td>
       <td>
         <div class='input-group'>
           <span class='input-group-addon'>$</span>
@@ -86,6 +86,10 @@
   </table>
 </div>
 <div class='modal-footer'>
-    <button class='btn btn-primary' ng-click='ok()'>OK</button>
-    <button class='btn btn-warning' ng-click='cancel()'>Cancel</button>
+  <a href='/weowe_forms/{{data.weoweForm.id}}'
+    class='btn btn-success'
+    ng-click='ok()'>
+    <i class='fa fa-check'></i> Ok
+  </a>
+  <button class='btn btn-warning' ng-click='cancel()'>Cancel</button>
 </div>

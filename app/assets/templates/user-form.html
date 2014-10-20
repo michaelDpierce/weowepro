@@ -1,0 +1,107 @@
+<div ng-init="dealer_id = '<%= current_user.dealer_id.to_json %>'"></div>
+
+<div ng-show='editMode'>
+  <div class='modal-header'>
+      <center>
+        <h3 class='modal-title'>Add New Employee</h3>
+      </center>
+  </div>
+  <div class='modal-body'>
+    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.first_name.$invalid && !userForm.first_name.$pristine }">
+          <label>First Name*</label>
+          <input type="text" name="first_name" class="form-control" ng-model="user.first_name" required>
+          <p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="help-block">Your first name is required.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.last_name.$invalid && !userForm.last_name.$pristine }">
+          <label>Last Name*</label>
+          <input type="text" name="last_name" class="form-control" ng-model="user.last_name" required>
+          <p ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="help-block">Your last name is required.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.phone_number.$invalid && !userForm.phone_number.$pristine }">
+          <label>Phone Number *</label>
+          <input type="text" name="phone_number" class="form-control" ng-model="user.phone_number" ng-minlength="10">
+          <p ng-show="userForm.phone_number.$error.minlength" class="help-block">Phone number is too short.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+          <label>Email *</label>
+          <input type="email" name="email" class="form-control" ng-model="user.email">
+          <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <select class="form-control" data-ng-options="o for o in options" data-ng-model="user.department">
+           <option value="">Select Department</option>
+        </select>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+          <label>Password *</label>
+          <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="6">
+          <p ng-show="userForm.password.$error.minlength" class="help-block">Your password is too short.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : userForm.password_confirmation.$invalid && !userForm.password_confirmation.$pristine }">
+          <label>Password Confirmation *</label>
+          <input type="password" name="password_confirmation" class="form-control" ng-model="user.password_confirmation" ng-minlength="6">
+          <p ng-show="userForm.password_confirmation.$error.minlength" class="help-block">Your password confirmation is too short.</p>
+      </div>
+      <button type='submit' class='btn btn-primary btn-block' ng-click='create()'>
+        <i class='fa fa-check'></i> Submit
+      </button>
+      <button class='btn btn-danger btn-block' ng-click='cancel()'>
+        <i class='fa fa-times'></i> Close
+      </button>
+    </form>
+  </div>
+</div>
+
+<div ng-hide='editMode'>
+  <div class='modal-header'>
+      <center>
+        <h3 class='modal-title'>Edit Profile</h3>
+      </center>
+  </div>
+  <div class='modal-body'>
+    <form name="editUserForm" ng-submit="submitForm(editUserForm.$valid)" novalidate>
+      <div class="form-group" ng-class="{ 'has-error' : editUserForm.first_name.$invalid && !editUserForm.first_name.$pristine }">
+          <label>First Name*</label>
+          <input type="text" name="first_name" class="form-control" ng-model="data.user.first_name" required>
+          <p ng-show="editUserForm.first_name.$invalid && !editUserForm.first_name.$pristine" class="help-block">Your first name is required.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : editUserForm.last_name.$invalid && !editUserForm.last_name.$pristine }">
+          <label>Last Name*</label>
+          <input type="text" name="last_name" class="form-control" ng-model="data.user.last_name" required>
+          <p ng-show="editUserForm.last_name.$invalid && !editUserForm.last_name.$pristine" class="help-block">Your last name is required.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : editUserForm.phone_number.$invalid && !editUserForm.phone_number.$pristine }">
+          <label>Phone Number *</label>
+          <input type="text" name="phone_number" class="form-control" ng-model="data.user.phone_number" ng-minlength="10">
+          <p ng-show="editUserForm.phone_number.$error.minlength" class="help-block">Phone number is too short.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : editUserForm.email.$invalid && !editUserForm.email.$pristine }">
+          <label>Email *</label>
+          <input type="email" name="email" class="form-control" ng-model="data.user.email">
+          <p ng-show="editUserForm.email.$invalid && !editUserForm.email.$pristine" class="help-block">Enter a valid email.</p>
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <select class="form-control" data-ng-options="o for o in options" data-ng-model="data.user.department"></select>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : editUserForm.password.$invalid && !editUserForm.password.$pristine }">
+          <label>Password *</label>
+          <input type="password" name="password" class="form-control" ng-model="data.user.password" ng-minlength="6">
+          <p ng-show="editUserForm.password.$error.minlength" class="help-block">Your password is too short.</p>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : editUserForm.password_confirmation.$invalid && !editUserForm.password_confirmation.$pristine }">
+          <label>Password Confirmation *</label>
+          <input type="password" name="password_confirmation" class="form-control" ng-model="data.user.password_confirmation" ng-minlength="6">
+          <p ng-show="editUserForm.password_confirmation.$error.minlength" class="help-block">Your password confirmation is too short.</p>
+      </div>
+      <button type='submit' class='btn btn-primary btn-block' ng-click='update()'>
+        <i class='fa fa-refresh'></i> Update
+      </button>
+      <button class='btn btn-danger btn-block' ng-click='cancel()'>
+        <i class='fa fa-times'></i> Close
+      </button>
+    </form>
+  </div>
+</div>

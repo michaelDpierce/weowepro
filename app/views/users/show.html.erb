@@ -1,84 +1,75 @@
-<% provide(:title, "#{@user.first_name} #{@user.last_name.each_char.first}.") %>
+<% provide(:title, 'Employee Profile') %>
 
-<h1 class='hidden-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-<center><h4 class='visible-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h4></center>
+<div ng-app='weowepro'>
+  <div ng-controller='UsersCtrl'>
+    <div ng-init='data.user = <%= @user.to_json %>'>
+    <div ng-init='current_user = <%= current_user.to_json %>'>
 
-<div id='profile_width'>
-  <div class='hidden-xs'>
-    <% if @user != current_user && current_user.admin? %>
-      <div class='pull-left'>
-        <% if @user.active? %>
-          <%= bootstrap_form_for @user do |f| %>
-            <%= f.hidden_field :active, value: false %>
-            <%= f.submit 'Deactivate' %>
-          <% end %>
-        <% elsif @user.active == false %>
-          <%= bootstrap_form_for @user do |f| %>
-            <%= f.hidden_field :active, value: true %>
-            <%= f.submit 'Activate'  %>
-          <% end %>
-        <% end %>
+    <h1>{{data.user.first_name}} {{data.user.last_name}}</h1>
+
+    <div id='profile_width'>
+      <div ng-if='current_user.admin'>
+        <div class='pull-left'>
+          <btn ng-click='adminButton(data.user)'
+               ng-class="{'btn btn-danger': data.user.admin, 'btn btn-success': !data.user.admin}">
+            <i class='fa fa-user fa-lg'></i> {{!data.user.admin? ' Add' : ' Remove'}} Admin
+          </btn>
+        </div>
+        <div class='pull-left'>
+          <btn ng-click='activeButton(data.user)'
+               ng-class="{'btn btn-danger': data.user.active, 'btn btn-success': !data.user.active}">
+            <i ng-class="{'fa fa-minus-circle fa-lg': data.user.active, 'fa fa-plus-circle fa-lg': !data.user.active}"></i>
+              {{!data.user.active? ' Activate' : ' Deactivate'}}
+          </btn>
+        </div>
       </div>
-      <ul class='pull-left'>
-        <% if @user.admin == true %>
-          <%= bootstrap_form_for @user do |f| %>
-            <%= f.hidden_field :admin, value: false %>
-            <%= f.submit 'Remove Admin' %>
-          <% end %>
-        <% elsif @user.admin == false %>
-          <%= bootstrap_form_for @user do |f| %>
-            <%= f.hidden_field :admin, value: true %>
-            <%= f.submit 'Add Admin' %>
-          <% end %>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
 
-  <div class='pull-right'>
-    <%= link_to edit_user_path(@user),
-                class:'btn btn-default btn-primary' do %>
-      <i class='fa fa-pencil fa-lg'></i> Edit Profile
-    <% end %>
-  </div>
+      <div class='pull-right'>
+        <btn ng-click='open(false)' class='btn btn-primary'>
+          <i class='fa fa-pencil fa-lg'></i> Edit Profile
+        </btn>
+      </div>
 
+      <br><br>
 
-
-  <br><br>
-
-  <div class='table-responsive'>
-    <table class='table table-bordered table-condensed' >
-      <tr>
-      <th style='width:25%'>First Name</th>
-        <td><%= @user.first_name %></td>
-      </tr>
-      <tr>
-      <th>Last Name</th>
-        <td><%= @user.last_name %></td>
-      </tr>
-      <tr>
-        <th> Email </th>
-        <td>
-        <%= mail_to "#{@user.email}" do %>
-          <span> <%= @user.email %> </span>
-        <% end %>
-        </td>
-      </tr>
-      <tr>
-      <th>Phone</th>
-        <td><%= phone_number_link(@user.phone_number) %></td>
-      </tr>
-      <tr>
-      <th>Active</th>
-        <td><%= boolean_to_words(@user.active) %></td>
-      </tr>
-      <th>Admin</th>
-        <td><%= boolean_to_words(@user.admin) %></td>
-      </tr>
-      <tr>
-      <th>Department</th>
-        <td><%= @user.department %></td>
-      </tr>
-    </table>
+      <table class='table table-bordered'>
+        <tr>
+        <th>First Name</th>
+          <td>{{data.user.first_name}}</td>
+        </tr>
+        <tr>
+        <th>Last Name</th>
+          <td>{{data.user.last_name}}</td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>
+            <a href='mailto:{{data.user.email}}'>
+              {{data.user.email}}
+            </a>
+          </td>
+        </tr>
+        <tr>
+        <th>Phone</th>
+          <td>
+            <a href='tel:{{data.user.phone_number}}'>
+              {{data.user.phone_number}}
+            </a>
+          </td>
+        </tr>
+        <tr>
+        <th>Admin</th>
+          <td>{{data.user.admin | booleanToWords}}</td>
+        </tr>
+        <th>Active</th>
+          <td>{{data.user.active | booleanToWords}}</td>
+        </tr>
+        <tr>
+        <th>Department</th>
+          <td>{{data.user.department}}</td>
+        </tr>
+      </table>
+      </div>
+    </div>
   </div>
 </div>
