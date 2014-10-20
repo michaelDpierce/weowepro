@@ -50,7 +50,7 @@
         pending: false
         completed: false
         approved_by: 'Approved on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
-        completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+        completed_by: ''
 
     $scope.open = () ->
       modalInstance = $modal.open
