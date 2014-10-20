@@ -45,12 +45,6 @@
           $scope.weoweUsers.push employeeData
           toastr.success('Employee has been activated.')
 
-    $scope.delete = (user_id) ->
-      Users.destroy id: user_id
-      .$promise.then ->
-        _.remove $scope.weoweUsers, id: user_id.id
-        toastr.error('Employee has been successfully deleted')
-
     $scope.open = (editMode) ->
       modalInstance = $modal.open
         templateUrl: 'user-form.html',
