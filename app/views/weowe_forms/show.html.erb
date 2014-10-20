@@ -10,7 +10,6 @@
       <% if @weowe_form.assigned_sales_person_id? %>
         <div ng-init='data.salesManager = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
-
       <span class='pull-right' ng-if='data.weoweForm.pending'>
         <a href='/weowe_forms/{{data.weoweForm.id}}'
           class='btn btn-success'
@@ -254,7 +253,7 @@
             </tr>
           </table>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </div>
