@@ -1,5 +1,14 @@
-@weowepro.controller 'WeoweFormsCtrl', ['$scope', 'WeoweForms', 'Users', 'Sales'
-  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales) ->
+@weowepro.controller 'WeoweFormsCtrl', [
+  '$scope',
+  'WeoweForms',
+  'Users',
+  'Sales'
+  '$modal'
+
+  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales, $modal) ->
+    $scope.weoweForms = WeoweForms.index()
+    $scope.weoweUsers = Users.index()
+    $scope.salesStaff = Sales.index()
 
     $scope.predicate =
       value: '-custom_date'
@@ -7,19 +16,70 @@
     $scope.predicateUsers =
       value: 'last_name'
 
-    $scope.selected = undefined;
-
     $scope.totalDisplayed = 25
 
     $scope.loadMore = ->
       $scope.totalDisplayed += 25
 
-    Users.index (data) ->
-      $scope.weoweUsers = data
+    $scope.formStatus = (form) ->
+      if form.pending is true and form.completed is false then 'Pending'
+      else if form.pending is false and form.completed is false then 'Service'
+      else 'Completed'
 
-    Sales.index (data) ->
-      $scope.salesStaff = data
+    $scope.progressBarType = (form) ->
+      if form.pending is true and form.completed is false then 'danger'
+      else if form.pending is false and form.completed is false then 'warning'
+      else 'success'
 
-    WeoweForms.index (data) ->
-      $scope.weoweForms = data
+    $scope.approve = ->
+      WeoweForms.update id: $scope.data.weoweForm.id,
+        pending: false
+        completed: false
+        approved_by: 'Approved on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+        completed_by: ''
+
+    $scope.returnSales = ->
+      WeoweForms.update id: $scope.data.weoweForm.id,
+        pending: true
+        completed: false
+        approved_by: ''
+        completed_by: ''
+
+    $scope.returnService = ->
+      WeoweForms.update id: $scope.data.weoweForm.id,
+        pending: false
+        completed: false
+        approved_by: 'Approved on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+        completed_by: ''
+
+    $scope.open = () ->
+      modalInstance = $modal.open
+        templateUrl: 'actual-value.html',
+        controller: WeoweFormsModalCtrl,
+        scope: $scope
+        resolve:
+          data: ->
+            weoweForm: $scope.data.weoweForm
+
+    WeoweFormsModalCtrl = ($scope, $modalInstance) ->
+
+      $scope.ok = ->
+        WeoweForms.update id: $scope.data.weoweForm.id,
+          dealer_actual_1: $scope.data.weoweForm.dealer_actual_1
+          dealer_actual_2: $scope.data.weoweForm.dealer_actual_2
+          dealer_actual_3: $scope.data.weoweForm.dealer_actual_3
+          dealer_actual_4: $scope.data.weoweForm.dealer_actual_4
+          dealer_actual_5: $scope.data.weoweForm.dealer_actual_5
+          pending: false
+          completed: true
+          completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+          $modalInstance.close
+
+      $scope.cancel = ->
+        $modalInstance.dismiss "Cancel"
+
+      WeoweFormsModalCtrl['$inject'] = [
+        '$scope'
+        '$modalInstance'
+      ]
 ]

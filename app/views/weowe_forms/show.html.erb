@@ -2,6 +2,258 @@
   <%= render 'weowe_forms/show/show_print' %>
 </div>
 
-<div class='hidden-print'>
-  <%= render 'weowe_forms/show/hide_print' %>
+<div class='hidden-print' style='width: 85%; margin:auto;'>
+  <div ng-app='weowepro'>
+    <div ng-controller='WeoweFormsCtrl'>
+      <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'>
+      <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'>
+      <% if @weowe_form.assigned_sales_person_id? %>
+        <div ng-init='data.salesManager = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
+      <% end %>
+      <span class='pull-right' ng-if='data.weoweForm.pending'>
+        <a href='/weowe_forms/{{data.weoweForm.id}}'
+          class='btn btn-success'
+          ng-click='approve()'>
+          <i class='fa fa-check fa-lg'></i> Approve
+        </a>
+      </span>
+      <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+        <button ng-click='open()' type='submit' class='btn btn-success'>
+          <i class='fa fa-check-square fa-lg'></i> Complete
+        </button>
+      </span>
+      <span class='pull-left' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+        <a href='/weowe_forms/{{data.weoweForm.id}}'
+          class='btn btn-danger'
+          ng-click='returnSales()'>
+          <i class='fa fa-user fa-lg'></i> Return to Sales
+        </a>
+      </span>
+      <span class='pull-left' ng-if='!data.weoweForm.pending && data.weoweForm.completed'>
+        <a href='/weowe_forms/{{data.weoweForm.id}}'
+          class='btn btn-warning'
+          ng-click='returnService()'>
+          <i class='fa fa-wrench fa-lg'></i> Return to Service
+        </a>
+      </span>
+
+      <br><br><br>
+
+      <div class='panel panel-default'>
+        <div class='panel-heading' style='height: 40px;'>
+          <progressbar class='progress-striped'
+                       value=100
+                       type='{{progressBarType(data.weoweForm)}}'>
+            {{formStatus(data.weoweForm)}}
+          </progressbar>
+
+          <%=link_to ' Delete', @weowe_form, method: :delete,
+           data: { confirm: 'Are you sure?' },
+              class: 'glyphicon glyphicon-trash right-show-page'%>
+
+          <%= link_to_function(' Print', 'javascript:print()', :class =>
+                               'glyphicon glyphicon-print right-show-page') %>
+
+          <% if @weowe_form.pending == false && @weowe_form.completed == false %>
+                <%= link_to ' Email',
+                            { controller: 'weowe_forms', action: 'approve_form',
+                            :id => @weowe_form.id},
+                            method: :post,
+                            data: { confirm: 'Send Approve Email?' },
+                            class: 'glyphicon glyphicon-envelope right-show-page' %>
+          <% end %>
+
+          <% if @weowe_form.pending == false && @weowe_form.completed == true %>
+                <%= link_to ' Email',
+                            { controller: 'weowe_forms', action: 'complete_form',
+                            :id => @weowe_form.id},
+                            method: :post,
+                            data: { confirm: 'Send Completed Email?' },
+                            class: 'glyphicon glyphicon-envelope right-show-page' %>
+          <% end %>
+
+          <%= link_to ' Edit', edit_weowe_form_path(@weowe_form),
+                        class: 'glyphicon glyphicon-pencil right-show-page' %>
+        </div>
+
+        <br>
+
+        <div class='panel-body'>
+          <h4> Customer Information </h4>
+          <table class='table table-bordered table-condensed'>
+            <tr>
+            <th style='width:25%'>First Name</th>
+              <td>{{::data.weoweForm.customer_first_name}}</td>
+            </tr>
+            <tr>
+            <th>Last Name / Company</th>
+              <td>{{::data.weoweForm.customer_last_name}}</td>
+            </tr>
+            <tr>
+            <th>Phone Number</th>
+              <td>
+                <a href='tel:{{::data.weoweForm.customer_phone_mobile}}'>
+                  {{::data.weoweForm.customer_phone_mobile}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+            <tr>
+              <th>Email</th>
+              <td>
+                <a href='mailto:{{::data.weoweForm.customer_email}}'>
+                  {{::data.weoweForm.customer_email}}
+                </a>
+              </td>
+            </tr>
+          </table>
+
+          <h4>Vehicle Information</h4>
+          <table class='table table-bordered table-condensed'>
+            <tr>
+            <th style='width:25%'>Stock Number</th>
+              <td>{{::data.weoweForm.stock_number}}</td>
+            </tr>
+            <tr>
+            <th>Year</th>
+              <td>{{::data.weoweForm.year}}</td>
+            </tr>
+            <tr>
+            <th>Make</th>
+              <td>{{::data.weoweForm.make}}</td>
+            </tr>
+            <tr>
+            <th>Model</th>
+              <td>{{::data.weoweForm.vehicle_model}}</td>
+            </tr>
+            <tr>
+            <tr>
+            <th>Date Sold</th>
+              <td>{{::data.weoweForm.sold_date | date:'MM-dd-yyyy'}}</td>
+            </tr>
+          </table>
+
+          <h4>We Owe </h4>
+          <table class='table table-bordered table-condensed'>
+            <tr>
+              <th>#</th>
+              <th>Description</th>
+              <th>Quantity</th>
+              <th>Total Retail</th>
+              <th>Total Wholesale</th>
+              <th>Total Actual</th>
+            </tr>
+            <tr>
+              <th style='width:25%'>1</th>
+              <td>{{::data.weoweForm.description_1}}</td>
+              <td>{{::data.weoweForm.quantity_1}}</td>
+              <td>{{::data.weoweForm.dealer_total_value_1 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_wholesale_1 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_actual_1 | currency}}</td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td>{{::data.weoweForm.description_2}}</td>
+              <td>{{::data.weoweForm.quantity_2}}</td>
+              <td>{{::data.weoweForm.dealer_total_value_2 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_wholesale_2 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_actual_2 | currency}}</td>
+            </tr>
+            <tr>
+              <th>3</th>
+              <td>{{::data.weoweForm.description_3}}</td>
+              <td>{{::data.weoweForm.quantity_3}}</td>
+              <td>{{::data.weoweForm.dealer_total_value_3 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_wholesale_3 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_actual_3 | currency}}</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>{{::data.weoweForm.description_4}}</td>
+              <td>{{::data.weoweForm.quantity_4}}</td>
+              <td>{{::data.weoweForm.dealer_total_value_4 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_wholesale_4 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_actual_4 | currency}}</td>
+            </tr>
+            <tr>
+              <th>5</th>
+              <td>{{::data.weoweForm.description_5}}</td>
+              <td>{{::data.weoweForm.quantity_5}}</td>
+              <td>{{::data.weoweForm.dealer_total_value_5 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_wholesale_5 | currency}}</td>
+              <td>{{::data.weoweForm.dealer_actual_5 | currency}}</td>
+            </tr>
+             <tr>
+              <th>Totals</th>
+              <td></td>
+              <td></td>
+              <td>{{::data.weoweForm.dealer_total_value | currency}}</td>
+              <td>{{::data.weoweForm.dealer_wholesale | currency}}</td>
+              <td>{{::data.weoweForm.dealer_total_actual | currency}}</td>
+            </tr>
+          </table>
+
+          <h4>Customer Owes</h4>
+          <table class='table table-bordered table-condensed' >
+            <tr>
+              <th style='width:25%'>Description</th>
+              <td>{{::data.weoweForm.theyowe_info}}</td>
+            </tr>
+            <tr>
+              <th>Total Value</th>
+              <td>{{::data.weoweForm.customer_total_value | currency}}</td>
+            </tr>
+          </table>
+
+          <h4>Sales Person</h4>
+          <table class='table table-bordered table-condensed'>
+            <tr>
+              <th style='width:25%'>First Name </th>
+              <td>
+                {{::data.salesManager.first_name}}
+              </td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td>
+                {{::data.salesManager.last_name}}
+              </td>
+            </tr>
+          </table>
+
+          <h4>Sales Manager</h4>
+          <table class='table table-bordered table-condensed'>
+            <tr>
+              <th style='width:25%'>First Name </th>
+              <td>{{::data.user.first_name}}</td>
+            </tr>
+            <tr>
+              <th>Last Name </th>
+              <td>{{::data.user.last_name}}</td>
+            </tr>
+            <tr>
+              <th>Phone Number</th>
+              <td>
+                <a href='tel:{{::data.salesManager.phone_number}}'>
+                  {{::data.salesManager.phone_number}}
+                </a>
+              </td>
+            </tr>
+          </table>
+
+          <h4>Admin</h4>
+          <table class='table table-bordered table-condensed'>
+            <tr>
+              <th style='width:25%'>Approved By</th>
+              <td>{{::data.weoweForm.approved_by}}</td>
+            </tr>
+            <tr>
+              <th>Completed By</th>
+              <td>{{::data.weoweForm.completed_by}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

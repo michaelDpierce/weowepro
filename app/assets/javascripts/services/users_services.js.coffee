@@ -1,4 +1,18 @@
-@weowepro.factory 'Users', ['$resource',
+@weowepro.factory 'Users', [
+  '$resource'
   ($resource) ->
-    $resource('/users.json', {}, { index: { method: 'GET', isArray: true}})
+    $resource('/users/:id.json', null,
+      index:
+        method: 'GET'
+        isArray: true
+
+      update:
+        method: 'PUT'
+
+      create:
+        method: 'POST'
+
+      destroy:
+        method: 'DELETE'
+    )
 ]

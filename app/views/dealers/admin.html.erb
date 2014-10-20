@@ -1,23 +1,101 @@
- <% provide(:title, 'Preferences') %>
- <h1 class='hidden-xs'>Preferences</h1>
- <center><h4 class='visible-xs'>Preferences</h4></center>
+<% provide(:title, 'Preferences') %>
+<div ng-app='weowepro'>
+  <!-- <div ng-controller='UsersCtrl'> -->
+    <div ng-init='data.dealer = <%= @dealer.to_json %>'></div>
 
-<div class='table-width-desktop'>
-  <center>
-    <button type='button' class='btn btn-default pref-btn-fix' data-toggle='collapse'
-            data-target='#dealership_info'>
-      Dealership
-    </button>
-    <button type='button' class='btn btn-default pref-btn-fix' data-toggle='collapse'
-            data-target='#export'>
-      Export
-    </button>
+    <h1>Preferences</h1>
 
-    <div id='dealership_info' class='collapse'>
-     <%= render 'dealership_info' %>
-    </div>
-    <div id='export' class='collapse'>
-    <%= render 'export' %>
-    </div>
-  </center>
+    <center>
+      <div class='table-width-desktop'>
+         <div class='panel panel-default'>
+           <div class='panel-heading'>
+             <h3 class='panel-title'>Dealership</h3>
+           </div>
+           <div class='panel-body'>
+            <table class='table'>
+              <tbody>
+                 <tr>
+                 <th>Logo</th>
+                   <td><%= image_tag @dealer.logo.url, width: '200px' %>
+                   </td>
+                 </tr>
+                <tr>
+                  <th>Name</th>
+                  <td>{{::data.dealer.name}}</td>
+                </tr>
+                <tr>
+                  <th>Address 1</th>
+                  <td>{{::data.dealer.address_1}}</td>
+                </tr>
+                <tr>
+                  <th>Address 2</th>
+                  <td>{{::data.dealer.address_2}}</td>
+                </tr>
+                <tr>
+                  <th>City</th>
+                  <td>{{::data.dealer.city}}</td>
+                </tr>
+                <tr>
+                  <th>State</th>
+                  <td>{{::data.dealer.state}}</td>
+                </tr>
+                <tr>
+                  <th>Zip</th>
+                  <td>{{::data.dealer.zip}}</td>
+                </tr>
+                <tr>
+                  <th>Phone Number</th>
+                  <td>
+                    <a href='tel:{{data.dealer.phone_number}}'>
+                      {{data.dealer.phone_number}}
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Domain</th>
+                  <td>{{::dealer.email_domain}}</td>
+                </tr>
+                <tr>
+                  <td> <%= link_to ' Edit', edit_dealer_path(current_user.dealer_id),
+                    class: 'fa fa-pencil fa-lg' %>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+           </div>
+         </div>
+
+          <br>
+          <div class='panel panel-default'>
+            <div class='panel-heading'>
+              <h3 class='panel-title'>Export</h3>
+            </div>
+            <div class='panel-body'>
+              <div class='visible-xs'>
+                <%= link_to 'Sales Staff Contact Information', users_path(format: 'csv'),
+                    class: 'btn btn-primary btn-sm btn-block' %>
+                <%= link_to 'Sales Forms', pending_path(format: 'csv'),
+                    class: 'btn btn-danger btn-sm btn-block' %>
+                <%= link_to 'Service Forms', weowe_forms_path(format: 'csv'),
+                    class: 'btn btn-warning btn-sm btn-block' %>
+                <%= link_to 'Completed Forms', completed_path(format: 'csv'),
+                    class: 'btn btn-success btn-sm btn-block' %>
+              </div>
+              <div class='hidden-xs'>
+                <%= link_to 'Sales Staff Contact Information', users_path(format: 'csv'),
+                    class: 'btn btn-primary btn-sm', style: 'width: 200px;'%>
+                <%= link_to 'Sales Forms', pending_path(format: 'csv'),
+                    class: 'btn btn-danger btn-sm', style: 'width: 200px;' %>
+                <%= link_to 'Service Forms', weowe_forms_path(format: 'csv'),
+                    class: 'btn btn-warning btn-sm', style: 'width: 200px;' %>
+                <%= link_to 'Completed Forms', completed_path(format: 'csv'),
+                    class: 'btn btn-success btn-sm', style: 'width: 200px;' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+  </div>
 </div>

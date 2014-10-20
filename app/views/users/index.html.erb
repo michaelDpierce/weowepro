@@ -1,33 +1,41 @@
 <div ng-app='weowepro'>
   <div ng-controller='UsersCtrl'>
     <% provide(:title, 'Staff') %>
-    <h1 class='hidden-xs'>Staff</h1>
-    <center><h4 class='visible-xs'>Staff</h4></center>
+
+    <h1>{{showActive? 'Active' : 'Inactive'}} Staff</h1>
 
     <div class='row'>
       <div class='col-md-3 col-xs-12'>
         <div class='input-group'>
-          <input class='form-control' ng-model='search.last_name' placeholder='Search By Last Name'/>
+          <input class='form-control'
+                 ng-model='search.last_name'
+                 placeholder='Search By Last Name'/>
           <span class='input-group-addon'>
-            <span class='glyphicon glyphicon-search'></span>
+            <span class='fa fa-search fa-lg'></span>
           </span>
         </div>
       </div>
-      <div class='col-md-7 col-xs-12'></div>
+      <div class='col-md-5 col-xs-12'></div>
       <div class='visible-xs'><br><br></div>
-      <div class='col-md-2 col-xs-12'>
+      <div class='col-md-4 col-xs-12'>
       <div class='pull-right'>
-        <%= link_to new_user_path,
-                    class:'btn btn-default btn-primary' do %>
+        <btn ng-click='open(true)' class='btn btn-primary'>
           <i class='fa fa-plus fa-lg'></i> Add Employee
-        <% end %>
+        </btn>
+        <btn ng-click='showActive = !showActive'
+             ng-class="{'btn btn-danger': showActive, 'btn btn-success': !showActive}">
+          <i ng-class="{'fa fa-minus-circle fa-lg': showActive, 'fa fa-plus-circle fa-lg': !showActive}"></i>
+            {{!showActive? ' View Active Staff' : ' View Inactive Staff'}}
+        </btn>
       </div>
     </div>
 
     <div class='hidden-xs'><br><br><br></div>
 
     <table class='table'>
-      <thead ng-show='(weoweUsers | filter:search).length > 0' >
+      <thead ng-show='(weoweUsers
+                      | filter: search
+                      | filter: {active: showActive}).length > 0'>
         <tr>
           <th>
            <a ng-click="predicate.value = 'last_name'; reverse=!reverse">
@@ -47,26 +55,23 @@
             Department
           </th>
           <th class='hidden-xs'>
-            Active
-          </th>
-          <th class='hidden-xs'>
             Admin
           </th>
           <th></th>
         </tr>
       </thead>
-
       <tbody>
-        <tr ng-repeat='user in ::weoweUsers | orderBy:predicate.value:reverse |
-                       filter:search'>
+        <tr ng-repeat='user in weoweUsers
+                      | orderBy:predicate.value:reverse
+                      | filter:search
+                      | filter: {active: showActive}'>
           <td>
             {{::user.last_name}}
           </td>
           <td class='hidden-xs'>{{::user.first_name}}</td>
-          <td class='hidden-xs'><%= mail_to '{{::user.email}}' %></td>
+          <td class='hidden-xs'><%= mail_to '{{::user.email}}'%></td>
           <td><a ng-href='tel:{{::user.phone_number}}'>{{::user.phone_number}}</td>
           <td class='hidden-xs'>{{::user.department}}</td>
-          <td class='hidden-xs'>{{::user.active | booleanToWords}}</td>
           <td class='hidden-xs'>{{::user.admin | booleanToWords}}</td>
           <td>
             <%= link_to '/users/{{::user.id}}' do %>
@@ -76,9 +81,10 @@
         </tr>
       </tbody>
     </table>
-
     <center>
-      <div ng-show='(weoweUsers | filter:search).length == 0'>
+      <div ng-show='(weoweUsers
+                    | filter:search
+                    | filter: {active: showActive}).length == 0'>
         <hr>
         <h4>No results found</h4>
         <btn class='btn btn-default' ng-click="search=''">New Search</btn>

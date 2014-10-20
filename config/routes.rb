@@ -1,8 +1,7 @@
 Weowe::Application.routes.draw do
-  resources :demos
-
   devise_for :users
 
+  resources :demos
   resources :dealers
   resources :weowe_forms
   resources :users
@@ -27,9 +26,5 @@ Weowe::Application.routes.draw do
   match '/staff', to: 'static_pages#staff',    via: 'get'
   match '/overall', to: 'static_pages#overall',    via: 'get'
 
-
-  match '/about', to: 'static_pages#about',    via: 'get'
-
   match '/landing_page', to: 'static_pages#landing_page',    via: 'get'
-  match '/tour', to: 'static_pages#tour',    via: 'get'
 end

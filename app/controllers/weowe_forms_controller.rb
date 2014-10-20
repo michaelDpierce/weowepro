@@ -3,45 +3,35 @@ class WeoweFormsController < ApplicationController
                                         :print_format]
 
   def dashboard
-    @activity = WeoweForm.where(dealer_id: current_user.dealer_id)
-                         .order('updated_at desc').limit(5)
   end
 
   def index
-    if stale?(weowe_data)
-      respond_to do |format|
-        format.html
-        format.json {render json: weowe_data}
-        format.csv {render csv: service_view, filename: 'service'}
-      end
+    respond_to do |format|
+      format.html
+      format.json { render json: weowe_data }
+      format.csv { render csv: service_view, filename: 'service' }
     end
   end
 
   def pending
-    if stale?(weowe_data)
-      respond_to do |format|
-        format.html
-        format.csv {render csv: @pending, filename: 'sales'}
-      end
+    respond_to do |format|
+      format.html
+      format.csv { render csv: @pending, filename: 'sales' }
     end
   end
 
   def completed
-    if stale?(weowe_data)
-      respond_to do |format|
-        format.html
-        format.csv {render csv: completed_view, filename: 'completed'}
-      end
+    respond_to do |format|
+      format.html
+      format.csv { render csv: completed_view, filename: 'completed' }
     end
   end
 
   def metrics
-    # if stale?(sales_person_index)
-      respond_to do |format|
-        format.html
-        format.json {render json: sales_person_index}
-      end
-    # end
+    respond_to do |format|
+      format.html
+      format.json { render json: sales_person_index }
+    end
   end
 
   def show
@@ -79,9 +69,11 @@ class WeoweFormsController < ApplicationController
                                               @weowe_form.dealer_wholesale_3,
                                               @weowe_form.dealer_wholesale_4,
                                               @weowe_form.dealer_wholesale_5)
-    message = 'Form updated.'
-    handle_action(@weowe_form, message, :edit) do |resource|
-      resource.update(weowe_form_params)
+
+    if @weowe_form.update_attributes(weowe_form_params)
+      render json: @weowe_form.as_json
+    else
+      render json: @weowe_form.errors, status: :unprocessable_entity
     end
   end
 
@@ -117,23 +109,29 @@ class WeoweFormsController < ApplicationController
                      'customer_first_name', 'dealer_total_value', 'pending',
                      'completed', 'assigned_sales_person_id',
                      'dealer_wholesale',
-                                                            'dealer_total_value_1',
-                                                            'dealer_total_value_2',
-                                                            'dealer_total_value_3',
-                                                            'dealer_total_value_4',
-                                                            'dealer_total_value_5',
-                                                            'dealer_total_value',
-                                                            'dealer_wholesale_1',
-                                                            'dealer_wholesale_2',
-                                                            'dealer_wholesale_3',
-                                                            'dealer_wholesale_4',
-                                                            'dealer_wholesale_5',
-                                                            'dealer_wholesale',
-                                                            'description_1',
-                                                            'description_2',
-                                                            'description_3',
-                                                            'description_4',
-                                                            'description_5').as_json
+                     'dealer_total_value_1',
+                     'dealer_total_value_2',
+                     'dealer_total_value_3',
+                     'dealer_total_value_4',
+                     'dealer_total_value_5',
+                     'dealer_total_value',
+                     'dealer_wholesale_1',
+                     'dealer_wholesale_2',
+                     'dealer_wholesale_3',
+                     'dealer_wholesale_4',
+                     'dealer_wholesale_5',
+                     'dealer_wholesale',
+                     'dealer_actual_1',
+                     'dealer_actual_2',
+                     'dealer_actual_3',
+                     'dealer_actual_4',
+                     'dealer_actual_5',
+                     'dealer_total_actual',
+                     'description_1',
+                     'description_2',
+                     'description_3',
+                     'description_4',
+                     'description_5').as_json
   end
 
   def sales_person_index
@@ -163,5 +161,10 @@ class WeoweFormsController < ApplicationController
                                               @weowe_form.dealer_wholesale_3,
                                               @weowe_form.dealer_wholesale_4,
                                               @weowe_form.dealer_wholesale_5)
+    @weowe_form.dealer_total_actual = dealer_sum(@weowe_form.dealer_actual_1,
+                                                 @weowe_form.dealer_actual_2,
+                                                 @weowe_form.dealer_actual_3,
+                                                 @weowe_form.dealer_actual_4,
+                                                 @weowe_form.dealer_actual_5)
   end
 end

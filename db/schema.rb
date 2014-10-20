@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011020148) do
+ActiveRecord::Schema.define(version: 20141015181958) do
 
   create_table "dealers", force: true do |t|
     t.string   "name"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20141011020148) do
     t.string   "phone_number"
     t.integer  "dealer_id"
     t.boolean  "active",                 default: true
-    t.string   "department"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141011020148) do
     t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "department"
     t.boolean  "admin",                  default: false
   end
 
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20141011020148) do
   create_table "weowe_forms", force: true do |t|
     t.string   "customer_first_name"
     t.string   "customer_last_name"
-    t.string   "customer_zip"
     t.string   "customer_phone_mobile"
     t.string   "customer_email"
     t.datetime "custom_date"
@@ -121,6 +120,12 @@ ActiveRecord::Schema.define(version: 20141011020148) do
     t.decimal  "dealer_wholesale_4",       precision: 8, scale: 2
     t.decimal  "dealer_wholesale_5",       precision: 8, scale: 2
     t.integer  "assigned_sales_person_id"
+    t.decimal  "dealer_actual_1",          precision: 8, scale: 2
+    t.decimal  "dealer_actual_2",          precision: 8, scale: 2
+    t.decimal  "dealer_actual_3",          precision: 8, scale: 2
+    t.decimal  "dealer_actual_4",          precision: 8, scale: 2
+    t.decimal  "dealer_actual_5",          precision: 8, scale: 2
+    t.decimal  "dealer_total_actual",      precision: 8, scale: 2
   end
 
 end

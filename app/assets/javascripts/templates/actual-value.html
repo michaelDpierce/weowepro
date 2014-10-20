@@ -1,0 +1,96 @@
+<div class='modal-header'>
+    <h3 class='modal-title'>
+      <center>Please Enter We Owe Actual Cost</center>
+    </h3>
+</div>
+<div class='modal-body'>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+      <th>#</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Total Retail</th>
+      <th>Total Wholesale</th>
+      <th>Total Actual</th>
+    </tr>
+    <tr>
+      <th style='width:5%'>1</th>
+      <td>{{::data.weoweForm.description_1}}</td>
+      <td>{{::data.weoweForm.quantity_1}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_1 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_1 | currency}}</td>
+      <td>
+        <div class='input-group'>
+          <span class='input-group-addon'>$</span>
+          <input ng-model='data.weoweForm.dealer_actual_1'
+                 type='text' class='form-control' placeholder='Actual Cost'>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{{::data.weoweForm.description_2}}</td>
+      <td>{{::data.weoweForm.quantity_2}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_2 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_2 | currency}}</td>
+      <td>
+        <div class='input-group'>
+          <span class='input-group-addon'>$</span>
+          <input ng-model='data.weoweForm.dealer_actual_2'
+                 type='text' class='form-control' placeholder='Actual Cost'>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{{::data.weoweForm.description_3}}</td>
+      <td>{{::data.weoweForm.quantity_3}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_3 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_3 | currency}}</td>
+      <td>
+        <div class='input-group'>
+          <span class='input-group-addon'>$</span>
+          <input ng-model='data.weoweForm.dealer_actual_3'
+                 type='text' class='form-control' placeholder='Actual Cost'>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{{::data.weoweForm.description_4}}</td>
+      <td>{{::data.weoweForm.quantity_4}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_4 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_4 | currency}}</td>
+      <td>
+        <div class='input-group'>
+          <span class='input-group-addon'>$</span>
+          <input ng-model='data.weoweForm.dealer_actual_4'
+                 type='text' class='form-control' placeholder='Actual Cost'>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>{{::data.weoweForm.description_5}}</td>
+      <td>{{::data.weoweForm.quantity_5}}</td>
+      <td>{{::data.weoweForm.dealer_total_value_5 | currency}}</td>
+      <td>{{::data.weoweForm.dealer_wholesale_5 | currency}}</td>
+      <td>
+        <div class='input-group'>
+          <span class='input-group-addon'>$</span>
+          <input ng-model='data.weoweForm.dealer_actual_5'
+                 type='text' class='form-control' placeholder='Actual Cost'>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class='modal-footer'>
+  <a href='/weowe_forms/{{data.weoweForm.id}}'
+    class='btn btn-primary btn-block'
+    ng-click='ok()'>
+    <i class='fa fa-refresh'></i> Update Totals
+  </a>
+  <button class='btn btn-danger btn-block' ng-click='cancel()'>
+    <i class='fa fa-times'></i> Close</button>
+</div>
