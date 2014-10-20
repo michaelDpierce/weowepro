@@ -172,6 +172,7 @@
         <% end %>
 
         <%= f.hidden_field :custom_date, value: Time.now %>
+
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%= f.hidden_field :dealer_id, value: current_user.dealer_id %>
 

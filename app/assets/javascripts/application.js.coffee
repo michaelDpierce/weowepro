@@ -22,6 +22,7 @@
 #= require angular-sanitize
 #= require angular-ui-bootstrap-tpls
 #= require toastr
+#= require moment
 
 #= require angular-rails-templates
 #= require_tree ../templates

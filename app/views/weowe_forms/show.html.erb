@@ -11,98 +11,43 @@
         <div ng-init='data.salesManager = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
 
-      <progressbar class='progress-striped'
-                   value=100
-                   type='{{progressBarType(data.weoweForm)}}'>
-        {{formStatus(data.weoweForm)}}
-      </progressbar>
+      <span class='pull-right' ng-if='data.weoweForm.pending'>
+        <a href='/weowe_forms/{{data.weoweForm.id}}'
+          class='btn btn-success'
+          ng-click='approve()'>
+          <i class='fa fa-check fa-lg'></i> Approve
+        </a>
+      </span>
+      <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+        <button ng-click='open()' type='submit' class='btn btn-success'>
+          <i class='fa fa-check-square fa-lg'></i> Complete
+        </button>
+      </span>
+      <span class='pull-left' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+        <a href='/weowe_forms/{{data.weoweForm.id}}'
+          class='btn btn-danger'
+          ng-click='returnSales()'>
+          <i class='fa fa-user fa-lg'></i> Return to Sales
+        </a>
+      </span>
+      <span class='pull-left' ng-if='!data.weoweForm.pending && data.weoweForm.completed'>
+        <a href='/weowe_forms/{{data.weoweForm.id}}'
+          class='btn btn-warning'
+          ng-click='returnService()'>
+          <i class='fa fa-wrench fa-lg'></i> Return to Service
+        </a>
+      </span>
 
-      <a href='/weowe_forms/{{data.weoweForm.id}}'
-        class='btn btn-success'
-        ng-click='approve()'>
-        <i class='fa fa-check fa-lg'></i> Approve
-      </a>
-
-      <button ng-click='open()' type='submit' class='btn btn-success'>
-        <i class='fa fa-check-square fa-lg'></i> Complete
-      </button>
-
-      <a href='/weowe_forms/{{data.weoweForm.id}}'
-        class='btn btn-danger'
-        ng-click='returnSales()'>
-        <i class='fa fa-user fa-lg'></i> Return to Sales
-      </a>
-
-      <a href='/weowe_forms/{{data.weoweForm.id}}'
-        class='btn btn-warning'
-        ng-click='returnService()'>
-        <i class='fa fa-wrench fa-lg'></i> Return to Service
-      </a>
-
-<!--
-      <div class='pull-right'>
-        <% if current_user.admin? %>
-          <% if @weowe_form.pending == true && @weowe_form.completed == false %>
-            <%= bootstrap_form_for @weowe_form do |f| %>
-              <%= f.hidden_field :pending, value: false %>
-              <%= f.hidden_field :completed, value: false %>
-              <%= f.hidden_field :approved_by,
-                                 value: "#{current_user.first_name}
-                                         #{current_user.last_name} on
-                                         #{Time.now.asctime}" %>
-              <button type='submit' class='btn btnfix btn-success btn-sm'>
-                <i class='fa fa-check fa-lg'></i> Approve
-              </button>
-            <% end %>
-          <% end %>
-        <% end %>
-
-        <% if current_user.admin? || current_user.department == 'Service' %>
-          <% if @weowe_form.pending == false && @weowe_form.completed == false %>
-            <%= bootstrap_form_for @weowe_form do |f| %>
-              <%= f.hidden_field :completed, value: true %>
-              <%= f.hidden_field :pending, value: false %>
-              <%= f.hidden_field :completed_by,
-                                 value: "#{current_user.first_name}
-                                         #{current_user.last_name} on
-                                         #{Time.now.asctime}" %>
-              <button type='submit' class='btn btnfix btn-success btn-sm'>
-                <i class='fa fa-check-square fa-lg'></i> Complete
-              </button>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div> -->
-
-      <!-- <div class='pull-left'>
-        <% if current_user.admin? %>
-          <% if @weowe_form.pending == false && @weowe_form.completed == false %>
-            <%= bootstrap_form_for @weowe_form do |f| %>
-              <%= f.hidden_field :pending, value: true %>
-              <%= f.hidden_field :completed, value: false %>
-              <%= f.hidden_field :approved_by, value: '' %>
-              <button type='submit' class='btn btnfix btn-danger btn-sm'>
-                <i class='fa fa-user fa-lg'></i> Return to Sales
-              </button>
-            <% end %>
-          <% end %>
-          <% if @weowe_form.pending == false && @weowe_form.completed == true %>
-            <%= bootstrap_form_for @weowe_form do |f| %>
-              <%= f.hidden_field :completed, value: false %>
-              <%= f.hidden_field :pending, value: false %>
-              <%= f.hidden_field :completed_by, value: '' %>
-              <button type='submit' class='btn btnfix btn-warning btn-sm'>
-                <i class='fa fa-wrench fa-lg'></i> Return to Service
-              </button>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div> -->
-
-      <br><br>
+      <br><br><br>
 
       <div class='panel panel-default'>
         <div class='panel-heading' style='height: 40px;'>
+          <progressbar class='progress-striped'
+                       value=100
+                       type='{{progressBarType(data.weoweForm)}}'>
+            {{formStatus(data.weoweForm)}}
+          </progressbar>
+
           <%=link_to ' Delete', @weowe_form, method: :delete,
            data: { confirm: 'Are you sure?' },
               class: 'glyphicon glyphicon-trash right-show-page'%>
@@ -309,7 +254,7 @@
             </tr>
           </table>
         </div>
-      </div>
+      </div>  
     </div>
   </div>
 </div>

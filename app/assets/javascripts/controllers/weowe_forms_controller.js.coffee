@@ -35,16 +35,22 @@
       WeoweForms.update id: $scope.data.weoweForm.id,
         pending: false
         completed: false
+        approved_by: 'Approved on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+        completed_by: ''
 
     $scope.returnSales = ->
       WeoweForms.update id: $scope.data.weoweForm.id,
         pending: true
         completed: false
+        approved_by: ''
+        completed_by: ''
 
     $scope.returnService = ->
       WeoweForms.update id: $scope.data.weoweForm.id,
         pending: false
         completed: false
+        approved_by: 'Approved on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+        completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
 
     $scope.open = () ->
       modalInstance = $modal.open
@@ -66,6 +72,7 @@
           dealer_actual_5: $scope.data.weoweForm.dealer_actual_5
           pending: false
           completed: true
+          completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
           $modalInstance.close
 
       $scope.cancel = ->

@@ -22,19 +22,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.skip_confirmation!
-    @user.password='password'
-    @user.password_confirmation='password'
+    @user.password = params[:password]
+    @user.password_confirmation= params[:password_confirmation]
     @user.save!
-
     if @user.save
       render json: @user.as_json
     else
       render json: @user.errors, status: :unprocessable_entity
     end
-
   end
 
   def update
+    @user.password = params[:password]
+    @user.password_confirmation= params[:password_confirmation]
+    @user.save!
     if @user.update_attributes(user_params)
       render json: @user.as_json
     else
