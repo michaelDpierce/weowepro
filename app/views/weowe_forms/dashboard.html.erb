@@ -1,34 +1,57 @@
 <% provide(:title, 'Dashboard') %>
+<div ng-app='weowepro'>
+  <div ng-controller='WeoweFormsCtrl'>
+    <center>
+      <div class='jumbotron'>
+        <h1>We Owe Pro Dashboard</h1>
+      </div>
 
-<center>
-  <div class='jumbotron hidden-xs'>
-    <h1>We Owe Pro Dashboard</h1>
+      <h3>Recent Activity</h3>
+      <br>
+
+      <table class='table'>
+          <thead>
+          <tr>
+            <th>Stock #</th>
+            <th>Customer</th>
+            <th class='hidden-xs'>Retail</th>
+            <th class='hidden-xs'>Wholesale</th>
+            <th class='hidden-xs'>Actual</th>
+            <th>Status</th>
+            <th class='hidden-xs'>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="form in weoweForms | orderBy: '-custom_date' | limitTo:5">
+            <td>{{::form.stock_number}}</td>
+            <td>{{::form.customer_last_name}}</td>
+            <td class='hidden-xs'>{{::form.dealer_total_value | currency}}</td>
+            <td class='hidden-xs'>{{::form.dealer_wholesale | currency}}</td>
+            <td class='hidden-xs'>{{::form.dealer_actual_value | currency}}</td>
+            <td ng-class='progressBarType(form)'>{{formStatus(form)}}</td>
+            <td class='hidden-xs'>{{::form.custom_date | date:'MM-dd-yyyy'}}</td>
+            <td>
+              <%= link_to '/weowe_forms/{{::form.id}}' do %>
+                <i class='fa fa-external-link fa-lg'></i>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br><br>
+      <div class='btn-group'>
+        <% if current_user.admin? %>
+          <%= link_to 'New Form', new_weowe_form_path,
+            class: 'btn btn-primary btn-fix-width', role: 'button' %>
+        <% end %>
+        <%= link_to 'Sales', pending_path,
+          class: 'btn btn-danger btn-fix-width', role: 'button' %>
+        <%= link_to 'Service', weowe_forms_path,
+          class: 'btn btn-warning btn-fix-width', role: 'button' %>
+        <%= link_to 'Completed', completed_path,
+          class: 'btn btn-success btn-fix-width', role: 'button' %>
+      </div>
+    </center>
   </div>
-  <div class='hidden-xs'>
-    <h3>Recent Activity</h3>
-    <br>
-    <%= render 'dashboard' %>
-    <br><br>
-    <div class='btn-group'>
-      <% if current_user.admin? %>
-        <%= link_to 'New Form', new_weowe_form_path,
-          class: 'btn btn-primary btn-fix-width', role: 'button' %>
-      <% end %>
-      <%= link_to 'Sales', pending_path,
-        class: 'btn btn-danger btn-fix-width', role: 'button' %>
-      <%= link_to 'Service', weowe_forms_path,
-        class: 'btn btn-warning btn-fix-width', role: 'button' %>
-      <%= link_to 'Completed', completed_path,
-        class: 'btn btn-success btn-fix-width', role: 'button' %>
-    </div>
-
-
-  </div>
-
-  <div class='visible-xs'>
-    <h3>Dashboard</h3>
-    <h4>Most Recent Form Status</h4>
-    <%= render 'dashboard' %>
-    <br><br>
-  </div>
-</center>
+</div>

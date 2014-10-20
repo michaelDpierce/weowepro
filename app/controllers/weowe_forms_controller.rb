@@ -3,8 +3,6 @@ class WeoweFormsController < ApplicationController
                                         :print_format]
 
   def dashboard
-    @activity = WeoweForm.where(dealer_id: current_user.dealer_id)
-                         .order('updated_at desc').limit(5)
   end
 
   def index
