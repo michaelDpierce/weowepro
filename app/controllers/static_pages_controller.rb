@@ -6,36 +6,36 @@ class StaticPagesController < ApplicationController
 
   def overall
     @count = LazyHighCharts::HighChart.new('column') do |f|
-      f.chart({:defaultSeriesType=>"column" , :margin=> [50, 200, 60, 170]} )
+      f.chart(defaultSeriesType: 'column', margin: [50, 200, 60, 170])
       service = {
-       :type=> 'column',
-       :name=> 'Sales',
-       :data=> [
-         ['Sales', WeoweForm.where(dealer_id: current_user.dealer_id, pending: true, completed: false).count],
-       ]
+        type: 'column',
+        name: 'Sales',
+        data: [
+          ['Sales', WeoweForm.where(dealer_id: current_user.dealer_id, pending: true, completed: false).count]
+        ]
       }
       sales = {
-       :type=> 'column',
-       :name=> 'Service',
-       :data=> [
-         ['Service', WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: false).count]
-       ]
+        type: 'column',
+        name: 'Service',
+        data: [
+          ['Service', WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: false).count]
+        ]
       }
       completed = {
-       :type=> 'column',
-       :name=> 'Completed',
-       :data=> [
-         ['Completed', WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).count]
-       ]
+        type: 'column',
+        name: 'Completed',
+        data: [
+          ['Completed', WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).count]
+        ]
       }
       f.series(service)
       f.series(sales)
       f.series(completed)
       f.options[:title][:text] = ['Total We Owe Forms Count']
-      f.options[:xAxis] = {plot_bands: 'none',
-                     categories: ['']}
-      f.legend(:layout=> 'horizontal',:style=> {:left=> 'auto', :bottom=> 'auto',:top=> 'auto'})
-      f.plot_options({bar: {stacking: 'normal'}})
+      f.options[:xAxis] = { plot_bands: 'none',
+                            categories: [''] }
+      f.legend(layout: 'horizontal', style: { left: 'auto', bottom: 'auto', top: 'auto' })
+      f.plot_options(bar: { stacking: 'normal' })
     end
   end
 

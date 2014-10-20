@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     if stale?(users_index)
       respond_to do |format|
         format.html
-        format.json {render json: users_index}
-        format.csv {render csv: users_index, filename: 'users'}
+        format.json { render json: users_index }
+        format.csv { render csv: users_index, filename: 'users' }
       end
     end
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.skip_confirmation!
     @user.password = params[:password]
-    @user.password_confirmation= params[:password_confirmation]
+    @user.password_confirmation = params[:password_confirmation]
     @user.dealer_id = current_user.dealer_id
     @user.save!
     if @user.save
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def update
     @user.password = params[:password]
-    @user.password_confirmation= params[:password_confirmation]
+    @user.password_confirmation = params[:password_confirmation]
     @user.save!
     if @user.update_attributes(user_params)
       render json: @user.as_json

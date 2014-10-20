@@ -7,7 +7,7 @@ describe Dealer do
                          address_2: 'Unit B',
                          city: 'Lakewood',
                          state: 'CO',
-                         zip: 80228,
+                         zip: 80_228,
                          phone_number: '720.387.9691',
                          time_zone: 'Mountain Time (US & Canada)',
                          email_domain: 'autonation.com'

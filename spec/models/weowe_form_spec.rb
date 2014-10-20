@@ -100,7 +100,7 @@ describe WeoweForm do
   it { should respond_to(:dealer_wholesale) }
   it { should respond_to(:dealer_total_value) }
   it { should respond_to(:dealer_total_actual) }
-  
+
   it { should respond_to(:custom_date) }
   it { should respond_to(:user_id) }
   it { should respond_to(:dealer_id) }

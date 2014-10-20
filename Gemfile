@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-#General
+# General
 gem 'rails', '4.0.3'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
@@ -14,7 +14,7 @@ gem 'uglifier', '~> 2.5.0'
 gem 'yajl-ruby'
 gem 'oj'
 
-#Front End
+# Front End
 gem 'bootstrap_form'
 gem 'lazy_high_charts'
 gem 'sass-rails', '~> 4.0.0'
@@ -23,7 +23,7 @@ gem 'font-awesome-rails'
 gem 'toastr-rails'
 gem 'pace-rails'
 
-#Utilities
+# Utilities
 gem 'faker', '1.1.2'
 gem 'paperclip'
 gem 'active_link_to'
@@ -33,7 +33,7 @@ gem 'newrelic_rpm'
 gem 'intercom-rails'
 gem 'comma', '~> 3.0'
 
-#Angualr
+# Angualr
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 gem 'angular-ui-bootstrap-rails', '~> 0.11.1'
