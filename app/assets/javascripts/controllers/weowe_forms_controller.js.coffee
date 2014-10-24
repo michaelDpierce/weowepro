@@ -64,12 +64,20 @@
     WeoweFormsModalCtrl = ($scope, $modalInstance) ->
 
       $scope.ok = ->
+        da1 = $scope.data.weoweForm.dealer_actual_1
+        da2 = $scope.data.weoweForm.dealer_actual_2
+        da3 = $scope.data.weoweForm.dealer_actual_3
+        da4 = $scope.data.weoweForm.dealer_actual_4
+        da5 = $scope.data.weoweForm.dealer_actual_5
+        dta = parseFloat(da1) + parseFloat(da2) + parseFloat(da3) + parseFloat(da4) + parseFloat(da5)
+
         WeoweForms.update id: $scope.data.weoweForm.id,
-          dealer_actual_1: $scope.data.weoweForm.dealer_actual_1
-          dealer_actual_2: $scope.data.weoweForm.dealer_actual_2
-          dealer_actual_3: $scope.data.weoweForm.dealer_actual_3
-          dealer_actual_4: $scope.data.weoweForm.dealer_actual_4
-          dealer_actual_5: $scope.data.weoweForm.dealer_actual_5
+          dealer_actual_1: da1
+          dealer_actual_2: da2
+          dealer_actual_3: da3
+          dealer_actual_4: da4
+          dealer_actual_5: da5
+          dealer_total_actual:dta
           pending: false
           completed: true
           completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))

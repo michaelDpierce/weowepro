@@ -4,8 +4,13 @@
     </h3>
 </div>
 <div class='modal-body'>
+
+  <div ng-hide='data.weoweForm.description_1'>
+    <h1>No we owe items associated with this record.</h1>
+  </div>
+
   <table class='table table-bordered table-condensed' >
-    <tr>
+    <tr ng-show='data.weoweForm.description_1'>
       <th>#</th>
       <th>Description</th>
       <th>Quantity</th>
@@ -13,7 +18,7 @@
       <th>Total Wholesale</th>
       <th>Total Actual</th>
     </tr>
-    <tr>
+    <tr ng-show='data.weoweForm.description_1'>
       <th style='width:5%'>1</th>
       <td>{{::data.weoweForm.description_1}}</td>
       <td>{{::data.weoweForm.quantity_1}}</td>
@@ -27,7 +32,7 @@
         </div>
       </td>
     </tr>
-    <tr>
+    <tr ng-show='data.weoweForm.description_2'>
       <th>2</th>
       <td>{{::data.weoweForm.description_2}}</td>
       <td>{{::data.weoweForm.quantity_2}}</td>
@@ -41,7 +46,7 @@
         </div>
       </td>
     </tr>
-    <tr>
+    <tr ng-show='data.weoweForm.description_3'>
       <th>3</th>
       <td>{{::data.weoweForm.description_3}}</td>
       <td>{{::data.weoweForm.quantity_3}}</td>
@@ -55,7 +60,7 @@
         </div>
       </td>
     </tr>
-    <tr>
+    <tr ng-show='data.weoweForm.description_4'>
       <th>4</th>
       <td>{{::data.weoweForm.description_4}}</td>
       <td>{{::data.weoweForm.quantity_4}}</td>
@@ -69,7 +74,7 @@
         </div>
       </td>
     </tr>
-    <tr>
+    <tr ng-show='data.weoweForm.description_5'>
       <th>5</th>
       <td>{{::data.weoweForm.description_5}}</td>
       <td>{{::data.weoweForm.quantity_5}}</td>
@@ -86,11 +91,13 @@
   </table>
 </div>
 <div class='modal-footer'>
-  <a href='/weowe_forms/{{data.weoweForm.id}}'
-    class='btn btn-primary btn-block'
-    ng-click='ok()'>
-    <i class='fa fa-refresh'></i> Update Totals
-  </a>
+  <div ng-if='data.weoweForm.description_1'>
+    <a href='/weowe_forms/{{data.weoweForm.id}}'
+      class='btn btn-primary btn-block'
+      ng-click='ok()'>
+      <i class='fa fa-refresh'></i> Update Totals
+    </a>
+  </div>
   <button class='btn btn-danger btn-block' ng-click='cancel()'>
     <i class='fa fa-times'></i> Close</button>
 </div>

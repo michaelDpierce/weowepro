@@ -46,7 +46,8 @@ module WeoweFormsHelper
                       :approved_by,
                       :completed_by,
                       :dealer_wholesale,
-                      :assigned_sales_person_id
+                      :assigned_sales_person_id,
+                      :dealer_total_actual
                      ]
 
   def weowe_form_params
