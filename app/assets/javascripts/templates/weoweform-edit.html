@@ -21,158 +21,134 @@
   <input ng-model='data.weoweForm.customer_email'
          type='email' class='form-control' placeholder='Email'>
 
+  <center><h4>Vehicle Information</h4></center>
+  <label>Stock Number</label>
+  <input ng-model='data.weoweForm.stock_number'
+         type='text' class='form-control' placeholder='Stock Number'>
+  <label>Year</label>
+  <input ng-model='data.weoweForm.year'
+         type='text' class='form-control' placeholder='Year'>
+  <label>Make</label>
+  <input ng-model='data.weoweForm.make'
+         type='text' class='form-control' placeholder='Make'>
+  <label>Model</label>
+  <input ng-model='data.weoweForm.vehicle_model'
+         type='email' class='form-control' placeholder='Model'>
+  <label>Date Sold</label>
+  <input ng-model='data.weoweForm.sold_date'
+         type='email' class='form-control' placeholder='Date sold'>
+
+  <center><h4>We Owe</h4></center>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+      <th>#</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Total Retail</th>
+      <th>Total Wholesale</th>
+      <th>Total Actual</th>
+    </tr>
+    <tr>
+      <th style='width:5%'>1</th>
+      <td><input ng-model='data.weoweForm.description_1'
+                 type='text' class='form-control' placeholder='Description'></td>
+      <td><input ng-model='data.weoweForm.quantity_1'
+                 type='text' class='form-control' placeholder='Qty'></td>
+      <td><input ng-model='data.weoweForm.dealer_total_value_1'
+                 type='text' class='form-control' placeholder='Retail'></td>
+      <td><input ng-model='data.weoweForm.dealer_wholesale_1'
+                 type='text' class='form-control' placeholder='Wholesale'></td>
+      <td><input ng-model='data.weoweForm.dealer_actual_1'
+                 type='text' class='form-control' placeholder='Actual cost'></td>
+    </tr>
+    <tr>
+      <th style='width:5%'>2</th>
+      <td><input ng-model='data.weoweForm.description_2'
+                 type='text' class='form-control' placeholder='Description'></td>
+      <td><input ng-model='data.weoweForm.quantity_2'
+                 type='text' class='form-control' placeholder='Qty'></td>
+      <td><input ng-model='data.weoweForm.dealer_total_value_2'
+                 type='text' class='form-control' placeholder='Retail'></td>
+      <td><input ng-model='data.weoweForm.dealer_wholesale_2'
+                 type='text' class='form-control' placeholder='Wholesale'></td>
+      <td><input ng-model='data.weoweForm.dealer_actual_2'
+                 type='text' class='form-control' placeholder='Actual cost'></td>
+    </tr>
+    <tr>
+      <th style='width:5%'>3</th>
+      <td><input ng-model='data.weoweForm.description_3'
+                 type='text' class='form-control' placeholder='Description'></td>
+      <td><input ng-model='data.weoweForm.quantity_3'
+                 type='text' class='form-control' placeholder='Qty'></td>
+      <td><input ng-model='data.weoweForm.dealer_total_value_3'
+                 type='text' class='form-control' placeholder='Retail'></td>
+      <td><input ng-model='data.weoweForm.dealer_wholesale_3'
+                 type='text' class='form-control' placeholder='Wholesale'></td>
+      <td><input ng-model='data.weoweForm.dealer_actual_3'
+                 type='text' class='form-control' placeholder='Actual cost'></td>
+    </tr>
+    <tr>
+      <th style='width:5%'>4</th>
+      <td><input ng-model='data.weoweForm.description_4'
+                 type='text' class='form-control' placeholder='Description'></td>
+      <td><input ng-model='data.weoweForm.quantity_4'
+                 type='text' class='form-control' placeholder='Qty'></td>
+      <td><input ng-model='data.weoweForm.dealer_total_value_4'
+                 type='text' class='form-control' placeholder='Retail'></td>
+      <td><input ng-model='data.weoweForm.dealer_wholesale_4'
+                 type='text' class='form-control' placeholder='Wholesale'></td>
+      <td><input ng-model='data.weoweForm.dealer_actual_4'
+                 type='text' class='form-control' placeholder='Actual cost'></td>
+    </tr>
+    <tr>
+      <th style='width:5%'>5</th>
+      <td><input ng-model='data.weoweForm.description_5'
+                 type='text' class='form-control' placeholder='Description'></td>
+      <td><input ng-model='data.weoweForm.quantity_5'
+                 type='text' class='form-control' placeholder='Qty'></td>
+      <td><input ng-model='data.weoweForm.dealer_total_value_5'
+                 type='text' class='form-control' placeholder='Retail'></td>
+      <td><input ng-model='data.weoweForm.dealer_wholesale_5'
+                 type='text' class='form-control' placeholder='Wholesale'></td>
+      <td><input ng-model='data.weoweForm.dealer_actual_5'
+                 type='text' class='form-control' placeholder='Actual cost'></td>
+    </tr>
+  </table>
+
   <center><h4>Customer Owes</h4></center>
+  <label>Description</label>
+  <input ng-model='data.weoweForm.theyowe_info'
+         type='text' class='form-control' placeholder='Customer owes'>
+  <label>Total Value</label>
+  <input ng-model='data.weoweForm.customer_total_value'
+         type='text' class='form-control' placeholder='Total value'>
 
+  <center><h4>Salesperson</h4></center>
+  <label>First Name</label>
+  <input ng-model='data.salesManager.first_name'
+         type='text' class='form-control' placeholder='First'>
+  <label>Last Name</label>
+  <input ng-model='data.salesManager.last_name'
+         type='text' class='form-control' placeholder='Last'>
 
+  <center><h4>Sales Manager</h4></center>
+  <label>First Name</label>
+  <input ng-model='data.user.first_name'
+         type='text' class='form-control' placeholder='First'>
+  <label>Last Name</label>
+  <input ng-model='data.user.last_name'
+         type='text' class='form-control' placeholder='Last'>
+  <label>Phone Number</label>
+  <input ng-model='data.salesManager.phone_number'
+         type='text' class='form-control' placeholder='Phone number'>
 
-
-
-<!-- <center><h4>Customer Information</h4></center>
-
-
-<%= f.text_field :customer_phone_mobile, label: 'Phone Number',
-                 placeholder: 'Phone Number' %>
-
-<center><h4>Customer Owes</h4></center>
-<%= f.text_area :theyowe_info, label: 'Description', size: '1x',
-                placeholder: 'Description' %>
-<%= f.text_field :customer_total_value, prepend: '$', label: 'Total Value',
-                 placeholder: 'Total Value' %>
-
-<center><h4>Vehicle Information</h4></center>
-<%= f.text_field :stock_number, label: 'Stock# *',
-                 placeholder: 'Stock# *' %>
-<%= f.select :year,
-             options_for_select((1980..2014).to_a.reverse!),
-             label: 'Year *' %>
-<%= f.text_field :make, label: 'Make *',
-                 placeholder: 'Make *' %>
-<%= f.text_field :vehicle_model, label: 'Model *',
-                 placeholder: 'Model *' %>
-<%= f.date_select :sold_date,
-  label: 'Date Sold *' %>
-
-<center><h4>We Owe</h4></center>
-
-<div class='row'>
-  <div class='col-md-10 col-xs-8'>
-    <%= f.text_field :description_1, label: 'Description', placeholder: 'Item #1 (Max 300 Characters)' %>
-  </div>
-  <div class='col-md-2 col-xs-4'>
-    <%= f.text_field :quantity_1, label: 'Quantity',
-                     placeholder: 'Qty' %>
-  </div>
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_total_value_1, prepend: '$', label: 'Retail',
-                     placeholder: 'Retail' %>
-  </div>
-
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_wholesale_1, prepend: '$', label: 'Wholesale',
-                     placeholder: 'Wholesale' %>
-  </div>
-</div>
-
-<hr>
-
-<div class='row'>
-  <div class='col-md-10 col-xs-8'>
-    <%= f.text_field :description_2, label: 'Description', placeholder: 'Item #2 (Max 150 Characters)' %>
-  </div>
-  <div class='col-md-2 col-xs-4'>
-    <%= f.text_field :quantity_2, label: 'Quantity',
-                     placeholder: 'Qty' %>
-  </div>
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_total_value_2, prepend: '$', label: 'Retail',
-                     placeholder: 'Retail' %>
-  </div>
-
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_wholesale_2, prepend: '$', label: 'Wholesale',
-                     placeholder: 'Wholesale' %>
-  </div>
-</div>
-
-<hr>
-
-<div class='row'>
-  <div class='col-md-10 col-xs-8'>
-    <%= f.text_field :description_3, label: 'Description', placeholder: 'Item #3 (Max 150 Characters)' %>
-  </div>
-  <div class='col-md-2 col-xs-4'>
-    <%= f.text_field :quantity_3, label: 'Quantity',
-                     placeholder: 'Qty' %>
-  </div>
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_total_value_3, prepend: '$', label: 'Retail',
-                     placeholder: 'Retail' %>
-  </div>
-
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_wholesale_3, prepend: '$', label: 'Wholesale',
-                     placeholder: 'Wholesale' %>
-  </div>
-</div>
-
-<hr>
-
-<div class='row'>
-  <div class='col-md-10 col-xs-8'>
-    <%= f.text_field :description_4, label: 'Description', placeholder: 'Item #4 (Max 150 Characters)' %>
-  </div>
-  <div class='col-md-2 col-xs-4'>
-    <%= f.text_field :quantity_4, label: 'Quantity',
-                     placeholder: 'Qty' %>
-  </div>
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_total_value_4, prepend: '$', label: 'Retail',
-                     placeholder: 'Retail' %>
-  </div>
-
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_wholesale_4, prepend: '$', label: 'Wholesale',
-                     placeholder: 'Wholesale' %>
-  </div>
-</div>
-
-<hr>
-
-<div class='row'>
-  <div class='col-md-10 col-xs-8'>
-    <%= f.text_field :description_5, label: 'Description', placeholder: 'Item #5 (Max 150 Characters)' %>
-  </div>
-  <div class='col-md-2 col-xs-4'>
-    <%= f.text_field :quantity_5, label: 'Quantity',
-                     placeholder: 'Qty' %>
-  </div>
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_total_value_5, prepend: '$', label: 'Retail',
-                     placeholder: 'Retail' %>
-  </div>
-
-  <div class='col-md-6 col-xs-6'>
-    <%= f.text_field :dealer_wholesale_5, prepend: '$', label: 'Wholesale',
-                     placeholder: 'Wholesale' %>
-  </div>
-</div>
-
-<hr>
-
-<% unless f.object.new_record? %>
-    <center><h4>Admin Fields</h4></center>
-      <%= f.date_select :custom_date, label: 'Date Submitted' %>
-<% end %>
-
-<%= f.hidden_field :custom_date, value: Time.now %>
-
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.hidden_field :dealer_id, value: current_user.dealer_id %> -->
-
-
-
-
-
+  <center><h4>Admin</h4></center>
+  <label>Approved by</label>
+  <input ng-model='data.weoweForm.approved_by'
+         type='text' class='form-control' placeholder='Name'>
+  <label>Completed by</label>
+  <input ng-model='data.weoweForm.completed_by'
+         type='text' class='form-control' placeholder='Name'>
 
 </div>
 
