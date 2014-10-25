@@ -1,5 +1,6 @@
 module WeoweFormsHelper
-  WEOWEFORM_PARAMS = [:customer_first_name,
+  WEOWEFORM_PARAMS = [:id,
+                      :customer_first_name,
                       :customer_last_name,
                       :customer_phone_mobile,
                       :customer_email,

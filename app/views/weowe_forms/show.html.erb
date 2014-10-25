@@ -8,7 +8,7 @@
       <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'>
       <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'>
       <% if @weowe_form.assigned_sales_person_id? %>
-        <div ng-init='data.salesManager = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
+        <div ng-init='data.salesPerson = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
       <span class='pull-right' ng-if='data.weoweForm.pending'>
         <a href='/weowe_forms/{{data.weoweForm.id}}'
@@ -18,7 +18,7 @@
         </a>
       </span>
       <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
-        <button ng-click='open()' type='submit' class='btn btn-success'>
+        <button ng-click='actualValue()' type='submit' class='btn btn-success'>
           <i class='fa fa-check-square fa-lg'></i> Complete
         </button>
       </span>
@@ -39,10 +39,6 @@
 
       <br><br><br>
 
-      <button ng-click='edit()' type='submit' class='btn btn-primary'>
-        <i class='fa fa-pencil fa-lg'></i> Edit
-      </button>
-
       <div class='panel panel-default'>
         <div class='panel-heading' style='height: 40px;'>
           <progressbar class='progress-striped'
@@ -53,10 +49,10 @@
 
           <%=link_to ' Delete', @weowe_form, method: :delete,
            data: { confirm: 'Are you sure?' },
-              class: 'glyphicon glyphicon-trash right-show-page'%>
+              class: 'btn btn-danger fa fa-trash fa-lg right-show-page'%>
 
           <%= link_to_function(' Print', 'javascript:print()', :class =>
-                               'glyphicon glyphicon-print right-show-page') %>
+                               'btn btn-default fa fa-print fa-lg right-show-page') %>
 
           <% if @weowe_form.pending == false && @weowe_form.completed == false %>
                 <%= link_to ' Email',
@@ -64,7 +60,7 @@
                             :id => @weowe_form.id},
                             method: :post,
                             data: { confirm: 'Send Approve Email?' },
-                            class: 'glyphicon glyphicon-envelope right-show-page' %>
+                            class: 'btn btn-default fa fa-envelope-o fa-lg right-show-page' %>
           <% end %>
 
           <% if @weowe_form.pending == false && @weowe_form.completed == true %>
@@ -73,11 +69,11 @@
                             :id => @weowe_form.id},
                             method: :post,
                             data: { confirm: 'Send Completed Email?' },
-                            class: 'glyphicon glyphicon-envelope right-show-page' %>
+                            class: 'btn btn-default fa fa-envelope-o fa-lg right-show-page' %>
           <% end %>
-
-          <%= link_to ' Edit', edit_weowe_form_path(@weowe_form),
-                        class: 'glyphicon glyphicon-pencil right-show-page' %>
+          <a ng-click='edit()' class='btn btn-default right-show-page' type='submit'>
+            <i class='fa fa-pencil fa-lg'></i> Edit
+          </a>
         </div>
 
         <br>
@@ -217,13 +213,13 @@
             <tr>
               <th style='width:25%'>First Name </th>
               <td>
-                {{::data.salesManager.first_name}}
+                {{::data.salesPerson.first_name}}
               </td>
             </tr>
             <tr>
               <th>Last Name</th>
               <td>
-                {{::data.salesManager.last_name}}
+                {{::data.salesPerson.last_name}}
               </td>
             </tr>
           </table>

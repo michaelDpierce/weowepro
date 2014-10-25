@@ -52,7 +52,7 @@
         approved_by: 'Approved on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
         completed_by: ''
 
-    $scope.open = () ->
+    $scope.actualValue = () ->
       modalInstance = $modal.open
         templateUrl: 'actual-value.html',
         controller: WeoweFormsCompletedModalCtrl,
@@ -102,15 +102,32 @@
 
     WeoweFormsEditModalCtrl = ($scope, $modalInstance) ->
 
-      $scope.ok = ->
-        da1 = $scope.data.weoweForm.dealer_actual_1
-        da2 = $scope.data.weoweForm.dealer_actual_2
-        da3 = $scope.data.weoweForm.dealer_actual_3
-        da4 = $scope.data.weoweForm.dealer_actual_4
-        da5 = $scope.data.weoweForm.dealer_actual_5
-        dta = parseFloat(da1) + parseFloat(da2) + parseFloat(da3) + parseFloat(da4) + parseFloat(da5)
+      $scope.open = ($event) ->
+        $event.preventDefault()
+        $event.stopPropagation()
+        $scope.opened = true
 
-        WeoweForms.update id: $scope.data.weoweForm.id,
+      $scope.dateOptions =
+        formatYear: "yy"
+        startingDay: 1
+
+      $scope.ok = ->
+        dt1 = $scope.data.weoweForm.dealer_total_value_1
+        dt2 = $scope.data.weoweForm.dealer_total_value_2
+        dt3 = $scope.data.weoweForm.dealer_total_value_3
+        dt4 = $scope.data.weoweForm.dealer_total_value_4
+        dt5 = $scope.data.weoweForm.dealer_total_value_5
+        dtv = parseFloat(dt1) + parseFloat(dt2) + parseFloat(dt3) + parseFloat(dt4) + parseFloat(dt5)
+
+        dw1 = $scope.data.weoweForm.dealer_wholesale_1
+        dw2 = $scope.data.weoweForm.dealer_wholesale_2
+        dw3 = $scope.data.weoweForm.dealer_wholesale_3
+        dw4 = $scope.data.weoweForm.dealer_wholesale_4
+        dw5 = $scope.data.weoweForm.dealer_wholesale_5
+        dtw = parseFloat(dw1) + parseFloat(dw2) + parseFloat(dw3) + parseFloat(dw4) + parseFloat(dw5)
+
+        weoweFormData =
+          id: $scope.data.weoweForm.id
           customer_first_name: $scope.data.weoweForm.customer_first_name
           customer_last_name: $scope.data.weoweForm.customer_last_name
           customer_phone_mobile: $scope.data.weoweForm.customer_phone_mobile
@@ -122,36 +139,38 @@
           sold_date: $scope.data.weoweForm.sold_date
           description_1: $scope.data.weoweForm.description_1
           quantity_1: $scope.data.weoweForm.quantity_1
-          dealer_total_value_1: $scope.data.weoweForm.dealer_total_value_1
-          dealer_wholesale_1: $scope.data.weoweForm.dealer_wholesale_1
-          dealer_actual_1: da1
+          dealer_total_value_1: dt1
+          dealer_wholesale_1: dw1
           description_2: $scope.data.weoweForm.description_2
           quantity_2: $scope.data.weoweForm.quantity_2
-          dealer_total_value_2: $scope.data.weoweForm.dealer_total_value_2
-          dealer_wholesale_2: $scope.data.weoweForm.dealer_wholesale_2
-          dealer_actual_2: da2
+          dealer_total_value_2: dt2
+          dealer_wholesale_2: dw3
           description_3: $scope.data.weoweForm.description_3
           quantity_3: $scope.data.weoweForm.quantity_3
-          dealer_total_value_3: $scope.data.weoweForm.dealer_total_value_3
-          dealer_wholesale_3: $scope.data.weoweForm.dealer_wholesale_3
-          dealer_actual_3: da3
+          dealer_total_value_3: dt3
+          dealer_wholesale_3: dw3
           description_4: $scope.data.weoweForm.description_4
           quantity_4: $scope.data.weoweForm.quantity_4
-          dealer_total_value_4: $scope.data.weoweForm.dealer_total_value_4
-          dealer_wholesale_4: $scope.data.weoweForm.dealer_wholesale_4
-          dealer_actual_4: da4
+          dealer_total_value_4: dt4
+          dealer_wholesale_4: dw4
           description_5: $scope.data.weoweForm.description_5
           quantity_5: $scope.data.weoweForm.quantity_5
-          dealer_total_value_5: $scope.data.weoweForm.dealer_total_value_5
-          dealer_wholesale_5: $scope.data.weoweForm.dealer_wholesale_5
-          dealer_actual_5: da5
-          dealer_total_actual: dta
+          dealer_total_value_5: dt5
+          dealer_wholesale_5: dw5
+          dealer_total_value: dtv
+          dealer_wholesale: dtw
           theyowe_info: $scope.data.weoweForm.theyowe_info
           customer_total_value: $scope.data.weoweForm.customer_total_value
+          assigned_sales_person_id: $scope.data.salesPerson.id
 
-          $modalInstance.close
+
+        console.log weoweFormData
+
+        WeoweForms.update id: $scope.data.weoweForm.id, weoweFormData
+        .$promise.then (updateWeoweForm) ->
+          $scope.weoweForms.push updateWeoweForm
           toastr.info('We Owe Form was successfully updated.')
-        return true #Fixes error with returns elements through Angular to the DOM
+          $modalInstance.close updateWeoweForm
 
       $scope.cancel = ->
         $modalInstance.dismiss "Cancel"
