@@ -55,13 +55,22 @@
     $scope.open = () ->
       modalInstance = $modal.open
         templateUrl: 'actual-value.html',
-        controller: WeoweFormsModalCtrl,
+        controller: WeoweFormsCompletedModalCtrl,
         scope: $scope
         resolve:
           data: ->
             weoweForm: $scope.data.weoweForm
 
-    WeoweFormsModalCtrl = ($scope, $modalInstance) ->
+    $scope.edit = () ->
+      modalInstance = $modal.open
+        templateUrl: 'weoweform-edit.html',
+        controller: WeoweFormsEditModalCtrl,
+        scope: $scope
+        resolve:
+          data: ->
+            weoweForm: $scope.data.weoweForm
+
+    WeoweFormsCompletedModalCtrl = ($scope, $modalInstance) ->
 
       $scope.ok = ->
         da1 = $scope.data.weoweForm.dealer_actual_1
@@ -86,7 +95,29 @@
       $scope.cancel = ->
         $modalInstance.dismiss "Cancel"
 
-      WeoweFormsModalCtrl['$inject'] = [
+      WeoweFormsCompletedModalCtrl['$inject'] = [
+        '$scope'
+        '$modalInstance'
+      ]
+
+    WeoweFormsEditModalCtrl = ($scope, $modalInstance) ->
+
+      $scope.ok = ->
+
+        WeoweForms.update id: $scope.data.weoweForm.id,
+          customer_first_name: $scope.data.weoweForm.customer_first_name
+          customer_last_name: $scope.data.weoweForm.customer_last_name
+          customer_phone_mobile: $scope.data.weoweForm.customer_phone_mobile
+          customer_email: $scope.data.weoweForm.customer_email
+          # Add additional fields here
+          $modalInstance.close
+          toastr.info('We Owe Form was successfully updated.')
+        return true #Fixes error with returns elements through Angular to the DOM
+
+      $scope.cancel = ->
+        $modalInstance.dismiss "Cancel"
+
+      WeoweFormsEditModalCtrl['$inject'] = [
         '$scope'
         '$modalInstance'
       ]
