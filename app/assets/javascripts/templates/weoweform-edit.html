@@ -1,229 +1,267 @@
-<div>
-  <div class='modal-header'>
-      <h3 class='modal-title'>
-        <center>We Owe Form Edit</center>
-      </h3>
+<form name="weoweForm">
+  <div>
+    <div class='modal-header'>
+        <h3 class='modal-title'>
+          <center>We Owe Form Edit</center>
+        </h3>
+    </div>
+
+    <div class='modal-body'>
+      <center><h4>Admin</h4></center>
+
+      <label>Assigned Sales Person<span style='color: red'> *</span></label>
+      <div class='input-group'>
+        <input type='text'
+               ng-model='data.salesPerson'
+               typeahead="user as user.last_name + ', ' + user.first_name for user in ::salesStaff
+                         | filter:$viewValue
+                         | limitTo:8"
+               placeholder='Assign Sales Person'
+               class='form-control'>
+        <span class='input-group-addon'>
+          <i ng-click="selected = ''" class="fa fa-times fa-lg"> Clear Name</i>
+        </span>
+      </div>
+
+      <center><h4>Customer Information</h4></center>
+
+      <label>First Name (Optional)</label>
+      <input ng-model='data.weoweForm.customer_first_name'
+             type='text' class='form-control' placeholder='First Name (Optional)'>
+      <label>Last Name / Company<span style='color: red'> *</span></label>
+      <input ng-model='data.weoweForm.customer_last_name'
+             type='text'
+             name='customer_last_name'
+             class='form-control'
+             placeholder='Last Name / Company'
+             required />
+      <p ng-show='weoweForm.customer_last_name.$dirty && weoweForm.customer_last_name.$invalid'
+         class='help-block' style='color: red'>
+         Please enter a Customer Last Name or Company Name.
+      </p>
+      <label>Phone Number</label>
+      <input ng-model='data.weoweForm.customer_phone_mobile'
+             type='text' class='form-control' placeholder='Phone Number ###-###-####'>
+      <label>Email</label>
+      <input ng-model='data.weoweForm.customer_email'
+             type='email' class='form-control' placeholder='Email'>
+
+      <center><h4>Vehicle Information</h4></center>
+      <label>Stock Number<span style='color: red'> *</span></label>
+      <input ng-model='data.weoweForm.stock_number'
+             type='text'
+             name='stock_number'
+             class='form-control'
+             placeholder='Stock Number'
+             required />
+      <p ng-show='weoweForm.stock_number.$dirty && weoweForm.stock_number.$invalid'
+         class='help-block' style='color: red'>
+         Please enter a Stock Number.
+      </p>
+      <label>Year<span style='color: red'> *</span></label>
+      <div class='form-group'>
+        <select class='form-control' ng-model='data.weoweForm.year' ng-options='year for year in years'>
+        </select>
+      </div>
+      <label>Make<span style='color: red'> *</span></label>
+      <input ng-model='data.weoweForm.make'
+             type='text'
+             name='make'
+             class='form-control'
+             placeholder='Make'
+             required />
+      <p ng-show='weoweForm.make.$dirty && weoweForm.make.$invalid'
+         class='help-block' style='color: red'>
+         Please enter a Make.
+      </p>
+      <label>Model<span style='color: red'> *</span></label>
+      <input ng-model='data.weoweForm.vehicle_model'
+             type='text'
+             name='vehicle_model'
+             class='form-control'
+             placeholder='Model'
+             required />
+      <p ng-show='weoweForm.vehicle_model.$dirty && weoweForm.vehicle_model.$invalid'
+         class='help-block' style='color: red'>
+         Please enter a Model.
+      </p>
+
+      <label>Date Sold<span style='color: red'> *</span></label>
+      <center>
+        <div style='display:inline-block; min-height:290px;'>
+          <datepicker ng-model='data.weoweForm.sold_date' class='well well-sm'></datepicker>
+        </div>
+      </center>
+
+      <center><h4>We Owe</h4></center>
+
+      <div class='row'>
+        <div class='col-md-9'>
+          <label>Description #1</label>
+          <input ng-model='data.weoweForm.description_1'
+                     type='text' class='form-control' placeholder='Item #1 (Max 300 Characters)'>
+        </div>
+        <div class='col-md-3'>
+          <label>Quantity #1</label>
+            <input ng-model='data.weoweForm.quantity_1'
+                       type='text' class='form-control' placeholder='Qty #1'>
+        </div>
+        <div class='col-md-6'>
+          <label>Retail #1</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_total_value_1'
+                   type='text' class='form-control' placeholder='Retail #1'>
+          </div>
+        </div>
+        <div class='col-md-6'>
+          <label>Wholesale #1</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_wholesale_1'
+                   type='text' class='form-control' placeholder='Wholesale #1'>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class='row'>
+        <div class='col-md-9'>
+          <label>Description #2</label>
+          <input ng-model='data.weoweForm.description_2'
+                     type='text' class='form-control' placeholder='Item #2 (Max 300 Characters)'>
+        </div>
+        <div class='col-md-3'>
+          <label>Quantity #2</label>
+            <input ng-model='data.weoweForm.quantity_2'
+                       type='text' class='form-control' placeholder='Qty #2'>
+        </div>
+        <div class='col-md-6'>
+          <label>Retail #2</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_total_value_2'
+                   type='text' class='form-control' placeholder='Retail #2'>
+          </div>
+        </div>
+        <div class='col-md-6'>
+          <label>Wholesale #2</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_wholesale_2'
+                   type='text' class='form-control' placeholder='Wholesale #2'>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class='row'>
+        <div class='col-md-9'>
+          <label>Description #3</label>
+          <input ng-model='data.weoweForm.description_3'
+                     type='text' class='form-control' placeholder='Item #3 (Max 300 Characters)'>
+        </div>
+        <div class='col-md-3'>
+          <label>Quantity #3</label>
+            <input ng-model='data.weoweForm.quantity_3'
+                       type='text' class='form-control' placeholder='Qty #3'>
+        </div>
+        <div class='col-md-6'>
+          <label>Retail #3</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_total_value_3'
+                   type='text' class='form-control' placeholder='Retail #3'>
+          </div>
+        </div>
+        <div class='col-md-6'>
+          <label>Wholesale #3</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_wholesale_3'
+                   type='text' class='form-control' placeholder='Wholesale #3'>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class='row'>
+        <div class='col-md-9'>
+          <label>Description #4</label>
+          <input ng-model='data.weoweForm.description_4'
+                     type='text' class='form-control' placeholder='Item #4 (Max 300 Characters)'>
+        </div>
+        <div class='col-md-3'>
+          <label>Quantity #4</label>
+            <input ng-model='data.weoweForm.quantity_4'
+                       type='text' class='form-control' placeholder='Qty #4'>
+        </div>
+        <div class='col-md-6'>
+          <label>Retail #4</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_total_value_4'
+                   type='text' class='form-control' placeholder='Retail #4'>
+          </div>
+        </div>
+        <div class='col-md-6'>
+          <label>Wholesale #4</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_wholesale_4'
+                   type='text' class='form-control' placeholder='Wholesale #4'>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class='row'>
+        <div class='col-md-9'>
+          <label>Description #5</label>
+          <input ng-model='data.weoweForm.description_5'
+                     type='text' class='form-control' placeholder='Item #5 (Max 300 Characters)'>
+        </div>
+        <div class='col-md-3'>
+          <label>Quantity #5</label>
+            <input ng-model='data.weoweForm.quantity_5'
+                       type='text' class='form-control' placeholder='Qty #5'>
+        </div>
+        <div class='col-md-6'>
+          <label>Retail #5</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_total_value_5'
+                   type='text' class='form-control' placeholder='Retail #5'>
+          </div>
+        </div>
+        <div class='col-md-6'>
+          <label>Wholesale #5</label>
+          <div class='input-group'>
+            <span class='input-group-addon'>$</span>
+            <input ng-model='data.weoweForm.dealer_wholesale_5'
+                   type='text' class='form-control' placeholder='Wholesale #5'>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <center><h4>Customer Owes</h4></center>
+
+      <label>Description</label>
+      <input ng-model='data.weoweForm.theyowe_info'
+             type='text' class='form-control' placeholder='Customer Owes'>
+      <label>Total Value</label>
+      <div class='input-group'>
+        <span class='input-group-addon'>$</span>
+        <input ng-model='data.weoweForm.customer_total_value'
+               type='text' class='form-control' placeholder='Total Value'>
+      </div>
+    </div>
+
+    <div class='modal-footer'>
+      <a class='btn btn-primary btn-block'
+         ng-click='ok()'
+         ng-disabled='weoweForm.$invalid'>
+        <i class='fa fa-refresh'></i> Update Form
+      </a>
+      <button class='btn btn-danger btn-block' ng-click='cancel()'>
+        <i class='fa fa-times'></i> Close</button>
+    </div>
   </div>
-
-  <div class='modal-body'>
-
-    <center><h4>Assigned Sales Person</h4></center>
-
-    <div class='input-group'>
-      <input type='text'
-             ng-model='data.salesPerson'
-             typeahead="user as user.last_name + ', ' + user.first_name for user in ::salesStaff
-                       | filter:$viewValue
-                       | limitTo:8"
-             placeholder='Assign Sales Person'
-             class='form-control'>
-      <span class='input-group-addon'>
-        <i ng-click="selected = ''" class="fa fa-times fa-lg"> Clear Name</i>
-      </span>
-    </div>
-
-    <center><h4>Customer Information</h4></center>
-
-    <label>First Name (Optional)</label>
-    <input ng-model='data.weoweForm.customer_first_name'
-           type='text' class='form-control' placeholder='First Name (Optional)'>
-    <label>Last Name / Company</label>
-    <input ng-model='data.weoweForm.customer_last_name'
-           type='text' class='form-control' placeholder='Last Name / Company'>
-    <label>Phone Number</label>
-    <input ng-model='data.weoweForm.customer_phone_mobile'
-           type='text' class='form-control' placeholder='Phone Number ###-###-####'>
-    <label>Email</label>
-    <input ng-model='data.weoweForm.customer_email'
-           type='email' class='form-control' placeholder='Email'>
-
-    <center><h4>Vehicle Information</h4></center>
-    <label>Stock Number</label>
-    <input ng-model='data.weoweForm.stock_number'
-           type='text' class='form-control' placeholder='Stock Number'>
-    <label>Year</label>
-    <input ng-model='data.weoweForm.year'
-           type='text' class='form-control' placeholder='Year'>
-    <label>Make</label>
-    <input ng-model='data.weoweForm.make'
-           type='text' class='form-control' placeholder='Make'>
-    <label>Model</label>
-    <input ng-model='data.weoweForm.vehicle_model'
-           type='text' class='form-control' placeholder='Model'>
-    <label>Date Sold</label>
-    <center>
-      <div style='display:inline-block; min-height:290px;'>
-        <datepicker ng-model='data.weoweForm.sold_date' class='well well-sm'></datepicker>
-      </div>
-    </center>
-
-    <center><h4>We Owe</h4></center>
-
-    <div class='row'>
-      <div class='col-md-9'>
-        <label>Description #1</label>
-        <input ng-model='data.weoweForm.description_1'
-                   type='text' class='form-control' placeholder='Item #1 (Max 300 Characters)'>
-      </div>
-      <div class='col-md-3'>
-        <label>Quantity #1</label>
-          <input ng-model='data.weoweForm.quantity_1'
-                     type='text' class='form-control' placeholder='Qty #1'>
-      </div>
-      <div class='col-md-6'>
-        <label>Retail #1</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_total_value_1'
-                 type='text' class='form-control' placeholder='Retail #1'>
-        </div>
-      </div>
-      <div class='col-md-6'>
-        <label>Wholesale #1</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_wholesale_1'
-                 type='text' class='form-control' placeholder='Wholesale #1'>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class='row'>
-      <div class='col-md-9'>
-        <label>Description #2</label>
-        <input ng-model='data.weoweForm.description_2'
-                   type='text' class='form-control' placeholder='Item #2 (Max 300 Characters)'>
-      </div>
-      <div class='col-md-3'>
-        <label>Quantity #2</label>
-          <input ng-model='data.weoweForm.quantity_2'
-                     type='text' class='form-control' placeholder='Qty #2'>
-      </div>
-      <div class='col-md-6'>
-        <label>Retail #2</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_total_value_2'
-                 type='text' class='form-control' placeholder='Retail #2'>
-        </div>
-      </div>
-      <div class='col-md-6'>
-        <label>Wholesale #2</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_wholesale_2'
-                 type='text' class='form-control' placeholder='Wholesale #2'>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class='row'>
-      <div class='col-md-9'>
-        <label>Description #3</label>
-        <input ng-model='data.weoweForm.description_3'
-                   type='text' class='form-control' placeholder='Item #3 (Max 300 Characters)'>
-      </div>
-      <div class='col-md-3'>
-        <label>Quantity #3</label>
-          <input ng-model='data.weoweForm.quantity_3'
-                     type='text' class='form-control' placeholder='Qty #3'>
-      </div>
-      <div class='col-md-6'>
-        <label>Retail #3</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_total_value_3'
-                 type='text' class='form-control' placeholder='Retail #3'>
-        </div>
-      </div>
-      <div class='col-md-6'>
-        <label>Wholesale #3</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_wholesale_3'
-                 type='text' class='form-control' placeholder='Wholesale #3'>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class='row'>
-      <div class='col-md-9'>
-        <label>Description #4</label>
-        <input ng-model='data.weoweForm.description_4'
-                   type='text' class='form-control' placeholder='Item #4 (Max 300 Characters)'>
-      </div>
-      <div class='col-md-3'>
-        <label>Quantity #4</label>
-          <input ng-model='data.weoweForm.quantity_4'
-                     type='text' class='form-control' placeholder='Qty #4'>
-      </div>
-      <div class='col-md-6'>
-        <label>Retail #4</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_total_value_4'
-                 type='text' class='form-control' placeholder='Retail #4'>
-        </div>
-      </div>
-      <div class='col-md-6'>
-        <label>Wholesale #4</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_wholesale_4'
-                 type='text' class='form-control' placeholder='Wholesale #4'>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class='row'>
-      <div class='col-md-9'>
-        <label>Description #5</label>
-        <input ng-model='data.weoweForm.description_5'
-                   type='text' class='form-control' placeholder='Item #5 (Max 300 Characters)'>
-      </div>
-      <div class='col-md-3'>
-        <label>Quantity #5</label>
-          <input ng-model='data.weoweForm.quantity_5'
-                     type='text' class='form-control' placeholder='Qty #5'>
-      </div>
-      <div class='col-md-6'>
-        <label>Retail #5</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_total_value_5'
-                 type='text' class='form-control' placeholder='Retail #5'>
-        </div>
-      </div>
-      <div class='col-md-6'>
-        <label>Wholesale #5</label>
-        <div class='input-group'>
-          <span class='input-group-addon'>$</span>
-          <input ng-model='data.weoweForm.dealer_wholesale_5'
-                 type='text' class='form-control' placeholder='Wholesale #5'>
-        </div>
-      </div>
-    </div>
-    <hr>
-
-    <center><h4>Customer Owes</h4></center>
-
-    <label>Description</label>
-    <input ng-model='data.weoweForm.theyowe_info'
-           type='text' class='form-control' placeholder='Customer Owes'>
-    <label>Total Value</label>
-    <div class='input-group'>
-      <span class='input-group-addon'>$</span>
-      <input ng-model='data.weoweForm.customer_total_value'
-             type='text' class='form-control' placeholder='Total Value'>
-    </div>
-  </div>
-
-  <div class='modal-footer'>
-    <a class='btn btn-primary btn-block'
-       ng-click='ok()'>
-      <i class='fa fa-refresh'></i> Update Form
-    </a>
-    <button class='btn btn-danger btn-block' ng-click='cancel()'>
-      <i class='fa fa-times'></i> Close</button>
-  </div>
-</div>
+</form>

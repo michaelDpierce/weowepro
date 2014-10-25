@@ -21,6 +21,8 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 25
 
+    $scope.years = [2016..1950]
+
     $scope.formStatus = (form) ->
       if form.pending is true and form.completed is false then 'Pending'
       else if form.pending is false and form.completed is false then 'Service'
