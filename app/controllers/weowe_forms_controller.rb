@@ -51,6 +51,7 @@ class WeoweFormsController < ApplicationController
 
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
+    @weowe_form.user_id = current_user.id
     @weowe_form.dealer_id = current_user.dealer_id
     @weowe_form.custom_date = Time.now
     @weowe_form.save!

@@ -138,7 +138,8 @@
         da5 = $scope.data.weoweForm.dealer_actual_5
         dta = parseFloat(da1) + parseFloat(da2) + parseFloat(da3) + parseFloat(da4) + parseFloat(da5)
 
-        WeoweForms.update id: $scope.data.weoweForm.id,
+        weoweFormData =
+          id: $scope.data.weoweForm.id
           dealer_actual_1: da1
           dealer_actual_2: da2
           dealer_actual_3: da3
@@ -148,9 +149,12 @@
           pending: false
           completed: true
           completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
-        .then ->
-          toastr.info('We Owe Form was successfully updated.')
-          $modalInstance.close
+
+        WeoweForms.update id: weoweFormData.id, weoweFormData
+        .$promise.then (updateWeoweForm) ->
+          $scope.weoweForms.push updateWeoweForm
+          # toastr.info('We Owe Form was successfully updated.')
+          $modalInstance.close updateWeoweForm
 
       $scope.cancel = ->
         $modalInstance.dismiss "Cancel"
@@ -230,7 +234,7 @@
         WeoweForms.update id: weoweFormData.id, weoweFormData
         .$promise.then (updateWeoweForm) ->
           $scope.weoweForms.push updateWeoweForm
-          toastr.info('We Owe Form was successfully updated.')
+          # toastr.info('We Owe Form was successfully updated.')
           $modalInstance.close updateWeoweForm
 
       $scope.cancel = ->
