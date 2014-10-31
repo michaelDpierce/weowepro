@@ -110,7 +110,7 @@ GEM
     hash-deep-merge (0.1.1)
     hike (1.2.3)
     i18n (0.6.11)
-    intercom-rails (0.2.24)
+    intercom-rails (0.2.26)
       activesupport (> 3.0)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -275,7 +275,7 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.2)
       coffee-rails
-    tzinfo (0.3.41)
+    tzinfo (0.3.42)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)

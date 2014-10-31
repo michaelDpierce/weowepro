@@ -9,21 +9,21 @@ class WeoweFormsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: weowe_data }
-      format.csv { render csv: service_view, filename: 'service' }
+      format.csv { render csv: service_csv, filename: 'service' }
     end
   end
 
   def pending
     respond_to do |format|
       format.html
-      format.csv { render csv: @pending, filename: 'sales' }
+      format.csv { render csv: sales_csv, filename: 'sales' }
     end
   end
 
   def completed
     respond_to do |format|
       format.html
-      format.csv { render csv: completed_view, filename: 'completed' }
+      format.csv { render csv: completed_csv, filename: 'completed' }
     end
   end
 
@@ -51,10 +51,14 @@ class WeoweFormsController < ApplicationController
 
   def create
     @weowe_form = WeoweForm.new(weowe_form_params)
-    create_default_methods
-    @weowe_form.save
-    message = 'Form was successfully created.'
-    handle_action(@weowe_form, message, :new, &:save)
+    @weowe_form.dealer_id = current_user.dealer_id
+    @weowe_form.custom_date = Time.now
+    @weowe_form.save!
+    if @weowe_form.save
+      render json: @weowe_form.as_json
+    else
+      render json: @weowe_form.errors, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -91,6 +95,18 @@ class WeoweFormsController < ApplicationController
 
   include ApplicationHelper
   include WeoweFormsHelper
+
+  def sales_csv
+    WeoweForm.where(dealer_id: current_user.dealer_id, pending: true, completed: false)
+  end
+
+  def service_csv
+    WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: false)
+  end
+
+  def completed_csv
+    WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true)
+  end
 
   def weowe_data
     WeoweForm.where(dealer_id: current_user.dealer_id)
@@ -129,32 +145,7 @@ class WeoweFormsController < ApplicationController
         .select('id', 'last_name', 'first_name', 'phone_number').as_json
   end
 
-  def update_message
-    message = 'Weowe form was successfully updated.'
-    handle_action(@weowe_form, message, :dashboard) do |resource|
-      resource.update(weowe_form_params)
-    end
-  end
-
   def set_weowe_form
     @weowe_form = WeoweForm.find(params[:id])
-  end
-
-  def create_default_methods
-    @weowe_form.dealer_total_value = dealer_sum(@weowe_form.dealer_total_value_1,
-                                                @weowe_form.dealer_total_value_2,
-                                                @weowe_form.dealer_total_value_3,
-                                                @weowe_form.dealer_total_value_4,
-                                                @weowe_form.dealer_total_value_5)
-    @weowe_form.dealer_wholesale = dealer_sum(@weowe_form.dealer_wholesale_1,
-                                              @weowe_form.dealer_wholesale_2,
-                                              @weowe_form.dealer_wholesale_3,
-                                              @weowe_form.dealer_wholesale_4,
-                                              @weowe_form.dealer_wholesale_5)
-    @weowe_form.dealer_total_actual = dealer_sum(@weowe_form.dealer_actual_1,
-                                                 @weowe_form.dealer_actual_2,
-                                                 @weowe_form.dealer_actual_3,
-                                                 @weowe_form.dealer_actual_4,
-                                                 @weowe_form.dealer_actual_5)
   end
 end

@@ -72,7 +72,63 @@
           data: ->
             weoweForm: $scope.data.weoweForm
 
-    WeoweFormsCompletedModalCtrl = ($scope, $modalInstance) ->
+    $scope.create = ->
+      dt1 = $scope.data.newWeoweForm.dealer_total_value_1
+      dt2 = $scope.data.newWeoweForm.dealer_total_value_2
+      dt3 = $scope.data.newWeoweForm.dealer_total_value_3
+      dt4 = $scope.data.newWeoweForm.dealer_total_value_4
+      dt5 = $scope.data.newWeoweForm.dealer_total_value_5
+      dtv = parseFloat(dt1) + parseFloat(dt2) + parseFloat(dt3) + parseFloat(dt4) + parseFloat(dt5)
+
+      dw1 = $scope.data.newWeoweForm.dealer_wholesale_1
+      dw2 = $scope.data.newWeoweForm.dealer_wholesale_2
+      dw3 = $scope.data.newWeoweForm.dealer_wholesale_3
+      dw4 = $scope.data.newWeoweForm.dealer_wholesale_4
+      dw5 = $scope.data.newWeoweForm.dealer_wholesale_5
+      dtw = parseFloat(dw1) + parseFloat(dw2) + parseFloat(dw3) + parseFloat(dw4) + parseFloat(dw5)
+
+      WeoweForms.create
+        customer_first_name: $scope.data.newWeoweForm.customer_first_name
+        customer_last_name: $scope.data.newWeoweForm.customer_last_name
+        customer_phone_mobile: $scope.data.newWeoweForm.customer_phone_mobile
+        customer_email: $scope.data.newWeoweForm.customer_email
+        stock_number: $scope.data.newWeoweForm.stock_number
+        year: $scope.data.newWeoweForm.year
+        make: $scope.data.newWeoweForm.make
+        vehicle_model: $scope.data.newWeoweForm.vehicle_model
+        sold_date: $scope.data.newWeoweForm.sold_date
+        description_1: $scope.data.newWeoweForm.description_1
+        quantity_1: $scope.data.newWeoweForm.quantity_1
+        dealer_total_value_1: dt1
+        dealer_wholesale_1: dw1
+        description_2: $scope.data.newWeoweForm.description_2
+        quantity_2: $scope.data.newWeoweForm.quantity_2
+        dealer_total_value_2: dt2
+        dealer_wholesale_2: dw3
+        description_3: $scope.data.newWeoweForm.description_3
+        quantity_3: $scope.data.newWeoweForm.quantity_3
+        dealer_total_value_3: dt3
+        dealer_wholesale_3: dw3
+        description_4: $scope.data.newWeoweForm.description_4
+        quantity_4: $scope.data.newWeoweForm.quantity_4
+        dealer_total_value_4: dt4
+        dealer_wholesale_4: dw4
+        description_5: $scope.data.newWeoweForm.description_5
+        quantity_5: $scope.data.newWeoweForm.quantity_5
+        dealer_total_value_5: dt5
+        dealer_wholesale_5: dw5
+        dealer_total_value: dtv
+        dealer_wholesale: dtw
+        theyowe_info: $scope.data.newWeoweForm.theyowe_info
+        customer_total_value: $scope.data.newWeoweForm.customer_total_value
+        assigned_sales_person_id: $scope.current_user.id
+
+      .$promise.then (newWeoweForm) ->
+        $scope.weoweUsers.push newWeoweForm
+        console.log newWeoweForm
+        toastr.success('We Owe Form has been successfully created.')
+
+    WeoweFormsCompletedModalCtrl = ($scope, $modalInstance, WeoweForms, data) ->
 
       $scope.ok = ->
         da1 = $scope.data.weoweForm.dealer_actual_1
@@ -92,6 +148,8 @@
           pending: false
           completed: true
           completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+        .then ->
+          toastr.info('We Owe Form was successfully updated.')
           $modalInstance.close
 
       $scope.cancel = ->
@@ -100,9 +158,11 @@
       WeoweFormsCompletedModalCtrl['$inject'] = [
         '$scope'
         '$modalInstance'
+        'WeoweForms'
+        'data'
       ]
 
-    WeoweFormsEditModalCtrl = ($scope, $modalInstance) ->
+    WeoweFormsEditModalCtrl = ($scope, $modalInstance, WeoweForms, data) ->
 
       $scope.open = ($event) ->
         $event.preventDefault()
@@ -113,7 +173,7 @@
         formatYear: "yy"
         startingDay: 1
 
-      $scope.ok = ->
+      $scope.update = ->
         dt1 = $scope.data.weoweForm.dealer_total_value_1
         dt2 = $scope.data.weoweForm.dealer_total_value_2
         dt3 = $scope.data.weoweForm.dealer_total_value_3
@@ -165,10 +225,9 @@
           customer_total_value: $scope.data.weoweForm.customer_total_value
           assigned_sales_person_id: $scope.data.salesPerson.id
 
-
         console.log weoweFormData
 
-        WeoweForms.update id: $scope.data.weoweForm.id, weoweFormData
+        WeoweForms.update id: weoweFormData.id, weoweFormData
         .$promise.then (updateWeoweForm) ->
           $scope.weoweForms.push updateWeoweForm
           toastr.info('We Owe Form was successfully updated.')
@@ -180,5 +239,7 @@
       WeoweFormsEditModalCtrl['$inject'] = [
         '$scope'
         '$modalInstance'
+        'WeoweForms'
+        'data'
       ]
 ]
