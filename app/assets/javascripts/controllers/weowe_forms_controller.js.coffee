@@ -33,6 +33,11 @@
       else if form.pending is false and form.completed is false then 'warning'
       else 'success'
 
+    $scope.today = ->
+      $scope.dateSold = new Date()
+
+    $scope.today()
+
     $scope.approve = ->
       WeoweForms.update id: $scope.data.weoweForm.id,
         pending: false
@@ -96,7 +101,7 @@
         year: $scope.data.newWeoweForm.year
         make: $scope.data.newWeoweForm.make
         vehicle_model: $scope.data.newWeoweForm.vehicle_model
-        sold_date: $scope.data.newWeoweForm.sold_date
+        sold_date: $scope.dateSold
         description_1: $scope.data.newWeoweForm.description_1
         quantity_1: $scope.data.newWeoweForm.quantity_1
         dealer_total_value_1: dt1
