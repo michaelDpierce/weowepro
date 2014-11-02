@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
             allow_blank: true
 
   comma do
+    id 'id'
     last_name 'Last Name'
     first_name 'First Name'
     email 'Email'
@@ -40,7 +41,6 @@ class User < ActiveRecord::Base
     department 'Department'
     active 'Active'
     admin 'Admin'
-
   end
 
   def self.new_remember_token

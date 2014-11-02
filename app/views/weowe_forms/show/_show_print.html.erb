@@ -21,8 +21,10 @@
   <tr>
     <td>DATE: <%= Time.now.strftime('%-m/%-d/%Y')%></td>
     <td colspan="2">
-      SALES MANAGER: <%= "#{User.find(@weowe_form.user_id).first_name}
-                        #{User.find(@weowe_form.user_id).last_name}" %>
+      <% if @weowe_form.user_id? %>
+        SALES MANAGER: <%= "#{User.find(@weowe_form.user_id).first_name}
+                          #{User.find(@weowe_form.user_id).last_name}" %>
+      <% end %>
     </td>
   </tr>
   <tr>

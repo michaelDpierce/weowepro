@@ -5,10 +5,10 @@
 <div class='hidden-print' style='width: 85%; margin:auto;'>
   <div ng-app='weowepro'>
     <div ng-controller='WeoweFormsCtrl'>
-      <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'>
-      <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'>
+      <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'></div>
+      <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'></div>
       <% if @weowe_form.assigned_sales_person_id? %>
-        <div ng-init='data.salesManager = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
+        <div ng-init='data.salesPerson = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
       <span class='pull-right' ng-if='data.weoweForm.pending'>
         <a href='/weowe_forms/{{data.weoweForm.id}}'
@@ -18,7 +18,7 @@
         </a>
       </span>
       <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
-        <button ng-click='open()' type='submit' class='btn btn-success'>
+        <button ng-click='actualValue()' type='submit' class='btn btn-success'>
           <i class='fa fa-check-square fa-lg'></i> Complete
         </button>
       </span>
@@ -49,10 +49,10 @@
 
           <%=link_to ' Delete', @weowe_form, method: :delete,
            data: { confirm: 'Are you sure?' },
-              class: 'glyphicon glyphicon-trash right-show-page'%>
+              class: 'btn btn-danger fa fa-trash fa-lg right-show-page'%>
 
           <%= link_to_function(' Print', 'javascript:print()', :class =>
-                               'glyphicon glyphicon-print right-show-page') %>
+                               'btn btn-default fa fa-print fa-lg right-show-page') %>
 
           <% if @weowe_form.pending == false && @weowe_form.completed == false %>
                 <%= link_to ' Email',
@@ -60,7 +60,7 @@
                             :id => @weowe_form.id},
                             method: :post,
                             data: { confirm: 'Send Approve Email?' },
-                            class: 'glyphicon glyphicon-envelope right-show-page' %>
+                            class: 'btn btn-default fa fa-envelope-o fa-lg right-show-page' %>
           <% end %>
 
           <% if @weowe_form.pending == false && @weowe_form.completed == true %>
@@ -69,11 +69,11 @@
                             :id => @weowe_form.id},
                             method: :post,
                             data: { confirm: 'Send Completed Email?' },
-                            class: 'glyphicon glyphicon-envelope right-show-page' %>
+                            class: 'btn btn-default fa fa-envelope-o fa-lg right-show-page' %>
           <% end %>
-
-          <%= link_to ' Edit', edit_weowe_form_path(@weowe_form),
-                        class: 'glyphicon glyphicon-pencil right-show-page' %>
+          <a ng-click='edit()' class='btn btn-default right-show-page' type='submit'>
+            <i class='fa fa-pencil fa-lg'></i> Edit
+          </a>
         </div>
 
         <br>
@@ -133,9 +133,12 @@
             </tr>
           </table>
 
-          <h4>We Owe </h4>
+          <h4>We Owe</h4>
+          <div ng-hide='data.weoweForm.description_1'>
+            <p>No we owe items associated with this record.</p>
+          </div>
           <table class='table table-bordered table-condensed'>
-            <tr>
+            <tr ng-show='data.weoweForm.description_1'>
               <th>#</th>
               <th>Description</th>
               <th>Quantity</th>
@@ -143,7 +146,7 @@
               <th>Total Wholesale</th>
               <th>Total Actual</th>
             </tr>
-            <tr>
+            <tr ng-show='data.weoweForm.description_1'>
               <th style='width:25%'>1</th>
               <td>{{::data.weoweForm.description_1}}</td>
               <td>{{::data.weoweForm.quantity_1}}</td>
@@ -151,7 +154,7 @@
               <td>{{::data.weoweForm.dealer_wholesale_1 | currency}}</td>
               <td>{{::data.weoweForm.dealer_actual_1 | currency}}</td>
             </tr>
-            <tr>
+            <tr ng-show='data.weoweForm.description_2'>
               <th>2</th>
               <td>{{::data.weoweForm.description_2}}</td>
               <td>{{::data.weoweForm.quantity_2}}</td>
@@ -159,7 +162,7 @@
               <td>{{::data.weoweForm.dealer_wholesale_2 | currency}}</td>
               <td>{{::data.weoweForm.dealer_actual_2 | currency}}</td>
             </tr>
-            <tr>
+            <tr ng-show='data.weoweForm.description_3'>
               <th>3</th>
               <td>{{::data.weoweForm.description_3}}</td>
               <td>{{::data.weoweForm.quantity_3}}</td>
@@ -167,7 +170,7 @@
               <td>{{::data.weoweForm.dealer_wholesale_3 | currency}}</td>
               <td>{{::data.weoweForm.dealer_actual_3 | currency}}</td>
             </tr>
-            <tr>
+            <tr ng-show='data.weoweForm.description_4'>
               <th>4</th>
               <td>{{::data.weoweForm.description_4}}</td>
               <td>{{::data.weoweForm.quantity_4}}</td>
@@ -175,7 +178,7 @@
               <td>{{::data.weoweForm.dealer_wholesale_4 | currency}}</td>
               <td>{{::data.weoweForm.dealer_actual_4 | currency}}</td>
             </tr>
-            <tr>
+            <tr ng-show='data.weoweForm.description_5'>
               <th>5</th>
               <td>{{::data.weoweForm.description_5}}</td>
               <td>{{::data.weoweForm.quantity_5}}</td>
@@ -183,13 +186,13 @@
               <td>{{::data.weoweForm.dealer_wholesale_5 | currency}}</td>
               <td>{{::data.weoweForm.dealer_actual_5 | currency}}</td>
             </tr>
-             <tr>
+             <tr ng-show='data.weoweForm.description_1'>
               <th>Totals</th>
               <td></td>
               <td></td>
               <td>{{::data.weoweForm.dealer_total_value | currency}}</td>
               <td>{{::data.weoweForm.dealer_wholesale | currency}}</td>
-              <td>{{::data.weoweForm.dealer_total_actual | currency}}</td>
+              <td>{{data.weoweForm.dealer_total_actual | currency}}</td>
             </tr>
           </table>
 
@@ -210,13 +213,13 @@
             <tr>
               <th style='width:25%'>First Name </th>
               <td>
-                {{::data.salesManager.first_name}}
+                {{::data.salesPerson.first_name}}
               </td>
             </tr>
             <tr>
               <th>Last Name</th>
               <td>
-                {{::data.salesManager.last_name}}
+                {{::data.salesPerson.last_name}}
               </td>
             </tr>
           </table>
@@ -234,8 +237,8 @@
             <tr>
               <th>Phone Number</th>
               <td>
-                <a href='tel:{{::data.salesManager.phone_number}}'>
-                  {{::data.salesManager.phone_number}}
+                <a href='tel:{{::data.user.phone_number}}'>
+                  {{::data.user.phone_number}}
                 </a>
               </td>
             </tr>

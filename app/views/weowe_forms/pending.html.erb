@@ -8,7 +8,9 @@
       <div class='col-md-3'>
         <wop-Search></wop-Search>
       </div>
-      <div class='col-md-5'></div>
+      <div class='col-md-5'>
+        <div><i class='fa fa-star star'></i> New We Owe Form</div>
+      </div>
       <div class='col-md-4'>
       <div class='btn-group hidden-xs'>
         <%= link_to new_weowe_form_path,
@@ -34,6 +36,7 @@
                        | filter: {pending: true, completed: false}
                        | limitTo:totalDisplayed).length > 0'>
         <tr>
+          <th></th>
           <th>
             <a ng-click="predicate.value = 'stock_number'; reverse=!reverse">
               Stock #</a>
@@ -71,18 +74,24 @@
                                       | orderBy:predicate.value:reverse
                                       | filter:search
                                       | filter: {pending: true, completed: false}
-                                      | limitTo:totalDisplayed)'>
+                                      | limitTo:totalDisplayed)'
+            ng-class='newHighlight(form.created_at)'>
           <td>
-            {{::form.stock_number}}
+            <span class='star' ng-show='showStar(form.created_at)' %>
+              <i class='fa fa-star'></i>
+            </span>
           </td>
-          <td class='hidden-xs'>{{::form.custom_date | date:'MM/dd/yyyy'}}</td>
-          <td class='hidden-xs'>{{::form.year}}</td>
-          <td class='hidden-xs'>{{::form.make}}</td>
-          <td class='hidden-xs'>{{::form.vehicle_model}}</td>
-          <td>{{::form.customer_last_name}}</td>
-          <td>{{::form.dealer_total_value | currency}}</td>
           <td>
-            <%= link_to '/weowe_forms/{{::form.id}}' do %>
+            {{form.stock_number}}
+          </td>
+          <td class='hidden-xs'>{{form.custom_date | date:'MM/dd/yyyy'}}</td>
+          <td class='hidden-xs'>{{form.year}}</td>
+          <td class='hidden-xs'>{{form.make}}</td>
+          <td class='hidden-xs'>{{form.vehicle_model}}</td>
+          <td>{{form.customer_last_name}}</td>
+          <td>{{form.dealer_total_value | currency}}</td>
+          <td>
+            <%= link_to '/weowe_forms/{{form.id}}' do %>
               <i class='fa fa-external-link fa-lg'></i>
             <% end %>
           </td>

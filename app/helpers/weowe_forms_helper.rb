@@ -1,5 +1,6 @@
 module WeoweFormsHelper
-  WEOWEFORM_PARAMS = [:customer_first_name,
+  WEOWEFORM_PARAMS = [:id,
+                      :customer_first_name,
                       :customer_last_name,
                       :customer_phone_mobile,
                       :customer_email,
@@ -46,7 +47,8 @@ module WeoweFormsHelper
                       :approved_by,
                       :completed_by,
                       :dealer_wholesale,
-                      :assigned_sales_person_id
+                      :assigned_sales_person_id,
+                      :dealer_total_actual
                      ]
 
   def weowe_form_params

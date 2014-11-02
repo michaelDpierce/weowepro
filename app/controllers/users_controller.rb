@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.html
         format.json { render json: users_index }
-        format.csv { render csv: users_index, filename: 'users' }
+        format.csv { render csv: User.where(dealer_id: current_user.dealer_id), filename: 'users' }
       end
     end
   end
