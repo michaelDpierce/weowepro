@@ -21,6 +21,12 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 25
 
+    $scope.showStar = (created_at) ->
+      if moment(created_at).isAfter(moment().subtract('days', 1)) then true
+
+    $scope.newHighlight = (created_at) ->
+      if moment(created_at).isAfter(moment().subtract('minutes', 1)) then 'success'
+
     $scope.years = [2016..1950]
 
     $scope.formStatus = (form) ->
