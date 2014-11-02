@@ -40,8 +40,9 @@
       </div>
       <div class="form-group" ng-class="{ 'has-error' : userForm.password_confirmation.$invalid && !userForm.password_confirmation.$pristine }">
           <label>Password Confirmation<span style='color: red'> *</span></label>
-          <input type="password" name="password_confirmation" class="form-control" ng-model="user.password_confirmation" ng-minlength="6" required>
+          <input type="password" name="password_confirmation" class="form-control" ng-model="user.password_confirmation" ng-minlength="6" match="user.password" required>
           <p ng-show="userForm.password_confirmation.$error.minlength" class="help-block">Your password confirmation is too short.</p>
+          <p ng-show="userForm.password_confirmation.$error.mismatch" class="help-block">Password and Password Confirmation Must Match.</p>
       </div>
       <button type='submit' class='btn btn-primary btn-block' ng-click='create()' ng-disabled='userForm.$invalid'>
         <i class='fa fa-check'></i> Submit
