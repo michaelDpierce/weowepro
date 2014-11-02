@@ -4,6 +4,14 @@
 /* universal */
 
 $lightgrey: #999;
+
+// Cell Colors
+$warningCell:   rgba(251, 203, 67,  0.5);
+$successCell:   rgba(15,  157, 88,  0.5);
+$infoCell:      rgba(86,  119, 252, 0.5);
+$dangerCell:    rgba(255,  82, 82,  0.5);
+
+
 * {
   font-family: 'Droid', sans-serif;
 }
@@ -163,6 +171,20 @@ $colHover       : #009587;
   }
 }
 
+// Table Cells
+.table tbody tr > td.success {
+  background-color: $successCell !important;
+}
+.table tbody tr > td.danger {
+  background-color: $dangerCell !important;
+}
+.table tbody tr > td.warning {
+  background-color: $warningCell !important;
+}
+.table tbody tr > td.info {
+  background-color: $infoCell !important;
+}
+
 // Buttons
 .btn-primary {
    @include button-variant(white, #426FC5, white);
@@ -177,7 +199,7 @@ $colHover       : #009587;
    @include button-variant(white, #E94043, white);
 }
 .btn-info {
-   @include button-variant(white,  red, white);
+   @include button-variant(white, #03A9F4, white);
 }
 
 /* Footer */
