@@ -2,6 +2,8 @@
   <%= render 'weowe_forms/show/show_print' %>
 </div>
 
+
+
 <div class='hidden-print' style='width: 85%; margin:auto;'>
   <div ng-app='weowepro'>
     <div ng-controller='WeoweFormsCtrl'>
@@ -10,32 +12,40 @@
       <% if @weowe_form.assigned_sales_person_id? %>
         <div ng-init='data.salesPerson = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
-      <span class='pull-right' ng-if='data.weoweForm.pending'>
-        <a href='/weowe_forms/{{data.weoweForm.id}}'
-          class='btn btn-success'
-          ng-click='approve()'>
-          <i class='fa fa-check fa-lg'></i> Approve
-        </a>
-      </span>
-      <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
-        <button ng-click='actualValue()' type='submit' class='btn btn-success'>
-          <i class='fa fa-check-square fa-lg'></i> Complete
-        </button>
-      </span>
-      <span class='pull-left' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
-        <a href='/weowe_forms/{{data.weoweForm.id}}'
-          class='btn btn-danger'
-          ng-click='returnSales()'>
-          <i class='fa fa-user fa-lg'></i> Return to Sales
-        </a>
-      </span>
-      <span class='pull-left' ng-if='!data.weoweForm.pending && data.weoweForm.completed'>
-        <a href='/weowe_forms/{{data.weoweForm.id}}'
-          class='btn btn-warning'
-          ng-click='returnService()'>
-          <i class='fa fa-wrench fa-lg'></i> Return to Service
-        </a>
-      </span>
+      <div ng-show='data.user.admin'>
+        <span class='pull-right' ng-if='data.weoweForm.pending'>
+          <a href='/weowe_forms/{{data.weoweForm.id}}'
+            class='btn btn-success'
+            ng-click='approve()'>
+            <i class='fa fa-check fa-lg'></i> Approve
+          </a>
+        </span>
+      </div>
+      <div ng-show="data.user.department=='Service' || data.user.admin">
+        <div>
+          <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+            <button ng-click='actualValue()' type='submit' class='btn btn-success'>
+              <i class='fa fa-check-square fa-lg'></i> Complete
+            </button>
+          </span>
+        </div>
+      </div>
+      <div ng-show='data.user.admin'>
+        <span class='pull-left' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+          <a href='/weowe_forms/{{data.weoweForm.id}}'
+            class='btn btn-danger'
+            ng-click='returnSales()'>
+            <i class='fa fa-user fa-lg'></i> Return to Sales
+          </a>
+        </span>
+        <span class='pull-left' ng-if='!data.weoweForm.pending && data.weoweForm.completed'>
+          <a href='/weowe_forms/{{data.weoweForm.id}}'
+            class='btn btn-warning'
+            ng-click='returnService()'>
+            <i class='fa fa-wrench fa-lg'></i> Return to Service
+          </a>
+        </span>
+      </div>
 
       <br><br><br>
 
