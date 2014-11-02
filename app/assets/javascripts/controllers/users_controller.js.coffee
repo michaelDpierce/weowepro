@@ -45,19 +45,30 @@
           $scope.weoweUsers.push employeeData
           toastr.success('Employee has been activated.')
 
-    $scope.open = (editMode) ->
+    $scope.open = (editMode, passwordChange) ->
       modalInstance = $modal.open
         templateUrl: 'user-form.html',
         controller: UsersModalCtrl,
         scope: $scope
         resolve:
           editMode: -> editMode
+          passwordChange: -> passwordChange
           user: ->
             user: $scope.user
 
-    UsersModalCtrl = ($scope, $modalInstance, editMode) ->
+    $scope.changePassword = ->
+      modalInstance = $modal.open
+        templateUrl: 'user-form-password.html',
+        controller: UsersPasswordModalCtrl,
+        scope: $scope
+        resolve:
+          user: ->
+            user: $scope.user
+
+    UsersModalCtrl = ($scope, $modalInstance, editMode, passwordChange) ->
 
       $scope.editMode = editMode
+      $scope.passwordChange = passwordChange
 
       $scope.create = ->
         Users.create
@@ -95,6 +106,18 @@
           toastr.info('Employee has been successfully updated.')
           $modalInstance.close updateEmployee
 
+      $scope.changePassword = ->
+        employeeData =
+          id: $scope.data.user.id
+          password: $scope.data.user.password
+          password_confirmation: $scope.data.user.password_confirmation
+
+        Users.update id: employeeData.id, employeeData
+        .$promise.then (updateEmployee) ->
+          $scope.weoweUsers.push updateEmployee
+          toastr.info('Password has been successfully updated.')
+          $modalInstance.close updateEmployee
+
       $scope.cancel = ->
         $modalInstance.dismiss "Cancel"
 
@@ -102,5 +125,6 @@
         '$scope'
         '$modalInstance'
         'editMode'
+        'passwordChange'
       ]
 ]
