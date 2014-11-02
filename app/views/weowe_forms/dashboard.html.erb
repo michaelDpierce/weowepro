@@ -29,7 +29,7 @@
             <td class='hidden-xs'>{{::form.dealer_total_value | currency}}</td>
             <td class='hidden-xs'>{{::form.dealer_wholesale | currency}}</td>
             <td class='hidden-xs'>{{::form.dealer_actual_value | currency}}</td>
-            <td ng-class='progressBarType(form)'>{{formStatus(form)}}</td>
+            <td style='color: white;' ng-class='progressBarType(form)'>{{formStatus(form)}}</td>
             <td class='hidden-xs'>{{::form.custom_date | date:'MM-dd-yyyy'}}</td>
             <td>
               <%= link_to '/weowe_forms/{{::form.id}}' do %>
