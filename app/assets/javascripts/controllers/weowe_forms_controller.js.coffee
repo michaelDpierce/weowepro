@@ -170,6 +170,18 @@
       $scope.cancel = ->
         $modalInstance.dismiss "Cancel"
 
+      $scope.complete = ->
+        weoweFormData =
+          id: $scope.data.weoweForm.id
+          pending: false
+          completed: true
+          completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+
+        WeoweForms.update id: weoweFormData.id, weoweFormData
+        .$promise.then (updateWeoweForm) ->
+          $scope.weoweForms.push updateWeoweForm
+          $modalInstance.close updateWeoweForm
+
       WeoweFormsCompletedModalCtrl['$inject'] = [
         '$scope'
         '$modalInstance'

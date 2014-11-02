@@ -98,6 +98,13 @@
       <i class='fa fa-refresh'></i> Update Totals
     </a>
   </div>
+  <div ng-if='!data.weoweForm.description_1'>
+    <a href='/weowe_forms/{{data.weoweForm.id}}'
+      class='btn btn-success btn-block'
+      ng-click='complete()'>
+      <i class='fa fa-check'></i> Mark Complete
+    </a>
+  </div>
   <button class='btn btn-danger btn-block' ng-click='cancel()'>
     <i class='fa fa-times'></i> Close</button>
 </div>
