@@ -233,7 +233,7 @@
           description_2: $scope.data.weoweForm.description_2
           quantity_2: $scope.data.weoweForm.quantity_2
           dealer_total_value_2: dt2
-          dealer_wholesale_2: dw3
+          dealer_wholesale_2: dw2
           description_3: $scope.data.weoweForm.description_3
           quantity_3: $scope.data.weoweForm.quantity_3
           dealer_total_value_3: dt3
