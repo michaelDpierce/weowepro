@@ -141,22 +141,41 @@
 
     WeoweFormsCompletedModalCtrl = ($scope, $modalInstance, WeoweForms, data) ->
 
-      $scope.ok = ->
-        da1 = $scope.data.weoweForm.dealer_actual_1
-        da2 = $scope.data.weoweForm.dealer_actual_2
-        da3 = $scope.data.weoweForm.dealer_actual_3
-        da4 = $scope.data.weoweForm.dealer_actual_4
-        da5 = $scope.data.weoweForm.dealer_actual_5
-        dta = parseFloat(da1) + parseFloat(da2) + parseFloat(da3) + parseFloat(da4) + parseFloat(da5)
+      # $scope.ok = ->
+      #   da1 = $scope.data.weoweForm.dealer_actual_1
+      #   da2 = $scope.data.weoweForm.dealer_actual_2
+      #   da3 = $scope.data.weoweForm.dealer_actual_3
+      #   da4 = $scope.data.weoweForm.dealer_actual_4
+      #   da5 = $scope.data.weoweForm.dealer_actual_5
+      #   dta = parseFloat(da1) + parseFloat(da2) + parseFloat(da3) + parseFloat(da4) + parseFloat(da5)
+      #
+      #   weoweFormData =
+      #     id: $scope.data.weoweForm.id
+      #     dealer_actual_1: da1
+      #     dealer_actual_2: da2
+      #     dealer_actual_3: da3
+      #     dealer_actual_4: da4
+      #     dealer_actual_5: da5
+      #     dealer_total_actual:dta
+      #     pending: false
+      #     completed: true
+      #     completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
+      #
+      #   WeoweForms.update id: weoweFormData.id, weoweFormData
+      #   .$promise.then (updateWeoweForm) ->
+      #     $scope.weoweForms.push updateWeoweForm
+      #     # toastr.info('We Owe Form was successfully updated.')
+      #     $modalInstance.close updateWeoweForm
 
+      $scope.ok = ->
         weoweFormData =
           id: $scope.data.weoweForm.id
-          dealer_actual_1: da1
-          dealer_actual_2: da2
-          dealer_actual_3: da3
-          dealer_actual_4: da4
-          dealer_actual_5: da5
-          dealer_total_actual:dta
+          dealer_actual_1: $scope.data.weoweForm.dealer_actual_1
+          dealer_actual_2: $scope.data.weoweForm.dealer_actual_2
+          dealer_actual_3: $scope.data.weoweForm.dealer_actual_3
+          dealer_actual_4: $scope.data.weoweForm.dealer_actual_4
+          dealer_actual_5: $scope.data.weoweForm.dealer_actual_5
+          dealer_total_actual: parseFloat($scope.data.weoweForm.dealer_actual_1) + parseFloat($scope.data.weoweForm.dealer_actual_2) + parseFloat($scope.data.weoweForm.dealer_actual_3) + parseFloat($scope.data.weoweForm.dealer_actual_4) + parseFloat($scope.data.weoweForm.dealer_actual_5)
           pending: false
           completed: true
           completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
@@ -164,7 +183,8 @@
         WeoweForms.update id: weoweFormData.id, weoweFormData
         .$promise.then (updateWeoweForm) ->
           $scope.weoweForms.push updateWeoweForm
-          # toastr.info('We Owe Form was successfully updated.')
+          $scope.progressBarType(updateWeoweForm)
+          toastr.info('We owe form has been successfully updated.')
           $modalInstance.close updateWeoweForm
 
       $scope.cancel = ->
