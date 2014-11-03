@@ -92,14 +92,14 @@
 </div>
 <div class='modal-footer'>
   <div ng-if='data.weoweForm.description_1'>
-    <a 
+    <a href='/weowe_forms/{{data.weoweForm.id}}'
       class='btn btn-primary btn-block'
       ng-click='ok()'>
       <i class='fa fa-refresh'></i> Update Totals
     </a>
   </div>
   <div ng-if='!data.weoweForm.description_1'>
-    <a
+    <a href='/weowe_forms/{{data.weoweForm.id}}'
       class='btn btn-success btn-block'
       ng-click='complete()'>
       <i class='fa fa-check'></i> Mark Complete
