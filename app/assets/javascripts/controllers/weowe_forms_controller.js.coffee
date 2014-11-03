@@ -4,8 +4,9 @@
   'Users',
   'Sales'
   '$modal'
+  '$window'
 
-  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales, $modal) ->
+  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales, $modal, $window) ->
     $scope.weoweForms = WeoweForms.index()
     $scope.weoweUsers = Users.index()
     $scope.salesStaff = Sales.index()
@@ -150,7 +151,9 @@
           $scope.weoweForms.push updateWeoweForm
           toastr.info('We Owe Form was successfully updated.')
           $modalInstance.close updateWeoweForm
+
           console.log weoweFormData
+        $window.location.reload();
 
       $scope.cancel = ->
         $modalInstance.dismiss "Cancel"
