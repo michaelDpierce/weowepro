@@ -126,12 +126,12 @@
     WeoweFormsCompletedModalCtrl = ($scope, $modalInstance, WeoweForms, data) ->
 
       $scope.ok = ->
-        da1 = $scope.data.weoweForm.dealer_actual_1
-        da2 = $scope.data.weoweForm.dealer_actual_2
-        da3 = $scope.data.weoweForm.dealer_actual_3
-        da4 = $scope.data.weoweForm.dealer_actual_4
-        da5 = $scope.data.weoweForm.dealer_actual_5
-        $scope.data.weoweForm.dealer_total_actual = parseFloat(da1) + parseFloat(da2) + parseFloat(da3) + parseFloat(da4) + parseFloat(da5)
+        da1 = if $scope.data.weoweForm.dealer_actual_1 then parseFloat($scope.data.weoweForm.dealer_actual_1) else ''
+        da2 = if $scope.data.weoweForm.dealer_actual_2 then parseFloat($scope.data.weoweForm.dealer_actual_2) else ''
+        da3 = if $scope.data.weoweForm.dealer_actual_3 then parseFloat($scope.data.weoweForm.dealer_actual_3) else ''
+        da4 = if $scope.data.weoweForm.dealer_actual_4 then parseFloat($scope.data.weoweForm.dealer_actual_4) else ''
+        da5 = if $scope.data.weoweForm.dealer_actual_5 then parseFloat($scope.data.weoweForm.dealer_actual_5) else ''
+        $scope.data.weoweForm.dealer_total_actual = da1 + da2 + da3 + da4 + da5
 
         weoweFormData =
           id: $scope.data.weoweForm.id
