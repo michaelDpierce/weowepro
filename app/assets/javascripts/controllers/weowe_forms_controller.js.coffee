@@ -4,8 +4,9 @@
   'Users',
   'Sales'
   '$modal'
+  '$window'
 
-  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales, $modal) ->
+  @WeoweFormsCtrl = ($scope, WeoweForms, Users, Sales, $modal, $window) ->
     $scope.weoweForms = WeoweForms.index()
     $scope.weoweUsers = Users.index()
     $scope.salesStaff = Sales.index()
@@ -21,14 +22,6 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 25
 
-    $scope.showStar = (created_at) ->
-      if moment(created_at).isAfter(moment().subtract('days', 1)) then true
-
-    $scope.newHighlight = (created_at) ->
-      if moment(created_at).isAfter(moment().subtract('minutes', 1)) then 'success'
-
-    $scope.years = [2016..1950]
-
     $scope.formStatus = (form) ->
       if form.pending is true and form.completed is false then 'Pending'
       else if form.pending is false and form.completed is false then 'Service'
@@ -38,6 +31,14 @@
       if form.pending is true and form.completed is false then 'danger'
       else if form.pending is false and form.completed is false then 'warning'
       else 'success'
+
+    $scope.showStar = (created_at) ->
+      if moment(created_at).isAfter(moment().subtract('days', 1)) then true
+
+    $scope.newHighlight = (created_at) ->
+      if moment(created_at).isAfter(moment().subtract('minutes', 1)) then 'success'
+
+    $scope.years = [2016..1950]
 
     $scope.today = ->
       $scope.dateSold = new Date()
@@ -84,20 +85,6 @@
             weoweForm: $scope.data.weoweForm
 
     $scope.create = ->
-      dt1 = $scope.data.newWeoweForm.dealer_total_value_1
-      dt2 = $scope.data.newWeoweForm.dealer_total_value_2
-      dt3 = $scope.data.newWeoweForm.dealer_total_value_3
-      dt4 = $scope.data.newWeoweForm.dealer_total_value_4
-      dt5 = $scope.data.newWeoweForm.dealer_total_value_5
-      dtv = parseFloat(dt1) + parseFloat(dt2) + parseFloat(dt3) + parseFloat(dt4) + parseFloat(dt5)
-
-      dw1 = $scope.data.newWeoweForm.dealer_wholesale_1
-      dw2 = $scope.data.newWeoweForm.dealer_wholesale_2
-      dw3 = $scope.data.newWeoweForm.dealer_wholesale_3
-      dw4 = $scope.data.newWeoweForm.dealer_wholesale_4
-      dw5 = $scope.data.newWeoweForm.dealer_wholesale_5
-      dtw = parseFloat(dw1) + parseFloat(dw2) + parseFloat(dw3) + parseFloat(dw4) + parseFloat(dw5)
-
       WeoweForms.create
         customer_first_name: $scope.data.newWeoweForm.customer_first_name
         customer_last_name: $scope.data.newWeoweForm.customer_last_name
@@ -110,26 +97,24 @@
         sold_date: $scope.dateSold
         description_1: $scope.data.newWeoweForm.description_1
         quantity_1: $scope.data.newWeoweForm.quantity_1
-        dealer_total_value_1: dt1
-        dealer_wholesale_1: dw1
+        dealer_total_value_1: $scope.data.newWeoweForm.dealer_total_value_1
+        dealer_wholesale_1: $scope.data.newWeoweForm.dealer_wholesale_1
         description_2: $scope.data.newWeoweForm.description_2
         quantity_2: $scope.data.newWeoweForm.quantity_2
-        dealer_total_value_2: dt2
-        dealer_wholesale_2: dw3
+        dealer_total_value_2: $scope.data.newWeoweForm.dealer_total_value_2
+        dealer_wholesale_2: $scope.data.newWeoweForm.dealer_wholesale_2
         description_3: $scope.data.newWeoweForm.description_3
         quantity_3: $scope.data.newWeoweForm.quantity_3
-        dealer_total_value_3: dt3
-        dealer_wholesale_3: dw3
+        dealer_total_value_3: $scope.data.newWeoweForm.dealer_total_value_3
+        dealer_wholesale_3: $scope.data.newWeoweForm.dealer_wholesale_3
         description_4: $scope.data.newWeoweForm.description_4
         quantity_4: $scope.data.newWeoweForm.quantity_4
-        dealer_total_value_4: dt4
-        dealer_wholesale_4: dw4
+        dealer_total_value_4: $scope.data.newWeoweForm.dealer_total_value_4
+        dealer_wholesale_4: $scope.data.newWeoweForm.dealer_wholesale_4
         description_5: $scope.data.newWeoweForm.description_5
         quantity_5: $scope.data.newWeoweForm.quantity_5
-        dealer_total_value_5: dt5
-        dealer_wholesale_5: dw5
-        dealer_total_value: dtv
-        dealer_wholesale: dtw
+        dealer_total_value_5: $scope.data.newWeoweForm.dealer_total_value_5
+        dealer_wholesale_5: $scope.data.newWeoweForm.dealer_wholesale_5
         theyowe_info: $scope.data.newWeoweForm.theyowe_info
         customer_total_value: $scope.data.newWeoweForm.customer_total_value
         assigned_sales_person_id: $scope.current_user.id
@@ -142,12 +127,12 @@
     WeoweFormsCompletedModalCtrl = ($scope, $modalInstance, WeoweForms, data) ->
 
       $scope.ok = ->
-        da1 = $scope.data.weoweForm.dealer_actual_1
-        da2 = $scope.data.weoweForm.dealer_actual_2
-        da3 = $scope.data.weoweForm.dealer_actual_3
-        da4 = $scope.data.weoweForm.dealer_actual_4
-        da5 = $scope.data.weoweForm.dealer_actual_5
-        dta = parseFloat(da1) + parseFloat(da2) + parseFloat(da3) + parseFloat(da4) + parseFloat(da5)
+        da1 = if $scope.data.weoweForm.dealer_actual_1 then parseFloat($scope.data.weoweForm.dealer_actual_1) else ''
+        da2 = if $scope.data.weoweForm.dealer_actual_2 then parseFloat($scope.data.weoweForm.dealer_actual_2) else ''
+        da3 = if $scope.data.weoweForm.dealer_actual_3 then parseFloat($scope.data.weoweForm.dealer_actual_3) else ''
+        da4 = if $scope.data.weoweForm.dealer_actual_4 then parseFloat($scope.data.weoweForm.dealer_actual_4) else ''
+        da5 = if $scope.data.weoweForm.dealer_actual_5 then parseFloat($scope.data.weoweForm.dealer_actual_5) else ''
+        $scope.data.weoweForm.dealer_total_actual = da1 + da2 + da3 + da4 + da5
 
         weoweFormData =
           id: $scope.data.weoweForm.id
@@ -156,7 +141,7 @@
           dealer_actual_3: da3
           dealer_actual_4: da4
           dealer_actual_5: da5
-          dealer_total_actual:dta
+          dealer_total_actual: $scope.data.weoweForm.dealer_total_actual
           pending: false
           completed: true
           completed_by: 'Completed on '.concat(moment().format('MM-DD-YYYY @ h:mmA'))
@@ -164,8 +149,11 @@
         WeoweForms.update id: weoweFormData.id, weoweFormData
         .$promise.then (updateWeoweForm) ->
           $scope.weoweForms.push updateWeoweForm
-          # toastr.info('We Owe Form was successfully updated.')
+          toastr.info('We Owe Form was successfully updated.')
           $modalInstance.close updateWeoweForm
+
+          console.log weoweFormData
+        $window.location.reload();
 
       $scope.cancel = ->
         $modalInstance.dismiss "Cancel"
@@ -180,6 +168,7 @@
         WeoweForms.update id: weoweFormData.id, weoweFormData
         .$promise.then (updateWeoweForm) ->
           $scope.weoweForms.push updateWeoweForm
+          toastr.info('We Owe Form was successfully updated.')
           $modalInstance.close updateWeoweForm
 
       WeoweFormsCompletedModalCtrl['$inject'] = [
@@ -201,19 +190,19 @@
         startingDay: 1
 
       $scope.update = ->
-        dt1 = $scope.data.weoweForm.dealer_total_value_1
-        dt2 = $scope.data.weoweForm.dealer_total_value_2
-        dt3 = $scope.data.weoweForm.dealer_total_value_3
-        dt4 = $scope.data.weoweForm.dealer_total_value_4
-        dt5 = $scope.data.weoweForm.dealer_total_value_5
-        dtv = parseFloat(dt1) + parseFloat(dt2) + parseFloat(dt3) + parseFloat(dt4) + parseFloat(dt5)
+        dt1 = if $scope.data.weoweForm.dealer_total_value_1 then parseFloat($scope.data.weoweForm.dealer_total_value_1) else ''
+        dt2 = if $scope.data.weoweForm.dealer_total_value_2 then parseFloat($scope.data.weoweForm.dealer_total_value_2) else ''
+        dt3 = if $scope.data.weoweForm.dealer_total_value_3 then parseFloat($scope.data.weoweForm.dealer_total_value_3) else ''
+        dt4 = if $scope.data.weoweForm.dealer_total_value_4 then parseFloat($scope.data.weoweForm.dealer_total_value_4) else ''
+        dt5 = if $scope.data.weoweForm.dealer_total_value_5 then parseFloat($scope.data.weoweForm.dealer_total_value_5) else ''
+        $scope.data.weoweForm.dealer_total_value = dt1 + dt2 + dt3 + dt4 + dt5
 
-        dw1 = $scope.data.weoweForm.dealer_wholesale_1
-        dw2 = $scope.data.weoweForm.dealer_wholesale_2
-        dw3 = $scope.data.weoweForm.dealer_wholesale_3
-        dw4 = $scope.data.weoweForm.dealer_wholesale_4
-        dw5 = $scope.data.weoweForm.dealer_wholesale_5
-        dtw = parseFloat(dw1) + parseFloat(dw2) + parseFloat(dw3) + parseFloat(dw4) + parseFloat(dw5)
+        dw1 = if $scope.data.weoweForm.dealer_wholesale_1 then parseFloat($scope.data.weoweForm.dealer_wholesale_1) else ''
+        dw2 = if $scope.data.weoweForm.dealer_wholesale_2 then parseFloat($scope.data.weoweForm.dealer_wholesale_2) else ''
+        dw3 = if $scope.data.weoweForm.dealer_wholesale_3 then parseFloat($scope.data.weoweForm.dealer_wholesale_3) else ''
+        dw4 = if $scope.data.weoweForm.dealer_wholesale_4 then parseFloat($scope.data.weoweForm.dealer_wholesale_4) else ''
+        dw5 = if $scope.data.weoweForm.dealer_wholesale_5 then parseFloat($scope.data.weoweForm.dealer_wholesale_5) else ''
+        $scope.data.weoweForm.dealer_wholesale = dw1 + dw2 + dw3 + dw4 + dw5
 
         weoweFormData =
           id: $scope.data.weoweForm.id
@@ -246,8 +235,8 @@
           quantity_5: $scope.data.weoweForm.quantity_5
           dealer_total_value_5: dt5
           dealer_wholesale_5: dw5
-          dealer_total_value: dtv
-          dealer_wholesale: dtw
+          dealer_total_value: $scope.data.weoweForm.dealer_total_value
+          dealer_wholesale: $scope.data.weoweForm.dealer_wholesale
           theyowe_info: $scope.data.weoweForm.theyowe_info
           customer_total_value: $scope.data.weoweForm.customer_total_value
           assigned_sales_person_id: $scope.data.salesPerson.id
@@ -257,7 +246,7 @@
         WeoweForms.update id: weoweFormData.id, weoweFormData
         .$promise.then (updateWeoweForm) ->
           $scope.weoweForms.push updateWeoweForm
-          # toastr.info('We Owe Form was successfully updated.')
+          toastr.info('We Owe Form was successfully updated.')
           $modalInstance.close updateWeoweForm
 
       $scope.cancel = ->

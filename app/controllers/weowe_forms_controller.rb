@@ -54,6 +54,16 @@ class WeoweFormsController < ApplicationController
     @weowe_form.user_id = current_user.id
     @weowe_form.dealer_id = current_user.dealer_id
     @weowe_form.custom_date = Time.now
+    @weowe_form.dealer_total_value = dealer_sum(@weowe_form.dealer_total_value_1,
+                                                @weowe_form.dealer_total_value_2,
+                                                @weowe_form.dealer_total_value_3,
+                                                @weowe_form.dealer_total_value_4,
+                                                @weowe_form.dealer_total_value_5)
+    @weowe_form.dealer_wholesale = dealer_sum(@weowe_form.dealer_wholesale_1,
+                                                @weowe_form.dealer_wholesale_2,
+                                                @weowe_form.dealer_wholesale_3,
+                                                @weowe_form.dealer_wholesale_4,
+                                                @weowe_form.dealer_wholesale_5)
     @weowe_form.save!
     if @weowe_form.save
       render json: @weowe_form.as_json

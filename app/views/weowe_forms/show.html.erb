@@ -2,8 +2,6 @@
   <%= render 'weowe_forms/show/show_print' %>
 </div>
 
-
-
 <div class='hidden-print' style='width: 85%; margin:auto;'>
   <div ng-app='weowepro'>
     <div ng-controller='WeoweFormsCtrl'>
@@ -49,13 +47,41 @@
 
       <br><br><br>
 
+      <!-- $scope.formStatus = (form) ->
+        if form.pending is true and form.completed is false then 'Pending'
+        else if form.pending is false and form.completed is false then 'Service'
+        else 'Completed'
+
+      $scope.progressBarType = (form) ->
+        if form.pending is true and form.completed is false then 'danger'
+        else if form.pending is false and form.completed is false then 'warning'
+        else 'success' -->
+
+    {{data.weoweForm.pending}} {{data.weoweForm.completed}}
+
       <div class='panel panel-default'>
         <div class='panel-heading' style='height: 40px;'>
-          <progressbar class='progress-striped'
-                       value=100
-                       type='{{progressBarType(data.weoweForm)}}'>
-            {{formStatus(data.weoweForm)}}
-          </progressbar>
+          <div ng-show='data.weoweForm.pending && !data.weoweForm.completed'>
+            <progressbar class='progress-striped'
+                         value=100
+                         type='danger'>
+              Sales
+            </progressbar>
+          </div>
+          <div ng-show='!data.weoweForm.pending && !data.weoweForm.completed'>
+            <progressbar class='progress-striped'
+                         value=100
+                         type='warning'>
+              Service
+            </progressbar>
+          </div>
+          <div ng-show='!data.weoweForm.pending && data.weoweForm.completed'>
+            <progressbar class='progress-striped'
+                         value=100
+                         type='success'>
+              Completed
+            </progressbar>
+          </div>
 
           <%=link_to ' Delete', @weowe_form, method: :delete,
            data: { confirm: 'Are you sure?' },
