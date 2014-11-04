@@ -27,7 +27,7 @@
       </td>
     </tr>
     <tr>
-      <td>Diffrence</td>
+      <td>Difference</td>
       <td>
         <%=number_to_currency(WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).sum('dealer_wholesale') -
            WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).sum('dealer_total_actual'))%>
