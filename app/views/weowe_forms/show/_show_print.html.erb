@@ -21,27 +21,23 @@
   <tr>
     <td>DATE: <%= Time.now.strftime('%-m/%-d/%Y')%></td>
     <td colspan="2">
-      <% if @weowe_form.user_id? %>
-        SALES MANAGER: <%= "#{User.find(@weowe_form.user_id).first_name}
-                          #{User.find(@weowe_form.user_id).last_name}" %>
-      <% end %>
+      SALES MANAGER: {{data.user.first_name}} {{data.user.last_name}}
     </td>
   </tr>
   <tr>
     <td colspan='5'>
-      <%= "CUSTOMER INFORMATION: #{@weowe_form.customer_first_name}
-          #{@weowe_form.customer_last_name},
-          #{@weowe_form.customer_phone_mobile},
-          #{@weowe_form.customer_email}"%>
+      CUSTOMER INFORMATION: {{data.weoweForm.customer_first_name}}
+                            {{data.weoweForm.customer_last_name}},
+                            {{data.weoweForm.customer_phone_mobile}},
+                            {{data.weoweForm.customer_email}}
     </td>
   </tr>
   <tr>
     <td colspan='5'>
-      <%= "VEHICLE INFORMATION:
-          #{@weowe_form.make},
-          #{@weowe_form.vehicle_model},
-          #{@weowe_form.year};
-          STOCK #: #{@weowe_form.stock_number}" %>
+      VEHICLE INFORMATION: {{data.weoweForm.make}}
+      {{data.weoweForm.vehicle_model}},
+      {{data.weoweForm.year}};
+      STOCK #: {{data.weoweForm.stock_number}}
     </td>
   </tr>
 </table>
@@ -49,71 +45,57 @@
 <center style='font-size: 14pt'><%= "#{@weowe_form.dealer.name} OWES".upcase %></center>
   <table class='table table-bordered table-condensed' >
     <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
-      <% if @weowe_form.description_1? %>
-        <tr>
-          <th style='width:25%'>1</th>
-          <td><%= @weowe_form.description_1 %></td>
-          <td><%= @weowe_form.quantity_1 %></td>
-          <td><%= number_to_currency(@weowe_form.dealer_total_value_1) %></td>
-        </tr>
-      <% end %>
-      <% if @weowe_form.description_2? %>
-        <tr>
-          <th>2</th>
-          <td><%= @weowe_form.description_2 %></td>
-          <td><%= @weowe_form.quantity_2 %></td>
-          <td><%= number_to_currency(@weowe_form.dealer_total_value_2) %></td>
-        </tr>
-      <% end %>
-      <% if @weowe_form.description_3? %>
-        <tr>
-          <th>3</th>
-          <td><%= @weowe_form.description_3 %></td>
-          <td><%= @weowe_form.quantity_3 %></td>
-          <td><%= number_to_currency(@weowe_form.dealer_total_value_3) %></td>
-        </tr>
-      <% end %>
-      <% if @weowe_form.description_4? %>
-        <tr>
-          <th>4</th>
-          <td><%= @weowe_form.description_4 %></td>
-          <td><%= @weowe_form.quantity_4 %></td>
-          <td><%= number_to_currency(@weowe_form.dealer_total_value_4) %></td>
-        </tr>
-      <% end %>
-      <% if @weowe_form.description_5? %>
-        <tr>
-          <th>5</th>
-          <td><%= @weowe_form.description_5 %></td>
-          <td><%= @weowe_form.quantity_5 %></td>
-          <td><%= number_to_currency(@weowe_form.dealer_total_value_5) %></td>
-        </tr>
-      <% end %>
-       <tr class='success'>
-        <th>Totals</th>
-        <td>N/A</td>
-        <td>
-          <%= @weowe_form.dealer_total_value %>
-        </td>
-        <td>
-          <%= number_to_currency(@weowe_form.dealer_total_value) %>
-        </td>
-      </tr>
+    <tr ng-show='data.weoweForm.description_1'>
+      <th style='width:25%'>1</th>
+      <td>{{data.weoweForm.description_1}}</td>
+      <td>{{data.weoweForm.quantity_1}}</td>
+      <td>{{data.weoweForm.dealer_total_value_1 | currency}}</td>
+    </tr>
+    <tr ng-show='data.weoweForm.description_2'>
+      <th>2</th>
+      <td>{{data.weoweForm.description_2}}</td>
+      <td>{{data.weoweForm.quantity_2}}</td>
+      <td>{{data.weoweForm.dealer_total_value_2 | currency}}</td>
+    </tr>
+    <tr ng-show='data.weoweForm.description_3'>
+      <th>3</th>
+      <td>{{data.weoweForm.description_3}}</td>
+      <td>{{data.weoweForm.quantity_3}}</td>
+      <td>{{data.weoweForm.dealer_total_value_3 | currency}}</td>
+    </tr>
+    <tr ng-show='data.weoweForm.description_4'>
+      <th>4</th>
+      <td>{{data.weoweForm.description_4}}</td>
+      <td>{{data.weoweForm.quantity_4}}</td>
+      <td>{{data.weoweForm.dealer_total_value_4 | currency}}</td>
+    </tr>
+    <tr ng-show='data.weoweForm.description_5'>
+      <th>5</th>
+      <td>{{data.weoweForm.description_5}}</td>
+      <td>{{data.weoweForm.quantity_5}}</td>
+      <td>{{data.weoweForm.dealer_total_value_5 | currency}}</td>
+    </tr>
+     <tr class='success' ng-show='data.weoweForm.description_1'>
+      <th>Totals</th>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>{{data.weoweForm.dealer_total_value | currency}}</td>
+    </tr>
   </table>
 
-<% if @weowe_form.theyowe_info? %>
+<div ng-show='data.weoweForm.theyowe_info'>
   <center style="font-size: 14pt">CUSTOMER OWES</center>
   <table class='table table-bordered table-condensed' >
     <tr><th>#</th><th>Description</th><th>Quantity</th><th>Total Cost </th></tr>
             <tr>
               <td> 1. </td>
-              <td><%= @weowe_form.theyowe_info %></td>
+              <td>{{data.weoweForm.theyowe_info}}</td>
               <td> 1 </td>
-              <td><%= number_to_currency(@weowe_form.customer_total_value) %></td>
+              <td>{{data.weoweForm.customer_total_value | currency}}</td>
             </tr>
     </table>
   <br>
-<% end %>
+</div>
 
 <div style='font-size: 8pt'>
   NOTE: THE ABOVE PROMISED WORK IS ONLY WORK TO BE PERFORMED FREE OF CHARGE OR INCLUDED
@@ -123,20 +105,11 @@
   CAN BE PERFORMED.
 </div>
 <br>
-<table class='table table-bordered table-condensed' >
+<table class='table table-bordered table-condensed'>
   <tr>
     <th>Sales Person</th>
-    <td>
-      <% if @weowe_form.assigned_sales_person_id? %>
-        <%= "#{User.find(@weowe_form.assigned_sales_person_id).last_name},
-             #{User.find(@weowe_form.assigned_sales_person_id).first_name}"%>
-      <% end %>
-    </td>
-    <td>
-      <% if @weowe_form.assigned_sales_person_id? %>
-        <%= User.find(@weowe_form.assigned_sales_person_id).phone_number %>
-      <% end %>
-    </td>
+    <td>{{data.salesPerson.first_name}} {{data.salesPerson.last_name}}</td>
+    <td>{{data.salesPerson.phone_number}}</td>
   </tr>
 </table>
 <br>

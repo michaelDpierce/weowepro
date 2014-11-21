@@ -1,12 +1,11 @@
-<div class='visible-print'>
-  <%= render 'weowe_forms/show/show_print' %>
-</div>
-
-<div class='hidden-print' style='width: 85%; margin:auto;'>
-  <div ng-app='weowepro'>
-    <div ng-controller='WeoweFormsCtrl'>
-      <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'></div>
-      <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'></div>
+<div ng-app='weowepro'>
+  <div ng-controller='WeoweFormsCtrl'>
+    <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'></div>
+    <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'></div>
+    <div class='visible-print'>
+      <%= render 'weowe_forms/show/show_print' %>
+    </div>
+    <div class='hidden-print' style='width: 85%; margin:auto;'>
       <% if @weowe_form.assigned_sales_person_id? %>
         <div ng-init='data.salesPerson = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
@@ -83,17 +82,17 @@
           <table class='table table-bordered table-condensed'>
             <tr>
             <th style='width:25%'>First Name</th>
-              <td>{{::data.weoweForm.customer_first_name}}</td>
+              <td>{{data.weoweForm.customer_first_name}}</td>
             </tr>
             <tr>
             <th>Last Name / Company</th>
-              <td>{{::data.weoweForm.customer_last_name}}</td>
+              <td>{{data.weoweForm.customer_last_name}}</td>
             </tr>
             <tr>
             <th>Phone Number</th>
               <td>
-                <a href='tel:{{::data.weoweForm.customer_phone_mobile}}'>
-                  {{::data.weoweForm.customer_phone_mobile}}
+                <a href='tel:{{data.weoweForm.customer_phone_mobile}}'>
+                  {{data.weoweForm.customer_phone_mobile}}
                 </a>
               </td>
             </tr>
@@ -101,8 +100,8 @@
             <tr>
               <th>Email</th>
               <td>
-                <a href='mailto:{{::data.weoweForm.customer_email}}'>
-                  {{::data.weoweForm.customer_email}}
+                <a href='mailto:{{data.weoweForm.customer_email}}'>
+                  {{data.weoweForm.customer_email}}
                 </a>
               </td>
             </tr>
@@ -112,24 +111,24 @@
           <table class='table table-bordered table-condensed'>
             <tr>
             <th style='width:25%'>Stock Number</th>
-              <td>{{::data.weoweForm.stock_number}}</td>
+              <td>{{data.weoweForm.stock_number}}</td>
             </tr>
             <tr>
             <th>Year</th>
-              <td>{{::data.weoweForm.year}}</td>
+              <td>{{data.weoweForm.year}}</td>
             </tr>
             <tr>
             <th>Make</th>
-              <td>{{::data.weoweForm.make}}</td>
+              <td>{{data.weoweForm.make}}</td>
             </tr>
             <tr>
             <th>Model</th>
-              <td>{{::data.weoweForm.vehicle_model}}</td>
+              <td>{{data.weoweForm.vehicle_model}}</td>
             </tr>
             <tr>
             <tr>
             <th>Date Sold</th>
-              <td>{{::data.weoweForm.sold_date | date:'MM-dd-yyyy'}}</td>
+              <td>{{data.weoweForm.sold_date | date:'MM-dd-yyyy'}}</td>
             </tr>
           </table>
 
@@ -148,50 +147,50 @@
             </tr>
             <tr ng-show='data.weoweForm.description_1'>
               <th style='width:25%'>1</th>
-              <td>{{::data.weoweForm.description_1}}</td>
-              <td>{{::data.weoweForm.quantity_1}}</td>
-              <td>{{::data.weoweForm.dealer_total_value_1 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_wholesale_1 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_actual_1 | currency}}</td>
+              <td>{{data.weoweForm.description_1}}</td>
+              <td>{{data.weoweForm.quantity_1}}</td>
+              <td>{{data.weoweForm.dealer_total_value_1 | currency}}</td>
+              <td>{{data.weoweForm.dealer_wholesale_1 | currency}}</td>
+              <td>{{data.weoweForm.dealer_actual_1 | currency}}</td>
             </tr>
             <tr ng-show='data.weoweForm.description_2'>
               <th>2</th>
-              <td>{{::data.weoweForm.description_2}}</td>
-              <td>{{::data.weoweForm.quantity_2}}</td>
-              <td>{{::data.weoweForm.dealer_total_value_2 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_wholesale_2 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_actual_2 | currency}}</td>
+              <td>{{data.weoweForm.description_2}}</td>
+              <td>{{data.weoweForm.quantity_2}}</td>
+              <td>{{data.weoweForm.dealer_total_value_2 | currency}}</td>
+              <td>{{data.weoweForm.dealer_wholesale_2 | currency}}</td>
+              <td>{{data.weoweForm.dealer_actual_2 | currency}}</td>
             </tr>
             <tr ng-show='data.weoweForm.description_3'>
               <th>3</th>
-              <td>{{::data.weoweForm.description_3}}</td>
-              <td>{{::data.weoweForm.quantity_3}}</td>
-              <td>{{::data.weoweForm.dealer_total_value_3 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_wholesale_3 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_actual_3 | currency}}</td>
+              <td>{{data.weoweForm.description_3}}</td>
+              <td>{{data.weoweForm.quantity_3}}</td>
+              <td>{{data.weoweForm.dealer_total_value_3 | currency}}</td>
+              <td>{{data.weoweForm.dealer_wholesale_3 | currency}}</td>
+              <td>{{data.weoweForm.dealer_actual_3 | currency}}</td>
             </tr>
             <tr ng-show='data.weoweForm.description_4'>
               <th>4</th>
-              <td>{{::data.weoweForm.description_4}}</td>
-              <td>{{::data.weoweForm.quantity_4}}</td>
-              <td>{{::data.weoweForm.dealer_total_value_4 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_wholesale_4 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_actual_4 | currency}}</td>
+              <td>{{data.weoweForm.description_4}}</td>
+              <td>{{data.weoweForm.quantity_4}}</td>
+              <td>{{data.weoweForm.dealer_total_value_4 | currency}}</td>
+              <td>{{data.weoweForm.dealer_wholesale_4 | currency}}</td>
+              <td>{{data.weoweForm.dealer_actual_4 | currency}}</td>
             </tr>
             <tr ng-show='data.weoweForm.description_5'>
               <th>5</th>
-              <td>{{::data.weoweForm.description_5}}</td>
-              <td>{{::data.weoweForm.quantity_5}}</td>
-              <td>{{::data.weoweForm.dealer_total_value_5 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_wholesale_5 | currency}}</td>
-              <td>{{::data.weoweForm.dealer_actual_5 | currency}}</td>
+              <td>{{data.weoweForm.description_5}}</td>
+              <td>{{data.weoweForm.quantity_5}}</td>
+              <td>{{data.weoweForm.dealer_total_value_5 | currency}}</td>
+              <td>{{data.weoweForm.dealer_wholesale_5 | currency}}</td>
+              <td>{{data.weoweForm.dealer_actual_5 | currency}}</td>
             </tr>
              <tr ng-show='data.weoweForm.description_1'>
               <th>Totals</th>
               <td></td>
               <td></td>
-              <td>{{::data.weoweForm.dealer_total_value | currency}}</td>
-              <td>{{::data.weoweForm.dealer_wholesale | currency}}</td>
+              <td>{{data.weoweForm.dealer_total_value | currency}}</td>
+              <td>{{data.weoweForm.dealer_wholesale | currency}}</td>
               <td>{{data.weoweForm.dealer_total_actual | currency}}</td>
             </tr>
           </table>
@@ -200,11 +199,11 @@
           <table class='table table-bordered table-condensed' >
             <tr>
               <th style='width:25%'>Description</th>
-              <td>{{::data.weoweForm.theyowe_info}}</td>
+              <td>{{data.weoweForm.theyowe_info}}</td>
             </tr>
             <tr>
               <th>Total Value</th>
-              <td>{{::data.weoweForm.customer_total_value | currency}}</td>
+              <td>{{data.weoweForm.customer_total_value | currency}}</td>
             </tr>
           </table>
 
@@ -213,13 +212,13 @@
             <tr>
               <th style='width:25%'>First Name </th>
               <td>
-                {{::data.salesPerson.first_name}}
+                {{data.salesPerson.first_name}}
               </td>
             </tr>
             <tr>
               <th>Last Name</th>
               <td>
-                {{::data.salesPerson.last_name}}
+                {{data.salesPerson.last_name}}
               </td>
             </tr>
           </table>
@@ -228,17 +227,17 @@
           <table class='table table-bordered table-condensed'>
             <tr>
               <th style='width:25%'>First Name </th>
-              <td>{{::data.user.first_name}}</td>
+              <td>{{data.user.first_name}}</td>
             </tr>
             <tr>
               <th>Last Name </th>
-              <td>{{::data.user.last_name}}</td>
+              <td>{{data.user.last_name}}</td>
             </tr>
             <tr>
               <th>Phone Number</th>
               <td>
-                <a href='tel:{{::data.user.phone_number}}'>
-                  {{::data.user.phone_number}}
+                <a href='tel:{{data.user.phone_number}}'>
+                  {{data.user.phone_number}}
                 </a>
               </td>
             </tr>
@@ -248,11 +247,11 @@
           <table class='table table-bordered table-condensed'>
             <tr>
               <th style='width:25%'>Approved By</th>
-              <td>{{::data.weoweForm.approved_by}}</td>
+              <td>{{data.weoweForm.approved_by}}</td>
             </tr>
             <tr>
               <th>Completed By</th>
-              <td>{{::data.weoweForm.completed_by}}</td>
+              <td>{{data.weoweForm.completed_by}}</td>
             </tr>
           </table>
         </div>
