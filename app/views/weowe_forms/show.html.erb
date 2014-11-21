@@ -1,12 +1,11 @@
-<div class='visible-print'>
-  <%= render 'weowe_forms/show/show_print' %>
-</div>
-
-<div class='hidden-print' style='width: 85%; margin:auto;'>
-  <div ng-app='weowepro'>
-    <div ng-controller='WeoweFormsCtrl'>
-      <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'></div>
-      <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'></div>
+<div ng-app='weowepro'>
+  <div ng-controller='WeoweFormsCtrl'>
+    <div ng-init='data.weoweForm = <%= @weowe_form.to_json %>'></div>
+    <div ng-init='data.user = <%= User.find(@weowe_form.user_id).to_json %>'></div>
+    <div class='visible-print'>
+      <%= render 'weowe_forms/show/show_print' %>
+    </div>
+    <div class='hidden-print' style='width: 85%; margin:auto;'>
       <% if @weowe_form.assigned_sales_person_id? %>
         <div ng-init='data.salesPerson = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
@@ -46,18 +45,6 @@
       </div>
 
       <br><br><br>
-
-      <!-- $scope.formStatus = (form) ->
-        if form.pending is true and form.completed is false then 'Pending'
-        else if form.pending is false and form.completed is false then 'Service'
-        else 'Completed'
-
-      $scope.progressBarType = (form) ->
-        if form.pending is true and form.completed is false then 'danger'
-        else if form.pending is false and form.completed is false then 'warning'
-        else 'success' -->
-
-
 
       <div class='panel panel-default'>
         <div class='panel-heading' style='height: 40px;'>
