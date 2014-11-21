@@ -9,42 +9,78 @@
       <% if @weowe_form.assigned_sales_person_id? %>
         <div ng-init='data.salesPerson = <%= User.find(@weowe_form.assigned_sales_person_id).to_json %>'>
       <% end %>
-      <span class='pull-right' ng-if='data.weoweForm.pending'>
-        <a href='/weowe_forms/{{data.weoweForm.id}}'
-          class='btn btn-success'
-          ng-click='approve()'>
-          <i class='fa fa-check fa-lg'></i> Approve
-        </a>
-      </span>
-      <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
-        <button ng-click='actualValue()' type='submit' class='btn btn-success'>
-          <i class='fa fa-check-square fa-lg'></i> Complete
-        </button>
-      </span>
-      <span class='pull-left' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
-        <a href='/weowe_forms/{{data.weoweForm.id}}'
-          class='btn btn-danger'
-          ng-click='returnSales()'>
-          <i class='fa fa-user fa-lg'></i> Return to Sales
-        </a>
-      </span>
-      <span class='pull-left' ng-if='!data.weoweForm.pending && data.weoweForm.completed'>
-        <a href='/weowe_forms/{{data.weoweForm.id}}'
-          class='btn btn-warning'
-          ng-click='returnService()'>
-          <i class='fa fa-wrench fa-lg'></i> Return to Service
-        </a>
-      </span>
+      <div ng-show='data.user.admin'>
+        <span class='pull-right' ng-if='data.weoweForm.pending'>
+          <a href='/weowe_forms/{{data.weoweForm.id}}'
+            class='btn btn-success'
+            ng-click='approve()'>
+            <i class='fa fa-check fa-lg'></i> Approve
+          </a>
+        </span>
+      </div>
+      <div ng-show="data.user.department=='Service' || data.user.admin">
+        <div>
+          <span class='pull-right' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+            <button ng-click='actualValue()' type='submit' class='btn btn-success'>
+              <i class='fa fa-check-square fa-lg'></i> Complete
+            </button>
+          </span>
+        </div>
+      </div>
+      <div ng-show='data.user.admin'>
+        <span class='pull-left' ng-if='!data.weoweForm.pending && !data.weoweForm.completed'>
+          <a href='/weowe_forms/{{data.weoweForm.id}}'
+            class='btn btn-danger'
+            ng-click='returnSales()'>
+            <i class='fa fa-user fa-lg'></i> Return to Sales
+          </a>
+        </span>
+        <span class='pull-left' ng-if='!data.weoweForm.pending && data.weoweForm.completed'>
+          <a href='/weowe_forms/{{data.weoweForm.id}}'
+            class='btn btn-warning'
+            ng-click='returnService()'>
+            <i class='fa fa-wrench fa-lg'></i> Return to Service
+          </a>
+        </span>
+      </div>
 
       <br><br><br>
 
+      <!-- $scope.formStatus = (form) ->
+        if form.pending is true and form.completed is false then 'Pending'
+        else if form.pending is false and form.completed is false then 'Service'
+        else 'Completed'
+
+      $scope.progressBarType = (form) ->
+        if form.pending is true and form.completed is false then 'danger'
+        else if form.pending is false and form.completed is false then 'warning'
+        else 'success' -->
+
+
+
       <div class='panel panel-default'>
         <div class='panel-heading' style='height: 40px;'>
-          <progressbar class='progress-striped'
-                       value=100
-                       type='{{progressBarType(data.weoweForm)}}'>
-            {{formStatus(data.weoweForm)}}
-          </progressbar>
+          <div ng-show='data.weoweForm.pending && !data.weoweForm.completed'>
+            <progressbar class='progress-striped'
+                         value=100
+                         type='danger'>
+              Sales
+            </progressbar>
+          </div>
+          <div ng-show='!data.weoweForm.pending && !data.weoweForm.completed'>
+            <progressbar class='progress-striped'
+                         value=100
+                         type='warning'>
+              Service
+            </progressbar>
+          </div>
+          <div ng-show='!data.weoweForm.pending && data.weoweForm.completed'>
+            <progressbar class='progress-striped'
+                         value=100
+                         type='success'>
+              Completed
+            </progressbar>
+          </div>
 
           <%=link_to ' Delete', @weowe_form, method: :delete,
            data: { confirm: 'Are you sure?' },

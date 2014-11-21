@@ -29,7 +29,7 @@
             <td class='hidden-xs'>{{::form.dealer_total_value | currency}}</td>
             <td class='hidden-xs'>{{::form.dealer_wholesale | currency}}</td>
             <td class='hidden-xs'>{{::form.dealer_actual_value | currency}}</td>
-            <td ng-class='progressBarType(form)'>{{formStatus(form)}}</td>
+            <td style='color: white;' ng-class='progressBarType(form)'>{{formStatus(form)}}</td>
             <td class='hidden-xs'>{{::form.custom_date | date:'MM-dd-yyyy'}}</td>
             <td>
               <%= link_to '/weowe_forms/{{::form.id}}' do %>
@@ -45,12 +45,16 @@
           <%= link_to 'New Form', new_weowe_form_path,
             class: 'btn btn-primary btn-fix-width', role: 'button' %>
         <% end %>
-        <%= link_to 'Sales', pending_path,
-          class: 'btn btn-danger btn-fix-width', role: 'button' %>
-        <%= link_to 'Service', weowe_forms_path,
-          class: 'btn btn-warning btn-fix-width', role: 'button' %>
-        <%= link_to 'Completed', completed_path,
-          class: 'btn btn-success btn-fix-width', role: 'button' %>
+
+        <a href='/pending' class='btn btn-danger btn-fix-width' role: 'button'>
+            Sales (<%= WeoweForm.where(dealer_id: current_user.dealer_id, pending: true, completed: false).count %>)
+        </a>
+        <a href='/weowe_forms' class='btn btn-warning btn-fix-width' role: 'button'>
+            Service (<%= WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: false).count %>)
+        </a>
+        <a href='/completed' class='btn btn-success btn-fix-width' role: 'button'>
+            Completed (<%= WeoweForm.where(dealer_id: current_user.dealer_id, pending: false, completed: true).count %>)
+        </a>
       </div>
     </center>
   </div>

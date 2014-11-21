@@ -6,11 +6,10 @@
 $lightgrey: #999;
 
 // Cell Colors
-$warningCell:   rgba(251, 203, 67,  0.5);
-$successCell:   rgba(15,  157, 88,  0.5);
-$infoCell:      rgba(86,  119, 252, 0.5);
-$dangerCell:    rgba(255,  82, 82,  0.5);
-
+$warningCell: #F6774F;
+$successCell: #259B24;
+$infoCell: #03A9F4;
+$dangerCell: #E94043;
 
 * {
   font-family: 'Droid', sans-serif;

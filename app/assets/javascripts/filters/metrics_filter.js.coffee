@@ -8,3 +8,12 @@
       sum += parseInt(data[i][key])
       i--
     sum
+
+@weoweproFilters.filter "customCurrency", [
+  "$filter"
+  ($filter) ->
+    return (amount, currencySymbol) ->
+      currency = $filter("currency")
+      return currency(amount, currencySymbol).replace("(", "-").replace(")", "")  if amount < 0
+      currency amount, currencySymbol
+]
